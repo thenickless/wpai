@@ -173,13 +173,13 @@ Entries from synchronized domains behave like local entries and can be displayed
 - All:  
   `https://www.mydomain.tld/wp-json/wp/v2/faq`
 - Filtered:  
-  `https://www.mydomain.tld/wp-json/wp/v2/faq?filter[rrze_faq_tag]=Matrix`
+  `https://www.mydomain.tld/wp-json/wp/v2/faq?filter[wpai_faq_tag]=Matrix`
 
 ### Glossary
 - All:  
   `https://www.mydomain.tld/wp-json/wp/v2/glossary`
 - Category + Tag:  
-  `https://www.mydomain.tld/wp-json/wp/v2/glossary?filter[rrze_glossary_category]=Dienste&filter[rrze_glossary_tag]=Sprache`
+  `https://www.mydomain.tld/wp-json/wp/v2/glossary?filter[wpai_glossary_category]=Dienste&filter[wpai_glossary_tag]=Sprache`
 
 
 **Pagination:**  
