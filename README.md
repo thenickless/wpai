@@ -10,7 +10,7 @@
 
 ## Overview
 
-**WP AI** combines the functionalities of the former plugins **WP AI FAQ**, **WP AI Glossary**, and **WP AI Synonym** into a single solution.
+**WP AI** 
 
 It allows you to:
 - Create and display FAQs, glossary entries, synonyms, and placeholders  
