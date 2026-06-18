@@ -1,4 +1,4 @@
-# RRZE Answers
+# WP AI
 
 [![Version](https://img.shields.io/github/package-json/v/rrze-webteam/rrze-answers/main?label=Version)](https://github.com/RRZE-Webteam/rrze-answers)
 [![Release Version](https://img.shields.io/github/v/release/rrze-webteam/rrze-answers?label=Release+Version)](https://github.com/RRZE-Webteam/rrze-answers/releases/)
@@ -9,11 +9,9 @@
 
 ## Overview
 
-**RRZE Answers** combines the functionalities of the former plugins **RRZE FAQ**, **RRZE Glossary**, and **RRZE Synonym** into a single solution.
-
-It allows you to:
+WP AI allows you to:
 - Create and display FAQs, glossary entries, synonyms, and placeholders  
-- Synchronize content between websites in the FAU network  
+- Synchronize content between websites in the network  
 - Display entries using shortcodes, Gutenberg blocks, or widgets  
 - Filter and group entries by categories, tags, or domains  
 - Integrate with the WordPress REST API (v2)
@@ -25,7 +23,7 @@ It allows you to:
 
 - **Unified content management:** FAQs, Glossary entries, synonyms, and placeholders are managed in one place.  
 - **Flexible display options:** Accordion view, A–Z index, tabs, tag cloud or grid.
-- **Cross-domain synchronization:** Share and import entries from other FAU sites.  
+- **Cross-domain synchronization:** Share and import entries from other sites that run this plugin.
 - **REST API support:** Access entries programmatically.  
 - **Multilingual and SEO-friendly:** Uses [`schema.org/FAQPage`](https://schema.org/FAQPage) for faq entries, [`schema.org/DefinedTerm`](https://schema.org/DefinedTerm) for glossary entries and `<abbr>` tags for synonyms.  
 
@@ -33,16 +31,16 @@ It allows you to:
 
 ## Blocks
 
-**RRZE FAQ Block**
+**BK FAQ Block**
 The FAQ block lets you display selected FAQ entries and control how they appear on the page. In the settings, you can choose specific items, filter by categories or tags, and select a glossary or grouping style such as alphabetical lists, tabs, or tag clouds. You can hide interface elements like titles, accordions, or the glossary navigation, enable a masonry grid layout, and add optional CSS or faculty classes. Sorting options and the starting heading level can also be adjusted to match your page structure.
 
-**RRZE FAQ Widget**
+**BK FAQ Widget**
 This block lets you display either a selected FAQ entry or a random one from a chosen category. In the settings, you can pick a specific item or filter by categories. You may also choose to show the answer without displaying the question.
 
-**RRZE Glossary Block**
+**BK Glossary Block**
 The Glossary block displays glossary entries and offers similar flexibility. You can select entries, filter them by categories or tags, and control the register or grouping style, including A–Z lists, tab navigation, and tag cloud layouts. Display elements such as titles, accordion views, or the register can be hidden, while optional features like “expand all” or opening entries by default can be enabled. Additional styling classes, sorting behavior, and heading levels can be configured as needed.
 
-**RRZE Placeholder Block**
+**BK Placeholder Block**
 The Placeholder block renders one, multiple, or all placeholder entries and can be filtered by language. In the editor sidebar you can select placeholders directly and choose a language filter. Rendering is server-side and uses the placeholder shortcode internally, so block and shortcode output stay consistent.
 
 **Inserting placeholders in the text editor**
@@ -154,8 +152,8 @@ Notes:
 External domains can be added and synchronized via:
 
 ```
-Settings → RRZE Answers → Domains
-Settings → RRZE Answers → Import
+Settings → WP AI → Domains
+Settings → WP AI → Import
 ```
 
 Entries from synchronized domains behave like local entries and can be displayed via shortcode, block, or widget.
@@ -173,15 +171,15 @@ Entries from synchronized domains behave like local entries and can be displayed
 
 ### FAQ
 - All:  
-  `https://www.anleitungen.rrze.fau.de/wp-json/wp/v2/faq`
+  `https://www.mydomain.tld/wp-json/wp/v2/faq`
 - Filtered:  
-  `https://www.anleitungen.rrze.fau.de/wp-json/wp/v2/faq?filter[rrze_faq_tag]=Matrix`
+  `https://www.mydomain.tld/wp-json/wp/v2/faq?filter[wpai_faq_tag]=Matrix`
 
 ### Glossary
 - All:  
-  `https://www.anleitungen.rrze.fau.de/wp-json/wp/v2/glossary`
+  `https://www.mydomain.tld/wp-json/wp/v2/glossary`
 - Category + Tag:  
-  `https://www.anleitungen.rrze.fau.de/wp-json/wp/v2/glossary?filter[rrze_glossary_category]=Dienste&filter[rrze_glossary_tag]=Sprache`
+  `https://www.mydomain.tld/wp-json/wp/v2/glossary?filter[wpai_glossary_category]=Dienste&filter[wpai_glossary_tag]=Sprache`
 
 
 **Pagination:**  
@@ -197,6 +195,5 @@ Licensed under the [GNU General Public License v2.0](https://www.gnu.org/license
 
 ## Credits
 
-Developed and maintained by the  
-**RRZE Webteam, Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)**  
-👉 [https://github.com/RRZE-Webteam/rrze-answers](https://github.com/RRZE-Webteam/rrze-answers)
+Developed and maintained by Benjamin Klemencic  
+👉 [https://github.com/thenickless/wpai](https://github.com/thenickless/wpai)
