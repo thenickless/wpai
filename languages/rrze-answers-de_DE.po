@@ -573,7 +573,7 @@ msgid "Hide title"
 msgstr "Ausgabe ohne Frage"
 
 #. URI of the plugin
-msgid "https://github.com/BK-Webteam/wp-ai"
+msgid "https://github.com/BK/wp-ai"
 msgstr ""
 
 #. Author URI of the plugin

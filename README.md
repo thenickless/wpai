@@ -208,4 +208,4 @@ Licensed under the [GNU General Public License v2.0](https://www.gnu.org/license
 
 Developed and maintained by the  
 **Benjamin Klemencic, Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)**  
-👉 [https://github.com/BK-Webteam/wp-ai](https://github.com/BK-Webteam/wp-ai)
+👉 [https://github.com/BK/wp-ai](https://github.com/BK/wp-ai)
