@@ -1,0 +1,1084 @@
+# Copyright (C) 2025 RRZE Webteam
+# This file is distributed under the GNU General Public License Version 3.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RRZE Answers 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rrze-answers\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-04-27 12:45+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: rrze-answers\n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;"
+
+#: includes/Common/Sync/Sync.php:108
+msgid " contains sliders ([gallery]) and cannot be synchronized:"
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:628
+msgid " does not support this plugin."
+msgstr ""
+
+#: includes/Defaults.php:276 includes/Defaults.php:284
+msgid " to."
+msgstr ""
+
+#: includes/Common/Tools.php:510
+msgid "-- Choose a website --"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:69
+#: includes/Common/Shortcode/ShortcodeFAQ.php:79
+msgid "-- hidden --"
+msgstr ""
+
+#: includes/Defaults.php:306
+msgid "-- off --"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:73
+#: includes/Common/Shortcode/ShortcodeFAQ.php:83
+msgid "A - Z"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeSynonym.php:57
+#: includes/Common/Shortcode/ShortcodePlaceholder.php:62
+msgid "Abbreviation"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI.php:280
+msgid "Accordion with all entries"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI.php:273
+msgid "Accordion with category"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI.php:277
+msgid "Accordion with tag"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminMenu.php:89
+#, php-format
+msgid "Add %s"
+msgstr ""
+
+#: includes/Common/CPT/CPTFAQ.php:37
+msgid "Add FAQ"
+msgstr ""
+
+#: includes/Common/CPT/CPTGlossary.php:39
+msgid "Add glossary"
+msgstr ""
+
+#: includes/Common/CPT/CPTFAQ.php:38
+msgid "Add new FAQ"
+msgstr ""
+
+#: includes/Common/CPT/CPTGlossary.php:40
+msgid "Add new glossary"
+msgstr ""
+
+#: includes/Common/CPT/CPTPlaceholder.php:37
+msgid "Add new placeholder"
+msgstr ""
+
+#: includes/Common/CPT/CPTSynonym.php:37
+msgid "Add new synonym"
+msgstr ""
+
+#: includes/Common/CPT/CPTPlaceholder.php:36
+msgid "Add placeholder"
+msgstr ""
+
+#: includes/Common/CPT/CPTSynonym.php:36
+msgid "Add synonym"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:200
+#: includes/Common/Shortcode/ShortcodeFAQ.php:220
+msgid "Additonal CSS-class(es) for sourrounding DIV"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminMenu.php:88
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: includes/Common/CPT/CPTFAQ.php:40
+msgid "All FAQ"
+msgstr ""
+
+#: includes/Common/CPT/CPTGlossary.php:42
+msgid "All glossaries"
+msgstr ""
+
+#: includes/Defaults.php:228
+msgid "All languages"
+msgstr ""
+
+#: includes/Common/CPT/CPTPlaceholder.php:39
+msgid "All placeholders"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI.php:350
+msgid "All Sources"
+msgstr ""
+
+#: includes/Common/Sync/Sync.php:127
+msgid "All synchronizations completed"
+msgstr ""
+
+#: includes/Common/CPT/CPTSynonym.php:39
+msgid "All synonyms"
+msgstr ""
+
+#: includes/Defaults.php:73
+msgid ""
+"Allow other websites to import your FAQ. Your SEO will not be affected. "
+"Structured data is used for your content only."
+msgstr ""
+
+#: includes/Defaults.php:79
+msgid ""
+"Allow other websites to import your glossary. Your SEO will not be affected. "
+"Structured data is used for your content only."
+msgstr ""
+
+#: includes/Defaults.php:72
+msgid "Allow to import FAQ"
+msgstr ""
+
+#: includes/Defaults.php:78
+msgid "Allow to import glossary"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:73
+msgid "Anchor"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:132
+msgid ""
+"Anchor field (optional) to define jump marks when displayed in accordions"
+msgstr ""
+
+#: includes/Common/Sync/Sync.php:116
+msgid "and"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminMenu.php:43
+#: includes/Common/AdminInterfaces/AdminMenu.php:44
+#: includes/Common/AdminInterfaces/AdminMenu.php:58
+msgid "Answers"
+msgstr ""
+
+#: includes/Common/API/RESTAPI.php:65
+#, php-format
+msgid "API is deactivated for %s. Contact website owner %s"
+msgstr ""
+
+#: includes/Defaults.php:106 includes/Defaults.php:144
+#: includes/Defaults.php:182 includes/Defaults.php:203
+msgid "Archive page"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:233
+#: includes/Common/Shortcode/ShortcodeFAQ.php:253
+msgid "ASC"
+msgstr ""
+
+#: blocks/faq/block.json:1
+msgctxt "block description"
+msgid "Display FAQ"
+msgstr ""
+
+#: blocks/glossary/block.json:1
+msgctxt "block description"
+msgid "Display glossaries"
+msgstr ""
+
+#: blocks/placeholder/block.json:1
+msgctxt "block description"
+msgid "Display placeholders"
+msgstr ""
+
+#: blocks/synonym/block.json:1
+msgctxt "block description"
+msgid "Display synonyms"
+msgstr ""
+
+#: blocks/faq-widget/block.json:1
+msgctxt "block description"
+msgid "Displays a random FAQ from a category."
+msgstr ""
+
+#: blocks/faq/block.json:1
+msgctxt "block title"
+msgid "RRZE FAQ"
+msgstr ""
+
+#: blocks/faq-widget/block.json:1
+msgctxt "block title"
+msgid "RRZE FAQ Widget"
+msgstr ""
+
+#: blocks/glossary/block.json:1
+msgctxt "block title"
+msgid "RRZE Glossary"
+msgstr ""
+
+#: blocks/placeholder/block.json:1
+msgctxt "block title"
+msgid "RRZE Placeholder"
+msgstr ""
+
+#: blocks/synonym/block.json:1
+msgctxt "block title"
+msgid "RRZE Synonym"
+msgstr ""
+
+#: includes/Defaults.php:275 includes/Defaults.php:283
+#: templates/template-parts/faq-content.php:48
+#: templates/template-parts/glossary-content.php:33
+#: includes/Common/Shortcode/ShortcodeGlossary.php:53
+#: includes/Common/Shortcode/ShortcodeGlossary.php:92
+#: includes/Common/Shortcode/ShortcodeFAQ.php:63
+#: includes/Common/Shortcode/ShortcodeFAQ.php:102
+#: includes/Common/AdminInterfaces/AdminMenu.php:90
+msgid "Categories"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:228
+msgid "Category"
+msgstr ""
+
+#: includes/Defaults.php:286
+msgid "Category not found."
+msgstr ""
+
+#: includes/Defaults.php:122 includes/Defaults.php:160
+msgid "Category Slug"
+msgstr ""
+
+#: includes/Defaults.php:234
+msgid "Chinese"
+msgstr ""
+
+#: includes/Common/Widgets/FAQ.php:104
+msgid "Choose a FAQ"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminMenu.php:59
+msgid "Choose a section:"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_Synonym.php:73
+msgid "Choose the language in which the long form is pronounced."
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:174
+#: includes/Common/Shortcode/ShortcodeFAQ.php:180
+msgid "Color"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:123
+msgid "Criterion for sorting the output of the shortcode"
+msgstr ""
+
+#: includes/Defaults.php:307
+msgid "daily"
+msgstr ""
+
+#: rrze-answers.php:601
+msgid "Deactivated:"
+msgstr ""
+
+#: rrze-answers.php:602
+msgid "Deactivated: none."
+msgstr ""
+
+#: includes/Common/Tools.php:493
+msgid "Default archive"
+msgstr ""
+
+#: includes/Common/Settings/templates/options/domains-table.php:27
+msgid "Delete selected domains"
+msgstr ""
+
+#: includes/Common/Sync/Sync.php:116
+msgid "deleted"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:237
+#: includes/Common/Shortcode/ShortcodeFAQ.php:257
+msgid "DESC"
+msgstr ""
+
+#: includes/Common/Widgets/FAQ.php:125
+msgid "Display options:"
+msgstr ""
+
+#: includes/Common/Widgets/FAQ.php:23
+msgid "Displays a FAQ"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeFAQ.php:114
+#: includes/Common/Sync/Sync.php:98 includes/Common/Sync/Sync.php:108
+#: includes/Common/Sync/Sync.php:116
+msgid "Domain"
+msgstr ""
+
+#: includes/Defaults.php:64 includes/Defaults.php:86
+msgid "Domains"
+msgstr ""
+
+#: includes/Common/CPT/CPTFAQ.php:39
+msgid "Edit FAQ"
+msgstr ""
+
+#: includes/Common/CPT/CPTGlossary.php:41
+msgid "Edit glossary"
+msgstr ""
+
+#: includes/Common/CPT/CPTPlaceholder.php:38
+msgid "Edit placeholder"
+msgstr ""
+
+#: includes/Common/CPT/CPTSynonym.php:38
+msgid "Edit synonym"
+msgstr ""
+
+#: includes/Common/Widgets/FAQ.php:140
+msgid "End"
+msgstr ""
+
+#: includes/Defaults.php:230
+msgid "English"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:51
+msgid "Enter glossary term here"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:33
+msgid "Enter placeholder here"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:50
+msgid "Enter question here"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_Synonym.php:32
+msgid "Enter synonym here"
+msgstr ""
+
+#: includes/Defaults.php:87 includes/Defaults.php:93
+msgid "Enter the domain's URL you want to receive FAQ from."
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_Synonym.php:62
+msgid ""
+"Enter the long, written form of the synonym. This text replaces the "
+"shortcode. Note: line breaks or HTML are not accepted."
+msgstr ""
+
+#: includes/Defaults.php:58
+msgid "Enter your text here..."
+msgstr ""
+
+#: includes/Common/CPT/CPT.php:158
+msgid "Entries"
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:317
+msgid "Error in absoluteUrl()."
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:103
+msgid "Error in deleteTaxonomies()."
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:445
+msgid "Error in getEntriesRemoteIDs()."
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:378
+msgid "Error in getEntry()."
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:79
+msgid "Error in getTaxonomies()."
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:585
+msgid "Error in remoteGet()."
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:166
+msgid "Error in setCategories()."
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:543
+msgid "Error in setEntries()."
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:424
+msgid "Error in setTags()."
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:210
+msgid "Error in sortCats()."
+msgstr ""
+
+#. Description of the plugin
+msgid "Explain your content with FAQ, glossary, synonyms and placeholder."
+msgstr ""
+
+#: includes/Defaults.php:101 includes/Common/Tools.php:236
+#: includes/Common/CPT/CPTFAQ.php:36
+#: includes/Common/AdminInterfaces/AdminMenu.php:52
+#: includes/Common/AdminInterfaces/AdminMenu.php:52
+#: includes/Common/AdminInterfaces/AdminMenu.php:52
+#: includes/Common/AdminInterfaces/AdminMenu.php:62
+msgid "FAQ"
+msgstr ""
+
+#: includes/Common/CPT/CPTFAQ.php:47
+msgid "FAQ Categories"
+msgstr ""
+
+#: includes/Defaults.php:114
+msgid "FAQ Slug"
+msgstr ""
+
+#: includes/Common/CPT/CPTFAQ.php:55
+msgid "FAQ Tags"
+msgstr ""
+
+#: includes/Common/Widgets/FAQ.php:22
+msgid "FAQ Widget"
+msgstr ""
+
+#: includes/Common/CPT/CPTFAQ.php:34
+msgctxt "FAQ, synonym or glossary entries"
+msgid "FAQ"
+msgstr ""
+
+#: includes/Defaults.php:232
+msgid "French"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_Synonym.php:60
+#: includes/Common/AdminInterfaces/AdminUI_Synonym.php:132
+#: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:120
+msgid "Full form"
+msgstr ""
+
+#: includes/Defaults.php:229
+msgid "German"
+msgstr ""
+
+#: includes/Defaults.php:139 includes/Defaults.php:255
+#: templates/rrze_glossary-archive.php:16 includes/Common/Tools.php:235
+#: includes/Common/CPT/CPTGlossary.php:38
+#: includes/Common/Shortcode/ShortcodeGlossary.php:104
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:216
+#: includes/Common/AdminInterfaces/AdminMenu.php:53
+#: includes/Common/AdminInterfaces/AdminMenu.php:53
+#: includes/Common/AdminInterfaces/AdminMenu.php:53
+#: includes/Common/AdminInterfaces/AdminMenu.php:63
+#: includes/Common/Sync/Sync.php:84
+msgid "Glossary"
+msgstr ""
+
+#: includes/Common/CPT/CPTGlossary.php:49
+msgid "Glossary Categories"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeFAQ.php:72
+msgid "Glossary content"
+msgstr ""
+
+#: includes/Common/CPT/CPTGlossary.php:36
+msgctxt "Glossary entries"
+msgid "Glossary"
+msgstr ""
+
+#: includes/Defaults.php:152
+msgid "Glossary Slug"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeFAQ.php:96
+msgid "Glossary style"
+msgstr ""
+
+#: includes/Common/CPT/CPTGlossary.php:57
+msgid "Glossary Tags"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:109
+#: includes/Common/Shortcode/ShortcodeFAQ.php:205
+msgid "Grid"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:248
+#: includes/Common/Shortcode/ShortcodeFAQ.php:268
+msgid "Heading level of the first heading"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeFAQ.php:125
+msgid "Hide accordeon"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:123
+msgid "Hide accordion"
+msgstr ""
+
+#: includes/Common/Widgets/FAQ.php:123
+msgid "hide question"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:130
+#: includes/Common/Shortcode/ShortcodeFAQ.php:132
+msgid "Hide title"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/RRZE-Webteam/rrze-answers"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.wp.rrze.fau.de/"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:217
+#: includes/Common/Shortcode/ShortcodeFAQ.php:237
+msgid "ID"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI.php:274
+msgid "If there is more than one category listed, use at least one of them."
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI.php:278
+msgid "If there is more than one tag listed, use at least one of them."
+msgstr ""
+
+#: includes/Defaults.php:65
+msgid "Import"
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:44 includes/Common/API/SyncAPI.php:339
+msgid "Import not allowed by source site."
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:609 includes/Common/API/SyncAPI.php:612
+msgid "is already in use."
+msgstr ""
+
+#: includes/Common/API/SyncAPI.php:623
+msgid "is not valid."
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:206
+#: includes/Common/Shortcode/ShortcodeFAQ.php:226
+#: includes/Common/Shortcode/ShortcodePlaceholder.php:57
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:61
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:217
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:230
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:254
+#: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:43
+#: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:154
+#: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:165
+msgid "Language"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:104
+msgid "Language of this FAQ"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:67
+msgid "Language of this placeholder"
+msgstr ""
+
+#: includes/Common/CPT/CPT.php:84 includes/Common/CPT/CPT.php:104
+msgid "Linked Page"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeFAQ.php:146
+msgid "Load website with opened accordeons"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:144
+msgid "Load website with opened accordions"
+msgstr ""
+
+#: includes/Defaults.php:66
+msgid "Logfile"
+msgstr ""
+
+#: blocks/placeholder/placeholder-format.js:169
+msgid "Insert"
+msgstr ""
+
+#: includes/Common/Settings/templates/options/logfile.php:22
+#: includes/Common/Settings/templates/options/logfile.php:25
+msgid "Logfile is empty."
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeSynonym.php:58
+#: includes/Common/Shortcode/ShortcodePlaceholder.php:63
+msgid "Longform"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminMenu.php:63
+msgid "Manage glossary terms"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminMenu.php:62
+msgid "Manage questions & answers"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminMenu.php:64
+msgid "Manage synonyms & groups"
+msgstr ""
+
+#: rrze-answers.php:528
+msgid "Migration aborted: insufficient permissions (manage_network_plugins)."
+msgstr ""
+
+#: rrze-answers.php:120
+msgid ""
+"Migration aborted: RRZE-Answers could not be deactivated network-wide during "
+"activation."
+msgstr ""
+
+#: rrze-answers.php:542
+msgid ""
+"Migration aborted: RRZE-Answers is network-activated. Please deactivate it "
+"network-wide and retry."
+msgstr ""
+
+#: rrze-answers.php:101
+msgid "Migration already marked as done. No changes were made."
+msgstr ""
+
+#: rrze-answers.php:141
+msgid "Migration failed: RRZE-Answers is network-activated after migration."
+msgstr ""
+
+#: rrze-answers.php:626
+msgid ""
+"Migration result (old plugins deactivated, RRZE-Answers activated where "
+"needed):"
+msgstr ""
+
+#: includes/Common/Sync/Sync.php:116
+msgid "new"
+msgstr ""
+
+#: includes/Defaults.php:92
+msgid "New Domain"
+msgstr ""
+
+#: includes/Common/Sync/Sync.php:65
+msgid "Next automatic synchronization:"
+msgstr ""
+
+#: templates/rrze_faq-archive.php:29
+msgid "No FAQ found."
+msgstr ""
+
+#: templates/rrze_glossary-archive.php:30
+msgid "no glossary found."
+msgstr ""
+
+#: templates/rrze_placeholder-archive.php:30
+msgid "no placeholder found."
+msgstr ""
+
+#: rrze-answers.php:122
+msgid ""
+"No site changes were made. Please deactivate RRZE-Answers network-wide "
+"manually and retry."
+msgstr ""
+
+#: rrze-answers.php:633
+msgid "No sites required changes."
+msgstr ""
+
+#: templates/rrze_synonym-single.php:29
+msgid "No synonyms found."
+msgstr ""
+
+#: includes/Common/CPT/CPT.php:86 includes/Common/CPT/CPT.php:107
+msgid "None"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:49
+#: includes/Common/Shortcode/ShortcodeGlossary.php:181
+#: includes/Common/Shortcode/ShortcodeFAQ.php:59
+#: includes/Common/Shortcode/ShortcodeFAQ.php:187
+msgid "none"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminMenu.php:72
+msgid "Open"
+msgstr ""
+
+#: includes/Common/Widgets/FAQ.php:174
+msgid "or choose a Category to display a FAQ randomly"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:242
+#: includes/Common/Shortcode/ShortcodeFAQ.php:262
+msgid "Order"
+msgstr ""
+
+#: includes/Defaults.php:63
+msgid "Permalink Settings"
+msgstr ""
+
+#: includes/Defaults.php:62
+msgid "Permissions"
+msgstr ""
+
+#: includes/Defaults.php:177 templates/rrze_placeholder-archive.php:16
+#: includes/Common/CPT/CPTPlaceholder.php:35
+#: includes/Common/Shortcode/ShortcodePlaceholder.php:51
+#: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:153
+msgid "Placeholder"
+msgstr ""
+
+#: includes/Defaults.php:190
+msgid "Placeholder Slug"
+msgstr ""
+
+#: includes/Common/CPT/CPTPlaceholder.php:33
+msgctxt "Placeholders"
+msgid "Placeholder"
+msgstr ""
+
+#: includes/Common/Settings/templates/options/domains-table.php:26
+msgid ""
+"Please note: \"Delete selected domains\" will DELETE every FAQ and glossary "
+"entry on this website that has been fetched from the selected domains."
+msgstr ""
+
+#: rrze-answers.php:253
+#, php-format
+msgid "Plugins: %1$s: %2$s"
+msgstr ""
+
+#: includes/Common/Tools.php:574
+#: includes/Common/AdminInterfaces/AdminUI_Synonym.php:135
+#: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:123
+msgid "Pronunciation"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_Synonym.php:66
+msgid "Pronunciation language"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_Synonym.php:42
+msgid "Properties"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:216
+msgid "Question"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:62
+msgid "Register content"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:86
+msgid "Register style"
+msgstr ""
+
+#: includes/Common/Sync/Sync.php:116 includes/Common/Sync/Sync.php:127
+msgid "Required time:"
+msgstr ""
+
+#. Name of the plugin
+#: includes/Defaults.php:54
+msgid "RRZE Answers"
+msgstr ""
+
+#: includes/Defaults.php:55
+msgid "RRZE Answers Settings"
+msgstr ""
+
+#. Author of the plugin
+msgid "RRZE Webteam"
+msgstr ""
+
+#: rrze-answers.php:612
+msgid "RRZE-Answers activated."
+msgstr ""
+
+#: rrze-answers.php:607
+msgid "RRZE-Answers activation failed:"
+msgstr ""
+
+#: rrze-answers.php:613
+msgid "RRZE-Answers already active (no change)."
+msgstr ""
+
+#: includes/Defaults.php:233
+msgid "Russian"
+msgstr ""
+
+#: includes/Common/Tools.php:249 includes/Common/CPT/CPTFAQ.php:41
+msgid "Search FAQ"
+msgstr ""
+
+#: includes/Common/CPT/CPTGlossary.php:43
+msgid "Search glossary"
+msgstr ""
+
+#: includes/Common/CPT/CPTPlaceholder.php:40
+msgid "Search placeholder"
+msgstr ""
+
+#: includes/Common/CPT/CPTSynonym.php:40
+msgid "Search synonym"
+msgstr ""
+
+#: includes/Common/Tools.php:254
+msgid "Search…"
+msgstr ""
+
+#: includes/Common/Sync/Sync.php:116 includes/Common/Sync/Sync.php:127
+msgid "seconds"
+msgstr ""
+
+#: includes/Common/Settings/templates/settings-page.php:21
+msgid "Settings issues detected."
+msgstr ""
+
+#: includes/Common/Settings/Settings.php:587
+msgid "Settings saved."
+msgstr ""
+
+#: includes/Common/Sync/Sync.php:129
+msgid "Settings updated"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:137
+#: includes/Common/Shortcode/ShortcodeFAQ.php:139
+msgid "Show \"expand all\" button"
+msgstr ""
+
+#: includes/Common/Widgets/FAQ.php:121
+msgid "show question and answer"
+msgstr ""
+
+#: includes/Common/Widgets/FAQ.php:122
+msgid "show question and answer opened"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:116
+#: includes/Common/Shortcode/ShortcodeFAQ.php:212
+msgid "Show search field"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI.php:271
+msgid "Single entries"
+msgstr ""
+
+#: includes/Common/CPT/CPTFAQ.php:35
+msgctxt "Single FAQ, synonym or glossary "
+msgid "FAQ"
+msgstr ""
+
+#: includes/Common/CPT/CPTGlossary.php:37
+msgctxt "Single glossary "
+msgid "Glossary"
+msgstr ""
+
+#: includes/Common/CPT/CPTPlaceholder.php:34
+msgctxt "Single placeholder"
+msgid "Placeholder"
+msgstr ""
+
+#: includes/Common/CPT/CPTSynonym.php:34
+msgctxt "Single synonym"
+msgid "Synonym"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeSynonym.php:46
+#: includes/Common/Shortcode/ShortcodePlaceholder.php:45
+msgid "Slug"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:226
+#: includes/Common/Shortcode/ShortcodeFAQ.php:246
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:67
+msgid "Sort"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:231
+msgid "Sort by"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:218
+msgid "Sort criterion"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:221
+#: includes/Common/Shortcode/ShortcodeFAQ.php:241
+msgid "Sort field"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:221
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:234
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:256
+#: includes/Common/AdminInterfaces/AdminUI_Synonym.php:171
+#: includes/Common/AdminInterfaces/AdminUI_Synonym.php:179
+#: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:157
+#: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:166
+msgid "Source"
+msgstr ""
+
+#: includes/Defaults.php:231
+msgid "Spanish"
+msgstr ""
+
+#: includes/Common/Widgets/FAQ.php:139
+msgid "Start"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:194
+#: includes/Common/Shortcode/ShortcodeFAQ.php:200
+msgid "Style"
+msgstr ""
+
+#: includes/Common/Sync/Sync.php:116
+msgid "Synchronization completed."
+msgstr ""
+
+#: includes/Defaults.php:302
+msgid "Synchronize automatically"
+msgstr ""
+
+#: includes/Defaults.php:198 includes/Common/CPT/CPTSynonym.php:35
+#: includes/Common/Shortcode/ShortcodeSynonym.php:52
+#: includes/Common/AdminInterfaces/AdminMenu.php:54
+#: includes/Common/AdminInterfaces/AdminMenu.php:54
+#: includes/Common/AdminInterfaces/AdminMenu.php:54
+#: includes/Common/AdminInterfaces/AdminMenu.php:64
+#: includes/Common/AdminInterfaces/AdminUI_Synonym.php:168
+msgid "Synonym"
+msgstr ""
+
+#: includes/Defaults.php:211
+msgid "Synonym Slug"
+msgstr ""
+
+#: templates/rrze_synonym-single.php:15 templates/rrze_synonym-archive.php:13
+msgid "synonyms"
+msgstr ""
+
+#: includes/Common/CPT/CPTSynonym.php:33
+msgctxt "Synonyms"
+msgid "Synonym"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:81
+#: includes/Common/Shortcode/ShortcodeFAQ.php:91
+msgid "Tabs"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_QA.php:229
+msgid "Tag"
+msgstr ""
+
+#: includes/Defaults.php:131 includes/Defaults.php:169
+msgid "Tag Slug"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:77
+#: includes/Common/Shortcode/ShortcodeFAQ.php:87
+msgid "Tagcloud"
+msgstr ""
+
+#: templates/template-parts/faq-content.php:51
+#: templates/template-parts/glossary-content.php:34
+#: includes/Common/Shortcode/ShortcodeGlossary.php:57
+#: includes/Common/Shortcode/ShortcodeGlossary.php:98
+#: includes/Common/Shortcode/ShortcodeFAQ.php:67
+#: includes/Common/Shortcode/ShortcodeFAQ.php:108
+#: includes/Common/AdminInterfaces/AdminMenu.php:91
+msgid "Tags"
+msgstr ""
+
+#: rrze-answers.php:143
+msgid ""
+"The migration was NOT marked as done. Please ensure RRZE-Answers is not "
+"network-activated and retry."
+msgstr ""
+
+#: rrze-answers.php:244
+#, php-format
+msgid ""
+"The server is running PHP version %1$s. The plugin requires at least PHP "
+"version %2$s."
+msgstr ""
+
+#: rrze-answers.php:238
+#, php-format
+msgid ""
+"The server is running WordPress version %1$s. The plugin requires at least "
+"WordPress version %2$s."
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI.php:230
+msgid "This item cannot be edited because it is synchronized"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:103
+msgid "This placeholder cannot be edited because it is synchronized"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_Synonym.php:115
+msgid "This synonym cannot be edited because it is synchronized"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeGlossary.php:213
+#: includes/Common/Shortcode/ShortcodeFAQ.php:233
+msgid "Title"
+msgstr ""
+
+#: includes/Defaults.php:308
+msgid "twicedaily"
+msgstr ""
+
+#: includes/Common/Shortcode/ShortcodeSynonym.php:62
+#: includes/Common/Shortcode/ShortcodePlaceholder.php:67
+msgid "Type of output"
+msgstr ""
+
+#: includes/Common/Settings/Settings.php:406
+msgid "Unnamed tab"
+msgstr ""
+
+#: includes/Common/Sync/Sync.php:116
+msgid "updated"
+msgstr ""
+
+#: includes/Common/AdminInterfaces/AdminUI_Synonym.php:116
+#: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:104
+#: includes/Common/AdminInterfaces/AdminUI.php:231
+msgid "You can edit it at the source"
+msgstr ""
+
+#: includes/Common/Settings/Settings.php:562
+msgid "You do not have enough permissions to do that."
+msgstr ""
