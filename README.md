@@ -11,7 +11,7 @@
 
 WP AI allows you to:
 - Create and display FAQs, glossary entries, synonyms, and placeholders  
-- Synchronize content between websites in the FAU network  
+- Synchronize content between websites in the network  
 - Display entries using shortcodes, Gutenberg blocks, or widgets  
 - Filter and group entries by categories, tags, or domains  
 - Integrate with the WordPress REST API (v2)
