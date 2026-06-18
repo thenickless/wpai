@@ -23,7 +23,7 @@ WP AI allows you to:
 
 - **Unified content management:** FAQs, Glossary entries, synonyms, and placeholders are managed in one place.  
 - **Flexible display options:** Accordion view, A–Z index, tabs, tag cloud or grid.
-- **Cross-domain synchronization:** Share and import entries from other FAU sites.  
+- **Cross-domain synchronization:** Share and import entries from other sites that run this plugin.
 - **REST API support:** Access entries programmatically.  
 - **Multilingual and SEO-friendly:** Uses [`schema.org/FAQPage`](https://schema.org/FAQPage) for faq entries, [`schema.org/DefinedTerm`](https://schema.org/DefinedTerm) for glossary entries and `<abbr>` tags for synonyms.  
 
