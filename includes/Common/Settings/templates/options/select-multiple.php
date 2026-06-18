@@ -1,24 +1,24 @@
 <?php
 
-namespace RRZE\Answers\Common\Settings;
+namespace BK\WPAI\Common\Settings;
 
 defined('ABSPATH') || exit;
 
 $tour_attr = '';
 $field_name = (string) $option->getName();
 if (str_starts_with($field_name, 'faq_categories_')) {
-    static $rrze_answers_import_category_tour_marked = false;
-    if (!$rrze_answers_import_category_tour_marked) {
-        $tour_attr = ' data-rrze-tour="import-categories"';
-        $rrze_answers_import_category_tour_marked = true;
+    static $wp_ai_import_category_tour_marked = false;
+    if (!$wp_ai_import_category_tour_marked) {
+        $tour_attr = ' data-bk-tour="import-categories"';
+        $wp_ai_import_category_tour_marked = true;
     }
 }
 ?>
 <tr valign="top">
-    <th scope="row" class="rrze-wp-form-label">
+    <th scope="row" class="bk-wp-form-label">
         <label for="<?php echo $option->getIdAttribute(); ?>" <?php echo $option->getLabelClassAttribute(); ?>><?php echo $option->getLabel(); ?></label>
     </th>
-    <td class="rrze-wp-form rrze-wp-form-input"<?php echo $tour_attr; ?>>
+    <td class="bk-wp-form bk-wp-form-input"<?php echo $tour_attr; ?>>
         <select id="<?php echo $option->getIdAttribute(); ?>" name="<?php echo esc_attr($option->getNameAttribute()); ?>" multiple <?php echo $option->getInputClassAttribute(); ?>>
             <?php foreach ($option->getArg('options', []) as $key => $label) { ?>
                 <option value="<?php echo $key; ?>" <?php echo in_array($key, $option->getValueAttribute() ?? []) ? 'selected' : null; ?>><?php echo $label; ?></option>
@@ -29,7 +29,7 @@ if (str_starts_with($field_name, 'faq_categories_')) {
         <?php } ?>
 
         <?php if ($error = $option->hasError()) { ?>
-            <div class="rrze-answers-settings-error"><?php echo $error; ?></div>
+            <div class="wp-ai-settings-error"><?php echo $error; ?></div>
         <?php } ?>
     </td>
 </tr>

@@ -1,10 +1,10 @@
 <?php
 
-namespace RRZE\Answers\Common\Settings;
+namespace BK\WPAI\Common\Settings;
 
-use function RRZE\Answers\plugin;
+use function BK\WPAI\plugin;
 
-use RRZE\Answers\Common\Settings\{
+use BK\WPAI\Common\Settings\{
     Builder,
     Error,
     Flash,
@@ -24,7 +24,7 @@ defined('ABSPATH') || exit;
  * It allows for the creation and management of settings, tabs, sections, and options.
  * It also handles saving settings, rendering the settings page, and managing errors and flash messages.
  *
- * @package RRZE\Answers\Common\Settings
+ * @package BK\WPAI\Common\Settings
  */
 class Settings
 {
@@ -290,8 +290,8 @@ class Settings
         add_action('admin_menu', [$this, 'addToMenu'], 20);
         add_action('admin_head', [$this, 'styling'], 20);
         add_action('admin_enqueue_scripts', [$this, 'enqueueGuidedTour']);
-        add_action('wp_ajax_rrze_answers_dismiss_guided_tour', [$this, 'dismissGuidedTour']);
-        add_action('wp_ajax_rrze_answers_dismiss_setup_tour', [$this, 'dismissSetupTour']);
+        add_action('wp_ajax_wp_ai_dismiss_guided_tour', [$this, 'dismissGuidedTour']);
+        add_action('wp_ajax_wp_ai_dismiss_setup_tour', [$this, 'dismissSetupTour']);
     }
 
     /**
@@ -305,8 +305,8 @@ class Settings
             return;
         }
 
-        $script_path = plugin()->getPath() . 'build/rrze-answers-guided-tour.js';
-        $asset_path = plugin()->getPath() . 'build/rrze-answers-guided-tour.asset.php';
+        $script_path = plugin()->getPath() . 'build/wp-ai-guided-tour.js';
+        $asset_path = plugin()->getPath() . 'build/wp-ai-guided-tour.asset.php';
 
         if (!is_readable($script_path) || !is_readable($asset_path)) {
             return;
@@ -318,68 +318,68 @@ class Settings
         wp_enqueue_style('dashicons');
         wp_enqueue_style('wp-components');
 
-        $admin_css = plugin()->getPath() . 'build/css/rrze-answers-admin.css';
+        $admin_css = plugin()->getPath() . 'build/css/wp-ai-admin.css';
         if (is_readable($admin_css)) {
             wp_enqueue_style(
-                'rrze-answers-admin-css',
-                plugin()->getUrl() . 'build/css/rrze-answers-admin.css',
+                'wp-ai-admin-css',
+                plugin()->getUrl() . 'build/css/wp-ai-admin.css',
                 [],
                 (string) filemtime($admin_css)
             );
         }
 
         wp_enqueue_script(
-            'rrze-answers-guided-tour',
-            plugin()->getUrl() . 'build/rrze-answers-guided-tour.js',
+            'wp-ai-guided-tour',
+            plugin()->getUrl() . 'build/wp-ai-guided-tour.js',
             $asset_file['dependencies'],
             $asset_file['version'],
             true
         );
 
         wp_set_script_translations(
-            'rrze-answers-guided-tour',
-            'rrze-answers',
+            'wp-ai-guided-tour',
+            'wp-ai',
             plugin()->getPath() . 'languages'
         );
 
         $setupTourStepId = '';
-        if (isset($_GET['rrze_setup_tour_step'])) {
-            $setupTourStepId = sanitize_key((string) wp_unslash($_GET['rrze_setup_tour_step']));
+        if (isset($_GET['bk_setup_tour_step'])) {
+            $setupTourStepId = sanitize_key((string) wp_unslash($_GET['bk_setup_tour_step']));
         }
 
-        wp_localize_script('rrze-answers-guided-tour', 'rrzeAnswersGuide', [
-            'autoStart' => !get_user_meta(get_current_user_id(), 'rrze_answers_guided_tour_dismissed', true),
-            'autoStartSetup' => isset($_GET['rrze_setup_tour']),
+        wp_localize_script('wp-ai-guided-tour', 'BKWPAIGuide', [
+            'autoStart' => !get_user_meta(get_current_user_id(), 'wp_ai_guided_tour_dismissed', true),
+            'autoStartSetup' => isset($_GET['bk_setup_tour']),
             'setupTourStepId' => $setupTourStepId,
             'settingsUrl' => $this->getUrl(),
             'activeTab' => $this->getActiveTab()->slug,
             'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('rrze_answers_guided_tour'),
-            'setupTourNonce' => wp_create_nonce('rrze_answers_setup_tour'),
+            'nonce' => wp_create_nonce('wp_ai_guided_tour'),
+            'setupTourNonce' => wp_create_nonce('wp_ai_setup_tour'),
         ]);
     }
 
     public function dismissSetupTour(): void
     {
-        check_ajax_referer('rrze_answers_setup_tour', 'nonce');
+        check_ajax_referer('wp_ai_setup_tour', 'nonce');
 
         if (!current_user_can($this->capability)) {
             wp_send_json_error(null, 403);
         }
 
-        update_user_meta(get_current_user_id(), 'rrze_answers_setup_tour_dismissed', 1);
+        update_user_meta(get_current_user_id(), 'wp_ai_setup_tour_dismissed', 1);
         wp_send_json_success();
     }
 
     public function dismissGuidedTour(): void
     {
-        check_ajax_referer('rrze_answers_guided_tour', 'nonce');
+        check_ajax_referer('wp_ai_guided_tour', 'nonce');
 
         if (!current_user_can($this->capability)) {
             wp_send_json_error(null, 403);
         }
 
-        update_user_meta(get_current_user_id(), 'rrze_answers_guided_tour_dismissed', 1);
+        update_user_meta(get_current_user_id(), 'wp_ai_guided_tour_dismissed', 1);
         wp_send_json_success();
     }
 
@@ -420,7 +420,7 @@ class Settings
             return;
         }
 
-        echo '<style>.rrze-answers-settings-error {color: #d63638; margin: 5px 0;}</style>';
+        echo '<style>.wp-ai-settings-error {color: #d63638; margin: 5px 0;}</style>';
     }
 
     /**
@@ -497,7 +497,7 @@ class Settings
     public function addSection($title, $args = [])
     {
         if (empty($this->tabs)) {
-            $tab = $this->addTab(__('Unnamed tab', 'rrze-answers'));
+            $tab = $this->addTab(__('Unnamed tab', 'wp-ai'));
         } else {
             $tab = end($this->tabs);
         }
@@ -643,21 +643,21 @@ class Settings
     public function save()
     {
         if (
-            !isset($_POST['rrze-answers_settings_save'])
+            !isset($_POST['bk-wp_ai_settings_save'])
             || !wp_verify_nonce(
-                $_POST['rrze-answers_settings_save'],
-                'rrze-answers_settings_save_' . $this->optionName
+                $_POST['bk-wp_ai_settings_save'],
+                'bk-wp_ai_settings_save_' . $this->optionName
             )
         ) {
             return;
         }
 
         if (!current_user_can($this->capability)) {
-            wp_die(__('You do not have enough permissions to do that.', 'rrze-answers'));
+            wp_die(__('You do not have enough permissions to do that.', 'wp-ai'));
         }
 
         $currentOptions = $this->getOptions();
-        $submittedOptions = apply_filters('rrze-answers_settings_new_options', $_POST[$this->optionName] ?? [], $currentOptions);
+        $submittedOptions = apply_filters('bk-wp_ai_settings_new_options', $_POST[$this->optionName] ?? [], $currentOptions);
         $newOptions = $currentOptions;
 
         foreach ($this->getActiveTab()->getActiveSections() as $section) {
@@ -670,7 +670,7 @@ class Settings
                     continue;
                 }
 
-                $value = apply_filters('rrze-answers_settings_new_option_' . $option->implementation->getName(), $option->sanitize($value), $option->implementation);
+                $value = apply_filters('bk-wp_ai_settings_new_option_' . $option->implementation->getName(), $option->sanitize($value), $option->implementation);
 
                 $newOptions[$option->implementation->getName()] = $value;
             }
@@ -678,7 +678,7 @@ class Settings
 
         $this->updateOptions($newOptions);
 
-        $this->flash->set('success', __('Settings saved.', 'rrze-answers'));
+        $this->flash->set('success', __('Settings saved.', 'wp-ai'));
     }
 
     /**
@@ -748,6 +748,6 @@ class Settings
     public function updateOptions($options)
     {
         update_option($this->optionName, $options);
-        do_action('rrze-answers_settings_after_update_option', $this->optionName, $options);
+        do_action('bk-wp_ai_settings_after_update_option', $this->optionName, $options);
     }
 }

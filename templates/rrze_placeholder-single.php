@@ -12,7 +12,7 @@ get_header();
 
 ?>
 
-<main id="main" class="site-main rrze-answers">
+<main id="main" class="site-main wp-ai">
 
 <?php
 include_once('template-parts/placeholder-content.php');

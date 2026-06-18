@@ -1,13 +1,13 @@
 <?php
 
-namespace RRZE\Answers\Common\Settings;
+namespace BK\WPAI\Common\Settings;
 
 
 defined('ABSPATH') || exit;
 
-use RRZE\Answers\Common\Settings\Section;
+use BK\WPAI\Common\Settings\Section;
 
-use RRZE\Answers\Common\Settings\Options\{
+use BK\WPAI\Common\Settings\Options\{
     Checkbox,
     CheckboxMultiple,
     Password,
@@ -67,7 +67,7 @@ class Option
         $this->type = $type;
         $this->args = $args;
 
-        $typeMap = apply_filters('rrze-answers_settings_option_type_map', [
+        $typeMap = apply_filters('bk-wp_ai_settings_option_type_map', [
             'checkbox' => Checkbox::class,
             'checkbox-multiple' => CheckboxMultiple::class,
             'password' => Password::class,

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate PDF guide for RRZE Answers admin tours."""
+"""Generate PDF guide for WP AI admin tours."""
 
 from fpdf import FPDF
 from pathlib import Path
@@ -11,7 +11,7 @@ class GuidePDF(FPDF):
     def header(self):
         self.set_font("DejaVu", "B", 10)
         self.set_text_color(100, 100, 100)
-        self.cell(0, 8, "RRZE Answers – Admin-Tour Anleitung", align="R", new_x="LMARGIN", new_y="NEXT")
+        self.cell(0, 8, "WP AI – Admin-Tour Anleitung", align="R", new_x="LMARGIN", new_y="NEXT")
         self.ln(2)
 
     def footer(self):
@@ -73,31 +73,31 @@ def build_pdf() -> None:
     pdf.ln(2)
     pdf.set_font("DejaVu", "", 11)
     pdf.set_text_color(80, 80, 80)
-    pdf.multi_cell(0, 6, "Nach dem Vorbild des Plugins RRZE Answers – für die Umsetzung in anderen Plugins.")
+    pdf.multi_cell(0, 6, "Nach dem Vorbild des Plugins WP AI – für die Umsetzung in anderen Plugins.")
     pdf.ln(4)
 
     pdf.chapter_title("Überblick")
     pdf.body_text(
-        "RRZE Answers bietet zwei Tour-Typen:\n\n"
+        "WP AI bietet zwei Tour-Typen:\n\n"
         "1. Guided Tour – Einführung mit mehreren Info-Seiten (Modal), basierend auf der "
         "WordPress-Komponente Guide aus @wordpress/components.\n\n"
         "2. Setup Tour – Kontextuelle Schritt-für-Schritt-Anleitung auf der Einstellungsseite "
         "mit eigenem React-Overlay und data-*-Ankern im HTML."
     )
 
-    pdf.chapter_title("1. Dateistruktur (rrze-answers)")
+    pdf.chapter_title("1. Dateistruktur (wp-ai)")
     pdf.code_block(
         "src/js/\n"
-        "  rrze-answers-guided-tour.js   ← Einstiegspunkt, rendert React-App\n"
+        "  wp-ai-guided-tour.js   ← Einstiegspunkt, rendert React-App\n"
         "  setup-tour.js                 ← Kontextuelle Setup-Tour\n"
         "  setup-tour-step.js            ← Wiederverwendbares Schritt-Panel\n\n"
         "includes/Common/Settings/\n"
         "  Settings.php                  ← Script enqueue, AJAX, User-Meta\n"
         "  templates/settings-page.php   ← Buttons + React-Root\n"
-        "  templates/tab-menu.php        ← data-rrze-tour auf Tabs\n"
-        "  templates/options/*.php       ← data-rrze-tour auf Formularfeldern\n\n"
-        "src/sass/rrze-answers-admin.scss\n"
-        "build/rrze-answers-guided-tour.js"
+        "  templates/tab-menu.php        ← data-bk-tour auf Tabs\n"
+        "  templates/options/*.php       ← data-bk-tour auf Formularfeldern\n\n"
+        "src/sass/wp-ai-admin.scss\n"
+        "build/wp-ai-guided-tour.js"
     )
 
     pdf.chapter_title("2. PHP: Script laden und Konfiguration übergeben")
@@ -111,34 +111,34 @@ def build_pdf() -> None:
     pdf.ln(2)
     pdf.code_block(
         "add_action('admin_enqueue_scripts', [$this, 'enqueueGuidedTour']);\n"
-        "add_action('wp_ajax_rrze_answers_dismiss_guided_tour', ...);\n"
-        "add_action('wp_ajax_rrze_answers_dismiss_setup_tour', ...);\n\n"
-        "wp_localize_script('rrze-answers-guided-tour', 'rrzeAnswersGuide', [\n"
-        "    'autoStart' => !get_user_meta(..., 'rrze_answers_guided_tour_dismissed', true),\n"
-        "    'autoStartSetup' => isset($_GET['rrze_setup_tour']),\n"
+        "add_action('wp_ajax_wp_ai_dismiss_guided_tour', ...);\n"
+        "add_action('wp_ajax_wp_ai_dismiss_setup_tour', ...);\n\n"
+        "wp_localize_script('wp-ai-guided-tour', 'BKWPAIGuide', [\n"
+        "    'autoStart' => !get_user_meta(..., 'wp_ai_guided_tour_dismissed', true),\n"
+        "    'autoStartSetup' => isset($_GET['bk_setup_tour']),\n"
         "    'setupTourStepId' => $setupTourStepId,\n"
         "    'settingsUrl' => $this->getUrl(),\n"
         "    'activeTab' => $this->getActiveTab()->slug,\n"
         "    'ajaxUrl' => admin_url('admin-ajax.php'),\n"
-        "    'nonce' => wp_create_nonce('rrze_answers_guided_tour'),\n"
+        "    'nonce' => wp_create_nonce('wp_ai_guided_tour'),\n"
         "]);"
     )
 
     pdf.chapter_title("3. HTML: Root-Container und Start-Buttons")
     pdf.code_block(
-        '<button type="button" id="rrze-answers-start-guided-tour"\n'
+        '<button type="button" id="wp-ai-start-guided-tour"\n'
         '        class="page-title-action">Guided tour</button>\n'
-        '<button type="button" id="rrze-answers-start-setup-tour"\n'
+        '<button type="button" id="wp-ai-start-setup-tour"\n'
         '        class="page-title-action">Setup tour</button>\n'
-        '<div id="rrze-answers-guided-tour-root"></div>'
+        '<div id="wp-ai-guided-tour-root"></div>'
     )
-    pdf.body_text("React mountet in #rrze-answers-guided-tour-root. Die Button-IDs müssen mit dem JavaScript übereinstimmen.")
+    pdf.body_text("React mountet in #wp-ai-guided-tour-root. Die Button-IDs müssen mit dem JavaScript übereinstimmen.")
 
-    pdf.chapter_title("4. Anker im Markup: data-rrze-tour")
+    pdf.chapter_title("4. Anker im Markup: data-bk-tour")
     pdf.body_text("Die Setup-Tour findet UI-Elemente per CSS-Selektor:")
-    pdf.bullet('Tabs: data-rrze-tour="tab-domains"')
-    pdf.bullet('Felder: data-rrze-tour="new-domain" (bedingt im Template)')
-    pdf.bullet('Speichern: data-rrze-tour="save-settings" am submit_button')
+    pdf.bullet('Tabs: data-bk-tour="tab-domains"')
+    pdf.bullet('Felder: data-bk-tour="new-domain" (bedingt im Template)')
+    pdf.bullet('Speichern: data-bk-tour="save-settings" am submit_button')
     pdf.body_text("Für ein anderes Plugin: Präfix anpassen, z. B. data-meinplugin-tour.")
 
     pdf.add_page()
@@ -150,8 +150,8 @@ def build_pdf() -> None:
     pdf.code_block(
         "import { Guide } from '@wordpress/components';\n\n"
         "<Guide\n"
-        "    className=\"rrze-answers-guided-tour\"\n"
-        "    finishButtonText={__('Get started', 'rrze-answers')}\n"
+        "    className=\"wp-ai-guided-tour\"\n"
+        "    finishButtonText={__('Get started', 'wp-ai')}\n"
         "    onFinish={finishGuide}\n"
         "    pages={guidePages}\n"
         "/>"
@@ -163,21 +163,21 @@ def build_pdf() -> None:
         "{\n"
         "    id: 'new-domain',\n"
         "    tab: 'domains',\n"
-        "    target: '[data-rrze-tour=\"new-domain\"]',\n"
-        "    title: __('Add a domain', 'rrze-answers'),\n"
-        "    text: __('Enter the URL...', 'rrze-answers'),\n"
+        "    target: '[data-bk-tour=\"new-domain\"]',\n"
+        "    title: __('Add a domain', 'wp-ai'),\n"
+        "    text: __('Enter the URL...', 'wp-ai'),\n"
         "    optional: true,  // optional: Schritt überspringen wenn target fehlt\n"
         "}"
     )
     pdf.section_title("6.2 Tab-Wechsel über URL")
     pdf.body_text(
         "Wechselt ein Schritt den Tab, lädt die Seite neu mit "
-        "?tab=import&rrze_setup_tour=1&rrze_setup_tour_step=import-categories. "
-        "PHP liest rrze_setup_tour_step und übergibt setupTourStepId an JavaScript."
+        "?tab=import&bk_setup_tour=1&bk_setup_tour_step=import-categories. "
+        "PHP liest bk_setup_tour_step und übergibt setupTourStepId an JavaScript."
     )
     pdf.section_title("6.3 Highlight und Scroll")
     pdf.body_text(
-        "Das Ziel-Element erhält die CSS-Klasse rrze-answers-setup-tour__highlight "
+        "Das Ziel-Element erhält die CSS-Klasse wp-ai-setup-tour__highlight "
         "und wird per scrollIntoView in den sichtbaren Bereich gescrollt."
     )
     pdf.section_title("6.4 Schritt-Panel")
@@ -189,15 +189,15 @@ def build_pdf() -> None:
     pdf.bullet("__overlay – halbtransparenter Hintergrund (z-index: 99990)")
     pdf.bullet("__highlight – blauer Outline um das Ziel-Element (z-index: 99995)")
     pdf.bullet("__card – fixiertes Panel unten mittig (z-index: 100000)")
-    pdf.body_text("Styles in src/sass/rrze-answers-admin.scss, Build mit sass nach build/css/.")
+    pdf.body_text("Styles in src/sass/wp-ai-admin.scss, Build mit sass nach build/css/.")
 
     pdf.chapter_title("8. Build-Pipeline")
     pdf.code_block(
-        '"build:js": "wp-scripts build ... src/js/rrze-answers-guided-tour.js"\n'
+        '"build:js": "wp-scripts build ... src/js/wp-ai-guided-tour.js"\n'
         "npm run build:js\n"
         "npm run build:css"
     )
-    pdf.body_text("Ergebnis: build/rrze-answers-guided-tour.js + .asset.php")
+    pdf.body_text("Ergebnis: build/wp-ai-guided-tour.js + .asset.php")
 
     pdf.add_page()
     pdf.chapter_title("9. Checkliste für ein neues Plugin")
@@ -233,9 +233,9 @@ def build_pdf() -> None:
 
     pdf.chapter_title("11. Zusammenfassung")
     pdf.body_text(
-        "RRZE Answers nutzt WordPress-eigene Bausteine (Guide, Button, @wordpress/element) "
+        "WP AI nutzt WordPress-eigene Bausteine (Guide, Button, @wordpress/element) "
         "statt einer externen Tour-Library. Die Guided Tour erklärt das Plugin allgemein; "
-        "die Setup Tour verknüpft Schritte mit echten UI-Elementen über data-rrze-tour-Anker "
+        "die Setup Tour verknüpft Schritte mit echten UI-Elementen über data-bk-tour-Anker "
         "und Tab-Navigation per URL.\n\n"
         "Für ein anderes Plugin: Präfixe, Schritte und Anker anpassen, Build-Pipeline "
         "einrichten – die Architektur bleibt gleich."
@@ -244,7 +244,7 @@ def build_pdf() -> None:
     pdf.set_font("DejaVu", "", 9)
     pdf.set_text_color(120, 120, 120)
     pdf.ln(6)
-    pdf.multi_cell(0, 5, "Erstellt aus der RRZE Answers Codebasis – github.com/RRZE-Webteam/rrze-answers")
+    pdf.multi_cell(0, 5, "Erstellt aus der WP AI Codebasis – github.com/BK-Webteam/wp-ai")
 
     pdf.output(OUTPUT)
     print(f"PDF erstellt: {OUTPUT}")

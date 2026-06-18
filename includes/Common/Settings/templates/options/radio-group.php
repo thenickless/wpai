@@ -1,6 +1,6 @@
 <?php
 
-namespace RRZE\Answers\Common\Settings;
+namespace BK\WPAI\Common\Settings;
 
 defined('ABSPATH') || exit;
 ?>
@@ -21,7 +21,7 @@ defined('ABSPATH') || exit;
                 <p class="description"><?php echo $description; ?></p>
             <?php } ?>
             <?php if ($error = $option->hasError()) { ?>
-                <div class="rrze-answers-settings-error"><?php echo $error; ?></div>
+                <div class="wp-ai-settings-error"><?php echo $error; ?></div>
             <?php } ?>
         </fieldset>
     </td>

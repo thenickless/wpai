@@ -1,20 +1,17 @@
-=== RRZE Answers ===
-Contributors: rrze-webteam
+=== WP AI ===
+Contributors: Benjamin Klemencic
 Tags: faq, glossary, synonym, placeholder, shortcode, block, widget
 Requires at least: 6.1
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 1.4.3
+Stable tag: 0.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Unified plugin for FAQs, glossary entries, synonyms, and placeholders with shortcode, block, widget, and REST API support.
 
 == Description ==
-
-RRZE Answers combines the functionality of the former RRZE FAQ, RRZE Glossary, and RRZE Synonym plugins into one solution.
-
-It allows you to:
+WP AI allows you to:
 * Create and display FAQs, glossary entries, synonyms, and placeholders
 * Synchronize content between websites in the FAU network
 * Display entries via shortcodes, Gutenberg blocks, or widgets
@@ -33,18 +30,18 @@ Main features:
 
 1. Download the plugin.
 2. Unzip the ZIP file.
-3. Upload the `rrze-answers` folder to the `/wp-content/plugins/` directory of your WordPress installation.
+3. Upload the `wp-ai` folder to the `/wp-content/plugins/` directory of your WordPress installation.
 4. Activate the plugin via the `Plugins` menu in WordPress.
-5. Optional: Configure synchronization domains under `Settings > RRZE Answers`.
+5. Optional: Configure synchronization domains under `Settings > WP AI`.
 
 == Usage ==
 
 === Blocks ===
 
-* RRZE FAQ Block
-* RRZE FAQ Widget Block
-* RRZE Glossary Block
-* RRZE Placeholder Block 
+* BK FAQ Block
+* BK FAQ Widget Block
+* BK Glossary Block
+* BK Placeholder Block 
 
 
 === Inserting in the text editor ===
@@ -107,25 +104,25 @@ Notes:
 
 External domains can be added and synchronized via:
 
-    Settings > RRZE Answers > Domains
-    Settings > RRZE Answers > Import
+    Settings > WP AI > Domains
+    Settings > WP AI > Import
 
 Synchronized entries behave like local entries and can be displayed via shortcode, block, or widget.
 
 === Widgets ===
 
-* Answers Widget: show a specific or random FAQ or glossary entry
+* WP AI Widget: show a specific or random FAQ or glossary entry
 * Configurable options include layout and category selection
 
 === REST API (v2) ===
 
 FAQ:
-* `https://www.anleitungen.rrze.fau.de/wp-json/wp/v2/faq`
-* `https://www.anleitungen.rrze.fau.de/wp-json/wp/v2/faq?filter[rrze_faq_tag]=Matrix`
+* `https://www.mydomain.tld/wp-json/wp/v2/faq`
+* `https://www.mydomain.tld/wp-json/wp/v2/faq?filter[bk_faq_tag]=Matrix`
 
 Glossary:
-* `https://www.anleitungen.rrze.fau.de/wp-json/wp/v2/glossary`
-* `https://www.anleitungen.rrze.fau.de/wp-json/wp/v2/glossary?filter[rrze_glossary_category]=Dienste&filter[rrze_glossary_tag]=Sprache`
+* `https://www.mydomain.tld/wp-json/wp/v2/glossary`
+* `https://www.mydomain.tld/wp-json/wp/v2/glossary?filter[bk_glossary_category]=Dienste&filter[bk_glossary_tag]=Sprache`
 
 
 Pagination:

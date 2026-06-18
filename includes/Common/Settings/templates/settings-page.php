@@ -1,22 +1,22 @@
 <?php
 
-namespace RRZE\Answers\Common\Settings;
+namespace BK\WPAI\Common\Settings;
 
 defined('ABSPATH') || exit;
 
 $flash = $settings->flash->has();
 $errors = $settings->errors->hasErrors();
 ?>
-<div class="wrap rrze-answers-settings-wrap">
+<div class="wrap wp-ai-settings-wrap">
     <h1 class="wp-heading-inline"><?php echo esc_html($settings->title); ?></h1>
-    <button type="button" id="rrze-answers-start-guided-tour" class="page-title-action">
-        <?php esc_html_e('Guided tour', 'rrze-answers'); ?>
+    <button type="button" id="wp-ai-start-guided-tour" class="page-title-action">
+        <?php esc_html_e('Guided tour', 'wp-ai'); ?>
     </button>
-    <button type="button" id="rrze-answers-start-setup-tour" class="page-title-action">
-        <?php esc_html_e('Setup tour', 'rrze-answers'); ?>
+    <button type="button" id="wp-ai-start-setup-tour" class="page-title-action">
+        <?php esc_html_e('Setup tour', 'wp-ai'); ?>
     </button>
     <hr class="wp-header-end">
-    <div id="rrze-answers-guided-tour-root"></div>
+    <div id="wp-ai-guided-tour-root"></div>
 
     <?php if ($flash) { ?>
         <div class="notice notice-<?php echo $flash['status']; ?> is-dismissible">
@@ -26,7 +26,7 @@ $errors = $settings->errors->hasErrors();
 
     <?php if ($errors) { ?>
         <div class="notice notice-error is-dismissible">
-            <p><?php _e('Settings issues detected.', 'rrze-answers'); ?></p>
+            <p><?php _e('Settings issues detected.', 'wp-ai'); ?></p>
         </div>
     <?php } ?>
 

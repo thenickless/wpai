@@ -1,15 +1,15 @@
 <?php
 
-namespace RRZE\Answers\Common\CPT;
+namespace BK\WPAI\Common\CPT;
 
 defined('ABSPATH') || exit;
 
 class CPTSynonym extends CPT
 {
-    protected $post_type = 'rrze_synonym';
+    protected $post_type = 'bk_synonym';
     protected $templates = [
-        'single'  => 'rrze_synonym-single.php',
-        'archive' => 'rrze_synonym-archive.php',
+        'single'  => 'bk_synonym-single.php',
+        'archive' => 'bk_synonym-archive.php',
     ];
 
     protected $rest_base   = 'synonym';
@@ -30,14 +30,14 @@ class CPTSynonym extends CPT
     public function __construct()
     {
         $this->labels = [
-            'name' => _x('Synonym', 'Synonyms', 'rrze-answers'),
-            'singular_name' => _x('Synonym', 'Single synonym', 'rrze-answers'),
-            'menu_name' => __('Synonym', 'rrze-answers'),
-            'add_new' => __('Add synonym', 'rrze-answers'),
-            'add_new_item' => __('Add new synonym', 'rrze-answers'),
-            'edit_item' => __('Edit synonym', 'rrze-answers'),
-            'all_items' => __('All synonyms', 'rrze-answers'),
-            'search_items' => __('Search synonym', 'rrze-answers'),
+            'name' => _x('Synonym', 'Synonyms', 'wp-ai'),
+            'singular_name' => _x('Synonym', 'Single synonym', 'wp-ai'),
+            'menu_name' => __('Synonym', 'wp-ai'),
+            'add_new' => __('Add synonym', 'wp-ai'),
+            'add_new_item' => __('Add new synonym', 'wp-ai'),
+            'edit_item' => __('Edit synonym', 'wp-ai'),
+            'all_items' => __('All synonyms', 'wp-ai'),
+            'search_items' => __('Search synonym', 'wp-ai'),
         ];
 
         parent::__construct($this->post_type);
@@ -52,7 +52,7 @@ class CPTSynonym extends CPT
      */
     public function maybe_disable_canonical_redirect(): void
     {
-        $options = get_option('rrze-answers');
+        $options = get_option('wp-ai');
 
         $slug = !empty($options['custom_synonym_slug'])
             ? sanitize_title($options['custom_synonym_slug'])
@@ -72,7 +72,7 @@ class CPTSynonym extends CPT
     {
         global $wp_query;
 
-        $options = get_option('rrze-answers');
+        $options = get_option('wp-ai');
 
         $slug = !empty($options['custom_synonym_slug'])
             ? sanitize_title($options['custom_synonym_slug'])

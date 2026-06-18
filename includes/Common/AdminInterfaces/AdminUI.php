@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace RRZE\Answers\Common\AdminInterfaces;
+namespace BK\WPAI\Common\AdminInterfaces;
 
-use function RRZE\Answers\plugin;
+use function BK\WPAI\plugin;
 
 defined('ABSPATH') || exit;
 
@@ -29,7 +29,7 @@ abstract class AdminUI
     protected array $taxSlugs = [];
 
     /**
-     * @param string $post_type  CPT slug (e.g. 'rrze_faq')
+     * @param string $post_type  CPT slug (e.g. 'bk_faq')
      * @param array  $features   Feature flags & defaults
      */
     public function __construct(string $post_type, array $features = [])
@@ -145,7 +145,7 @@ abstract class AdminUI
             // if ($this->features['show_shortcode_box']) {
             //     add_meta_box(
             //         'shortcode_box',
-            //         __('Integration in pages and posts as a shortcode', 'rrze-answers'),
+            //         __('Integration in pages and posts as a shortcode', 'wp-ai'),
             //         [$this, 'renderShortcodeBox'],
             //         $this->post_type,
             //         'normal'
@@ -173,7 +173,7 @@ abstract class AdminUI
             if ($lang === '') {
                 $lang = substr(get_locale(), 0, 2);
             }
-            echo '<span class="rrze-answers-inline-lang" hidden>' . esc_html($lang) . '</span>';
+            echo '<span class="wp-ai-inline-lang" hidden>' . esc_html($lang) . '</span>';
         }
     }
 
@@ -245,7 +245,7 @@ abstract class AdminUI
              * Synced entries are read-only in the editor, but language may still
              * be adjusted from the list table (bulk/quick edit).
              */
-            return (bool) apply_filters('rrze_answers_allow_lang_quick_bulk_edit_synced', true, $post_id, $this->post_type);
+            return (bool) apply_filters('wp_ai_allow_lang_quick_bulk_edit_synced', true, $post_id, $this->post_type);
         }
 
         return true;
@@ -265,8 +265,8 @@ abstract class AdminUI
             'read_only_content_box',
             sprintf(
                 '%1$s. %2$s',
-                esc_html__('This item cannot be edited because it is synchronized', 'rrze-answers'),
-                $link ? '<a href="' . esc_url($link) . '" target="_blank">' . esc_html__('You can edit it at the source', 'rrze-answers') . '</a>' : ''
+                esc_html__('This item cannot be edited because it is synchronized', 'wp-ai'),
+                $link ? '<a href="' . esc_url($link) . '" target="_blank">' . esc_html__('You can edit it at the source', 'wp-ai') . '</a>' : ''
             ),
             [$this, 'fillContentBox'],
             $this->post_type,
@@ -306,16 +306,16 @@ abstract class AdminUI
             }
         }
 
-        $ret .= '<h3 class="hndle">' . esc_html__('Single entries', 'rrze-answers') . ':</h3><p>[faq id="' . (int) $post->ID . '"]</p>';
+        $ret .= '<h3 class="hndle">' . esc_html__('Single entries', 'wp-ai') . ':</h3><p>[faq id="' . (int) $post->ID . '"]</p>';
         if ($category) {
-            $ret .= '<h3 class="hndle">' . esc_html__('Accordion with category', 'rrze-answers') . ':</h3><p>[faq category="' . esc_html($category) . '"]</p>';
-            $ret .= '<p>' . esc_html__('If there is more than one category listed, use at least one of them.', 'rrze-answers') . '</p>';
+            $ret .= '<h3 class="hndle">' . esc_html__('Accordion with category', 'wp-ai') . ':</h3><p>[faq category="' . esc_html($category) . '"]</p>';
+            $ret .= '<p>' . esc_html__('If there is more than one category listed, use at least one of them.', 'wp-ai') . '</p>';
         }
         if ($tag) {
-            $ret .= '<h3 class="hndle">' . esc_html__('Accordion with tag', 'rrze-answers') . ':</h3><p>[faq tag="' . esc_html($tag) . '"]</p>';
-            $ret .= '<p>' . esc_html__('If there is more than one tag listed, use at least one of them.', 'rrze-answers') . '</p>';
+            $ret .= '<h3 class="hndle">' . esc_html__('Accordion with tag', 'wp-ai') . ':</h3><p>[faq tag="' . esc_html($tag) . '"]</p>';
+            $ret .= '<p>' . esc_html__('If there is more than one tag listed, use at least one of them.', 'wp-ai') . '</p>';
         }
-        $ret .= '<h3 class="hndle">' . esc_html__('Accordion with all entries', 'rrze-answers') . ':</h3><p>[faq]</p>';
+        $ret .= '<h3 class="hndle">' . esc_html__('Accordion with all entries', 'wp-ai') . ':</h3><p>[faq]</p>';
 
         echo wp_kses_post($ret);
     }
@@ -364,7 +364,7 @@ abstract class AdminUI
             ]);
         }
 
-        $selectedVal = $_GET['rrze_answers_source'] ?? '';
+        $selectedVal = $_GET['wp_ai_source'] ?? '';
         $posts = get_posts([
             'post_type' => $this->post_type,
             'post_status' => 'publish',
@@ -384,8 +384,8 @@ abstract class AdminUI
         sort($sources, SORT_NATURAL | SORT_FLAG_CASE);
 
         if (count($sources) > 1) {
-            echo "<select name='rrze_answers_source'>";
-            echo '<option value="">' . esc_html__('All Sources', 'rrze-answers') . '</option>';
+            echo "<select name='wp_ai_source'>";
+            echo '<option value="">' . esc_html__('All Sources', 'wp-ai') . '</option>';
             foreach ($sources as $term) {
                 $sel = ($term === $selectedVal) ? 'selected' : '';
                 echo "<option value='" . esc_attr($term) . "' $sel>" . esc_html($term) . "</option>";
@@ -418,7 +418,7 @@ abstract class AdminUI
             $q->set('tax_query', $tax_query);
         }
 
-        $source = $_GET['rrze_answers_source'] ?? '';
+        $source = $_GET['wp_ai_source'] ?? '';
         if ($source !== '' && $source !== '0') {
             $meta_query = [[
                 'key' => 'source',
@@ -497,7 +497,7 @@ abstract class AdminUI
         <script>
         jQuery(function($) {
             var $wrapper = $('#bulk-edit .inline-edit-wrapper');
-            if (!$wrapper.length || $wrapper.find('select.rrze-answers-lang').length) {
+            if (!$wrapper.length || $wrapper.find('select.wp-ai-lang').length) {
                 return;
             }
             $wrapper.children('.submit.inline-edit-save').before(<?php echo wp_json_encode($fieldset); ?>);
@@ -554,10 +554,10 @@ abstract class AdminUI
         if ($bulk_edit) {
             echo '<fieldset class="inline-edit-col-right">';
             echo '<div class="inline-edit-col">';
-            echo '<label class="inline-edit-rrze-answers-lang">';
-            echo '<span class="title">' . esc_html__('Language', 'rrze-answers') . '</span>';
-            echo '<select name="rrze_answers_lang" class="rrze-answers-lang">';
-            echo '<option value="-1">' . esc_html__('— No Change —', 'rrze-answers') . '</option>';
+            echo '<label class="inline-edit-wp-ai-lang">';
+            echo '<span class="title">' . esc_html__('Language', 'wp-ai') . '</span>';
+            echo '<select name="wp_ai_lang" class="wp-ai-lang">';
+            echo '<option value="-1">' . esc_html__('— No Change —', 'wp-ai') . '</option>';
             foreach ($this->getLanguageChoices() as $code => $label) {
                 echo '<option value="' . esc_attr($code) . '">' . esc_html($label) . '</option>';
             }
@@ -570,9 +570,9 @@ abstract class AdminUI
 
         echo '<fieldset class="inline-edit-col-right inline-edit-col">';
         echo '<div class="inline-edit-group wp-clearfix">';
-        echo '<label class="alignleft inline-edit-rrze-answers-lang">';
-        echo '<span class="title">' . esc_html__('Language', 'rrze-answers') . '</span>';
-        echo '<select name="rrze_answers_lang" class="rrze-answers-lang">';
+        echo '<label class="alignleft inline-edit-wp-ai-lang">';
+        echo '<span class="title">' . esc_html__('Language', 'wp-ai') . '</span>';
+        echo '<select name="wp_ai_lang" class="wp-ai-lang">';
         foreach ($this->getLanguageChoices() as $code => $label) {
             echo '<option value="' . esc_attr($code) . '">' . esc_html($label) . '</option>';
         }
@@ -663,11 +663,11 @@ abstract class AdminUI
     {
         $request ??= $_REQUEST;
 
-        if (!isset($request['rrze_answers_lang'])) {
+        if (!isset($request['wp_ai_lang'])) {
             return null;
         }
 
-        $lang = $request['rrze_answers_lang'];
+        $lang = $request['wp_ai_lang'];
         $choices = $this->getLanguageChoices();
 
         foreach ((array) $lang as $candidate) {
@@ -730,7 +730,7 @@ abstract class AdminUI
             return true;
         }
 
-        if (!isset($_POST['rrze_answers_lang']) || !isset($_POST['_inline_edit'])) {
+        if (!isset($_POST['wp_ai_lang']) || !isset($_POST['_inline_edit'])) {
             return false;
         }
 
@@ -738,7 +738,7 @@ abstract class AdminUI
             return false;
         }
 
-        $lang = sanitize_text_field(wp_unslash((string) $_POST['rrze_answers_lang']));
+        $lang = sanitize_text_field(wp_unslash((string) $_POST['wp_ai_lang']));
         $choices = $this->getLanguageChoices();
 
         if ($lang === '' || !isset($choices[$lang])) {
@@ -760,23 +760,23 @@ abstract class AdminUI
             return;
         }
 
-        $script_path = plugin()->getPath() . 'assets/js/rrze-answers-quick-bulk-edit.js';
+        $script_path = plugin()->getPath() . 'assets/js/wp-ai-quick-bulk-edit.js';
         if (!is_readable($script_path)) {
             return;
         }
 
-        $handle = 'rrze-answers-quick-bulk-edit-' . $this->post_type;
+        $handle = 'wp-ai-quick-bulk-edit-' . $this->post_type;
 
         wp_enqueue_script(
             $handle,
-            plugin()->getUrl() . 'assets/js/rrze-answers-quick-bulk-edit.js',
+            plugin()->getUrl() . 'assets/js/wp-ai-quick-bulk-edit.js',
             ['jquery', 'inline-edit-post'],
             (string) filemtime($script_path),
             true
         );
 
-        wp_localize_script($handle, 'rrzeAnswersQuickBulkEdit', [
-            'fieldName' => 'rrze_answers_lang',
+        wp_localize_script($handle, 'BKWPAIQuickBulkEdit', [
+            'fieldName' => 'wp_ai_lang',
         ]);
     }
 
@@ -785,8 +785,8 @@ abstract class AdminUI
      */
     protected function getLanguageChoices(): array
     {
-        if (class_exists('\\RRZE\\Answers\\Defaults')) {
-            $defaults = new \RRZE\Answers\Defaults();
+        if (class_exists('\\BK\\WP AI\\Defaults')) {
+            $defaults = new \BK\WPAI\Defaults();
             if (method_exists($defaults, 'get')) {
                 $langs = $defaults->get('lang');
                 if (is_array($langs) && !empty($langs)) {
@@ -798,12 +798,12 @@ abstract class AdminUI
         }
 
         return [
-            'de' => __('German', 'rrze-answers'),
-            'en' => __('English', 'rrze-answers'),
-            'fr' => __('French', 'rrze-answers'),
-            'es' => __('Spanish', 'rrze-answers'),
-            'ru' => __('Russian', 'rrze-answers'),
-            'zh' => __('Chinese', 'rrze-answers'),
+            'de' => __('German', 'wp-ai'),
+            'en' => __('English', 'wp-ai'),
+            'fr' => __('French', 'wp-ai'),
+            'es' => __('Spanish', 'wp-ai'),
+            'ru' => __('Russian', 'wp-ai'),
+            'zh' => __('Chinese', 'wp-ai'),
         ];
     }
 
@@ -816,11 +816,11 @@ abstract class AdminUI
         }
 
         $domains = [];
-        if (class_exists('\\RRZE\\Answers\\Common\\API\\SyncAPI\\SyncAPI')) {
-            $api = new \RRZE\Answers\Common\API\SyncAPI\SyncAPI();
+        if (class_exists('\\BK\\WP AI\\Common\\API\\SyncAPI\\SyncAPI')) {
+            $api = new \BK\WPAI\Common\API\SyncAPI\SyncAPI();
             if (method_exists($api, 'getDomains')) $domains = (array)$api->getDomains();
-        } elseif (class_exists('\\RRZE\\Answers\\Common\\API\\SyncAPI')) {
-            $api = new \RRZE\Answers\Common\API\SyncAPI();
+        } elseif (class_exists('\\BK\\WP AI\\Common\\API\\SyncAPI')) {
+            $api = new \BK\WPAI\Common\API\SyncAPI();
             if (method_exists($api, 'getDomains')) $domains = (array)$api->getDomains();
         }
 

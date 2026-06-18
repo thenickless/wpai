@@ -1,4 +1,4 @@
-/* global jQuery, RRZEAnswersSync */
+/* global jQuery, BKWP AISync */
 (function ($) {
   'use strict';
 
@@ -10,18 +10,18 @@
       return;
     }
     // Important: keep raw site_url as array key (WordPress/PHP can handle this)
-    var fieldName = 'rrze-answers[remote_categories_faq][' + site_url + ']';
+    var fieldName = 'wp-ai[remote_categories_faq][' + site_url + ']';
     $select.attr('name', fieldName);
   }
 
   function setStatus(msg, isError) {
-    $('#rrze-answers-cats-status')
+    $('#wp-ai-cats-status')
       .text(msg || '')
       .css({ color: isError ? '#b32d2e' : '#1d2327' });
   }
 
   function setHelp(msg) {
-    $('#rrze-answers-cats-help').text(msg || '');
+    $('#wp-ai-cats-help').text(msg || '');
   }
 
   function populateCategories($select, map, selected) {
@@ -45,7 +45,7 @@
   // Populate the "remaining sites" dropdown below categories
   function populateRemainingSites($select, urls, current) {
     // Keep the field name constant as requested
-    $select.attr('name', 'rrze-answers[remote_url_faq]');
+    $select.attr('name', 'wp-ai[remote_url_faq]');
     $select.empty();
 
     // Add a synonym if there are items, otherwise clear completely
@@ -64,8 +64,8 @@
   }
 
   function loadCategories(site_url) {
-    var $catsSelect = $('#rrze-answers_remote_categories_faq_');
-    var $nextSiteSelect = $('#rrze-answers_remote_url_faq'); // below the categories
+    var $catsSelect = $('#bk-wp_ai_remote_categories_faq_');
+    var $nextSiteSelect = $('#bk-wp_ai_remote_url_faq'); // below the categories
 
     if (!site_url) {
       $catsSelect.empty();
@@ -76,22 +76,22 @@
       return;
     }
 
-    setStatus(RRZEAnswersSync.i18n.loading, false);
+    setStatus(BKWP AISync.i18n.loading, false);
     setHelp('');
 
     $.ajax({
-      url: RRZEAnswersSync.ajaxUrl,
+      url: BKWP AISync.ajaxUrl,
       type: 'POST',
       dataType: 'json',
       data: {
-        action: 'rrze_answers_get_categories',
-        _ajax_nonce: RRZEAnswersSync.nonce,
+        action: 'wp_ai_get_categories',
+        _ajax_nonce: BKWP AISync.nonce,
         site_url: site_url
       }
     })
       .done(function (resp) {
         if (!resp || !resp.success) {
-          setStatus((resp && resp.data && resp.data.message) || RRZEAnswersSync.i18n.error, true);
+          setStatus((resp && resp.data && resp.data.message) || BKWP AISync.i18n.error, true);
           return;
         }
 
@@ -103,12 +103,12 @@
 
         if (Object.keys(cats).length === 0) {
           populateCategories($catsSelect, {}, []);
-          setStatus(RRZEAnswersSync.i18n.none, false);
+          setStatus(BKWP AISync.i18n.none, false);
           setHelp('');
         } else {
           populateCategories($catsSelect, cats, selected);
           setStatus('', false);
-          setHelp(RRZEAnswersSync.i18n.selectCategories);
+          setHelp(BKWP AISync.i18n.selectCategories);
         }
 
         // Fill the "remaining sites" dropdown under the categories
@@ -116,13 +116,13 @@
         populateRemainingSites($nextSiteSelect, remaining, site_url);
       })
       .fail(function () {
-        setStatus(RRZEAnswersSync.i18n.error, true);
+        setStatus(BKWP AISync.i18n.error, true);
       });
   }
 
   $(function () {
-    var $site = $('#rrze-answers_remote_url_faq'); // top site selector
-    var $catsSelect = $('#rrze-answers_remote_categories_faq_');
+    var $site = $('#bk-wp_ai_remote_url_faq'); // top site selector
+    var $catsSelect = $('#bk-wp_ai_remote_categories_faq_');
 
     // Make sure category select is multi-select in UI (if not already)
     $catsSelect.attr('multiple', 'multiple');
@@ -137,7 +137,7 @@
     });
 
     // When the "remaining sites" dropdown (below) changes, reuse same loader
-    $('#rrze-answers_remote_url_faq').on('change', function () {
+    $('#bk-wp_ai_remote_url_faq').on('change', function () {
       var site_url = $(this).val() || '';
       if (site_url) {
         // Move selection to the top selector (optional UX)

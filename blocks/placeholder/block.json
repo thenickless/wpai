@@ -1,10 +1,10 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "rrze-answers/placeholder",
+	"name": "wp-ai/placeholder",
 	"version": "3.0.4",
-	"title": "RRZE Placeholder",
-	"category": "rrze",
+	"title": "BK Placeholder",
+	"category": "bk",
 	"description": "Display placeholders",
 	"icon": "editor-paste-text",
 	"example": {},
@@ -28,8 +28,8 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "rrze-answers",
+	"textdomain": "wp-ai",
 	"editorScript": "file:../../build/placeholder.js",
-	"editorStyle": "file:../../build/css/rrze-answers-admin.css",
+	"editorStyle": "file:../../build/css/wp-ai-admin.css",
 	"render": "file:./render.php"
 }

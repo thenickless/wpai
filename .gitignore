@@ -1,0 +1,66 @@
+# Node.js dependencies (if you use npm/yarn)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Composer dependencies
+/vendor/
+/composer.lock
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE and Editor folders/files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# PHPStorm project files
+*.iml
+*.iws
+
+# Backup and temporary files
+*~
+*.bak
+*.swp
+*.tmp
+
+# Logs and debug files
+*.log
+
+# Sass/Less cache (if you compile CSS)
+.sass-cache/
+.cache/
+
+# PHPUnit result cache
+.phpunit.result.cache
+
+# PHPUnit coverage output
+coverage/
+
+# PHP environment files
+.env
+.env.local
+.env.*.local
+
+# macOS Finder folder attributes
+.Spotlight-V100
+.Trashes
+
+# Windows thumbnail cache
+ehthumbs.db
+
+# JetBrains IDE folders
+__pycache__/
+
+# Exclude compiled PHP files
+*.php~
+
+# Temporary directories
+_tmp/
+/.tmp_py

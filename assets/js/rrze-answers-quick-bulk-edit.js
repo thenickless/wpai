@@ -1,15 +1,15 @@
-/* global inlineEditPost, rrzeAnswersQuickBulkEdit */
+/* global inlineEditPost, BKWPAIQuickBulkEdit */
 (function ($) {
 	'use strict';
 
 	const fieldName =
-		(typeof rrzeAnswersQuickBulkEdit !== 'undefined' &&
-			rrzeAnswersQuickBulkEdit.fieldName) ||
-		'rrze_answers_lang';
+		(typeof BKWPAIQuickBulkEdit !== 'undefined' &&
+			BKWPAIQuickBulkEdit.fieldName) ||
+		'wp_ai_lang';
 
 	function getLangForPost(postId) {
 		const $postRow = $('#post-' + postId);
-		const $langCell = $postRow.find('.column-lang .rrze-answers-inline-lang');
+		const $langCell = $postRow.find('.column-lang .wp-ai-inline-lang');
 
 		if ($langCell.length) {
 			return $langCell.text().trim();
@@ -21,7 +21,7 @@
 	function populateQuickEdit(postId) {
 		const lang = getLangForPost(postId);
 		const $editRow = $('#edit-' + postId);
-		const $select = $editRow.find('select.rrze-answers-lang, select[name="' + fieldName + '"]');
+		const $select = $editRow.find('select.wp-ai-lang, select[name="' + fieldName + '"]');
 
 		if ($select.length && lang !== '') {
 			$select.val(lang);
@@ -45,7 +45,7 @@
 	}
 
 	// Bulk edit uses the list-table form (method="get"). Switch to POST so custom
-	// fields like rrze_answers_lang are not dropped from long FAQ query strings.
+	// fields like wp_ai_lang are not dropped from long FAQ query strings.
 	$('#posts-filter').on('submit', function () {
 		const $bulkEdit = $('#bulk-edit');
 		if (!$bulkEdit.length || !$bulkEdit.is(':visible')) {
@@ -55,7 +55,7 @@
 		this.method = 'post';
 
 		const $selects = $bulkEdit.find(
-			'select.rrze-answers-lang, select[name="' + fieldName + '"]'
+			'select.wp-ai-lang, select[name="' + fieldName + '"]'
 		);
 		const $chosen = $selects
 			.filter(function () {

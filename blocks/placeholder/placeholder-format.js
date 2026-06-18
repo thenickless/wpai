@@ -1,4 +1,4 @@
-// placeholder-format.js — pick from CPT "rrze-placeholder" and apply <abbr>
+// placeholder-format.js — pick from CPT "bk-placeholder" and apply <abbr>
 import { __ } from '@wordpress/i18n';
 import {
 	registerFormatType,
@@ -23,8 +23,8 @@ import {
 import { useState, useRef, useEffect, useMemo } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 
-const FORMAT_NAME = 'rrze/placeholder';
-const CLASS_NAME = 'rrze-placeholder';
+const FORMAT_NAME = 'bk/placeholder';
+const CLASS_NAME = 'bk-placeholder';
 
 const PlaceholderUI = ( props ) => {
 	const { value, onChange, isActive } = props;
@@ -71,8 +71,8 @@ const PlaceholderUI = ( props ) => {
 	const options = useMemo(() => {
 		return (items || []).map(post => ({
 			value: String(post.id),
-			label: post?.title?.rendered || __('(no title)','rrze-answers'),
-			long:  post?.content?.rendered || __('(no content)','rrze-answers'),
+			label: post?.title?.rendered || __('(no title)','wp-ai'),
+			long:  post?.content?.rendered || __('(no content)','wp-ai'),
 			lang:  post?.titleLang ?? post?.meta?.titleLang ?? '',
 		}));
 	}, [items]);
@@ -96,8 +96,8 @@ const PlaceholderUI = ( props ) => {
 		attrs[ 'data-placeholder-id' ] = selectedId;
 		if ( picked.label ) attrs[ 'data-placeholder-title' ] = picked.label;
 
-		const markerLabel = __( 'Placeholder', 'rrze-answers' );
-		const markerTitle = picked.label || __( '(no title)', 'rrze-answers' );
+		const markerLabel = __( 'Placeholder', 'wp-ai' );
+		const markerTitle = picked.label || __( '(no title)', 'wp-ai' );
 		const markerText = `[${ markerLabel }: ${ markerTitle }]`;
 
 		let v = value;
@@ -126,7 +126,7 @@ const PlaceholderUI = ( props ) => {
 			<span ref={ anchorRef }>
 				<RichTextToolbarButton
 					icon="editor-paste-text"
-					title={ __('Placeholder','rrze-answers') }
+					title={ __('Placeholder','wp-ai') }
 					onClick={ () => setIsOpen( (o) => !o ) }
 					isActive={ isActive }
 				/>
@@ -138,38 +138,38 @@ const PlaceholderUI = ( props ) => {
 					variant="toolbar"
 					onClose={ () => setIsOpen( false ) }
 				>
-					<div className="rrze-placeholder-popover">
+					<div className="bk-placeholder-popover">
 						{ loading && (
 							<Flex align="center" gap={8}>
 								<Spinner />
-								<span>{ __('Loading placeholders…','rrze-answers') }</span>
+								<span>{ __('Loading placeholders…','wp-ai') }</span>
 							</Flex>
 						) }
 
 						{ (!loading && error) && (
 							<Notice status="error" isDismissible={ false }>
-								{ __('Failed to load placeholders. Check your REST setup.','rrze-answers') }
+								{ __('Failed to load placeholders. Check your REST setup.','wp-ai') }
 							</Notice>
 						) }
 
 						{ (!loading && !error) && (
 							<ComboboxControl
-								label={ __('Choose a placeholder','rrze-answers') }
-								help={ __('Type to search by title','rrze-answers') }
+								label={ __('Choose a placeholder','wp-ai') }
+								help={ __('Type to search by title','wp-ai') }
 								value={ selectedId }
 								onChange={ setSelectedId }
 								options={ options }
 							/>
 						) }
 
-						<Flex className="rrze-placeholder-popover-actions" justify="flex-end" gap={ 8 }>
+						<Flex className="bk-placeholder-popover-actions" justify="flex-end" gap={ 8 }>
 							<FlexItem>
 								<Button
 									variant="primary"
 									onClick={ applyFromSelected }
 									disabled={ !selectedId }
 								>
-									{ __( 'Insert', 'rrze-answers' ) }
+									{ __( 'Insert', 'wp-ai' ) }
 								</Button>
 							</FlexItem>
 						</Flex>
@@ -181,7 +181,7 @@ const PlaceholderUI = ( props ) => {
 };
 
 registerFormatType( FORMAT_NAME, {
-	title: __('Placeholder','rrze-answers'),
+	title: __('Placeholder','wp-ai'),
 	tagName: 'placeholder',
 	className: CLASS_NAME,
 	attributes: {

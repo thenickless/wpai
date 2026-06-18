@@ -10,92 +10,92 @@ function getSetupSteps() {
 		{
 			id: 'tab-domains',
 			tab: 'domains',
-			target: '[data-rrze-tour="tab-domains"]',
-			title: __( 'Domains tab', 'rrze-answers' ),
+			target: '[data-bk-tour="tab-domains"]',
+			title: __( 'Domains tab', 'wp-ai' ),
 			text: __(
 				'Open the Domains tab to register websites you want to import FAQ or glossary content from.',
-				'rrze-answers'
+				'wp-ai'
 			),
 		},
 		{
 			id: 'new-domain',
 			tab: 'domains',
-			target: '[data-rrze-tour="new-domain"]',
-			title: __( 'Add a domain', 'rrze-answers' ),
+			target: '[data-bk-tour="new-domain"]',
+			title: __( 'Add a domain', 'wp-ai' ),
 			text: __(
 				'Enter the URL of the source website (for example https://example.org) and save your settings.',
-				'rrze-answers'
+				'wp-ai'
 			),
 		},
 		{
 			id: 'save-domain',
 			tab: 'domains',
-			target: '[data-rrze-tour="save-settings"]',
-			title: __( 'Save the domain', 'rrze-answers' ),
+			target: '[data-bk-tour="save-settings"]',
+			title: __( 'Save the domain', 'wp-ai' ),
 			text: __(
 				'Click Save changes to validate and store the new domain before configuring the import.',
-				'rrze-answers'
+				'wp-ai'
 			),
 		},
 		{
 			id: 'tab-import',
 			tab: 'import',
-			target: '[data-rrze-tour="tab-import"]',
-			title: __( 'Import tab', 'rrze-answers' ),
+			target: '[data-bk-tour="tab-import"]',
+			title: __( 'Import tab', 'wp-ai' ),
 			text: __(
 				'Switch to Import to choose which FAQ and glossary categories should be synchronized for each domain.',
-				'rrze-answers'
+				'wp-ai'
 			),
 		},
 		{
 			id: 'import-categories',
 			tab: 'import',
-			target: '[data-rrze-tour="import-categories"]',
-			title: __( 'Select categories', 'rrze-answers' ),
+			target: '[data-bk-tour="import-categories"]',
+			title: __( 'Select categories', 'wp-ai' ),
 			text: __(
 				'Pick one or more categories per content type. Only entries from the selected categories will be imported.',
-				'rrze-answers'
+				'wp-ai'
 			),
 			optional: true,
 		},
 		{
 			id: 'import-frequency',
 			tab: 'import',
-			target: '[data-rrze-tour="import-frequency"]',
-			title: __( 'Automatic sync', 'rrze-answers' ),
+			target: '[data-bk-tour="import-frequency"]',
+			title: __( 'Automatic sync', 'wp-ai' ),
 			text: __(
 				'Optionally schedule automatic synchronization (daily or twice daily) instead of importing manually each time.',
-				'rrze-answers'
+				'wp-ai'
 			),
 		},
 		{
 			id: 'run-sync',
 			tab: 'import',
-			target: '[data-rrze-tour="save-settings"]',
-			title: __( 'Run synchronization', 'rrze-answers' ),
+			target: '[data-bk-tour="save-settings"]',
+			title: __( 'Run synchronization', 'wp-ai' ),
 			text: __(
 				'Save changes to start the import. Progress and results are written to the logfile.',
-				'rrze-answers'
+				'wp-ai'
 			),
 		},
 		{
 			id: 'tab-faqlog',
 			tab: 'faqlog',
-			target: '[data-rrze-tour="tab-faqlog"]',
-			title: __( 'Logfile tab', 'rrze-answers' ),
+			target: '[data-bk-tour="tab-faqlog"]',
+			title: __( 'Logfile tab', 'wp-ai' ),
 			text: __(
 				'Open the logfile to review sync results, errors, and timing details after each import.',
-				'rrze-answers'
+				'wp-ai'
 			),
 		},
 		{
 			id: 'logfile-content',
 			tab: 'faqlog',
-			target: '[data-rrze-tour="logfile-content"]',
-			title: __( 'Review the log', 'rrze-answers' ),
+			target: '[data-bk-tour="logfile-content"]',
+			title: __( 'Review the log', 'wp-ai' ),
 			text: __(
 				'Each sync appends a timestamped entry here. Use it to verify imports or troubleshoot connection issues.',
-				'rrze-answers'
+				'wp-ai'
 			),
 			optional: true,
 		},
@@ -103,15 +103,15 @@ function getSetupSteps() {
 }
 
 function dismissSetupTour() {
-	if ( typeof rrzeAnswersGuide === 'undefined' ) {
+	if ( typeof BKWPAIGuide === 'undefined' ) {
 		return Promise.resolve();
 	}
 
 	const body = new FormData();
-	body.append( 'action', 'rrze_answers_dismiss_setup_tour' );
-	body.append( 'nonce', rrzeAnswersGuide.setupTourNonce );
+	body.append( 'action', 'wp_ai_dismiss_setup_tour' );
+	body.append( 'nonce', BKWPAIGuide.setupTourNonce );
 
-	return fetch( rrzeAnswersGuide.ajaxUrl, {
+	return fetch( BKWPAIGuide.ajaxUrl, {
 		method: 'POST',
 		body,
 		credentials: 'same-origin',
@@ -119,10 +119,10 @@ function dismissSetupTour() {
 }
 
 function buildSettingsUrl( tab, stepId ) {
-	const url = new URL( rrzeAnswersGuide.settingsUrl, window.location.origin );
+	const url = new URL( BKWPAIGuide.settingsUrl, window.location.origin );
 	url.searchParams.set( 'tab', tab );
-	url.searchParams.set( 'rrze_setup_tour', '1' );
-	url.searchParams.set( 'rrze_setup_tour_step', stepId );
+	url.searchParams.set( 'bk_setup_tour', '1' );
+	url.searchParams.set( 'bk_setup_tour_step', stepId );
 	return url.toString();
 }
 
@@ -131,7 +131,7 @@ function findStepTarget( step ) {
 }
 
 const SPOTLIGHT_PADDING = 8;
-const TOUR_TARGET_CLASS = 'rrze-answers-setup-tour__target';
+const TOUR_TARGET_CLASS = 'wp-ai-setup-tour__target';
 
 function clearTourTargetMarkers() {
 	document
@@ -194,7 +194,7 @@ function SetupTourSpotlight( { rect, onClose, closeLabel } ) {
 		return (
 			<button
 				type="button"
-				className="rrze-answers-setup-tour__overlay"
+				className="wp-ai-setup-tour__overlay"
 				aria-label={ closeLabel }
 				onClick={ onClose }
 			/>
@@ -205,13 +205,13 @@ function SetupTourSpotlight( { rect, onClose, closeLabel } ) {
 		<>
 			<button
 				type="button"
-				className="rrze-answers-setup-tour__overlay-panel rrze-answers-setup-tour__overlay-panel--cutout"
+				className="wp-ai-setup-tour__overlay-panel wp-ai-setup-tour__overlay-panel--cutout"
 				style={ { clipPath: getCutoutClipPath( rect ) } }
 				aria-label={ closeLabel }
 				onClick={ onClose }
 			/>
 			<div
-				className="rrze-answers-setup-tour__spotlight"
+				className="wp-ai-setup-tour__spotlight"
 				style={ {
 					top: rect.top,
 					left: rect.left,
@@ -239,7 +239,7 @@ function isTabStep( step ) {
 }
 
 function isStepOnActiveTab( step ) {
-	return step.tab === rrzeAnswersGuide.activeTab;
+	return step.tab === BKWPAIGuide.activeTab;
 }
 
 function needsTabSwitchForStep( step ) {
@@ -330,7 +330,7 @@ export function SetupTour( { initialStepId = '', onClose } ) {
 
 			const step = allSteps[ index ];
 
-			if ( step.tab !== rrzeAnswersGuide.activeTab ) {
+			if ( step.tab !== BKWPAIGuide.activeTab ) {
 				if ( isTabStep( step ) && ! switchTab ) {
 					setGlobalStepIndex( index );
 					return;
@@ -424,8 +424,8 @@ export function SetupTour( { initialStepId = '', onClose } ) {
 		onClose?.();
 
 		const url = new URL( window.location.href );
-		url.searchParams.delete( 'rrze_setup_tour' );
-		url.searchParams.delete( 'rrze_setup_tour_step' );
+		url.searchParams.delete( 'bk_setup_tour' );
+		url.searchParams.delete( 'bk_setup_tour_step' );
 		window.history.replaceState( {}, '', url.toString() );
 	};
 
@@ -440,15 +440,15 @@ export function SetupTour( { initialStepId = '', onClose } ) {
 		needsTabSwitch && ! spotlightRect
 			? __(
 					'Continue to the next tab to see the highlighted field.',
-					'rrze-answers'
+					'wp-ai'
 			  )
 			: currentStep.text;
 	const nextLabel =
 		isTabStep( currentStep ) && ! isStepOnActiveTab( currentStep )
-			? __( 'Open tab', 'rrze-answers' )
+			? __( 'Open tab', 'wp-ai' )
 			: needsTabSwitch
-			? __( 'Open tab', 'rrze-answers' )
-			: __( 'Next', 'rrze-answers' );
+			? __( 'Open tab', 'wp-ai' )
+			: __( 'Next', 'wp-ai' );
 
 	const handleNext = () => {
 		if ( isLast ) {
@@ -482,10 +482,10 @@ export function SetupTour( { initialStepId = '', onClose } ) {
 			<SetupTourSpotlight
 				rect={ spotlightRect }
 				onClose={ finishTour }
-				closeLabel={ __( 'Close setup tour', 'rrze-answers' ) }
+				closeLabel={ __( 'Close setup tour', 'wp-ai' ) }
 			/>
 			<div
-				className="rrze-answers-setup-tour__card"
+				className="wp-ai-setup-tour__card"
 				role="dialog"
 				aria-modal="true"
 				aria-label={ currentStep.title }

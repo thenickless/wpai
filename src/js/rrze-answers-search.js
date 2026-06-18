@@ -20,11 +20,11 @@
   }
 
   /**
-   * Category/tag groups are wrapped in <section> with .answers-term-content.
+   * Category/tag groups are wrapped in <section> with .wp_ai-term-content.
    * Show the section only if at least one accordion item inside is visible.
    */
   function resetGroupedTermSections(wrapper) {
-    wrapper.querySelectorAll(".answers-term-content").forEach((termContent) => {
+    wrapper.querySelectorAll(".wp_ai-term-content").forEach((termContent) => {
       const section = termContent.closest("section");
       if (section) {
         section.style.display = "";
@@ -33,13 +33,13 @@
   }
 
   function syncGroupedTermSections(wrapper) {
-    wrapper.querySelectorAll(".answers-term-content").forEach((termContent) => {
+    wrapper.querySelectorAll(".wp_ai-term-content").forEach((termContent) => {
       const section = termContent.closest("section");
       if (!section) {
         return;
       }
       const detailsInGroup = termContent.querySelectorAll(
-        "details.rrze-answers-item"
+        "details.wp-ai-item"
       );
       if (!detailsInGroup.length) {
         return;
@@ -55,13 +55,13 @@
    * Initialize search for a single FAQ wrapper
    */
   function initFAQSearch(wrapper) {
-    if (!wrapper || wrapper.dataset.rrzeFaqSearchInit === "1") return;
+    if (!wrapper || wrapper.dataset.bkFaqSearchInit === "1") return;
 
-    const input = wrapper.querySelector(".rrze-answers-search__input");
+    const input = wrapper.querySelector(".wp-ai-search__input");
     if (!input) return;
 
     const detailsItems = Array.from(
-      wrapper.querySelectorAll("details.rrze-answers-item")
+      wrapper.querySelectorAll("details.wp-ai-item")
     );
     if (!detailsItems.length) return;
 
@@ -99,11 +99,11 @@
       }
     });
 
-    wrapper.dataset.rrzeFaqSearchInit = "1";
+    wrapper.dataset.bkFaqSearchInit = "1";
   }
 
   function initAll(root = document) {
-    root.querySelectorAll(".rrze-answers").forEach(initFAQSearch);
+    root.querySelectorAll(".wp-ai").forEach(initFAQSearch);
   }
 
   initAll();
@@ -121,7 +121,7 @@
         for (const node of mutation.addedNodes) {
           if (!(node instanceof HTMLElement)) continue;
 
-          if (node.matches && node.matches(".rrze-answers")) {
+          if (node.matches && node.matches(".wp-ai")) {
             initFAQSearch(node);
           }
           if (node.querySelectorAll) {

@@ -1,8 +1,8 @@
 <?php
 
-namespace RRZE\Answers\Common\Settings;
+namespace BK\WPAI\Common\Settings;
 
-use RRZE\Answers\Common\Settings\{
+use BK\WPAI\Common\Settings\{
     Option,
     Tab
 };
@@ -15,7 +15,7 @@ defined('ABSPATH') || exit;
  * This class represents a section in the settings page, allowing the addition
  * of options and defining properties such as title, slug, and description.
  *
- * @package RRZE\Answers\Common\Settings
+ * @package BK\WPAI\Common\Settings
  */
 class Section
 {

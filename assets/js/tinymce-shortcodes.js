@@ -1,4 +1,4 @@
-tinymce.PluginManager.add( 'rrze_shortcode', function ( editor ) {
+tinymce.PluginManager.add( 'bk_shortcode', function ( editor ) {
 	if ( 'undefined' !== typeof phpvar )
 		for ( i = 0; i < phpvar.length; i++ )
 			( shortcode = phpvar[ i ].shortcode ),

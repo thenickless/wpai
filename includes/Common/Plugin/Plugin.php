@@ -1,6 +1,6 @@
 <?php
 
-namespace RRZE\Answers\Common\Plugin;
+namespace BK\WPAI\Common\Plugin;
 
 defined('ABSPATH') || exit;
 
@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
  * It also includes methods for setting and getting plugin data, such as the name, version,
  * required WordPress version, and required PHP version.
  * 
- * @package RRZE\Answers\Common
+ * @package BK\WPAI\Common
  * @since 1.0.0x
  */
 class Plugin

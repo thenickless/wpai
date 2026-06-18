@@ -1,8 +1,8 @@
 <?php
 
-namespace RRZE\Answers\Common\Settings\Options;
+namespace BK\WPAI\Common\Settings\Options;
 
-use RRZE\Answers\Common\Settings\Options\Type;
+use BK\WPAI\Common\Settings\Options\Type;
 
 defined('ABSPATH') || exit;
 
@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
  * This class represents a multiple select option in the settings section.
  * It extends the Type class and provides methods to get the value and sanitize input.
  *
- * @package RRZE\Answers\Common\Settings\Options
+ * @package BK\WPAI\Common\Settings\Options
  */
 class SelectMultiple extends Type
 {

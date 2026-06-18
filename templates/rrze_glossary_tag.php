@@ -1,18 +1,18 @@
 <?php
 /* 
-Template Name: Custom Taxonomy rrze_glossary_tag Template
+Template Name: Custom Taxonomy bk_glossary_tag Template
 */
 
 get_header();
 
 ?>
 
-<main id="main" class="site-main rrze-answers tag">
+<main id="main" class="site-main wp-ai tag">
 
 <?php
 
-$post_type = 'rrze_glossary';
-$taxonomy = 'rrze_glossary_tag';
+$post_type = 'bk_glossary';
+$taxonomy = 'bk_glossary_tag';
 include_once('template-parts/taxonomy.php');
 ?>
 </main>

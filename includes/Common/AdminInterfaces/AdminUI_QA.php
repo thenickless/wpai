@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace RRZE\Answers\Common\AdminInterfaces;
+namespace BK\WPAI\Common\AdminInterfaces;
 
 defined('ABSPATH') || exit;
 
-use RRZE\Answers\Common\Tools;
-use RRZE\Answers\Defaults;
+use BK\WPAI\Common\Tools;
+use BK\WPAI\Defaults;
 
 
 /**
- * Shared admin UI for rrze_faq and rrze_glossary.
+ * Shared admin UI for bk_faq and bk_glossary.
  * - Same meta boxes (lang, sort, anchor)
  * - Same list-table columns (lang, sortfield, source)
  * - Same filtering (category, tag, source)
@@ -47,9 +47,9 @@ class AdminUI_QA extends AdminUI
 
     protected function get_title(): string
     {
-        return ($this->post_type === 'rrze_faq')
-            ? __('Enter question here', 'rrze-answers')
-            : __('Enter glossary term here', 'rrze-answers');
+        return ($this->post_type === 'bk_faq')
+            ? __('Enter question here', 'wp-ai')
+            : __('Enter glossary term here', 'wp-ai');
     }
 
     /* ---------------- Metaboxes ---------------- */
@@ -59,19 +59,19 @@ class AdminUI_QA extends AdminUI
         return [
             [
                 'id' => 'langbox',
-                'title' => __('Language', 'rrze-answers'),
+                'title' => __('Language', 'wp-ai'),
                 'callback' => [$this, 'langboxCallback'],
                 'context' => 'side',
             ],
             [
                 'id' => 'sortbox',
-                'title' => __('Sort', 'rrze-answers'),
+                'title' => __('Sort', 'wp-ai'),
                 'callback' => [$this, 'sortboxCallback'],
                 'context' => 'side',
             ],
             [
                 'id' => 'anchorbox',
-                'title' => __('Anchor', 'rrze-answers'),
+                'title' => __('Anchor', 'wp-ai'),
                 'callback' => [$this, 'anchorboxCallback'],
                 'context' => 'side',
             ],
@@ -102,7 +102,7 @@ class AdminUI_QA extends AdminUI
             );
         }
         $output .= '</select>';
-        $output .= '<p class="description">' . esc_html__('Language of this FAQ', 'rrze-answers') . '</p>';
+        $output .= '<p class="description">' . esc_html__('Language of this FAQ', 'wp-ai') . '</p>';
 
         echo wp_kses_post($output);
     }
@@ -121,7 +121,7 @@ class AdminUI_QA extends AdminUI
 
         $sortfield = (string) get_post_meta($post->ID, 'sortfield', true);
         echo '<input type="text" name="sortfield" id="sortfield" class="sortfield" value="' . esc_attr($sortfield) . '">';
-        echo '<p class="description">' . esc_html__('Criterion for sorting the output of the shortcode', 'rrze-answers') . '</p>';
+        echo '<p class="description">' . esc_html__('Criterion for sorting the output of the shortcode', 'wp-ai') . '</p>';
     }
 
     public function anchorboxCallback(\WP_Post $post): void
@@ -130,7 +130,7 @@ class AdminUI_QA extends AdminUI
 
         $anchorfield = (string) get_post_meta($post->ID, 'anchorfield', true);
         echo '<input type="text" name="anchorfield" id="anchorfield" class="anchorfield" value="' . esc_attr($anchorfield) . '">';
-        echo '<p class="description">' . esc_html__('Anchor field (optional) to define jump marks when displayed in accordions', 'rrze-answers') . '</p>';
+        echo '<p class="description">' . esc_html__('Anchor field (optional) to define jump marks when displayed in accordions', 'wp-ai') . '</p>';
     }
 
     /* ---------------- Classic editor shortcode helper ---------------- */
@@ -162,16 +162,16 @@ class AdminUI_QA extends AdminUI
     //     }
 
     //     // Keep original plugin’s shortcode style (always [faq])
-    //     $ret .= '<h3 class="hndle">' . esc_html__('Single entries', 'rrze-answers') . ':</h3><p>[faq id="' . (int) $post->ID . '"]</p>';
+    //     $ret .= '<h3 class="hndle">' . esc_html__('Single entries', 'wp-ai') . ':</h3><p>[faq id="' . (int) $post->ID . '"]</p>';
     //     if ($category) {
-    //         $ret .= '<h3 class="hndle">' . esc_html__('Accordion with category', 'rrze-answers') . ':</h3><p>[faq category="' . esc_html($category) . '"]</p>';
-    //         $ret .= '<p>' . esc_html__('If there is more than one category listed, use at least one of them.', 'rrze-answers') . '</p>';
+    //         $ret .= '<h3 class="hndle">' . esc_html__('Accordion with category', 'wp-ai') . ':</h3><p>[faq category="' . esc_html($category) . '"]</p>';
+    //         $ret .= '<p>' . esc_html__('If there is more than one category listed, use at least one of them.', 'wp-ai') . '</p>';
     //     }
     //     if ($tag) {
-    //         $ret .= '<h3 class="hndle">' . esc_html__('Accordion with tag', 'rrze-answers') . ':</h3><p>[faq tag="' . esc_html($tag) . '"]</p>';
-    //         $ret .= '<p>' . esc_html__('If there is more than one tag listed, use at least one of them.', 'rrze-answers') . '</p>';
+    //         $ret .= '<h3 class="hndle">' . esc_html__('Accordion with tag', 'wp-ai') . ':</h3><p>[faq tag="' . esc_html($tag) . '"]</p>';
+    //         $ret .= '<p>' . esc_html__('If there is more than one tag listed, use at least one of them.', 'wp-ai') . '</p>';
     //     }
-    //     $ret .= '<h3 class="hndle">' . esc_html__('Accordion with all entries', 'rrze-answers') . ':</h3><p>[faq]</p>';
+    //     $ret .= '<h3 class="hndle">' . esc_html__('Accordion with all entries', 'wp-ai') . ':</h3><p>[faq]</p>';
 
     //     echo wp_kses_post($ret);
     // }
@@ -220,25 +220,25 @@ class AdminUI_QA extends AdminUI
     protected function listTableColumns(array $cols): array
     {
         // Rename title column depending on CPT
-        $cols['title'] = ($this->post_type === 'rrze_faq') ? __('Question', 'rrze-answers') : __('Glossary', 'rrze-answers');
-        $cols['lang'] = __('Language', 'rrze-answers');
-        $cols['sortfield'] = __('Sort criterion', 'rrze-answers');
+        $cols['title'] = ($this->post_type === 'bk_faq') ? __('Question', 'wp-ai') : __('Glossary', 'wp-ai');
+        $cols['lang'] = __('Language', 'wp-ai');
+        $cols['sortfield'] = __('Sort criterion', 'wp-ai');
 
         if ((new Tools())->hasSync($this->post_type)) {
-            $cols['source'] = __('Source', 'rrze-answers');
+            $cols['source'] = __('Source', 'wp-ai');
         }
         return $cols;
     }
 
     protected function listTableSortableColumns(array $cols): array
     {
-        $cols["taxonomy-{$this->post_type}_category"] = __('Category', 'rrze-answers');
-        $cols["taxonomy-{$this->post_type}_tag"] = __('Tag', 'rrze-answers');
-        $cols['lang'] = __('Language', 'rrze-answers');
-        $cols['sortfield'] = __('Sort by', 'rrze-answers');
+        $cols["taxonomy-{$this->post_type}_category"] = __('Category', 'wp-ai');
+        $cols["taxonomy-{$this->post_type}_tag"] = __('Tag', 'wp-ai');
+        $cols['lang'] = __('Language', 'wp-ai');
+        $cols['sortfield'] = __('Sort by', 'wp-ai');
 
         if ((new Tools())->hasSync($this->post_type)) {
-            $cols['source'] = __('Source', 'rrze-answers');
+            $cols['source'] = __('Source', 'wp-ai');
         }
         return $cols;
     }
@@ -258,9 +258,9 @@ class AdminUI_QA extends AdminUI
 
     protected function taxonomyColumns(array $cols): array
     {
-        $cols['lang'] = __('Language', 'rrze-answers');
+        $cols['lang'] = __('Language', 'wp-ai');
         if ((new Tools())->hasSync($this->post_type)) {
-            $cols['source'] = __('Source', 'rrze-answers');
+            $cols['source'] = __('Source', 'wp-ai');
         }
         return $cols;
     }

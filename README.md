@@ -1,15 +1,18 @@
 # WP AI
+# WP AI
 
-[![Version](https://img.shields.io/github/package-json/v/rrze-webteam/rrze-answers/main?label=Version)](https://github.com/RRZE-Webteam/rrze-answers)
-[![Release Version](https://img.shields.io/github/v/release/rrze-webteam/rrze-answers?label=Release+Version)](https://github.com/RRZE-Webteam/rrze-answers/releases/)
-[![GitHub License](https://img.shields.io/github/license/rrze-webteam/rrze-answers)](https://github.com/RRZE-Webteam/rrze-answers)
-[![GitHub issues](https://img.shields.io/github/issues/rrze-webteam/rrze-answers)](https://github.com/RRZE-Webteam/rrze-answers/issues)
+[![Version](https://img.shields.io/github/package-json/v/Benjamin Klemencic/wp-ai/main?label=Version)](https://github.com/BK-Webteam/wp-ai)
+[![Release Version](https://img.shields.io/github/v/release/Benjamin Klemencic/wp-ai?label=Release+Version)](https://github.com/BK-Webteam/wp-ai/releases/)
+[![GitHub License](https://img.shields.io/github/license/Benjamin Klemencic/wp-ai)](https://github.com/BK-Webteam/wp-ai)
+[![GitHub issues](https://img.shields.io/github/issues/Benjamin Klemencic/wp-ai)](https://github.com/BK-Webteam/wp-ai/issues)
 
 ---
 
 ## Overview
 
-WP AI allows you to:
+**WP AI** combines the functionalities of the former plugins **BK FAQ**, **BK Glossary**, and **BK Synonym** into a single solution.
+
+It allows you to:
 - Create and display FAQs, glossary entries, synonyms, and placeholders  
 - Synchronize content between websites in the network  
 - Display entries using shortcodes, Gutenberg blocks, or widgets  
@@ -32,14 +35,18 @@ WP AI allows you to:
 ## Blocks
 
 **BK FAQ Block**
+**BK FAQ Block**
 The FAQ block lets you display selected FAQ entries and control how they appear on the page. In the settings, you can choose specific items, filter by categories or tags, and select a glossary or grouping style such as alphabetical lists, tabs, or tag clouds. You can hide interface elements like titles, accordions, or the glossary navigation, enable a masonry grid layout, and add optional CSS or faculty classes. Sorting options and the starting heading level can also be adjusted to match your page structure.
 
+**BK FAQ Widget**
 **BK FAQ Widget**
 This block lets you display either a selected FAQ entry or a random one from a chosen category. In the settings, you can pick a specific item or filter by categories. You may also choose to show the answer without displaying the question.
 
 **BK Glossary Block**
+**BK Glossary Block**
 The Glossary block displays glossary entries and offers similar flexibility. You can select entries, filter them by categories or tags, and control the register or grouping style, including A–Z lists, tab navigation, and tag cloud layouts. Display elements such as titles, accordion views, or the register can be hidden, while optional features like “expand all” or opening entries by default can be enabled. Additional styling classes, sorting behavior, and heading levels can be configured as needed.
 
+**BK Placeholder Block**
 **BK Placeholder Block**
 The Placeholder block renders one, multiple, or all placeholder entries and can be filtered by language. In the editor sidebar you can select placeholders directly and choose a language filter. Rendering is server-side and uses the placeholder shortcode internally, so block and shortcode output stay consistent.
 
@@ -154,6 +161,8 @@ External domains can be added and synchronized via:
 ```
 Settings → WP AI → Domains
 Settings → WP AI → Import
+Settings → WP AI → Domains
+Settings → WP AI → Import
 ```
 
 Entries from synchronized domains behave like local entries and can be displayed via shortcode, block, or widget.
@@ -162,7 +171,7 @@ Entries from synchronized domains behave like local entries and can be displayed
 
 ## Widgets
 
-- **Answers Widget:** Show a specific or random FAQ or glossary entry.  
+- **WP AI Widget:** Show a specific or random FAQ or glossary entry.  
 - Configurable options include display duration, layout, and category selection.
 
 ---
@@ -172,14 +181,16 @@ Entries from synchronized domains behave like local entries and can be displayed
 ### FAQ
 - All:  
   `https://www.mydomain.tld/wp-json/wp/v2/faq`
+  `https://www.mydomain.tld/wp-json/wp/v2/faq`
 - Filtered:  
-  `https://www.mydomain.tld/wp-json/wp/v2/faq?filter[wpai_faq_tag]=Matrix`
+  `https://www.mydomain.tld/wp-json/wp/v2/faq?filter[bk_faq_tag]=Matrix`
 
 ### Glossary
 - All:  
   `https://www.mydomain.tld/wp-json/wp/v2/glossary`
+  `https://www.mydomain.tld/wp-json/wp/v2/glossary`
 - Category + Tag:  
-  `https://www.mydomain.tld/wp-json/wp/v2/glossary?filter[wpai_glossary_category]=Dienste&filter[wpai_glossary_tag]=Sprache`
+  `https://www.mydomain.tld/wp-json/wp/v2/glossary?filter[bk_glossary_category]=Dienste&filter[bk_glossary_tag]=Sprache`
 
 
 **Pagination:**  
@@ -195,5 +206,6 @@ Licensed under the [GNU General Public License v2.0](https://www.gnu.org/license
 
 ## Credits
 
-Developed and maintained by Benjamin Klemencic  
-👉 [https://github.com/thenickless/wpai](https://github.com/thenickless/wpai)
+Developed and maintained by the  
+**Benjamin Klemencic, Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)**  
+👉 [https://github.com/BK-Webteam/wp-ai](https://github.com/BK-Webteam/wp-ai)

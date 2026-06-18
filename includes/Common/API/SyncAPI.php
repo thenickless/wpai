@@ -1,8 +1,8 @@
 <?php
 
-namespace RRZE\Answers\Common\API;
+namespace BK\WPAI\Common\API;
 
-use RRZE\Answers\Common\CustomException;
+use BK\WPAI\Common\CustomException;
 
 defined('ABSPATH') || exit;
 
@@ -18,7 +18,7 @@ class SyncAPI
 
     public function getTaxonomies($url, $field, &$filter)
     {
-        $cacheKey = 'rrze_answers_tax_v2_' . md5($url . '|' . $field . '|' . (string) $filter);
+        $cacheKey = 'wp_ai_tax_v2_' . md5($url . '|' . $field . '|' . (string) $filter);
         $cached = get_transient($cacheKey);
 
         if (!empty($cached)) {
@@ -41,7 +41,7 @@ class SyncAPI
                 $status_code = wp_remote_retrieve_response_code($request);
 
                 if ($status_code === 403) {
-                    return new \WP_Error('remote_forbidden', __('Import not allowed by source site.', 'rrze-answers'));
+                    return new \WP_Error('remote_forbidden', __('Import not allowed by source site.', 'wp-ai'));
                 }
 
                 if ($status_code !== 200) {
@@ -76,7 +76,7 @@ class SyncAPI
 
             return $aRet;
         } catch (CustomException $e) {
-            return new \WP_Error('getTaxonomies_error', __('Error in getTaxonomies().', 'rrze-answers'));
+            return new \WP_Error('getTaxonomies_error', __('Error in getTaxonomies().', 'wp-ai'));
         }
     }
 
@@ -100,18 +100,18 @@ class SyncAPI
                 wp_delete_term($ID, $field);
             }
         } catch (CustomException $e) {
-            return new \WP_Error('deleteTaxonomies_error', __('Error in deleteTaxonomies().', 'rrze-answers'));
+            return new \WP_Error('deleteTaxonomies_error', __('Error in deleteTaxonomies().', 'wp-ai'));
         }
     }
 
     public function deleteCategories($identifier, $type)
     {
-        $this->deleteTaxonomies($identifier, 'rrze_' . $type . '_category');
+        $this->deleteTaxonomies($identifier, 'bk_' . $type . '_category');
     }
 
     public function deleteTags($identifier, $type)
     {
-        $this->deleteTaxonomies($identifier, 'rrze_' . $type . '_tag');
+        $this->deleteTaxonomies($identifier, 'bk_' . $type . '_tag');
     }
 
     protected function setCategories(&$aCategories, &$identifier, $type)
@@ -120,7 +120,7 @@ class SyncAPI
         $termIds = [];
 
         try {
-            $field = 'rrze_' . $type . '_category';
+            $field = 'bk_' . $type . '_category';
             // $aTmp = $aCategories;
 
             // foreach ($aTmp as $name => $aDetails) {
@@ -163,7 +163,7 @@ class SyncAPI
             return $termIds;
 
         } catch (CustomException $e) {
-            return new \WP_Error('setCategories_error', __('Error in setCategories().', 'rrze-answers'));
+            return new \WP_Error('setCategories_error', __('Error in setCategories().', 'wp-ai'));
         }
     }
 
@@ -207,7 +207,7 @@ class SyncAPI
                 }
             }
         } catch (CustomException $e) {
-            return new \WP_Error('sortCats_error', __('Error in sortCats().', 'rrze-answers'));
+            return new \WP_Error('sortCats_error', __('Error in sortCats().', 'wp-ai'));
         }
     }
 
@@ -234,7 +234,7 @@ class SyncAPI
     // public function getCategories($identifier, $url, $type, $categories = '')
     // {
     //     $aRet = [];
-    //     $field = 'rrze_' . $type . '_category';
+    //     $field = 'bk_' . $type . '_category';
     //     $aCategories = $this->getTaxonomies($url, $field, $categories);
     //     $this->setCategories($aCategories, $identifier, $type);
 
@@ -259,7 +259,7 @@ class SyncAPI
     {
         // deletes all Entries by url
         $iDel = 0;
-        $allEntries = get_posts(array('post_type' => 'rrze_' . $type, 'meta_key' => 'source', 'meta_value' => $identifier, 'numberposts' => -1)); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key, WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+        $allEntries = get_posts(array('post_type' => 'bk_' . $type, 'meta_key' => 'source', 'meta_value' => $identifier, 'numberposts' => -1)); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key, WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 
         foreach ($allEntries as $entry) {
             wp_delete_post($entry->ID, true);
@@ -314,7 +314,7 @@ class SyncAPI
             }
             return $txt;
         } catch (CustomException $e) {
-            return new \WP_Error('absoluteUrl_error', __('Error in absoluteUrl().', 'rrze-answers'));
+            return new \WP_Error('absoluteUrl_error', __('Error in absoluteUrl().', 'wp-ai'));
         }
     }
 
@@ -322,9 +322,9 @@ class SyncAPI
     {
         try {
             $ret = [];
-            $field_cat = 'rrze_' . $type . '_category';
-            $field_tag = 'rrze_' . $type . '_tag';
-            $filter = '&filter[rrze_' . $type . '_category]=' . $categories;
+            $field_cat = 'bk_' . $type . '_category';
+            $field_tag = 'bk_' . $type . '_tag';
+            $filter = '&filter[bk_' . $type . '_category]=' . $categories;
             $page = 1;
 
             do {
@@ -336,7 +336,7 @@ class SyncAPI
                 $status_code = wp_remote_retrieve_response_code($request);
 
                 if ($status_code === 403) {
-                    return new \WP_Error('remote_forbidden', __('Import not allowed by source site.', 'rrze-answers'));
+                    return new \WP_Error('remote_forbidden', __('Import not allowed by source site.', 'wp-ai'));
                 }
 
                 if ($status_code == 200) {
@@ -374,7 +374,7 @@ class SyncAPI
 
             return $ret;
         } catch (CustomException $e) {
-            return new \WP_Error('getEntry_error', __('Error in getEntry().', 'rrze-answers'));
+            return new \WP_Error('getEntry_error', __('Error in getEntry().', 'wp-ai'));
         }
     }
 
@@ -394,7 +394,7 @@ class SyncAPI
                         continue;
                     }
 
-                    $taxonomy = 'rrze_' . $type . '_tag';
+                    $taxonomy = 'bk_' . $type . '_tag';
                     $term = term_exists($name, $taxonomy);
 
                     if (!$term) {
@@ -420,7 +420,7 @@ class SyncAPI
 
             return $termIds;
         } catch (CustomException $e) {
-            return new \WP_Error('setTags_error', __('Error in setTags().', 'rrze-answers'));
+            return new \WP_Error('setTags_error', __('Error in setTags().', 'wp-ai'));
         }
     }
 
@@ -428,7 +428,7 @@ class SyncAPI
     {
         try {
             $aRet = [];
-            $allEntries = get_posts(array('post_type' => 'rrze_' . $type, 'meta_key' => 'source', 'meta_value' => $identifier, 'fields' => 'ids', 'numberposts' => -1));// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key, WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+            $allEntries = get_posts(array('post_type' => 'bk_' . $type, 'meta_key' => 'source', 'meta_value' => $identifier, 'fields' => 'ids', 'numberposts' => -1));// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key, WordPress.DB.SlowDBQuery.slow_db_query_meta_value
             foreach ($allEntries as $postID) {
                 $remoteID = get_post_meta($postID, 'remoteID', true);
                 $remoteChanged = get_post_meta($postID, 'remoteChanged', true);
@@ -441,7 +441,7 @@ class SyncAPI
             }
             return $aRet;
         } catch (CustomException $e) {
-            return new \WP_Error('getEntriesRemoteIDs_error', __('Error in getEntriesRemoteIDs().', 'rrze-answers'));
+            return new \WP_Error('getEntriesRemoteIDs_error', __('Error in getEntriesRemoteIDs().', 'wp-ai'));
         }
     }
 
@@ -453,10 +453,10 @@ class SyncAPI
             $iUpdated = 0;
             $iDeleted = 0;
             $aURLhasSlider = [];
-            $field_cpt = 'rrze_' . $type;
+            $field_cpt = 'bk_' . $type;
 
-            $field_tag = 'rrze_' . $type . '_tag';
-            $field_cat = 'rrze_' . $type . '_category';
+            $field_tag = 'bk_' . $type . '_tag';
+            $field_cat = 'bk_' . $type . '_category';
 
             // get all remoteIDs of stored FAQ to this source ( key = remoteID, value = postID )
             $aRemoteIDs = $this->getEntriesRemoteIDs($identifier, $type);
@@ -539,7 +539,7 @@ class SyncAPI
                 'URLhasSlider' => $aURLhasSlider,
             );
         } catch (CustomException $e) {
-            return new \WP_Error('setFAQ_error', __('Error in setEntries().', 'rrze-answers'));
+            return new \WP_Error('setFAQ_error', __('Error in setEntries().', 'wp-ai'));
         }
     }
 
@@ -585,7 +585,7 @@ class SyncAPI
 
     private function remoteGet(string $url, array $args = [], bool $safe = true)
     {
-        $cache_key = 'rrze_remote_' . md5($url);
+        $cache_key = 'bk_remote_' . md5($url);
         $cached = get_transient($cache_key);
 
         if (false !== $cached) {
@@ -613,14 +613,14 @@ class SyncAPI
 
             return $ret;
         } catch (CustomException $e) {
-            return new \WP_Error('remoteGet_error', __('Error in remoteGet().', 'rrze-answers'));
+            return new \WP_Error('remoteGet_error', __('Error in remoteGet().', 'wp-ai'));
         }
     }
 
     public function getDomains()
     {
         $domains = [];
-        $options = get_option('rrze-answers');
+        $options = get_option('wp-ai');
         if (isset($options['registeredDomains'])) {
             foreach ($options['registeredDomains'] as $identifier => $url) {
                 $domains[$identifier] = $url;
@@ -637,10 +637,10 @@ class SyncAPI
         $aRet = array('status' => FALSE, 'msg' => '');
 
         if (in_array($url, $domains)) {
-            $aRet['msg'] = $url . ' ' . __('is already in use.', 'rrze-answers');
+            $aRet['msg'] = $url . ' ' . __('is already in use.', 'wp-ai');
             return $aRet;
         } elseif (array_key_exists($identifier, $domains)) {
-            $aRet['msg'] = $identifier . ' ' . __('is already in use.', 'rrze-answers');
+            $aRet['msg'] = $identifier . ' ' . __('is already in use.', 'wp-ai');
             return $aRet;
         }
 
@@ -651,12 +651,12 @@ class SyncAPI
             $status_code = wp_remote_retrieve_response_code($request);
 
             if ($status_code != '200') {
-                $aRet['msg'] = $url . ' ' . __('is not valid.', 'rrze-answers');
+                $aRet['msg'] = $url . ' ' . __('is not valid.', 'wp-ai');
             } else {
                 $content = json_decode(wp_remote_retrieve_body($request), TRUE);
 
                 if (!$content) {
-                    $aRet['ret'] = $url . ' ' . __(' does not support this plugin.', 'rrze-answers');
+                    $aRet['ret'] = $url . ' ' . __(' does not support this plugin.', 'wp-ai');
                 } else {
                     $aRet['status'] = TRUE;
                     break;

@@ -1,18 +1,18 @@
 <?php
 /* 
-Template Name: Custom Taxonomy rrze_faq_category Template
+Template Name: Custom Taxonomy bk_faq_category Template
 */
 
 get_header();
 
 ?>
 
-<main id="main" class="site-main rrze-answers category">
+<main id="main" class="site-main wp-ai category">
 
 <?php
 
-$post_type = 'rrze_faq';
-$taxonomy = 'rrze_faq_category';
+$post_type = 'bk_faq';
+$taxonomy = 'bk_faq_category';
 include_once('template-parts/taxonomy.php');
 ?>
 </main>

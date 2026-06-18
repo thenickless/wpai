@@ -1,8 +1,8 @@
 <?php
 
-namespace RRZE\Answers\Common\Settings;
+namespace BK\WPAI\Common\Settings;
 
-use RRZE\Answers\Common\Settings\Settings;
+use BK\WPAI\Common\Settings\Settings;
 
 defined('ABSPATH') || exit;
 
@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
  * This class manages errors related to settings options.
  * It allows adding, retrieving, and checking for errors in the settings context.
  *
- * @package RRZE\Answers\Common\Settings
+ * @package BK\WPAI\Common\Settings
  */
 class Error
 {

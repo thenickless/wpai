@@ -1,10 +1,10 @@
-# Copyright (C) 2025 RRZE Webteam
+# Copyright (C) 2025 Benjamin Klemencic
 # This file is distributed under the GNU General Public License Version 3.
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: RRZE Answers 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rrze-answers\n"
+"Project-Id-Version: WP AI 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-ai\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -13,7 +13,7 @@ msgstr ""
 "POT-Creation-Date: 2026-04-27 12:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Domain: rrze-answers\n"
+"X-Domain: wp-ai\n"
 "Language: \n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;"
 
@@ -175,7 +175,7 @@ msgstr ""
 #: includes/Common/AdminInterfaces/AdminMenu.php:43
 #: includes/Common/AdminInterfaces/AdminMenu.php:44
 #: includes/Common/AdminInterfaces/AdminMenu.php:58
-msgid "Answers"
+msgid "WP AI"
 msgstr ""
 
 #: includes/Common/API/RESTAPI.php:65
@@ -220,27 +220,27 @@ msgstr ""
 
 #: blocks/faq/block.json:1
 msgctxt "block title"
-msgid "RRZE FAQ"
+msgid "BK FAQ"
 msgstr ""
 
 #: blocks/faq-widget/block.json:1
 msgctxt "block title"
-msgid "RRZE FAQ Widget"
+msgid "BK FAQ Widget"
 msgstr ""
 
 #: blocks/glossary/block.json:1
 msgctxt "block title"
-msgid "RRZE Glossary"
+msgid "BK Glossary"
 msgstr ""
 
 #: blocks/placeholder/block.json:1
 msgctxt "block title"
-msgid "RRZE Placeholder"
+msgid "BK Placeholder"
 msgstr ""
 
 #: blocks/synonym/block.json:1
 msgctxt "block title"
-msgid "RRZE Synonym"
+msgid "BK Synonym"
 msgstr ""
 
 #: includes/Defaults.php:275 includes/Defaults.php:283
@@ -295,11 +295,11 @@ msgstr ""
 msgid "daily"
 msgstr ""
 
-#: rrze-answers.php:601
+#: wp-ai.php:601
 msgid "Deactivated:"
 msgstr ""
 
-#: rrze-answers.php:602
+#: wp-ai.php:602
 msgid "Deactivated: none."
 msgstr ""
 
@@ -485,7 +485,7 @@ msgid "German"
 msgstr ""
 
 #: includes/Defaults.php:139 includes/Defaults.php:255
-#: templates/rrze_glossary-archive.php:16 includes/Common/Tools.php:235
+#: templates/bk_glossary-archive.php:16 includes/Common/Tools.php:235
 #: includes/Common/CPT/CPTGlossary.php:38
 #: includes/Common/Shortcode/ShortcodeGlossary.php:104
 #: includes/Common/AdminInterfaces/AdminUI_QA.php:216
@@ -550,11 +550,11 @@ msgid "Hide title"
 msgstr ""
 
 #. URI of the plugin
-msgid "https://github.com/RRZE-Webteam/rrze-answers"
+msgid "https://github.com/BK-Webteam/wp-ai"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "https://www.wp.rrze.fau.de/"
+msgid "https://github.com/thenickless"
 msgstr ""
 
 #: includes/Common/Shortcode/ShortcodeGlossary.php:217
@@ -642,40 +642,40 @@ msgid "Manage glossary terms"
 msgstr ""
 
 #: includes/Common/AdminInterfaces/AdminMenu.php:62
-msgid "Manage questions & answers"
+msgid "Manage questions & wp_ai"
 msgstr ""
 
 #: includes/Common/AdminInterfaces/AdminMenu.php:64
 msgid "Manage synonyms & groups"
 msgstr ""
 
-#: rrze-answers.php:528
+#: wp-ai.php:528
 msgid "Migration aborted: insufficient permissions (manage_network_plugins)."
 msgstr ""
 
-#: rrze-answers.php:120
+#: wp-ai.php:120
 msgid ""
-"Migration aborted: RRZE-Answers could not be deactivated network-wide during "
+"Migration aborted: BK-WP AI could not be deactivated network-wide during "
 "activation."
 msgstr ""
 
-#: rrze-answers.php:542
+#: wp-ai.php:542
 msgid ""
-"Migration aborted: RRZE-Answers is network-activated. Please deactivate it "
+"Migration aborted: BK-WP AI is network-activated. Please deactivate it "
 "network-wide and retry."
 msgstr ""
 
-#: rrze-answers.php:101
+#: wp-ai.php:101
 msgid "Migration already marked as done. No changes were made."
 msgstr ""
 
-#: rrze-answers.php:141
-msgid "Migration failed: RRZE-Answers is network-activated after migration."
+#: wp-ai.php:141
+msgid "Migration failed: BK-WP AI is network-activated after migration."
 msgstr ""
 
-#: rrze-answers.php:626
+#: wp-ai.php:626
 msgid ""
-"Migration result (old plugins deactivated, RRZE-Answers activated where "
+"Migration result (old plugins deactivated, BK-WP AI activated where "
 "needed):"
 msgstr ""
 
@@ -691,29 +691,29 @@ msgstr ""
 msgid "Next automatic synchronization:"
 msgstr ""
 
-#: templates/rrze_faq-archive.php:29
+#: templates/bk_faq-archive.php:29
 msgid "No FAQ found."
 msgstr ""
 
-#: templates/rrze_glossary-archive.php:30
+#: templates/bk_glossary-archive.php:30
 msgid "no glossary found."
 msgstr ""
 
-#: templates/rrze_placeholder-archive.php:30
+#: templates/bk_placeholder-archive.php:30
 msgid "no placeholder found."
 msgstr ""
 
-#: rrze-answers.php:122
+#: wp-ai.php:122
 msgid ""
-"No site changes were made. Please deactivate RRZE-Answers network-wide "
+"No site changes were made. Please deactivate BK-WP AI network-wide "
 "manually and retry."
 msgstr ""
 
-#: rrze-answers.php:633
+#: wp-ai.php:633
 msgid "No sites required changes."
 msgstr ""
 
-#: templates/rrze_synonym-single.php:29
+#: templates/bk_synonym-single.php:29
 msgid "No synonyms found."
 msgstr ""
 
@@ -749,7 +749,7 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-#: includes/Defaults.php:177 templates/rrze_placeholder-archive.php:16
+#: includes/Defaults.php:177 templates/bk_placeholder-archive.php:16
 #: includes/Common/CPT/CPTPlaceholder.php:35
 #: includes/Common/Shortcode/ShortcodePlaceholder.php:51
 #: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:153
@@ -771,7 +771,7 @@ msgid ""
 "entry on this website that has been fetched from the selected domains."
 msgstr ""
 
-#: rrze-answers.php:253
+#: wp-ai.php:253
 #, php-format
 msgid "Plugins: %1$s: %2$s"
 msgstr ""
@@ -808,27 +808,27 @@ msgstr ""
 
 #. Name of the plugin
 #: includes/Defaults.php:54
-msgid "RRZE Answers"
+msgid "WP AI"
 msgstr ""
 
 #: includes/Defaults.php:55
-msgid "RRZE Answers Settings"
+msgid "WP AI Settings"
 msgstr ""
 
 #. Author of the plugin
-msgid "RRZE Webteam"
+msgid "Benjamin Klemencic"
 msgstr ""
 
-#: rrze-answers.php:612
-msgid "RRZE-Answers activated."
+#: wp-ai.php:612
+msgid "BK-WP AI activated."
 msgstr ""
 
-#: rrze-answers.php:607
-msgid "RRZE-Answers activation failed:"
+#: wp-ai.php:607
+msgid "BK-WP AI activation failed:"
 msgstr ""
 
-#: rrze-answers.php:613
-msgid "RRZE-Answers already active (no change)."
+#: wp-ai.php:613
+msgid "BK-WP AI already active (no change)."
 msgstr ""
 
 #: includes/Defaults.php:233
@@ -982,7 +982,7 @@ msgstr ""
 msgid "Synonym Slug"
 msgstr ""
 
-#: templates/rrze_synonym-single.php:15 templates/rrze_synonym-archive.php:13
+#: templates/bk_synonym-single.php:15 templates/bk_synonym-archive.php:13
 msgid "synonyms"
 msgstr ""
 
@@ -1019,20 +1019,20 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
-#: rrze-answers.php:143
+#: wp-ai.php:143
 msgid ""
-"The migration was NOT marked as done. Please ensure RRZE-Answers is not "
+"The migration was NOT marked as done. Please ensure BK-WP AI is not "
 "network-activated and retry."
 msgstr ""
 
-#: rrze-answers.php:244
+#: wp-ai.php:244
 #, php-format
 msgid ""
 "The server is running PHP version %1$s. The plugin requires at least PHP "
 "version %2$s."
 msgstr ""
 
-#: rrze-answers.php:238
+#: wp-ai.php:238
 #, php-format
 msgid ""
 "The server is running WordPress version %1$s. The plugin requires at least "

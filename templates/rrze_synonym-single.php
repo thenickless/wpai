@@ -7,14 +7,14 @@
  * @since FAU 1.0
  */
 
-use RRZE\Answers\Common\Tools;
+use BK\WPAI\Common\Tools;
 
 get_header();
 ?>
 
-<main id="main" class="site-main rrze-answers archive">
+<main id="main" class="site-main wp-ai archive">
     <div id="content"><div class="content-container">
-        <h2><?php echo __('Synonym', 'rrze-answers'); ?></h2>
+        <h2><?php echo __('Synonym', 'wp-ai'); ?></h2>
 
         <?php
         if (have_posts()) {
@@ -30,7 +30,7 @@ get_header();
                 );
             }
         } else {
-            echo '<p>' . esc_html__('No synonyms found.', 'rrze-answers') . '</p>';
+            echo '<p>' . esc_html__('No synonyms found.', 'wp-ai') . '</p>';
         }
         ?>
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace RRZE\Answers\Common\Settings;
+namespace BK\WPAI\Common\Settings;
 
 defined('ABSPATH') || exit;
 ?>
@@ -11,7 +11,7 @@ defined('ABSPATH') || exit;
         <?php Template::include('section', compact('section')); ?>
     <?php } ?>
 
-    <?php wp_nonce_field('rrze-answers_settings_save_' . $settings->optionName, 'rrze-answers_settings_save'); ?>
+    <?php wp_nonce_field('bk-wp_ai_settings_save_' . $settings->optionName, 'bk-wp_ai_settings_save'); ?>
 
-    <?php submit_button(null, 'primary', 'submit', true, ['data-rrze-tour' => 'save-settings']); ?>
+    <?php submit_button(null, 'primary', 'submit', true, ['data-bk-tour' => 'save-settings']); ?>
 </form>

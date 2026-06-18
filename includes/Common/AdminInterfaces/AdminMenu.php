@@ -1,24 +1,24 @@
 <?php
-namespace RRZE\Answers\Common\AdminInterfaces;
+namespace BK\WPAI\Common\AdminInterfaces;
 
 defined('ABSPATH') || exit;
 
 class AdminMenu {
     // CPT-Slugs
-    private $faq_pt       = 'rrze_faq';
-    private $glossary_pt  = 'rrze_glossary';
-    private $synonym_pt   = 'rrze_synonym';
+    private $faq_pt       = 'bk_faq';
+    private $glossary_pt  = 'bk_glossary';
+    private $synonym_pt   = 'bk_synonym';
 
-    private $faq_cat      = 'rrze_faq_category';
-    private $faq_tag      = 'rrze_faq_tag';
+    private $faq_cat      = 'bk_faq_category';
+    private $faq_tag      = 'bk_faq_tag';
 
-    private $glossary_cat = 'rrze_glossary_category';
-    private $glossary_tag = 'rrze_glossary_tag';
+    private $glossary_cat = 'bk_glossary_category';
+    private $glossary_tag = 'bk_glossary_tag';
 
-    private $syn_group    = 'rrze_synonym_group';
-    private $syn_tag      = 'rrze_synonym_tag';
+    private $syn_group    = 'bk_synonym_group';
+    private $syn_tag      = 'bk_synonym_tag';
 
-    private $parent_slug  = 'rrze-answers';
+    private $parent_slug  = 'wp-ai';
 
     public function __construct() {
         add_filter('register_post_type_args', [$this, 'hideCptMenus'], 20, 2);
@@ -40,28 +40,28 @@ class AdminMenu {
 
     public function registerMenus(): void {
         add_menu_page(
-            __('Answers', 'rrze-answers'),
-            __('Answers', 'rrze-answers'),
+            __('WP AI', 'wp-ai'),
+            __('WP AI', 'wp-ai'),
             'edit_posts',
             $this->parent_slug,
-            [$this, 'renderAnswersDashboard'],
+            [$this, 'renderWP AIDashboard'],
             'dashicons-editor-help',
             25
         );
 
-        add_submenu_page($this->parent_slug, __('FAQ', 'rrze-answers'), __('FAQ', 'rrze-answers'), 'edit_posts', 'rrze-answers_faq',      function () { $this->renderHub($this->faq_pt, $this->faq_cat, $this->faq_tag, __('FAQ', 'rrze-answers')); });
-        add_submenu_page($this->parent_slug, __('Glossary', 'rrze-answers'), __('Glossary', 'rrze-answers'), 'edit_posts', 'rrze-answers_glossary', function () { $this->renderHub($this->glossary_pt, $this->glossary_cat, $this->glossary_tag, __('Glossary', 'rrze-answers')); });
-        add_submenu_page($this->parent_slug, __('Synonym', 'rrze-answers'), __('Synonym', 'rrze-answers'), 'edit_posts', 'rrze-answers_synonym', function () { $this->renderHub($this->synonym_pt, $this->syn_group, $this->syn_tag, __('Synonym', 'rrze-answers')); });
+        add_submenu_page($this->parent_slug, __('FAQ', 'wp-ai'), __('FAQ', 'wp-ai'), 'edit_posts', 'bk-wp_ai_faq',      function () { $this->renderHub($this->faq_pt, $this->faq_cat, $this->faq_tag, __('FAQ', 'wp-ai')); });
+        add_submenu_page($this->parent_slug, __('Glossary', 'wp-ai'), __('Glossary', 'wp-ai'), 'edit_posts', 'bk-wp_ai_glossary', function () { $this->renderHub($this->glossary_pt, $this->glossary_cat, $this->glossary_tag, __('Glossary', 'wp-ai')); });
+        add_submenu_page($this->parent_slug, __('Synonym', 'wp-ai'), __('Synonym', 'wp-ai'), 'edit_posts', 'bk-wp_ai_synonym', function () { $this->renderHub($this->synonym_pt, $this->syn_group, $this->syn_tag, __('Synonym', 'wp-ai')); });
     }
 
-    public function renderAnswersDashboard(): void {
-        echo '<div class="wrap"><h1>'.esc_html__('Answers', 'rrze-answers').'</h1>';
-        echo '<p>'.esc_html__('Choose a section:', 'rrze-answers').'</p>';
-        echo '<ul class="rrze-answers-dashboard-cards">';
+    public function renderWP AIDashboard(): void {
+        echo '<div class="wrap"><h1>'.esc_html__('WP AI', 'wp-ai').'</h1>';
+        echo '<p>'.esc_html__('Choose a section:', 'wp-ai').'</p>';
+        echo '<ul class="wp-ai-dashboard-cards">';
         $cards = [
-            ['slug'=>'rrze-answers_faq',      'title'=>__('FAQ', 'rrze-answers'),      'desc'=>__('Manage questions & answers', 'rrze-answers')],
-            ['slug'=>'rrze-answers_glossary', 'title'=>__('Glossary', 'rrze-answers'), 'desc'=>__('Manage glossary terms', 'rrze-answers')],
-            ['slug'=>'rrze-answers_synonym',  'title'=>__('Synonym', 'rrze-answers'),  'desc'=>__('Manage synonyms & groups', 'rrze-answers')],
+            ['slug'=>'bk-wp_ai_faq',      'title'=>__('FAQ', 'wp-ai'),      'desc'=>__('Manage questions & wp_ai', 'wp-ai')],
+            ['slug'=>'bk-wp_ai_glossary', 'title'=>__('Glossary', 'wp-ai'), 'desc'=>__('Manage glossary terms', 'wp-ai')],
+            ['slug'=>'bk-wp_ai_synonym',  'title'=>__('Synonym', 'wp-ai'),  'desc'=>__('Manage synonyms & groups', 'wp-ai')],
         ];
         foreach ($cards as $c) {
             printf(
@@ -69,7 +69,7 @@ class AdminMenu {
                 esc_html($c['title']),
                 esc_html($c['desc']),
                 esc_url(admin_url('admin.php?page='.$c['slug'])),
-                esc_html__('Open', 'rrze-answers')
+                esc_html__('Open', 'wp-ai')
             );
         }
         echo '</ul></div>';
@@ -83,12 +83,12 @@ class AdminMenu {
 
         echo '<div class="wrap">';
         printf('<h1>%s</h1>', esc_html($title));
-        echo '<div class="rrze-hub">';
+        echo '<div class="bk-hub">';
         $items = [
-            ['label'=>sprintf(__('All %s', 'rrze-answers'), $title), 'url'=>$all_url],
-            ['label'=>sprintf(__('Add %s', 'rrze-answers'), $title), 'url'=>$add_url],
-            ['label'=>__('Categories', 'rrze-answers'), 'url'=>$cat_url],
-            ['label'=>__('Tags', 'rrze-answers'), 'url'=>$tag_url],
+            ['label'=>sprintf(__('All %s', 'wp-ai'), $title), 'url'=>$all_url],
+            ['label'=>sprintf(__('Add %s', 'wp-ai'), $title), 'url'=>$add_url],
+            ['label'=>__('Categories', 'wp-ai'), 'url'=>$cat_url],
+            ['label'=>__('Tags', 'wp-ai'), 'url'=>$tag_url],
         ];
         foreach ($items as $i) {
             printf(
@@ -116,13 +116,13 @@ class AdminMenu {
         if (!$screen) return $submenu_file;
 
         if ($screen->post_type === $this->faq_pt || in_array($screen->taxonomy ?? '', [$this->faq_cat, $this->faq_tag], true)) {
-            return 'rrze-answers_faq';
+            return 'bk-wp_ai_faq';
         }
         if ($screen->post_type === $this->glossary_pt || in_array($screen->taxonomy ?? '', [$this->glossary_cat, $this->glossary_tag], true)) {
-            return 'rrze-answers_glossary';
+            return 'bk-wp_ai_glossary';
         }
         if ($screen->post_type === $this->synonym_pt || in_array($screen->taxonomy ?? '', [$this->syn_group, $this->syn_tag], true)) {
-            return 'rrze-answers_synonym';
+            return 'bk-wp_ai_synonym';
         }
         return $submenu_file;
     }
