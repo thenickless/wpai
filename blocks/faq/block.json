@@ -1,10 +1,10 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "rrze-answers/faq",
+	"name": "wp-ai/faq",
 	"version": "5.3.4",
-	"title": "RRZE FAQ",
-	"category": "rrze",
+	"title": "BK FAQ",
+	"category": "bk",
 	"description": "Display FAQ",
 	"icon": "editor-help",
 	"example": {},
@@ -64,16 +64,16 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "rrze-answers",
+	"textdomain": "wp-ai",
 	"viewScript": [
-		"file:./rrze-answers-accordion.js",
-		"file:./rrze-answers-search.js"
+		"file:./wp-ai-accordion.js",
+		"file:./wp-ai-search.js"
 	],
 	"editorScript": [
 		"file:../../build/faq.js",
-		"file:./rrze-answers-accordion.js",
-		"file:./rrze-answers-search.js"
+		"file:./wp-ai-accordion.js",
+		"file:./wp-ai-search.js"
 	],
-	"editorStyle": "file:../../build/css/rrze-answers.css",
+	"editorStyle": "file:../../build/css/wp-ai.css",
 	"render": "file:./render.php"
 }

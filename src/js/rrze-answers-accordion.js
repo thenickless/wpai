@@ -1,7 +1,7 @@
 
 
 
-// fix for theme RRZE-2019 which has an overlay with the menue
+// fix for theme BK-2019 which has an overlay with the menue
 function setHeaderVar() {
   const h = document.getElementById('site-navigation')?.getBoundingClientRect().height || 0;
   document.documentElement.style.setProperty('--header-height', `${Math.ceil(h)}px`);
@@ -13,14 +13,14 @@ window.addEventListener('resize', setHeaderVar);
 window.addEventListener('load', setHeaderVar);
 
 
-/* RRZE FAQ accordion: single-open + open-by-hash */
+/* BK FAQ accordion: single-open + open-by-hash */
 (function ($) {
   'use strict';
 
   $(function () {
-    $('.rrze-answers[data-accordion="single"]').each(function () {
+    $('.wp-ai[data-accordion="single"]').each(function () {
       var $group = $(this);
-      var $items = $group.find('details.rrze-answers-item');
+      var $items = $group.find('details.wp-ai-item');
 
       // Optional header offset for smooth scroll (set data-scroll-offset="96" on wrapper)
       var scrollOffset = parseInt($group.attr('data-scroll-offset') || '0', 10);
@@ -91,8 +91,8 @@ window.addEventListener('load', setHeaderVar);
         var $el = byId(id);
         if (!$el.length) return false;
 
-        var $target = $el.closest('details.rrze-answers-item');
-        if (!$target.length && $el.is('details.rrze-answers-item')) $target = $el;
+        var $target = $el.closest('details.wp-ai-item');
+        if (!$target.length && $el.is('details.wp-ai-item')) $target = $el;
         if (!$target.length || !$group.has($target).length) return false;
 
         openItem($target, true);

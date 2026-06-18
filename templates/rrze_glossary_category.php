@@ -7,12 +7,12 @@ get_header();
 
 ?>
 
-<main id="main" class="site-main rrze-answers category">
+<main id="main" class="site-main wp-ai category">
 
 <?php
 
-$post_type = 'rrze_glossary';
-$taxonomy = 'rrze_glossary_category';
+$post_type = 'bk_glossary';
+$taxonomy = 'bk_glossary_category';
 include_once('template-parts/taxonomy.php');
 ?>
 </main>

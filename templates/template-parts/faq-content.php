@@ -7,17 +7,17 @@
  * @since FAU 1.0
  */
 
-namespace RRZE\Answers\Common;
+namespace BK\WPAI\Common;
 
-use RRZE\Answers\Common\Tools;
+use BK\WPAI\Common\Tools;
 
 $postID = get_the_ID();
 $tools = new Tools();
 $headerID = $tools->getHeaderID($postID);
 $source = get_post_meta($postID, "source", true);
 
-$cats = $tools->getTermLinks($postID, 'rrze_faq_category');
-$tags = $tools->getTermLinks($postID, 'rrze_faq_tag');
+$cats = $tools->getTermLinks($postID, 'bk_faq_category');
+$tags = $tools->getTermLinks($postID, 'bk_faq_tag');
 $aLinkedPage = $tools->getLinkedPage($postID);
 
 $bSchema = ($source === 'website');
@@ -45,10 +45,10 @@ if ($bSchema) {
 $content .= '<footer><p class="meta-footer">';
 
 if ($cats) {
-    $content .= '<span class="post-meta-categories">' . esc_html__('Categories', 'rrze-answers') . ': ' . wp_kses_post($cats) . '</span> ';
+    $content .= '<span class="post-meta-categories">' . esc_html__('Categories', 'wp-ai') . ': ' . wp_kses_post($cats) . '</span> ';
 }
 if ($tags) {
-    $content .= '<span class="post-meta-tags">' . esc_html__('Tags', 'rrze-answers') . ': ' . wp_kses_post($tags) . '</span>';
+    $content .= '<span class="post-meta-tags">' . esc_html__('Tags', 'wp-ai') . ': ' . wp_kses_post($tags) . '</span>';
 }
 
 if (!empty($aLinkedPage)) {
@@ -67,7 +67,7 @@ $masonry = false;
 $color = '';
 $additional_class = '';
 
-wp_enqueue_style('rrze-answers-css');
-wp_enqueue_script('rrze-answers-accordion');
+wp_enqueue_style('wp-ai-css');
+wp_enqueue_script('wp-ai-accordion');
 
 echo wp_kses_post($tools->renderWrapper('faq', $content, $headerID, $masonry, $color, $additional_class, $bSchema, $postID));

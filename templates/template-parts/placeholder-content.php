@@ -8,7 +8,7 @@
  * @since FAU 1.0
 */
 
-namespace RRZE\Answers\Common;
+namespace BK\WPAI\Common;
 
 
 echo '<div id="post-' . esc_attr(get_the_ID()) . '" class="' . esc_attr(implode(' ', get_post_class())) .'">';
@@ -24,8 +24,8 @@ echo '<div id="post-' . esc_attr(get_the_ID()) . '" class="' . esc_attr(implode(
 
 the_content(); 
 
-// wp_enqueue_style('rrze-answers-css');
-// wp_enqueue_script('rrze-answers-accordion');
+// wp_enqueue_style('wp-ai-css');
+// wp_enqueue_script('wp-ai-accordion');
 
 echo '</div>';
 

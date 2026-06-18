@@ -1,16 +1,16 @@
 {
 	"translation-revision-date": "2026-06-15 12:00+0000",
 	"generator": "Manual",
-	"source": "build/rrze-answers-guided-tour.js",
-	"domain": "rrze-answers",
+	"source": "build/wp-ai-guided-tour.js",
+	"domain": "wp-ai",
 	"locale_data": {
-		"rrze-answers": {
+		"wp-ai": {
 			"": {
 				"domain": "",
 				"lang": "de_DE",
 				"plural-forms": "nplurals=2; plural=n != 1;"
 			},
-			"Welcome to RRZE Answers": ["Willkommen bei RRZE Answers"],
+			"Welcome to WP AI": ["Willkommen bei WP AI"],
 			"This plugin helps you manage FAQ entries, glossary terms, synonyms, and placeholders — and embed them in pages with blocks or shortcodes.": ["Mit diesem Plugin verwalten Sie FAQ-Einträge, Glossarbegriffe, Synonyme und Platzhalter — und binden sie per Blöcken oder Shortcodes in Seiten ein."],
 			"Create and manage content": ["Inhalte erstellen und verwalten"],
 			"Use the FAQ and Glossary menus in the WordPress admin to add questions, terms, categories, and tags.": ["Nutzen Sie die FAQ- und Glossar-Menüs im WordPress-Backend, um Fragen, Begriffe, Kategorien und Schlagwörter hinzuzufügen."],
@@ -18,7 +18,7 @@
 			"Use the interactive setup tour to register domains, select categories, and synchronize FAQ and glossary content.": ["Mit der interaktiven Setup-Tour registrieren Sie Domains, wählen Kategorien und synchronisieren FAQ- und Glossar-Inhalte."],
 			"Logfile and blocks": ["Logdatei und Blöcke"],
 			"After each sync, details are written to the logfile. Insert FAQ and glossary blocks in the editor or use shortcodes.": ["Nach jeder Synchronisation werden Details in die Logdatei geschrieben. Fügen Sie FAQ- und Glossar-Blöcke im Editor ein oder nutzen Sie Shortcodes."],
-			"RRZE Answers guided tour": ["RRZE Answers Geführte Tour"],
+			"WP AI guided tour": ["WP AI Geführte Tour"],
 			"Get started": ["Loslegen"],
 			"Domains tab": ["Tab Domains"],
 			"Open the Domains tab to register websites you want to import FAQ or glossary content from.": ["Öffnen Sie den Tab Domains, um Websites zu registrieren, von denen Sie FAQ- oder Glossar-Inhalte importieren möchten."],

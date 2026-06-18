@@ -1,9 +1,9 @@
 <?php
 
-namespace RRZE\Answers\Common\Settings\Options;
+namespace BK\WPAI\Common\Settings\Options;
 
-use RRZE\Answers\Common\Settings\Options\Type;
-use RRZE\Answers\Common\Settings\Encryption;
+use BK\WPAI\Common\Settings\Options\Type;
+use BK\WPAI\Common\Settings\Encryption;
 
 defined('ABSPATH') || exit;
 
@@ -14,7 +14,7 @@ defined('ABSPATH') || exit;
  * It extends the Type class and provides methods to get the value
  * and sanitize the input using encryption.
  *
- * @package RRZE\Answers\Common\Settings\Options
+ * @package BK\WPAI\Common\Settings\Options
  */
 class Password extends Type
 {

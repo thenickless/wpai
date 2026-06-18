@@ -2,15 +2,15 @@
 /* 
 Template Name: CPT synonym Archive Template
 */
-use RRZE\Answers\Common\Tools;
+use BK\WPAI\Common\Tools;
 
 get_header();
 ?>
 
-<main id="main" class="site-main rrze-answers archive">
+<main id="main" class="site-main wp-ai archive">
     <div id="content">
         <div class="content-container">
-            <h2><?php echo __('synonyms', 'rrze-answers'); ?></h2>
+            <h2><?php echo __('synonyms', 'wp-ai'); ?></h2>
 
             <?php
             if (have_posts()) {

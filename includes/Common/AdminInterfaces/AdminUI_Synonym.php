@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace RRZE\Answers\Common\AdminInterfaces;
+namespace BK\WPAI\Common\AdminInterfaces;
 
 defined('ABSPATH') || exit;
 
-use RRZE\Answers\Common\Tools;
+use BK\WPAI\Common\Tools;
 
 class AdminUI_Synonym extends AdminUI
 {
@@ -14,7 +14,7 @@ class AdminUI_Synonym extends AdminUI
 
     public function __construct()
     {
-        parent::__construct('rrze_synonym', [
+        parent::__construct('bk_synonym', [
             'has_taxonomies' => false,
             'default_orderby' => 'title',
             'default_order' => 'ASC',
@@ -29,7 +29,7 @@ class AdminUI_Synonym extends AdminUI
 
     protected function get_title(): string
     {
-        return __('Enter synonym here', 'rrze-answers');
+        return __('Enter synonym here', 'wp-ai');
     }
 
     /* ---------------- Metaboxes ---------------- */
@@ -39,7 +39,7 @@ class AdminUI_Synonym extends AdminUI
         return [
             [
                 'id' => 'postmetabox',
-                'title' => __('Properties', 'rrze-answers'),
+                'title' => __('Properties', 'wp-ai'),
                 'callback' => [$this, 'postmetaCallback'],
                 'context' => 'normal',
                 'priority' => 'high',
@@ -50,27 +50,27 @@ class AdminUI_Synonym extends AdminUI
     public function postmetaCallback(\WP_Post $post): void
     {
         // Nonce
-        wp_nonce_field('rrze_synonym_save_meta', 'rrze_synonym_meta_nonce');
+        wp_nonce_field('bk_synonym_save_meta', 'bk_synonym_meta_nonce');
 
         $source = (string) get_post_meta($post->ID, 'source', true);
         $synonym = (string) get_post_meta($post->ID, 'synonym', true);
         $titleLang = (string) get_post_meta($post->ID, 'titleLang', true);
 
         // Properties
-        echo '<p><label for="synonym">' . esc_html__('Full form', 'rrze-answers') . '</label></p>';
+        echo '<p><label for="synonym">' . esc_html__('Full form', 'wp-ai') . '</label></p>';
         echo '<textarea rows="3" cols="60" name="synonym" id="synonym">' . esc_textarea($synonym) . '</textarea>';
-        echo '<p class="description">' . esc_html__('Enter the long, written form of the synonym. This text replaces the shortcode. Note: line breaks or HTML are not accepted.', 'rrze-answers') . '</p>';
+        echo '<p class="description">' . esc_html__('Enter the long, written form of the synonym. This text replaces the shortcode. Note: line breaks or HTML are not accepted.', 'wp-ai') . '</p>';
 
         // Language dropdown
         $selectedLang = $titleLang !== '' ? $titleLang : substr(get_locale(), 0, 2);
-        echo '<br><label for="titleLang">' . esc_html__('Pronunciation language', 'rrze-answers') . '</label>';
+        echo '<br><label for="titleLang">' . esc_html__('Pronunciation language', 'wp-ai') . '</label>';
         echo '<select id="titleLang" name="titleLang">';
         foreach ($this->langChoices as $code => $desc) {
             $sel = ($code === $selectedLang) ? ' selected' : '';
             echo '<option value="' . esc_attr($code) . '"' . $sel . '>' . esc_html($desc) . '</option>';
         }
         echo '</select>';
-        echo '<p class="description">' . esc_html__('Choose the language in which the long form is pronounced.', 'rrze-answers') . '</p>';
+        echo '<p class="description">' . esc_html__('Choose the language in which the long form is pronounced.', 'wp-ai') . '</p>';
 
         // Keep source (hidden)
         if ($source === '') {
@@ -112,8 +112,8 @@ class AdminUI_Synonym extends AdminUI
             'read_only_content_box',
             sprintf(
                 '%1$s. %2$s',
-                esc_html__('This synonym cannot be edited because it is synchronized', 'rrze-answers'),
-                $link ? '<a href="' . esc_url($link) . '" target="_blank">' . esc_html__('You can edit it at the source', 'rrze-answers') . '</a>' : ''
+                esc_html__('This synonym cannot be edited because it is synchronized', 'wp-ai'),
+                $link ? '<a href="' . esc_url($link) . '" target="_blank">' . esc_html__('You can edit it at the source', 'wp-ai') . '</a>' : ''
             ),
             [$this, 'fillContentBoxsynonym'],
             $this->post_type,
@@ -129,10 +129,10 @@ class AdminUI_Synonym extends AdminUI
         $langLabel = $this->langChoices[$titleLang] ?? $titleLang;
 
         echo '<h1>' . esc_html($post->post_title) . '</h1><br>';
-        echo '<strong>' . esc_html__('Full form', 'rrze-answers') . ':</strong>';
+        echo '<strong>' . esc_html__('Full form', 'wp-ai') . ':</strong>';
         echo '<p>' . esc_html($synonym) . '</p>';
         if ($langLabel) {
-            echo '<p><i>' . esc_html__('Pronunciation', 'rrze-answers') . ': ' . esc_html($langLabel) . '</i></p>';
+            echo '<p><i>' . esc_html__('Pronunciation', 'wp-ai') . ': ' . esc_html($langLabel) . '</i></p>';
         }
     }
 
@@ -144,7 +144,7 @@ class AdminUI_Synonym extends AdminUI
             return;
         }
 
-        if (!isset($_POST['rrze_synonym_meta_nonce']) || !wp_verify_nonce(wp_unslash((string) $_POST['rrze_synonym_meta_nonce']), 'rrze_synonym_save_meta')) {
+        if (!isset($_POST['bk_synonym_meta_nonce']) || !wp_verify_nonce(wp_unslash((string) $_POST['bk_synonym_meta_nonce']), 'bk_synonym_save_meta')) {
             return;
         }
 
@@ -165,10 +165,10 @@ class AdminUI_Synonym extends AdminUI
 
     protected function listTableColumns(array $cols): array
     {
-        $cols['title'] = __('Synonym', 'rrze-answers');
+        $cols['title'] = __('Synonym', 'wp-ai');
 
-        if ((new Tools())->hasSync('rrze_synonym')) {
-            $cols['source'] = __('Source', 'rrze-answers');
+        if ((new Tools())->hasSync('bk_synonym')) {
+            $cols['source'] = __('Source', 'wp-ai');
         }
 
         return $cols;
@@ -176,7 +176,7 @@ class AdminUI_Synonym extends AdminUI
 
     protected function listTableSortableColumns(array $cols): array
     {
-        $cols['source'] = __('Source', 'rrze-answers');
+        $cols['source'] = __('Source', 'wp-ai');
         return $cols;
     }
 
@@ -197,9 +197,9 @@ class AdminUI_Synonym extends AdminUI
      */
     protected function loadLanguageChoices(): array
     {
-        // Try RRZE\Answers\Defaults::get('lang') if available
-        if (class_exists('\\RRZE\\Answers\\Defaults')) {
-            $defaults = new \RRZE\Answers\Defaults();
+        // Try BK\WPAI\Defaults::get('lang') if available
+        if (class_exists('\\BK\\WP AI\\Defaults')) {
+            $defaults = new \BK\WPAI\Defaults();
             if (method_exists($defaults, 'get')) {
                 $langs = $defaults->get('lang');
                 if (is_array($langs) && !empty($langs)) {

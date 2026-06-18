@@ -8,9 +8,9 @@
  * @since FAU 1.0
 */
 
-namespace RRZE\Answers\Common;
+namespace BK\WPAI\Common;
 
-use RRZE\Answers\Common\Tools;
+use BK\WPAI\Common\Tools;
 $tools = new Tools();
 
 
@@ -29,16 +29,16 @@ $postID = get_the_ID();
 $cats = wp_kses_post($tools->getTermLinks( $postID, 'glossary_category' ));
 $tags = wp_kses_post($tools->getTermLinks( $postID, 'glossary_tag' ));            
 $details = '<article class="news-details">
-<!-- rrze-glossary --><p id="rrze-glossary" class="meta-footer">'
-. ( $cats ? '<span class="post-meta-categories"> '. __( 'Categories', 'rrze-answers' ) . ': ' . $cats . '</span>' : '' )
-. ( $tags ? '<span class="post-meta-tags"> '. __( 'Tags', 'rrze-answers' ) . ': ' . $tags . '</span>' : '' )
+<!-- bk-glossary --><p id="bk-glossary" class="meta-footer">'
+. ( $cats ? '<span class="post-meta-categories"> '. __( 'Categories', 'wp-ai' ) . ': ' . $cats . '</span>' : '' )
+. ( $tags ? '<span class="post-meta-tags"> '. __( 'Tags', 'wp-ai' ) . ': ' . $tags . '</span>' : '' )
 . '</p></article>';
 
 the_content(); 
 echo $details;
 
-wp_enqueue_style('rrze-answers-css');
-wp_enqueue_script('rrze-answers-accordion');
+wp_enqueue_style('wp-ai-css');
+wp_enqueue_script('wp-ai-accordion');
 
 echo '</div>';
 

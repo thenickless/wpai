@@ -1,10 +1,10 @@
 <?php
 
-namespace RRZE\Answers\Common\CPT;
+namespace BK\WPAI\Common\CPT;
 
 defined('ABSPATH') || exit;
 
-use function RRZE\Answers\plugin;
+use function BK\WPAI\plugin;
 
 abstract class CPT
 {
@@ -57,9 +57,9 @@ abstract class CPT
         add_filter('archive_template', [$this, 'filter_archive_template']);
         add_filter('taxonomy_template', [$this, 'filter_taxonomy_template']);
 
-        add_action('update_option_rrze-answers', [$this, 'checkSlugChange'], 10, 2);
+        add_action('update_option_bk-wp_ai', [$this, 'checkSlugChange'], 10, 2);
 
-        add_filter('pre_update_option_rrze-answers', [$this, 'sanitizeOptions'], 10, 2);
+        add_filter('pre_update_option_bk-wp_ai', [$this, 'sanitizeOptions'], 10, 2);
     }
 
 
@@ -81,9 +81,9 @@ abstract class CPT
         $pages = get_pages();
 
         echo '<div class="form-field term-linked-page-wrap">';
-        echo '<label for="linked_page">' . esc_html__('Linked Page', 'rrze-answers') . '</label>';
+        echo '<label for="linked_page">' . esc_html__('Linked Page', 'wp-ai') . '</label>';
         echo '<select name="linked_page">';
-        echo '<option value="">' . esc_html__('None', 'rrze-answers') . '</option>';
+        echo '<option value="">' . esc_html__('None', 'wp-ai') . '</option>';
 
         foreach ($pages as $page) {
             echo '<option value="' . esc_attr($page->ID) . '">' . esc_html($page->post_title) . '</option>';
@@ -101,10 +101,10 @@ abstract class CPT
         wp_nonce_field('save_term_linked_page_meta', 'term_linked_page_meta_nonce');
 
         echo '<tr class="form-field term-linked-page-wrap">';
-        echo '<th scope="row"><label for="linked_page">' . esc_html__('Linked Page', 'rrze-answers') . '</label></th>';
+        echo '<th scope="row"><label for="linked_page">' . esc_html__('Linked Page', 'wp-ai') . '</label></th>';
         echo '<td>';
         echo '<select name="linked_page">';
-        echo '<option value="">' . esc_html__('None', 'rrze-answers') . '</option>';
+        echo '<option value="">' . esc_html__('None', 'wp-ai') . '</option>';
 
         foreach ($pages as $page) {
             printf(
@@ -141,7 +141,7 @@ abstract class CPT
      */
     public function registerPostType()
     {
-        $options = get_option('rrze-answers');
+        $options = get_option('wp-ai');
 
         $slug = !empty($options[$this->slug_options['slug_option_key']])
             ? sanitize_title($options[$this->slug_options['slug_option_key']])
@@ -155,7 +155,7 @@ abstract class CPT
         ];
 
         register_post_type($this->post_type, [
-            'label' => $this->labels['name'] ?? __('Entries', 'rrze-answers'),
+            'label' => $this->labels['name'] ?? __('Entries', 'wp-ai'),
             'labels' => $this->labels,
             'supports' => $this->supports,
             'public' => true,
@@ -176,7 +176,7 @@ abstract class CPT
      */
     public function registerTaxonomies()
     {
-        $options = get_option('rrze-answers');
+        $options = get_option('wp-ai');
 
         foreach ($this->taxonomies as $t) {
 

@@ -1,5 +1,5 @@
 <?php
-namespace RRZE\Answers\Common;
+namespace BK\WPAI\Common;
 
 defined('ABSPATH') || exit;
 
@@ -9,6 +9,6 @@ class CustomException extends \Exception
     {
         parent::__construct($message, $code, $previous);
 
-        do_action('rrze.log.error', ['plugin' => 'rrze-answers', 'wp-error' => $message]);
+        do_action('bk.log.error', ['plugin' => 'wp-ai', 'wp-error' => $message]);
     }
 }

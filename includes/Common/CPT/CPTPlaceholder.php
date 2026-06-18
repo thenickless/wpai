@@ -1,15 +1,15 @@
 <?php
 
-namespace RRZE\Answers\Common\CPT;
+namespace BK\WPAI\Common\CPT;
 
 defined('ABSPATH') || exit;
 
 class CPTPlaceholder extends CPT
 {
-    protected $post_type = 'rrze_placeholder';
+    protected $post_type = 'bk_placeholder';
     protected $templates = [
-        'single'  => 'rrze_placeholder-single.php',
-        'archive' => 'rrze_placeholder-archive.php',
+        'single'  => 'bk_placeholder-single.php',
+        'archive' => 'bk_placeholder-archive.php',
     ];
 
     protected $rest_base   = 'placeholder';
@@ -30,14 +30,14 @@ class CPTPlaceholder extends CPT
     public function __construct()
     {
         $this->labels = [
-            'name' => _x('Placeholder', 'Placeholders', 'rrze-answers'),
-            'singular_name' => _x('Placeholder', 'Single placeholder', 'rrze-answers'),
-            'menu_name' => __('Placeholder', 'rrze-answers'),
-            'add_new' => __('Add placeholder', 'rrze-answers'),
-            'add_new_item' => __('Add new placeholder', 'rrze-answers'),
-            'edit_item' => __('Edit placeholder', 'rrze-answers'),
-            'all_items' => __('All placeholders', 'rrze-answers'),
-            'search_items' => __('Search placeholder', 'rrze-answers'),
+            'name' => _x('Placeholder', 'Placeholders', 'wp-ai'),
+            'singular_name' => _x('Placeholder', 'Single placeholder', 'wp-ai'),
+            'menu_name' => __('Placeholder', 'wp-ai'),
+            'add_new' => __('Add placeholder', 'wp-ai'),
+            'add_new_item' => __('Add new placeholder', 'wp-ai'),
+            'edit_item' => __('Edit placeholder', 'wp-ai'),
+            'all_items' => __('All placeholders', 'wp-ai'),
+            'search_items' => __('Search placeholder', 'wp-ai'),
         ];
 
         parent::__construct($this->post_type);
@@ -52,7 +52,7 @@ class CPTPlaceholder extends CPT
      */
     public function maybe_disable_canonical_redirect(): void
     {
-        $options = get_option('rrze-answers');
+        $options = get_option('wp-ai');
 
         $slug = !empty($options['custom_placeholder_slug'])
             ? sanitize_title($options['custom_placeholder_slug'])
@@ -72,7 +72,7 @@ class CPTPlaceholder extends CPT
     {
         global $wp_query;
 
-        $options = get_option('rrze-answers');
+        $options = get_option('wp-ai');
 
         $slug = !empty($options['custom_placeholder_slug'])
             ? sanitize_title($options['custom_placeholder_slug'])

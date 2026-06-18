@@ -1,10 +1,10 @@
 <?php
 
-namespace RRZE\Answers\Common\Sync;
+namespace BK\WPAI\Common\Sync;
 
-use RRZE\Answers\Common\API\SyncAPI;
+use BK\WPAI\Common\API\SyncAPI;
 
-use RRZE\Answers\Common\Tools;
+use BK\WPAI\Common\Tools;
 
 defined('ABSPATH') || exit;
 
@@ -16,7 +16,7 @@ class Sync
     public function __construct()
     {
         $this->syncAPI = new SyncAPI();
-        add_action('rrze_answers_auto_sync', [$this, 'runCronjob']);
+        add_action('wp_ai_auto_sync', [$this, 'runCronjob']);
     }
 
     public function runCronjob()
@@ -26,7 +26,7 @@ class Sync
 
     public function setCronjob($frequency)
     {
-        $hook = 'rrze_answers_auto_sync';
+        $hook = 'wp_ai_auto_sync';
 
         if ($frequency == '') {
             wp_clear_scheduled_hook($hook);
@@ -54,8 +54,8 @@ class Sync
         $dt = new \DateTime('@' . $timestamp); // @ = UTC timestamp
         $dt->setTimezone($wp_tz);
 
-        $message = __('Next automatic synchronization:', 'rrze-answers') . ' ' . $dt->format('d.m.Y H:i:s');
-        add_settings_error('RRZE-Answers', 'autosynccomplete', $message, 'updated');
+        $message = __('Next automatic synchronization:', 'wp-ai') . ' ' . $dt->format('d.m.Y H:i:s');
+        add_settings_error('BK-WP AI', 'autosynccomplete', $message, 'updated');
     }
 
 
@@ -66,14 +66,14 @@ class Sync
         $iCnt = 0;
 
         $domains = $this->syncAPI->getDomains();
-        $options = get_option('rrze-answers');
+        $options = get_option('wp-ai');
         // $allowSettingsError = ($mode == 'manual' ? true : false);
         $allowSettingsError = true;
         $syncRan = false;
 
         $types = [
             'faq' => 'FAQ',
-            'glossary' => __('Glossary', 'rrze-answers')
+            'glossary' => __('Glossary', 'wp-ai')
         ];
 
         foreach ($domains as $identifier => $url) {
@@ -87,42 +87,42 @@ class Sync
                 if ($categories) {
                     $aCnt = $this->syncAPI->setEntries($type, $identifier, $categories, $url);
                     if (is_wp_error($aCnt)) {
-                        $error_msg = __('Domain', 'rrze-answers') . ' "' . $url . '": ' . $label . ' - ' . $aCnt->get_error_message();
+                        $error_msg = __('Domain', 'wp-ai') . ' "' . $url . '": ' . $label . ' - ' . $aCnt->get_error_message();
                         Tools::logIt($error_msg . ' | ' . $mode);
                         if ($allowSettingsError) {
-                            add_settings_error('RRZE-Answers', 'syncerror', $error_msg, 'error');
+                            add_settings_error('BK-WP AI', 'syncerror', $error_msg, 'error');
                         }
                         continue;
                     }
                     $syncRan = true;
 
                     foreach ($aCnt['URLhasSlider'] as $URLhasSlider) {
-                        $error_msg = __('Domain', 'rrze-answers') . ' "' . $url . '": ' . __('Synchronization error. This ' . $label . ' contains sliders ([gallery]) and cannot be synchronized:', 'rrze-answers') . ' ' . $URLhasSlider;
+                        $error_msg = __('Domain', 'wp-ai') . ' "' . $url . '": ' . __('Synchronization error. This ' . $label . ' contains sliders ([gallery]) and cannot be synchronized:', 'wp-ai') . ' ' . $URLhasSlider;
                         Tools::logIt($error_msg . ' | ' . $mode);
 
                         if ($allowSettingsError) {
-                            add_settings_error('RRZE-Answers', 'syncerror', $error_msg, 'error');
+                            add_settings_error('BK-WP AI', 'syncerror', $error_msg, 'error');
                         }
                     }
 
-                    $sync_msg = __('Domain', 'rrze-answers') . ' "' . $url . '": ' . $label . ' ' . __('Synchronization completed.', 'rrze-answers') . ' ' . $aCnt['iNew'] . ' ' . __('new', 'rrze-answers') . ', ' . $aCnt['iUpdated'] . ' ' . __('updated', 'rrze-answers') . ' ' . __('and', 'rrze-answers') . ' ' . $aCnt['iDeleted'] . ' ' . __('deleted', 'rrze-answers') . '. ' . __('Required time:', 'rrze-answers') . ' ' . sprintf('%.1f ', microtime(true) - $tStartDetail) . __('seconds', 'rrze-answers');
+                    $sync_msg = __('Domain', 'wp-ai') . ' "' . $url . '": ' . $label . ' ' . __('Synchronization completed.', 'wp-ai') . ' ' . $aCnt['iNew'] . ' ' . __('new', 'wp-ai') . ', ' . $aCnt['iUpdated'] . ' ' . __('updated', 'wp-ai') . ' ' . __('and', 'wp-ai') . ' ' . $aCnt['iDeleted'] . ' ' . __('deleted', 'wp-ai') . '. ' . __('Required time:', 'wp-ai') . ' ' . sprintf('%.1f ', microtime(true) - $tStartDetail) . __('seconds', 'wp-ai');
                     Tools::logIt($sync_msg . ' | ' . $mode);
 
                     if ($allowSettingsError) {
-                        add_settings_error('RRZE-Answers', 'synccompleted', $sync_msg, 'success');
+                        add_settings_error('BK-WP AI', 'synccompleted', $sync_msg, 'success');
                     }
                 }
             }
         }
 
         if ($syncRan) {
-            $sync_msg = __('All synchronizations completed', 'rrze-answers') . '. ' . __('Required time:', 'rrze-answers') . ' ' . sprintf('%.1f ', microtime(true) - $tStart) . __('seconds', 'rrze-answers');
+            $sync_msg = __('All synchronizations completed', 'wp-ai') . '. ' . __('Required time:', 'wp-ai') . ' ' . sprintf('%.1f ', microtime(true) - $tStart) . __('seconds', 'wp-ai');
         } else {
-            $sync_msg = __('Settings updated', 'rrze-answers');
+            $sync_msg = __('Settings updated', 'wp-ai');
         }
 
         if ($allowSettingsError) {
-            add_settings_error('RRZE-Answers', 'synccompleted', $sync_msg, 'success');
+            add_settings_error('BK-WP AI', 'synccompleted', $sync_msg, 'success');
         }
 
         Tools::logIt($sync_msg . ' | ' . $mode);

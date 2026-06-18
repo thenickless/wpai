@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace RRZE\Answers\Common\AdminInterfaces;
+namespace BK\WPAI\Common\AdminInterfaces;
 
 defined('ABSPATH') || exit;
 
-use RRZE\Answers\Common\Tools;
+use BK\WPAI\Common\Tools;
 
 class AdminUI_Placeholder extends AdminUI
 {
@@ -15,7 +15,7 @@ class AdminUI_Placeholder extends AdminUI
 
     public function __construct()
     {
-        parent::__construct('rrze_placeholder', [
+        parent::__construct('bk_placeholder', [
             'has_taxonomies' => false,
             'default_orderby' => 'title',
             'default_order' => 'ASC',
@@ -31,7 +31,7 @@ class AdminUI_Placeholder extends AdminUI
 
     protected function get_title(): string
     {
-        return __('Enter placeholder here', 'rrze-answers');
+        return __('Enter placeholder here', 'wp-ai');
     }
 
     /* ---------------- Metaboxes ---------------- */
@@ -41,7 +41,7 @@ class AdminUI_Placeholder extends AdminUI
         return [
             [
                 'id' => 'langbox',
-                'title' => __('Language', 'rrze-answers'),
+                'title' => __('Language', 'wp-ai'),
                 'callback' => [$this, 'langboxCallback'],
                 'context' => 'side',
             ],
@@ -51,7 +51,7 @@ class AdminUI_Placeholder extends AdminUI
     public function langboxCallback(\WP_Post $post): void
     {
         if (!$this->metaNoncePrinted) {
-            wp_nonce_field('rrze_placeholder_save_meta', 'rrze_placeholder_meta_nonce');
+            wp_nonce_field('bk_placeholder_save_meta', 'bk_placeholder_meta_nonce');
             $this->metaNoncePrinted = true;
         }
 
@@ -65,7 +65,7 @@ class AdminUI_Placeholder extends AdminUI
             echo '<option value="' . esc_attr($code) . '" ' . selected($current, $code, false) . '>' . esc_html($desc) . '</option>';
         }
         echo '</select>';
-        echo '<p class="description">' . esc_html__('Language of this placeholder', 'rrze-answers') . '</p>';
+        echo '<p class="description">' . esc_html__('Language of this placeholder', 'wp-ai') . '</p>';
     }
 
     // public function renderShortcodeBox(): void
@@ -101,8 +101,8 @@ class AdminUI_Placeholder extends AdminUI
             'read_only_content_box',
             sprintf(
                 '%1$s. %2$s',
-                esc_html__('This placeholder cannot be edited because it is synchronized', 'rrze-answers'),
-                $link ? '<a href="' . esc_url($link) . '" target="_blank">' . esc_html__('You can edit it at the source', 'rrze-answers') . '</a>' : ''
+                esc_html__('This placeholder cannot be edited because it is synchronized', 'wp-ai'),
+                $link ? '<a href="' . esc_url($link) . '" target="_blank">' . esc_html__('You can edit it at the source', 'wp-ai') . '</a>' : ''
             ),
             [$this, 'fillContentBoxplaceholder'],
             $this->post_type,
@@ -118,10 +118,10 @@ class AdminUI_Placeholder extends AdminUI
         $langLabel = $this->langChoices[$titleLang] ?? $titleLang;
 
         echo '<h1>' . esc_html($post->post_title) . '</h1><br>';
-        echo '<strong>' . esc_html__('Full form', 'rrze-answers') . ':</strong>';
+        echo '<strong>' . esc_html__('Full form', 'wp-ai') . ':</strong>';
         echo '<p>' . esc_html($placeholder) . '</p>';
         if ($langLabel) {
-            echo '<p><i>' . esc_html__('Pronunciation', 'rrze-answers') . ': ' . esc_html($langLabel) . '</i></p>';
+            echo '<p><i>' . esc_html__('Pronunciation', 'wp-ai') . ': ' . esc_html($langLabel) . '</i></p>';
         }
     }
 
@@ -137,7 +137,7 @@ class AdminUI_Placeholder extends AdminUI
             return;
         }
 
-        if (!isset($_POST['rrze_placeholder_meta_nonce']) || !wp_verify_nonce(wp_unslash((string) $_POST['rrze_placeholder_meta_nonce']), 'rrze_placeholder_save_meta')) {
+        if (!isset($_POST['bk_placeholder_meta_nonce']) || !wp_verify_nonce(wp_unslash((string) $_POST['bk_placeholder_meta_nonce']), 'bk_placeholder_save_meta')) {
             return;
         }
 
@@ -157,11 +157,11 @@ class AdminUI_Placeholder extends AdminUI
 
     protected function listTableColumns(array $cols): array
     {
-        $cols['title'] = __('Placeholder', 'rrze-answers');
-        $cols['lang'] = __('Language', 'rrze-answers');
+        $cols['title'] = __('Placeholder', 'wp-ai');
+        $cols['lang'] = __('Language', 'wp-ai');
 
-        if ((new Tools())->hasSync('rrze_placeholder')) {
-            $cols['source'] = __('Source', 'rrze-answers');
+        if ((new Tools())->hasSync('bk_placeholder')) {
+            $cols['source'] = __('Source', 'wp-ai');
         }
 
         return $cols;
@@ -169,8 +169,8 @@ class AdminUI_Placeholder extends AdminUI
 
     protected function listTableSortableColumns(array $cols): array
     {
-        $cols['lang'] = __('Language', 'rrze-answers');
-        $cols['source'] = __('Source', 'rrze-answers');
+        $cols['lang'] = __('Language', 'wp-ai');
+        $cols['source'] = __('Source', 'wp-ai');
         return $cols;
     }
 
@@ -193,9 +193,9 @@ class AdminUI_Placeholder extends AdminUI
      */
     protected function loadLanguageChoices(): array
     {
-        // Try RRZE\Answers\Defaults::get('lang') if available
-        if (class_exists('\\RRZE\\Answers\\Defaults')) {
-            $defaults = new \RRZE\Answers\Defaults();
+        // Try BK\WPAI\Defaults::get('lang') if available
+        if (class_exists('\\BK\\WP AI\\Defaults')) {
+            $defaults = new \BK\WPAI\Defaults();
             if (method_exists($defaults, 'get')) {
                 $langs = $defaults->get('lang');
                 if (is_array($langs) && !empty($langs)) {

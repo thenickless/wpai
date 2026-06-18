@@ -1,14 +1,14 @@
-/* Globals for letter bar and answers component */
-$rrze-answers-color-bg-empty: transparent;
-$rrze-answers-color-border-empty: #e9edf2;
-$rrze-answers-color-text-empty: #e9edf2;
+/* Globals for letter bar and wp_ai component */
+$wp-ai-color-bg-empty: transparent;
+$wp-ai-color-border-empty: #e9edf2;
+$wp-ai-color-text-empty: #e9edf2;
 
-$rrze-answers-color-bg-filled: #dfe6ec;
-$rrze-answers-color-bg-hover: #d2ddeb;
-$rrze-answers-color-text-filled: #036;
+$wp-ai-color-bg-filled: #dfe6ec;
+$wp-ai-color-bg-hover: #d2ddeb;
+$wp-ai-color-text-filled: #036;
 
-$rrze-answers-letter-size: 2rem;
-$rrze-answers-font-size: 0.875rem;
+$wp-ai-letter-size: 2rem;
+$wp-ai-font-size: 0.875rem;
 
 /* Faculty colors (base + dark + contrast) */
 $default-fau: #04316A;
@@ -46,30 +46,30 @@ $surfaceText: #444444;
 $borderColor: #dfe6ec;
 
 /* Base content panel */
-.rrze-answers-content {
+.wp-ai-content {
   padding: 1rem 1rem 0.5rem;
 }
 
-.rrze-answers-term-content {
+.wp-ai-term-content {
   margin-left: 1em;
 }
 
 /* search field */
-.rrze-answers-search {
+.wp-ai-search {
   margin: 0 0 1rem;
 }
 
-.rrze-answers-search__input {
+.wp-ai-search__input {
   width: 100%;
   max-width: 32rem;
 }
 
 /* Masonry columns for tiles */
-.rrze-answers-masonry {
+.wp-ai-masonry {
   column-count: 1;
   column-gap: 1.5rem;
 
-  .rrze-answers-item {
+  .wp-ai-item {
     break-inside: avoid;
     margin-bottom: 1.5rem;
   }
@@ -84,133 +84,133 @@ $borderColor: #dfe6ec;
 }
 
 /* Summary basics */
-details.rrze-answers-term summary,
-details.rrze-answers-item summary {
+details.wp-ai-term summary,
+details.wp-ai-item summary {
   cursor: pointer;
   font-weight: 700;
   margin-top: 0.5em;
   outline: none;
 }
 
-/* Root wrapper for answers/glossary/FAQ block */
-.rrze-answers {
-  --rrze-answers-accordion-bg-default: var(--color-ContentBorders, #d2ddeb);
-  --rrze-answers-accordion-text-default: var(--color-Text, #444);
-  --rrze-answers-accordion-bg-active: var(--color-primary-ci-hell, #{$default-fau});
-  --rrze-answers-accordion-text-active: var(--color-primary-ci-hell-kontrast, #fff);
-  --rrze-answers-accordion-bg-active-hover: var(--color-primary-dunkler, #{$default-fau-dark});
-  --rrze-answers-accordion-text-active-hover: var(--color-primary-dunkler-kontrast, #fff);
+/* Root wrapper for wp_ai/glossary/FAQ block */
+.wp-ai {
+  --wp-ai-accordion-bg-default: var(--color-ContentBorders, #d2ddeb);
+  --wp-ai-accordion-text-default: var(--color-Text, #444);
+  --wp-ai-accordion-bg-active: var(--color-primary-ci-hell, #{$default-fau});
+  --wp-ai-accordion-text-active: var(--color-primary-ci-hell-kontrast, #fff);
+  --wp-ai-accordion-bg-active-hover: var(--color-primary-dunkler, #{$default-fau-dark});
+  --wp-ai-accordion-text-active-hover: var(--color-primary-dunkler-kontrast, #fff);
 
-  --rrze-answers-pagination-color-default: var(--FAU-Col-FAU-Blau-100, #e9edf2);
-  --rrze-answers-pagination-background-color-default: var(--FAU-Col-FAU-Blau-100, transparent);
+  --wp-ai-pagination-color-default: var(--FAU-Col-FAU-Blau-100, #e9edf2);
+  --wp-ai-pagination-background-color-default: var(--FAU-Col-FAU-Blau-100, transparent);
 
-  --rrze-answers-pagination-color-active: var(--FAU-Col-FAU-Weiss-100, #036);
-  --rrze-answers-pagination-color-active-hover: var(--FAU-Col-FAU-Blau-100, #fff);
+  --wp-ai-pagination-color-active: var(--FAU-Col-FAU-Weiss-100, #036);
+  --wp-ai-pagination-color-active-hover: var(--FAU-Col-FAU-Blau-100, #fff);
 
-  --rrze-answers-pagination-background-color-active: var(--FAU-Col-FAU-Blau-100, #dfe6ec);
-  --rrze-answers-pagination-background-color-active-hover: var(--FAU-Col-FAU-Blau-25, #036);
+  --wp-ai-pagination-background-color-active: var(--FAU-Col-FAU-Blau-100, #dfe6ec);
+  --wp-ai-pagination-background-color-active-hover: var(--FAU-Col-FAU-Blau-25, #036);
 
-  --rrze-answers-pagination-border-radius: var(--border-radius-buttons, 4px);
-  --rrze-answers-pagination-border-color: var(--rrze-answers-pagination-color-default);
+  --wp-ai-pagination-border-radius: var(--border-radius-buttons, 4px);
+  --wp-ai-pagination-border-color: var(--wp-ai-pagination-color-default);
 
-  --rrze-answers-pagination-margin: 0.1rem;
-  --rrze-answers-pagination-padding: var(--Spacing-2x, 0.5rem) var(--Spacing-4x, 1rem);
-  --rrze-answers-pagination-animation: var(--basic-animation, all 0.2s ease-in-out);
+  --wp-ai-pagination-margin: 0.1rem;
+  --wp-ai-pagination-padding: var(--Spacing-2x, 0.5rem) var(--Spacing-4x, 1rem);
+  --wp-ai-pagination-animation: var(--basic-animation, all 0.2s ease-in-out);
 
   .fau-elemental & {
-    --rrze-answers-pagination-border-color: transparent;
-    --rrze-answers-pagination-background-color-default: transparent;
+    --wp-ai-pagination-border-color: transparent;
+    --wp-ai-pagination-background-color-default: transparent;
   }
 
   /* Default (FAU) palette via CSS variables (used by accordion) */
-  .rrze-answers-item {
-    --rrze-answers-accordion-bg-active: var(--color-primary-ci-hell, #{$default-fau});
-    --rrze-answers-accordion-text-active: var(--color-primary-ci-hell-kontrast, #fff);
-    --rrze-answers-accordion-bg-active-hover: var(--color-primary-dunkler, #{$default-fau-dark});
-    --rrze-answers-accordion-text-active-hover: var(--color-primary-dunkler-kontrast, #fff);
+  .wp-ai-item {
+    --wp-ai-accordion-bg-active: var(--color-primary-ci-hell, #{$default-fau});
+    --wp-ai-accordion-text-active: var(--color-primary-ci-hell-kontrast, #fff);
+    --wp-ai-accordion-bg-active-hover: var(--color-primary-dunkler, #{$default-fau-dark});
+    --wp-ai-accordion-text-active-hover: var(--color-primary-dunkler-kontrast, #fff);
 
-    --rrze-answers-accent: var(--rrze-answers-accordion-bg-active);
-    --rrze-answers-contrast: var(--rrze-answers-accordion-text-active);
-    --rrze-answers-accent-dark: var(--rrze-answers-accordion-bg-active-hover);
-    --rrze-answers-contrast-dark: var(--rrze-answers-accordion-text-active-hover);
+    --wp-ai-accent: var(--wp-ai-accordion-bg-active);
+    --wp-ai-contrast: var(--wp-ai-accordion-text-active);
+    --wp-ai-accent-dark: var(--wp-ai-accordion-bg-active-hover);
+    --wp-ai-contrast-dark: var(--wp-ai-accordion-text-active-hover);
   }
 
   /* Faculty mappings */
-  .rrze-answers-item.is-fau {
-    --rrze-answers-accordion-bg-active: var(--color-zentral-ci-hell, #{$default-fau});
-    --rrze-answers-accordion-text-active: var(--color-zentral-ci-hell-kontrast, #fff);
-    --rrze-answers-accordion-bg-active-hover: var(--color-zentral-dunkler, #{$default-fau-dark});
-    --rrze-answers-accordion-text-active-hover: var(--color-zentral-ci-dunkler-kontrast, #fff);
+  .wp-ai-item.is-fau {
+    --wp-ai-accordion-bg-active: var(--color-zentral-ci-hell, #{$default-fau});
+    --wp-ai-accordion-text-active: var(--color-zentral-ci-hell-kontrast, #fff);
+    --wp-ai-accordion-bg-active-hover: var(--color-zentral-dunkler, #{$default-fau-dark});
+    --wp-ai-accordion-text-active-hover: var(--color-zentral-ci-dunkler-kontrast, #fff);
 
-    --rrze-answers-accent: var(--rrze-answers-accordion-bg-active);
-    --rrze-answers-contrast: var(--rrze-answers-accordion-text-active);
-    --rrze-answers-accent-dark: var(--rrze-answers-accordion-bg-active-hover);
-    --rrze-answers-contrast-dark: var(--rrze-answers-accordion-text-active-hover);
+    --wp-ai-accent: var(--wp-ai-accordion-bg-active);
+    --wp-ai-contrast: var(--wp-ai-accordion-text-active);
+    --wp-ai-accent-dark: var(--wp-ai-accordion-bg-active-hover);
+    --wp-ai-contrast-dark: var(--wp-ai-accordion-text-active-hover);
   }
 
-  .rrze-answers-item.is-phil {
-    --rrze-answers-accordion-bg-active: var(--color-phil-ci-hell, #{$default-phil});
-    --rrze-answers-accordion-text-active: var(--color-phil-ci-hell-kontrast, #000);
-    --rrze-answers-accordion-bg-active-hover: var(--color-phil-dunkler, #{$default-phil-dark});
-    --rrze-answers-accordion-text-active-hover: var(--color-phil-ci-hell-kontrast, #000);
+  .wp-ai-item.is-phil {
+    --wp-ai-accordion-bg-active: var(--color-phil-ci-hell, #{$default-phil});
+    --wp-ai-accordion-text-active: var(--color-phil-ci-hell-kontrast, #000);
+    --wp-ai-accordion-bg-active-hover: var(--color-phil-dunkler, #{$default-phil-dark});
+    --wp-ai-accordion-text-active-hover: var(--color-phil-ci-hell-kontrast, #000);
 
-    --rrze-answers-accent: var(--rrze-answers-accordion-bg-active);
-    --rrze-answers-contrast: var(--rrze-answers-accordion-text-active);
-    --rrze-answers-accent-dark: var(--rrze-answers-accordion-bg-active-hover);
-    --rrze-answers-contrast-dark: var(--rrze-answers-accordion-text-active-hover);
+    --wp-ai-accent: var(--wp-ai-accordion-bg-active);
+    --wp-ai-contrast: var(--wp-ai-accordion-text-active);
+    --wp-ai-accent-dark: var(--wp-ai-accordion-bg-active-hover);
+    --wp-ai-contrast-dark: var(--wp-ai-accordion-text-active-hover);
   }
 
-  .rrze-answers-item.is-rw {
-    --rrze-answers-accordion-bg-active: var(--color-rw-ci-hell, #{$default-rw});
-    --rrze-answers-accordion-text-active: var(--color-rw-ci-hell-kontrast, #fff);
-    --rrze-answers-accordion-bg-active-hover: var(--color-rw-dunkler, #{$default-rw-dark});
-    --rrze-answers-accordion-text-active-hover: var(--color-rw-ci-hell-kontrast, #fff);
+  .wp-ai-item.is-rw {
+    --wp-ai-accordion-bg-active: var(--color-rw-ci-hell, #{$default-rw});
+    --wp-ai-accordion-text-active: var(--color-rw-ci-hell-kontrast, #fff);
+    --wp-ai-accordion-bg-active-hover: var(--color-rw-dunkler, #{$default-rw-dark});
+    --wp-ai-accordion-text-active-hover: var(--color-rw-ci-hell-kontrast, #fff);
 
-    --rrze-answers-accent: var(--rrze-answers-accordion-bg-active);
-    --rrze-answers-contrast: var(--rrze-answers-accordion-text-active);
-    --rrze-answers-accent-dark: var(--rrze-answers-accordion-bg-active-hover);
-    --rrze-answers-contrast-dark: var(--rrze-answers-accordion-text-active-hover);
+    --wp-ai-accent: var(--wp-ai-accordion-bg-active);
+    --wp-ai-contrast: var(--wp-ai-accordion-text-active);
+    --wp-ai-accent-dark: var(--wp-ai-accordion-bg-active-hover);
+    --wp-ai-contrast-dark: var(--wp-ai-accordion-text-active-hover);
   }
 
-  .rrze-answers-item.is-med {
-    --rrze-answers-accordion-bg-active: var(--color-med-ci-hell, #{$default-med});
-    --rrze-answers-accordion-text-active: var(--color-med-ci-hell-kontrast, #000);
-    --rrze-answers-accordion-bg-active-hover: var(--color-med-dunkler, #{$default-med-dark});
-    --rrze-answers-accordion-text-active-hover: var(--color-med-ci-dunkel-kontrast, #fff);
+  .wp-ai-item.is-med {
+    --wp-ai-accordion-bg-active: var(--color-med-ci-hell, #{$default-med});
+    --wp-ai-accordion-text-active: var(--color-med-ci-hell-kontrast, #000);
+    --wp-ai-accordion-bg-active-hover: var(--color-med-dunkler, #{$default-med-dark});
+    --wp-ai-accordion-text-active-hover: var(--color-med-ci-dunkel-kontrast, #fff);
 
-    --rrze-answers-accent: var(--rrze-answers-accordion-bg-active);
-    --rrze-answers-contrast: var(--rrze-answers-accordion-text-active);
-    --rrze-answers-accent-dark: var(--rrze-answers-accordion-bg-active-hover);
-    --rrze-answers-contrast-dark: var(--rrze-answers-accordion-text-active-hover);
+    --wp-ai-accent: var(--wp-ai-accordion-bg-active);
+    --wp-ai-contrast: var(--wp-ai-accordion-text-active);
+    --wp-ai-accent-dark: var(--wp-ai-accordion-bg-active-hover);
+    --wp-ai-contrast-dark: var(--wp-ai-accordion-text-active-hover);
   }
 
-  .rrze-answers-item.is-nat {
-    --rrze-answers-accordion-bg-active: var(--color-nat-ci-hell, #{$default-nat});
-    --rrze-answers-accordion-text-active: var(--color-nat-ci-hell-kontrast, #000);
-    --rrze-answers-accordion-bg-active-hover: var(--color-nat-dunkler, #{$default-nat-dark});
-    --rrze-answers-accordion-text-active-hover: var(--color-nat-dunkler-kontrast, #fff);
+  .wp-ai-item.is-nat {
+    --wp-ai-accordion-bg-active: var(--color-nat-ci-hell, #{$default-nat});
+    --wp-ai-accordion-text-active: var(--color-nat-ci-hell-kontrast, #000);
+    --wp-ai-accordion-bg-active-hover: var(--color-nat-dunkler, #{$default-nat-dark});
+    --wp-ai-accordion-text-active-hover: var(--color-nat-dunkler-kontrast, #fff);
 
-    --rrze-answers-accent: var(--rrze-answers-accordion-bg-active);
-    --rrze-answers-contrast: var(--rrze-answers-accordion-text-active);
-    --rrze-answers-accent-dark: var(--rrze-answers-accordion-bg-active-hover);
-    --rrze-answers-contrast-dark: var(--rrze-answers-accordion-text-active-hover);
+    --wp-ai-accent: var(--wp-ai-accordion-bg-active);
+    --wp-ai-contrast: var(--wp-ai-accordion-text-active);
+    --wp-ai-accent-dark: var(--wp-ai-accordion-bg-active-hover);
+    --wp-ai-contrast-dark: var(--wp-ai-accordion-text-active-hover);
   }
 
-  .rrze-answers-item.is-tf {
-    --rrze-answers-accordion-bg-active: var(--color-tf-ci-hell, #{$default-tf});
-    --rrze-answers-accordion-text-active: var(--color-tf-ci-dunkel-kontrast, #000);
-    --rrze-answers-accordion-bg-active-hover: var(--color-tf-dunkler, #{$default-tf-dark});
-    --rrze-answers-accordion-text-active-hover: var(--color-tf-ci-dunkel-kontrast, #fff);
+  .wp-ai-item.is-tf {
+    --wp-ai-accordion-bg-active: var(--color-tf-ci-hell, #{$default-tf});
+    --wp-ai-accordion-text-active: var(--color-tf-ci-dunkel-kontrast, #000);
+    --wp-ai-accordion-bg-active-hover: var(--color-tf-dunkler, #{$default-tf-dark});
+    --wp-ai-accordion-text-active-hover: var(--color-tf-ci-dunkel-kontrast, #fff);
 
-    --rrze-answers-accent: var(--rrze-answers-accordion-bg-active);
-    --rrze-answers-contrast: var(--rrze-answers-accordion-text-active);
-    --rrze-answers-accent-dark: var(--rrze-answers-accordion-bg-active-hover);
-    --rrze-answers-contrast-dark: var(--rrze-answers-accordion-text-active-hover);
+    --wp-ai-accent: var(--wp-ai-accordion-bg-active);
+    --wp-ai-contrast: var(--wp-ai-accordion-text-active);
+    --wp-ai-accent-dark: var(--wp-ai-accordion-bg-active-hover);
+    --wp-ai-contrast-dark: var(--wp-ai-accordion-text-active-hover);
   }
 
   /* Tagcloud */
-  .letters a.rrze-answers-tagcloud-item {
-    font-size: var(--rrze-answers-tagcloud-size, 1rem);
+  .letters a.wp-ai-tagcloud-item {
+    font-size: var(--wp-ai-tagcloud-size, 1rem);
   }
 
   /* A–Z letters / pagination bar */
@@ -224,13 +224,13 @@ details.rrze-answers-item summary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: $rrze-answers-letter-size;
-      height: $rrze-answers-letter-size;
+      width: $wp-ai-letter-size;
+      height: $wp-ai-letter-size;
       margin: 2px;
-      border: 1px solid var(--rrze-answers-pagination-border-color, $rrze-answers-color-border-empty);
-      border-radius: var(--rrze-answers-pagination-border-radius, 4px);
+      border: 1px solid var(--wp-ai-pagination-border-color, $wp-ai-color-border-empty);
+      border-radius: var(--wp-ai-pagination-border-radius, 4px);
       background-clip: padding-box;
-      font-size: $rrze-answers-font-size;
+      font-size: $wp-ai-font-size;
       line-height: 1;
       transition: background-color .2s ease, color .2s ease;
 
@@ -239,34 +239,34 @@ details.rrze-answers-item summary {
         display: block;
         width: 100%;
         height: 100%;
-        color: var(--rrze-answers-pagination-color-default, $rrze-answers-color-text-empty);
-        background-color: var(--rrze-answers-pagination-background-color-default, $rrze-answers-color-bg-empty);
+        color: var(--wp-ai-pagination-color-default, $wp-ai-color-text-empty);
+        background-color: var(--wp-ai-pagination-background-color-default, $wp-ai-color-bg-empty);
         border-radius: inherit;
         font-size: 1.125rem;
         font-weight: 600;
-        line-height: $rrze-answers-letter-size; // vertical centering
+        line-height: $wp-ai-letter-size; // vertical centering
         text-align: center;
         text-decoration: none;
-        transition: var(--rrze-answers-pagination-animation, all 0.2s ease-in-out);
+        transition: var(--wp-ai-pagination-animation, all 0.2s ease-in-out);
       }
 
       &.filled {
 
         a,
         span {
-          background-color: var(--rrze-answers-pagination-background-color-active,
-              $rrze-answers-color-bg-filled );
-          color: var(--rrze-answers-pagination-color-active,
-              $rrze-answers-color-text-filled );
+          background-color: var(--wp-ai-pagination-background-color-active,
+              $wp-ai-color-bg-filled );
+          color: var(--wp-ai-pagination-color-active,
+              $wp-ai-color-text-filled );
         }
 
         a:focus,
         a:hover,
         span:hover {
-          color: var(--rrze-answers-pagination-color-active-hover,
-              $rrze-answers-color-text-filled );
-          background-color: var(--rrze-answers-pagination-background-color-active-hover,
-              $rrze-answers-color-bg-hover );
+          color: var(--wp-ai-pagination-color-active-hover,
+              $wp-ai-color-text-filled );
+          background-color: var(--wp-ai-pagination-background-color-active-hover,
+              $wp-ai-color-bg-hover );
           text-decoration: none;
         }
       }
@@ -280,7 +280,7 @@ details.rrze-answers-item summary {
   }
 
   /* Accordion details */
-  details.rrze-answers-item {
+  details.wp-ai-item {
     border: 1px solid $borderColor;
     margin-bottom: 5px;
 
@@ -294,9 +294,9 @@ details.rrze-answers-item summary {
       text-align: left;
       cursor: pointer;
       border: 0 !important;
-      background: var(--rrze-answers-accordion-bg-default);
-      color: var(--rrze-answers-accordion-text-default);
-      box-shadow: inset 10px 0 0 0 var(--rrze-answers-accent) !important;
+      background: var(--wp-ai-accordion-bg-default);
+      color: var(--wp-ai-accordion-text-default);
+      box-shadow: inset 10px 0 0 0 var(--wp-ai-accent) !important;
 
       &::marker {
         content: "";
@@ -320,20 +320,20 @@ details.rrze-answers-item summary {
 
       &:hover,
       &:focus {
-        background: var(--rrze-answers-accordion-bg-active);
-        color:var(--rrze-answers-accordion-text-active-hover);
+        background: var(--wp-ai-accordion-bg-active);
+        color:var(--wp-ai-accordion-text-active-hover);
       }
     }
 
     &[open]>summary {
-      background: var(--rrze-answers-accordion-bg-active-hover);
-      color: var(--rrze-answers-accordion-text-active-hover);
-      box-shadow: inset 10px 0 0 0 var(--rrze-answers-accent-dark) !important;
+      background: var(--wp-ai-accordion-bg-active-hover);
+      color: var(--wp-ai-accordion-text-active-hover);
+      box-shadow: inset 10px 0 0 0 var(--wp-ai-accent-dark) !important;
 
       &::before {
         mask: none;
         -webkit-mask: none;
-        background: var(--rrze-answers-accent);
+        background: var(--wp-ai-accent);
       }
 
       &::after {
@@ -342,16 +342,16 @@ details.rrze-answers-item summary {
 
       &:hover,
       &:focus {
-        background: var(--rrze-answers-accordion-bg-active-hover);
-        color: var(--rrze-answers-accordion-text-active-hover);
-        box-shadow: inset 10px 0 0 0 var(--rrze-answers-accent-dark) !important;
+        background: var(--wp-ai-accordion-bg-active-hover);
+        color: var(--wp-ai-accordion-text-active-hover);
+        box-shadow: inset 10px 0 0 0 var(--wp-ai-accent-dark) !important;
       }
     }
 
   }
 
   .alert.font-light {
-    details.rrze-answers-item>summary {
+    details.wp-ai-item>summary {
       color: $surfaceText !important;
 
       * {
@@ -360,13 +360,13 @@ details.rrze-answers-item summary {
 
       &:hover,
       &:focus {
-        color: var(--rrze-answers-contrast) !important;
+        color: var(--wp-ai-contrast) !important;
       }
     }
   }
 
   &.style_light {
-    details.rrze-answers-item {
+    details.wp-ai-item {
       border-top: 1px solid $borderColor;
 
       &:last-child {
@@ -389,21 +389,21 @@ details.rrze-answers-item summary {
   }
 }
 
-/* Fau Elemental accordion layout parity with rrze-elements-blocks */
-.wp-theme-FAU-Elemental .rrze-answers,
-.fau-elemental .rrze-answers {
+/* Fau Elemental accordion layout parity with bk-elements-blocks */
+.wp-theme-FAU-Elemental .wp-ai,
+.fau-elemental .wp-ai {
 
-  details.rrze-answers-item.is-fau {
+  details.wp-ai-item.is-fau {
     > summary,
     > summary:hover,
     > summary:focus,
     &[open] > summary,
     &[open] > summary:hover,
     &[open] > summary:focus,
-    &[open] .rrze-answers-content,
-    &[open] .rrze-answers-content p,
-    .rrze-answers-content,
-    .rrze-answers-content p {
+    &[open] .wp-ai-content,
+    &[open] .wp-ai-content p,
+    .wp-ai-content,
+    .wp-ai-content p {
       color: var(#{$default-fau-ctr-d}, #fff) !important;
       // color: var(--FAU-Col-FAU-Blau-100, #{$default-fau}) !important;
     }
@@ -412,7 +412,7 @@ details.rrze-answers-item summary {
 
   border-top: 1px solid var(--FAU-Col-FAU-Blau-100, #e9edf2); // between elements
 
-  details.rrze-answers-item {
+  details.wp-ai-item {
     border: none;
     margin-bottom: 0;
     padding-right: 60px;
@@ -440,7 +440,7 @@ details.rrze-answers-item summary {
         width: 2rem;
         height: 2rem;
         transform: translateY(-50%);
-        background: var(--rrze-answers-accent);
+        background: var(--wp-ai-accent);
         mask: none;
         -webkit-mask: none;
       }
@@ -455,7 +455,7 @@ details.rrze-answers-item summary {
         transform: translateY(-50%);
         transform-origin: center;
         transition: all .2s ease;
-        background: var(--rrze-answers-contrast);
+        background: var(--wp-ai-contrast);
         -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z'/%3E%3C/svg%3E") center/60% 60% no-repeat;
         mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z'/%3E%3C/svg%3E") center/60% 60% no-repeat;
       }
@@ -466,7 +466,7 @@ details.rrze-answers-item summary {
       }
     }
 
-    .rrze-answers-content,
+    .wp-ai-content,
     &[open]>summary {
       box-shadow: none !important;
       background: transparent;
@@ -490,136 +490,136 @@ details.rrze-answers-item summary {
 }
 
 /* FAU-Einrichtungen dark style */
-.wp-theme-FAU-Einrichtungen .is-style-dark .rrze-answers {
+.wp-theme-FAU-Einrichtungen .is-style-dark .wp-ai {
 
   /* Use FAU-Elemental theme colors in dark mode */
-  .rrze-answers-item {
-    --rrze-answers-accordion-bg-default: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-accordion-text-default: var(--FAU-Col-FAU-Weiss-100, #fff);
-    --rrze-answers-accordion-bg-active: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-accordion-text-active: var(--FAU-Col-FAU-Weiss-100, #fff);
-    --rrze-answers-accordion-bg-active-hover: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-accordion-text-active-hover: var(--FAU-Col-FAU-Weiss-100, #fff);
+  .wp-ai-item {
+    --wp-ai-accordion-bg-default: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-accordion-text-default: var(--FAU-Col-FAU-Weiss-100, #fff);
+    --wp-ai-accordion-bg-active: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-accordion-text-active: var(--FAU-Col-FAU-Weiss-100, #fff);
+    --wp-ai-accordion-bg-active-hover: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-accordion-text-active-hover: var(--FAU-Col-FAU-Weiss-100, #fff);
 
-    --rrze-answers-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
-    --rrze-answers-accent: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-accent-dark: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-contrast-dark: var(--FAU-Col-FAU-Weiss-100, #fff);
+    --wp-ai-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
+    --wp-ai-accent: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-accent-dark: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-contrast-dark: var(--FAU-Col-FAU-Weiss-100, #fff);
   }
 
-  .rrze-answers-item.is-phil,
-  .rrze-answers-item.is-rw,
-  .rrze-answers-item.is-med,
-  .rrze-answers-item.is-nat,
-  .rrze-answers-item.is-tf {
-    --rrze-answers-accordion-bg-default: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-accordion-text-default: var(--FAU-Col-FAU-Weiss-100, #fff);
-    --rrze-answers-accordion-bg-active: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-accordion-text-active: var(--FAU-Col-FAU-Weiss-100, #fff);
-    --rrze-answers-accordion-bg-active-hover: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-accordion-text-active-hover: var(--FAU-Col-FAU-Weiss-100, #fff);
+  .wp-ai-item.is-phil,
+  .wp-ai-item.is-rw,
+  .wp-ai-item.is-med,
+  .wp-ai-item.is-nat,
+  .wp-ai-item.is-tf {
+    --wp-ai-accordion-bg-default: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-accordion-text-default: var(--FAU-Col-FAU-Weiss-100, #fff);
+    --wp-ai-accordion-bg-active: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-accordion-text-active: var(--FAU-Col-FAU-Weiss-100, #fff);
+    --wp-ai-accordion-bg-active-hover: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-accordion-text-active-hover: var(--FAU-Col-FAU-Weiss-100, #fff);
 
-    --rrze-answers-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
-    --rrze-answers-accent: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-accent-dark: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-contrast-dark: var(--FAU-Col-FAU-Weiss-100, #fff);
+    --wp-ai-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
+    --wp-ai-accent: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-accent-dark: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-contrast-dark: var(--FAU-Col-FAU-Weiss-100, #fff);
   }
 
-  details.rrze-answers-item {
+  details.wp-ai-item {
 
-    color: var(--rrze-answers-contrast);
-    background-color: var(--rrze-answers-accent);
+    color: var(--wp-ai-contrast);
+    background-color: var(--wp-ai-accent);
 
     >summary::before {
-      background: var(--rrze-answers-contrast);
+      background: var(--wp-ai-contrast);
     }
 
     >summary::after {
-      background: var(--rrze-answers-contrast);
+      background: var(--wp-ai-contrast);
     }
   }
 }
 
 
 /* FAU-Elemental dark style */
-.wp-theme-FAU-Elemental .is-style-dark .rrze-answers,
-.fau-elemental .is-style-dark .rrze-answers {
+.wp-theme-FAU-Elemental .is-style-dark .wp-ai,
+.fau-elemental .is-style-dark .wp-ai {
 
   /* Use FAU-Elemental theme colors in dark mode */
-  .rrze-answers-item {
-    --rrze-answers-accordion-bg-default: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-accordion-text-default: var(--FAU-Col-FAU-Weiss-100, #fff);
-    --rrze-answers-accordion-bg-active: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-accordion-text-active: var(--FAU-Col-FAU-Weiss-100, #fff);
-    --rrze-answers-accordion-bg-active-hover: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-accordion-text-active-hover: var(--FAU-Col-FAU-Weiss-100, #fff);
+  .wp-ai-item {
+    --wp-ai-accordion-bg-default: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-accordion-text-default: var(--FAU-Col-FAU-Weiss-100, #fff);
+    --wp-ai-accordion-bg-active: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-accordion-text-active: var(--FAU-Col-FAU-Weiss-100, #fff);
+    --wp-ai-accordion-bg-active-hover: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-accordion-text-active-hover: var(--FAU-Col-FAU-Weiss-100, #fff);
 
-    --rrze-answers-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
-    --rrze-answers-accent: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-accent-dark: var(--FAU-Col-FAU-Blau-100, #04316a);
-    --rrze-answers-contrast-dark: var(--FAU-Col-FAU-Weiss-100, #fff);
+    --wp-ai-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
+    --wp-ai-accent: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-accent-dark: var(--FAU-Col-FAU-Blau-100, #04316a);
+    --wp-ai-contrast-dark: var(--FAU-Col-FAU-Weiss-100, #fff);
   }
 
   /* Faculties don't have own colors in dark mode */
-  // .rrze-answers-item.is-phil {
-  //   --rrze-answers-accent: var(--FAU-Col-Phil-Gelb-100, #fdb735);
-  //   --rrze-answers-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
+  // .wp-ai-item.is-phil {
+  //   --wp-ai-accent: var(--FAU-Col-Phil-Gelb-100, #fdb735);
+  //   --wp-ai-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
   // }
 
-  // .rrze-answers-item.is-rw {
-  //   --rrze-answers-accent: var(--FAU-Col-RW-Rot-100, #c50f3c);
-  //   --rrze-answers-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
+  // .wp-ai-item.is-rw {
+  //   --wp-ai-accent: var(--FAU-Col-RW-Rot-100, #c50f3c);
+  //   --wp-ai-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
   // }
 
-  // .rrze-answers-item.is-med {
-  //   --rrze-answers-accent: var(--FAU-Col-Med-Blau-100, #18b4f1);
-  //   --rrze-answers-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
+  // .wp-ai-item.is-med {
+  //   --wp-ai-accent: var(--FAU-Col-Med-Blau-100, #18b4f1);
+  //   --wp-ai-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
   // }
 
-  // .rrze-answers-item.is-nat {
-  //   --rrze-answers-accent: var(--FAU-Col-Nat-Gruen-100, #7bb725);
-  //   --rrze-answers-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
+  // .wp-ai-item.is-nat {
+  //   --wp-ai-accent: var(--FAU-Col-Nat-Gruen-100, #7bb725);
+  //   --wp-ai-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
   // }
 
-  // .rrze-answers-item.is-tf {
-  //   --rrze-answers-accent: var(--FAU-Col-TF-Metallic-100, #8c9fb1);
-  //   --rrze-answers-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
+  // .wp-ai-item.is-tf {
+  //   --wp-ai-accent: var(--FAU-Col-TF-Metallic-100, #8c9fb1);
+  //   --wp-ai-contrast: var(--FAU-Col-FAU-Weiss-100, #fff);
   // }
 
   border: none;
   margin-bottom: 0;
   overflow: visible;
 
-  details.rrze-answers-item {
-    border-top: 1px solid var(--rrze-answers-contrast);
+  details.wp-ai-item {
+    border-top: 1px solid var(--wp-ai-contrast);
     padding-right: 60px;
 
-    color: var(--rrze-answers-contrast);
-    background-color: var(--rrze-answers-accent);
+    color: var(--wp-ai-contrast);
+    background-color: var(--wp-ai-accent);
 
     >summary::before {
-      background: var(--rrze-answers-contrast);
+      background: var(--wp-ai-contrast);
     }
 
     >summary::after {
-      background: var(--rrze-answers-accent);
+      background: var(--wp-ai-accent);
     }
   }
 }
 
-/* Disable generic :target offset hacks inside the answers block */
-.rrze-answers [id]:target::before,
-.rrze-answers details.rrze-answers-item:target::before {
+/* Disable generic :target offset hacks inside the wp_ai block */
+.wp-ai [id]:target::before,
+.wp-ai details.wp-ai-item:target::before {
   content: none !important;
   display: none !important;
 }
 
-.rrze-answers [id]:target {
+.wp-ai [id]:target {
   padding-top: 0 !important;
   margin-top: 0 !important;
 }
 
-/* we need to calc the height of the overlay header in RRZE-2019 - every other theme uses 0px per default */
-.rrze-answers [id] {
+/* we need to calc the height of the overlay header in BK-2019 - every other theme uses 0px per default */
+.wp-ai [id] {
   scroll-margin-top: var(--header-height, 0px);
 }

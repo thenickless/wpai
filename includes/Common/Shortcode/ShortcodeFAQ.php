@@ -1,13 +1,13 @@
 <?php
 
-namespace RRZE\Answers\Common\Shortcode;
+namespace BK\WPAI\Common\Shortcode;
 
 defined('ABSPATH') || exit;
 
-use RRZE\Answers\Common\Tools;
-// use RRZE\Answers\Defaults;
+use BK\WPAI\Common\Tools;
+// use BK\WPAI\Defaults;
 
-use function RRZE\Answers\plugin;
+use function BK\WPAI\plugin;
 
 
 /**
@@ -45,10 +45,10 @@ class ShortcodeFAQ
     {
         $ret = [
             'block' => [
-                'blocktype' => 'rrze-answers/faq',
-                'blockname' => 'rrze_faq',
-                'title' => 'RRZE FAQ',
-                'rrze_category' => 'widgets',
+                'blocktype' => 'wp-ai/faq',
+                'blockname' => 'bk_faq',
+                'title' => 'BK FAQ',
+                'bk_category' => 'widgets',
                 'icon' => 'editor-help',
                 'tinymce_icon' => 'help'
             ],
@@ -56,62 +56,62 @@ class ShortcodeFAQ
                 'values' => [
                     [
                         'id' => '',
-                        'val' => __('none', 'rrze-answers')
+                        'val' => __('none', 'wp-ai')
                     ],
                     [
-                        'id' => 'rrze_category',
-                        'val' => __('Categories', 'rrze-answers')
+                        'id' => 'bk_category',
+                        'val' => __('Categories', 'wp-ai')
                     ],
                     [
-                        'id' => 'rrze_tag',
-                        'val' => __('Tags', 'rrze-answers')
+                        'id' => 'bk_tag',
+                        'val' => __('Tags', 'wp-ai')
                     ]
                 ],
                 'default' => '',
                 'field_type' => 'select',
-                'label' => __('Glossary content', 'rrze-answers'),
+                'label' => __('Glossary content', 'wp-ai'),
                 'type' => 'string'
             ],
             'glossarystyle' => [
                 'values' => [
                     [
                         'id' => '',
-                        'val' => __('-- hidden --', 'rrze-answers')
+                        'val' => __('-- hidden --', 'wp-ai')
                     ],
                     [
                         'id' => 'a-z',
-                        'val' => __('A - Z', 'rrze-answers')
+                        'val' => __('A - Z', 'wp-ai')
                     ],
                     [
                         'id' => 'tagcloud',
-                        'val' => __('Tagcloud', 'rrze-answers')
+                        'val' => __('Tagcloud', 'wp-ai')
                     ],
                     [
                         'id' => 'tabs',
-                        'val' => __('Tabs', 'rrze-answers')
+                        'val' => __('Tabs', 'wp-ai')
                     ]
                 ],
                 'default' => '',
                 'field_type' => 'select',
-                'label' => __('Glossary style', 'rrze-answers'),
+                'label' => __('Glossary style', 'wp-ai'),
                 'type' => 'string'
             ],
             'category' => [
                 'default' => '',
                 'field_type' => 'text',
-                'label' => __('Categories', 'rrze-answers'),
+                'label' => __('Categories', 'wp-ai'),
                 'type' => 'text'
             ],
             'tag' => [
                 'default' => '',
                 'field_type' => 'text',
-                'label' => __('Tags', 'rrze-answers'),
+                'label' => __('Tags', 'wp-ai'),
                 'type' => 'text'
             ],
             'domain' => [
                 'default' => '',
                 'field_type' => 'text',
-                'label' => __('Domain', 'rrze-answers'),
+                'label' => __('Domain', 'wp-ai'),
                 'type' => 'text'
             ],
             'id' => [
@@ -122,28 +122,28 @@ class ShortcodeFAQ
             ],
             'hide_accordion' => [
                 'field_type' => 'toggle',
-                'label' => __('Hide accordeon', 'rrze-answers'),
+                'label' => __('Hide accordeon', 'wp-ai'),
                 'type' => 'boolean',
                 'default' => FALSE,
                 'checked' => FALSE
             ],
             'hide_title' => [
                 'field_type' => 'toggle',
-                'label' => __('Hide title', 'rrze-answers'),
+                'label' => __('Hide title', 'wp-ai'),
                 'type' => 'boolean',
                 'default' => FALSE,
                 'checked' => FALSE
             ],
             'expand_all_link' => [
                 'field_type' => 'toggle',
-                'label' => __('Show "expand all" button', 'rrze-answers'),
+                'label' => __('Show "expand all" button', 'wp-ai'),
                 'type' => 'boolean',
                 'default' => FALSE,
                 'checked' => FALSE
             ],
             'load_open' => [
                 'field_type' => 'toggle',
-                'label' => __('Load website with opened accordeons', 'rrze-answers'),
+                'label' => __('Load website with opened accordeons', 'wp-ai'),
                 'type' => 'boolean',
                 'default' => FALSE,
                 'checked' => FALSE
@@ -177,14 +177,14 @@ class ShortcodeFAQ
                 ],
                 'default' => 'fau',
                 'field_type' => 'select',
-                'label' => __('Color', 'rrze-answers'),
+                'label' => __('Color', 'wp-ai'),
                 'type' => 'string'
             ],
             'style' => [
                 'values' => [
                     [
                         'id' => '',
-                        'val' => __('none', 'rrze-answers')
+                        'val' => __('none', 'wp-ai')
                     ],
                     [
                         'id' => 'light',
@@ -197,19 +197,19 @@ class ShortcodeFAQ
                 ],
                 'default' => '',
                 'field_type' => 'select',
-                'label' => __('Style', 'rrze-answers'),
+                'label' => __('Style', 'wp-ai'),
                 'type' => 'string'
             ],
             'masonry' => [
                 'field_type' => 'toggle',
-                'label' => __('Grid', 'rrze-answers'),
+                'label' => __('Grid', 'wp-ai'),
                 'type' => 'boolean',
                 'default' => FALSE,
                 'checked' => FALSE
             ],
 			'search' => [
 				'field_type' => 'toggle',
-				'label' => __('Show search field', 'rrze-answers'),
+				'label' => __('Show search field', 'wp-ai'),
 				'type' => 'boolean',
 				'default' => FALSE,
 				'checked' => FALSE
@@ -217,55 +217,55 @@ class ShortcodeFAQ
             'additional_class' => [
                 'default' => '',
                 'field_type' => 'text',
-                'label' => __('Additonal CSS-class(es) for sourrounding DIV', 'rrze-answers'),
+                'label' => __('Additonal CSS-class(es) for sourrounding DIV', 'wp-ai'),
                 'type' => 'text'
             ],
             'lang' => [
                 'default' => '',
                 'field_type' => 'select',
-                'label' => __('Language', 'rrze-answers'),
+                'label' => __('Language', 'wp-ai'),
                 'type' => 'string'
             ],
             'sort' => [
                 'values' => [
                     [
                         'id' => 'title',
-                        'val' => __('Title', 'rrze-answers')
+                        'val' => __('Title', 'wp-ai')
                     ],
                     [
                         'id' => 'id',
-                        'val' => __('ID', 'rrze-answers')
+                        'val' => __('ID', 'wp-ai')
                     ],
                     [
                         'id' => 'sortfield',
-                        'val' => __('Sort field', 'rrze-answers')
+                        'val' => __('Sort field', 'wp-ai')
                     ],
                 ],
                 'default' => 'title',
                 'field_type' => 'select',
-                'label' => __('Sort', 'rrze-answers'),
+                'label' => __('Sort', 'wp-ai'),
                 'type' => 'string'
             ],
             'order' => [
                 'values' => [
                     [
                         'id' => 'ASC',
-                        'val' => __('ASC', 'rrze-answers')
+                        'val' => __('ASC', 'wp-ai')
                     ],
                     [
                         'id' => 'DESC',
-                        'val' => __('DESC', 'rrze-answers')
+                        'val' => __('DESC', 'wp-ai')
                     ],
                 ],
                 'default' => 'ASC',
                 'field_type' => 'select',
-                'label' => __('Order', 'rrze-answers'),
+                'label' => __('Order', 'wp-ai'),
                 'type' => 'string'
             ],
             'hstart' => [
                 'default' => 2,
                 'field_type' => 'text',
-                'label' => __('Heading level of the first heading', 'rrze-answers'),
+                'label' => __('Heading level of the first heading', 'wp-ai'),
                 'type' => 'number'
             ],
         ];
@@ -376,7 +376,7 @@ class ShortcodeFAQ
      * @param bool $gutenberg Whether Gutenberg is used
      * @param string $hstart HTML heading level
      * @param string $style Inline styles for the accordion
-     * @param bool $masonry Whether tiles should be displayed (fake masonry - see https://github.com/RRZE-Webteam/rrze-answers/issues/105#issuecomment-2873361435 )
+     * @param bool $masonry Whether tiles should be displayed (fake masonry - see https://github.com/BK-Webteam/wp-ai/issues/105#issuecomment-2873361435 )
      * @param string $expand_all_link Attribute for “expand all” link
      * @param bool $hide_accordion Whether the accordion should be suppressed
      * @param bool $hide_title Whether the title should be suppressed
@@ -455,7 +455,7 @@ class ShortcodeFAQ
         $aLetters = [];
         $tax_query = '';
 
-        $postQuery = array('post_type' => 'rrze_faq', 'post_status' => 'publish', 'numberposts' => -1, 'suppress_filters' => false);
+        $postQuery = array('post_type' => 'bk_faq', 'post_status' => 'publish', 'numberposts' => -1, 'suppress_filters' => false);
         if ($sort == 'sortfield') {
             $postQuery['orderby'] = array(
                 'meta_value' => $order, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
@@ -469,8 +469,8 @@ class ShortcodeFAQ
 
         // filter by category and/or tag and -if given- by domain related to category/tag, too
         $aTax = [];
-        $aTax['rrze_faq_category'] = Tools::getTaxBySource($category);
-        $aTax['rrze_faq_tag'] = Tools::getTaxBySource($tag);
+        $aTax['bk_faq_category'] = Tools::getTaxBySource($category);
+        $aTax['bk_faq_tag'] = Tools::getTaxBySource($tag);
         $aTax = array_filter($aTax); // delete empty entries
 
         if ($aTax) {
@@ -527,7 +527,7 @@ class ShortcodeFAQ
                             $aCats = $category;
                         }
                         foreach ($aCats as $slug) {
-                            $filter_term = get_term_by('slug', $slug, 'rrze_faq_category');
+                            $filter_term = get_term_by('slug', $slug, 'bk_faq_category');
                             if ($filter_term) {
                                 $valid_term_ids[] = $filter_term->term_id;
                             }
@@ -539,13 +539,13 @@ class ShortcodeFAQ
                             $aTags = $tag;
                         }
                         foreach ($aTags as $slug) {
-                            $filter_term = get_term_by('slug', $slug, 'rrze_faq_tag');
+                            $filter_term = get_term_by('slug', $slug, 'bk_faq_tag');
                             if ($filter_term) {
                                 $valid_term_ids[] = $filter_term->term_id;
                             }
                         }
                     }
-                    $terms = wp_get_post_terms($post->ID, 'rrze_faq_' . $glossary);
+                    $terms = wp_get_post_terms($post->ID, 'bk_faq_' . $glossary);
                     if ($terms) {
                         foreach ($terms as $t) {
                             $term_id = 0;
@@ -599,10 +599,10 @@ class ShortcodeFAQ
                     }
 
                     $term_id_attr = $anchor . '-' . $aVal[$anchor];
-                    $content .= '<section id="' . esc_attr($term_id_attr) . '" class="rrze-answers-item is-' . $color . '">';
+                    $content .= '<section id="' . esc_attr($term_id_attr) . '" class="wp-ai-item is-' . $color . '">';
                     $content .= '<h3>' . esc_html($k) . '</h3>';
 
-                    $content .= '<div class="answers-term-content">';
+                    $content .= '<div class="wp_ai-term-content">';
 
                     // find the postIDs to this tag
                     $aIDs = Tools::searchArrayByKey($aVal['ID'], $aPostIDs);
@@ -687,7 +687,7 @@ class ShortcodeFAQ
      */
     public function shortcodeOutput($atts, $content = null, $shortcode_tag = '')
     {
-        // Workaround - see: https://github.com/RRZE-Webteam/rrze-answers/issues/132#issuecomment-2839668060
+        // Workaround - see: https://github.com/BK-Webteam/wp-ai/issues/132#issuecomment-2839668060
         if (($skip = Tools::preventGutenbergDoubleBracketBug($shortcode_tag)) !== false) {
             return $skip;
         }
@@ -736,11 +736,11 @@ class ShortcodeFAQ
         $postID = get_the_ID();
         $headerID = (new Tools())->getHeaderID($postID);
 
-        wp_enqueue_script('rrze-answers-accordion');
-        wp_enqueue_style('rrze-answers-css');
+        wp_enqueue_script('wp-ai-accordion');
+        wp_enqueue_style('wp-ai-css');
 
         if ($search) {
-            wp_enqueue_script('rrze-answers-search');
+            wp_enqueue_script('wp-ai-search');
         }
 
         $content = Tools::renderWrapper('faq', $content, $headerID, $masonry, $color, $additional_class, $this->bSchema, $postID, $search);
@@ -774,7 +774,7 @@ class ShortcodeFAQ
     public function addMCEButtons($pluginArray)
     {
         if (current_user_can('edit_posts') && current_user_can('edit_pages')) {
-            $pluginArray['rrze_shortcode'] = plugin()->getUrl() . 'assets/js/tinymce-shortcodes.js';
+            $pluginArray['bk_shortcode'] = plugin()->getUrl() . 'assets/js/tinymce-shortcodes.js';
         }
         return $pluginArray;
     }

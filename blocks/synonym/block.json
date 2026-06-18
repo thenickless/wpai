@@ -1,10 +1,10 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "rrze-answers/synonym",
+	"name": "wp-ai/synonym",
 	"version": "3.0.4",
-	"title": "RRZE Synonym",
-	"category": "rrze",
+	"title": "BK Synonym",
+	"category": "bk",
 	"description": "Display synonyms",
 	"icon": "translation",
 	"example": {},
@@ -58,7 +58,7 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "rrze-answers",
+	"textdomain": "wp-ai",
 	"editorScript": "file:../../build/synonym.js",
 	"render": "file:./render.php"
 }

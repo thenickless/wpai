@@ -1,31 +1,31 @@
 <?php
 
 /*
-Plugin Name:        RRZE Answers
-Plugin URI:         https://github.com/RRZE-Webteam/rrze-answers
-Version:            1.4.3
+Plugin Name:        WP AI
+Plugin URI:         https://github.com/BK-Webteam/wp-ai
+Version:            0.0.1
 Description:        Explain your content with FAQ, glossary, synonyms and placeholder.
-Author:             RRZE Webteam
-Author URI:         https://www.wp.rrze.fau.de/
+Author:             Benjamin Klemencic
+Author URI:         https://github.com/thenickless
 License:            GNU General Public License Version 3
 License URI:        https://www.gnu.org/licenses/gpl-3.0.html
-Text Domain:        rrze-answers
+Text Domain:        wp-ai
 Domain Path:        /languages
 Requires at least:  6.8
 Requires PHP:       8.2
 */
 
-namespace RRZE\Answers;
+namespace BK\WPAI;
 
-use RRZE\Answers\Main;
-use RRZE\Answers\Common\Tools;
-use RRZE\Answers\Common\Plugin\Plugin;
+use BK\WPAI\Main;
+use BK\WPAI\Common\Tools;
+use BK\WPAI\Common\Plugin\Plugin;
 
 defined('ABSPATH') || exit;
 
-const RRZE_ANSWERS_PLUGIN = 'rrze-answers/rrze-answers.php';
-const MIGRATE_DONE_KEY = 'rrze_answers_migrate_multisite_done';
-const MIGRATE_REPORT_KEY = 'rrze_answers_migrate_multisite_report';
+const BK_WPAI_PLUGIN = 'wp-ai/wp-ai.php';
+const MIGRATE_DONE_KEY = 'wp_ai_migrate_multisite_done';
+const MIGRATE_REPORT_KEY = 'wp_ai_migrate_multisite_report';
 
 /**
  * ------------------------------------------------------------
@@ -51,7 +51,7 @@ spl_autoload_register(function ($class) {
 
 
 // Only ONE activation hook. It runs the multisite migration ONLY when network-activated.
-register_activation_hook(__FILE__, __NAMESPACE__ . '\rrze_answers_on_activate_network');
+register_activation_hook(__FILE__, __NAMESPACE__ . '\wp_ai_on_activate_network');
 
 // Deactivation (optional cleanup).
 register_deactivation_hook(__FILE__, __NAMESPACE__ . '\deactivation');
@@ -60,7 +60,7 @@ register_deactivation_hook(__FILE__, __NAMESPACE__ . '\deactivation');
 add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
 
 // Persisted migration report notice (survives activation redirects).
-add_action('network_admin_notices', __NAMESPACE__ . '\rrze_answers_migrate_multisite_notice');
+add_action('network_admin_notices', __NAMESPACE__ . '\wp_ai_migrate_multisite_notice');
 
 /**
  * Deactivation callback function.
@@ -76,13 +76,13 @@ function deactivation(): void
  * Requirements:
  * - Migration is triggered ONLY by clicking "Network Activate".
  * - No pending flag/state machine: run migration immediately in activation.
- * - RRZE-Answers MUST NOT remain network-activated after migration.
+ * - BK-WP AI MUST NOT remain network-activated after migration.
  *
  * IMPORTANT:
  * - On multisite, WordPress passes $network_wide to activation hooks.
  * - In some contexts WP may call hooks without args; therefore $network_wide is optional.
  */
-function rrze_answers_on_activate_network($network_wide = false): void
+function wp_ai_on_activate_network($network_wide = false): void
 {
     $network_wide = (bool) $network_wide;
 
@@ -91,14 +91,14 @@ function rrze_answers_on_activate_network($network_wide = false): void
         return;
     }
 
-    rrze_answers_ensure_plugin_functions();
+    wp_ai_ensure_plugin_functions();
 
     // Do not run twice.
     if (get_site_option(MIGRATE_DONE_KEY)) {
-        rrze_answers_store_report([
+        wp_ai_store_report([
             'type' => 'info',
-            'title' => 'RRZE-Answers',
-            'intro' => __('Migration already marked as done. No changes were made.', 'rrze-answers'),
+            'title' => 'BK-WP AI',
+            'intro' => __('Migration already marked as done. No changes were made.', 'wp-ai'),
             'items' => [],
             'footer' => '',
         ]);
@@ -107,40 +107,40 @@ function rrze_answers_on_activate_network($network_wide = false): void
 
     /**
      * PRECONDITION:
-     * RRZE-Answers must NOT be network-activated, otherwise it becomes active on all sites.
+     * BK-WP AI must NOT be network-activated, otherwise it becomes active on all sites.
      * The user just network-activated it, so immediately undo that.
      */
-    rrze_answers_force_network_deactivate(RRZE_ANSWERS_PLUGIN);
+    wp_ai_force_network_deactivate(BK_WPAI_PLUGIN);
 
     // Hard abort if we cannot ensure it is NOT network-active.
-    if (rrze_answers_is_network_active(RRZE_ANSWERS_PLUGIN)) {
-        rrze_answers_store_report([
+    if (wp_ai_is_network_active(BK_WPAI_PLUGIN)) {
+        wp_ai_store_report([
             'type' => 'error',
-            'title' => 'RRZE-Answers',
-            'intro' => __('Migration aborted: RRZE-Answers could not be deactivated network-wide during activation.', 'rrze-answers'),
+            'title' => 'BK-WP AI',
+            'intro' => __('Migration aborted: BK-WP AI could not be deactivated network-wide during activation.', 'wp-ai'),
             'items' => [],
-            'footer' => __('No site changes were made. Please deactivate RRZE-Answers network-wide manually and retry.', 'rrze-answers'),
+            'footer' => __('No site changes were made. Please deactivate BK-WP AI network-wide manually and retry.', 'wp-ai'),
         ]);
         return;
     }
 
     // Run the migration.
-    $result = rrze_answers_migrate_multisite_core();
+    $result = wp_ai_migrate_multisite_core();
 
     /**
      * FINAL POSTCONDITION:
-     * Ensure RRZE-Answers is NOT network-activated after migration.
+     * Ensure BK-WP AI is NOT network-activated after migration.
      * If it is, abort and do NOT mark migration as done.
      */
-    rrze_answers_force_network_deactivate(RRZE_ANSWERS_PLUGIN);
+    wp_ai_force_network_deactivate(BK_WPAI_PLUGIN);
 
-    if (rrze_answers_is_network_active(RRZE_ANSWERS_PLUGIN)) {
-        rrze_answers_store_report([
+    if (wp_ai_is_network_active(BK_WPAI_PLUGIN)) {
+        wp_ai_store_report([
             'type' => 'error',
-            'title' => 'RRZE-Answers',
-            'intro' => __('Migration failed: RRZE-Answers is network-activated after migration.', 'rrze-answers'),
+            'title' => 'BK-WP AI',
+            'intro' => __('Migration failed: BK-WP AI is network-activated after migration.', 'wp-ai'),
             'items' => $result['items'] ?? [],
-            'footer' => __('The migration was NOT marked as done. Please ensure RRZE-Answers is not network-activated and retry.', 'rrze-answers'),
+            'footer' => __('The migration was NOT marked as done. Please ensure BK-WP AI is not network-activated and retry.', 'wp-ai'),
         ]);
         return; // IMPORTANT: do NOT set MIGRATE_DONE_KEY
     }
@@ -150,7 +150,7 @@ function rrze_answers_on_activate_network($network_wide = false): void
 
     // Store report (success/info) for display after activation redirect.
     if (!empty($result['report'])) {
-        rrze_answers_store_report($result['report']);
+        wp_ai_store_report($result['report']);
     }
 }
 
@@ -180,7 +180,7 @@ function main(): Main
 function load_textdomain(): void
 {
     load_plugin_textdomain(
-        'rrze-answers',
+        'wp-ai',
         false,
         dirname(plugin_basename(__FILE__)) . '/languages'
     );
@@ -194,19 +194,19 @@ function register_blocks(): void
     register_block_type_from_metadata(__DIR__ . '/blocks/synonym');
     register_block_type_from_metadata(__DIR__ . '/blocks/placeholder');
 
-    $faq_handle = generate_block_asset_handle('rrze-answers/faq', 'editorScript');
-    $faq_widget_handle = generate_block_asset_handle('rrze-answers/faq-widget', 'editorScript');
-    $glossary_handle = generate_block_asset_handle('rrze-answers/glossary', 'editorScript');
-    $synonym_handle = generate_block_asset_handle('rrze-answers/synonym', 'editorScript');
-    $placeholder_handle = generate_block_asset_handle('rrze-answers/placeholder', 'editorScript');
+    $faq_handle = generate_block_asset_handle('wp-ai/faq', 'editorScript');
+    $faq_widget_handle = generate_block_asset_handle('wp-ai/faq-widget', 'editorScript');
+    $glossary_handle = generate_block_asset_handle('wp-ai/glossary', 'editorScript');
+    $synonym_handle = generate_block_asset_handle('wp-ai/synonym', 'editorScript');
+    $placeholder_handle = generate_block_asset_handle('wp-ai/placeholder', 'editorScript');
 
     $path = plugin_dir_path(__FILE__) . 'languages';
 
-    wp_set_script_translations($faq_handle, 'rrze-answers', $path);
-    wp_set_script_translations($faq_widget_handle, 'rrze-answers', $path);
-    wp_set_script_translations($glossary_handle, 'rrze-answers', $path);
-    wp_set_script_translations($synonym_handle, 'rrze-answers', $path);
-    wp_set_script_translations($placeholder_handle, 'rrze-answers', $path);
+    wp_set_script_translations($faq_handle, 'wp-ai', $path);
+    wp_set_script_translations($faq_widget_handle, 'wp-ai', $path);
+    wp_set_script_translations($glossary_handle, 'wp-ai', $path);
+    wp_set_script_translations($synonym_handle, 'wp-ai', $path);
+    wp_set_script_translations($placeholder_handle, 'wp-ai', $path);
 }
 
 /**
@@ -235,13 +235,13 @@ function loaded(): void
             $error = '';
             if (!$wpCompatibe) {
                 $error = sprintf(
-                    __('The server is running WordPress version %1$s. The plugin requires at least WordPress version %2$s.', 'rrze-answers'),
+                    __('The server is running WordPress version %1$s. The plugin requires at least WordPress version %2$s.', 'wp-ai'),
                     wp_get_wp_version(),
                     plugin()->getRequiresWP()
                 );
             } elseif (!$phpCompatible) {
                 $error = sprintf(
-                    __('The server is running PHP version %1$s. The plugin requires at least PHP version %2$s.', 'rrze-answers'),
+                    __('The server is running PHP version %1$s. The plugin requires at least PHP version %2$s.', 'wp-ai'),
                     PHP_VERSION,
                     plugin()->getRequiresPHP()
                 );
@@ -250,7 +250,7 @@ function loaded(): void
             add_action('admin_notices', function () use ($pluginName, $error) {
                 printf(
                     '<div class="notice notice-error"><p>' .
-                    esc_html__('Plugins: %1$s: %2$s', 'rrze-answers') .
+                    esc_html__('Plugins: %1$s: %2$s', 'wp-ai') .
                     '</p></div>',
                     esc_html($pluginName),
                     esc_html($error)
@@ -265,18 +265,18 @@ function loaded(): void
     main();
 
     add_action('init', __NAMESPACE__ . '\register_blocks');
-    add_action('init', __NAMESPACE__ . '\rrze_update_glossary_cpt');
-    add_action('init', __NAMESPACE__ . '\rrze_update_synonym_cpt');
-    add_action('init', __NAMESPACE__ . '\rrze_migrate_domains');
-    add_action('init', __NAMESPACE__ . '\rrze_migrate_blocks');
-    add_action('init', __NAMESPACE__ . '\rrze_update_placeholder_cpt');    
+    add_action('init', __NAMESPACE__ . '\bk_update_glossary_cpt');
+    add_action('init', __NAMESPACE__ . '\bk_update_synonym_cpt');
+    add_action('init', __NAMESPACE__ . '\bk_migrate_domains');
+    add_action('init', __NAMESPACE__ . '\bk_migrate_blocks');
+    add_action('init', __NAMESPACE__ . '\bk_update_placeholder_cpt');    
 }
 
-function rrze_update_glossary_cpt(): void
+function bk_update_glossary_cpt(): void
 {
     global $wpdb;
 
-    if (get_option('rrze_update_glossary_cpt_done')) {
+    if (get_option('bk_update_glossary_cpt_done')) {
         return;
     }
 
@@ -284,7 +284,7 @@ function rrze_update_glossary_cpt(): void
         UPDATE {$wpdb->term_taxonomy} tt
         INNER JOIN {$wpdb->term_relationships} tr ON tr.term_taxonomy_id = tt.term_taxonomy_id
         INNER JOIN {$wpdb->posts} p ON tr.object_id = p.ID
-        SET tt.taxonomy = 'rrze_glossary_category'
+        SET tt.taxonomy = 'bk_glossary_category'
         WHERE p.post_type = 'glossary'
         AND tt.taxonomy = 'glossary_category'
     ");
@@ -293,55 +293,55 @@ function rrze_update_glossary_cpt(): void
         UPDATE {$wpdb->term_taxonomy} tt
         INNER JOIN {$wpdb->term_relationships} tr ON tr.term_taxonomy_id = tt.term_taxonomy_id
         INNER JOIN {$wpdb->posts} p ON tr.object_id = p.ID
-        SET tt.taxonomy = 'rrze_glossary_tag'
+        SET tt.taxonomy = 'bk_glossary_tag'
         WHERE p.post_type = 'glossary'
         AND tt.taxonomy = 'glossary_tag'
     ");
 
     $wpdb->update(
         $wpdb->posts,
-        ['post_type' => 'rrze_glossary'],
+        ['post_type' => 'bk_glossary'],
         ['post_type' => 'glossary']
     );
 
     wp_cache_flush();
     flush_rewrite_rules();
 
-    update_option('rrze_update_glossary_cpt_done', 1);
+    update_option('bk_update_glossary_cpt_done', 1);
 }
 
-function rrze_update_synonym_cpt(): void
+function bk_update_synonym_cpt(): void
 {
     global $wpdb;
 
-    if (get_option('rrze_rename_synonym_to_synonym_done')) {
+    if (get_option('bk_rename_synonym_to_synonym_done')) {
         return;
     }
 
-    // 1) post_type: rrze_placeholder -> rrze_synonym
-    $wpdb->update($wpdb->posts, ['post_type' => 'rrze_synonym'], ['post_type' => 'rrze_placeholder']);
+    // 1) post_type: bk_placeholder -> bk_synonym
+    $wpdb->update($wpdb->posts, ['post_type' => 'bk_synonym'], ['post_type' => 'bk_placeholder']);
 
     // 2) meta key: 'placeholder' -> 'synonym'
     $wpdb->update($wpdb->postmeta, ['meta_key' => 'placeholder'], ['meta_key' => 'synonym']); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 
-    // 3) taxonomies: rrze_placeholder_group -> rrze_synonym_group, rrze_placeholder_tag -> rrze_synonym_tag
-    $wpdb->update($wpdb->term_taxonomy, ['taxonomy' => 'rrze_placeholder_group'], ['taxonomy' => 'rrze_synonym_group']);
-    $wpdb->update($wpdb->term_taxonomy, ['taxonomy' => 'rrze_placeholder_tag'],   ['taxonomy' => 'rrze_synonym_tag']);
+    // 3) taxonomies: bk_placeholder_group -> bk_synonym_group, bk_placeholder_tag -> bk_synonym_tag
+    $wpdb->update($wpdb->term_taxonomy, ['taxonomy' => 'bk_placeholder_group'], ['taxonomy' => 'bk_synonym_group']);
+    $wpdb->update($wpdb->term_taxonomy, ['taxonomy' => 'bk_placeholder_tag'],   ['taxonomy' => 'bk_synonym_tag']);
 
     wp_cache_flush();
     flush_rewrite_rules();
 
-    update_option('rrze_rename_synonym_to_synonym_done', 1);
+    update_option('bk_rename_synonym_to_synonym_done', 1);
 }
 
-function rrze_migrate_domains(): void
+function bk_migrate_domains(): void
 {
-    if (get_option('rrze_migrate_domains_done')) {
+    if (get_option('bk_migrate_domains_done')) {
         return;
     }
 
     $domains = [];
-    $source_options = ['rrze-faq', 'rrze-glossary'];
+    $source_options = ['bk-faq', 'bk-glossary'];
 
     foreach ($source_options as $option_name) {
         $option = get_option($option_name);
@@ -354,26 +354,26 @@ function rrze_migrate_domains(): void
         }
     }
 
-    $answers_option = get_option('rrze-answers', []);
-    $answers_option['registeredDomains'] = $domains;
+    $wp_ai_option = get_option('wp-ai', []);
+    $wp_ai_option['registeredDomains'] = $domains;
 
-    delete_option('rrze-answers');
-    add_option('rrze-answers', $answers_option);
+    delete_option('wp-ai');
+    add_option('wp-ai', $wp_ai_option);
 
-    update_option('rrze_migrate_domains_done', 1);
+    update_option('bk_migrate_domains_done', 1);
 }
 
 
-function rrze_migrate_blocks(): void
+function bk_migrate_blocks(): void
 {
-    if (get_option('rrze_migrate_blocks_done')) {
+    if (get_option('bk_migrate_blocks_done')) {
         return;
     }
 
     $aBlocks = [
-        'wp:create-block/rrze-faq' => 'wp:rrze-answers/faq',
-        'wp:create-block/rrze-glossary' => 'wp:rrze-answers/glossary',
-        'wp:create-block/rrze-synonym' => 'wp:rrze-answers/synonym'        
+        'wp:create-block/bk-faq' => 'wp:wp-ai/faq',
+        'wp:create-block/bk-glossary' => 'wp:wp-ai/glossary',
+        'wp:create-block/bk-synonym' => 'wp:wp-ai/synonym'        
     ];
 
     $posts = get_posts([
@@ -400,47 +400,47 @@ function rrze_migrate_blocks(): void
     }
 
 
-    update_option('rrze_migrate_blocks_done', 1);
+    update_option('bk_migrate_blocks_done', 1);
 }
 
-function rrze_answers_migrate_targets(): array
+function wp_ai_migrate_targets(): array
 {
     return [
-        'rrze-faq/rrze-faq.php',
-        'rrze-glossary/rrze-glossary.php',
-        'rrze-synonym/rrze-synonym.php',
+        'bk-faq/bk-faq.php',
+        'bk-glossary/bk-glossary.php',
+        'bk-synonym/bk-synonym.php',
     ];
 }
 
 // new placeholder 1.3.0
-function rrze_update_placeholder_cpt(): void
+function bk_update_placeholder_cpt(): void
 {
 
     global $wpdb;
 
-    if (get_option('rrze_rename_placeholder_to_synonym_done')) {
+    if (get_option('bk_rename_placeholder_to_synonym_done')) {
         return;
     }
 
-    $wpdb->update($wpdb->posts, ['post_type' => 'rrze_synonym'], ['post_type' => 'rrze_placeholder']);
+    $wpdb->update($wpdb->posts, ['post_type' => 'bk_synonym'], ['post_type' => 'bk_placeholder']);
 
     $wpdb->update($wpdb->postmeta, ['meta_key' => 'synonym'], ['meta_key' => 'placeholder']); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 
     wp_cache_flush();
     flush_rewrite_rules();
 
-    update_option('rrze_rename_placeholder_to_synonym_done', 1);
+    update_option('bk_rename_placeholder_to_synonym_done', 1);
 }
 
 
-function rrze_answers_ensure_plugin_functions(): void
+function wp_ai_ensure_plugin_functions(): void
 {
     if (!function_exists('is_plugin_active')) {
         require_once ABSPATH . 'wp-admin/includes/plugin.php';
     }
 }
 
-function rrze_answers_refresh_plugin_caches(): void
+function wp_ai_refresh_plugin_caches(): void
 {
     if (function_exists('wp_clean_plugins_cache')) {
         wp_clean_plugins_cache(true);
@@ -455,7 +455,7 @@ function rrze_answers_refresh_plugin_caches(): void
  * Robust "is network active" check using the site option as source of truth.
  * (Helpful on installations with persistent object cache.)
  */
-function rrze_answers_is_network_active(string $plugin_basename): bool
+function wp_ai_is_network_active(string $plugin_basename): bool
 {
     $sitewide = (array) get_site_option('active_sitewide_plugins', []);
     if (isset($sitewide[$plugin_basename])) {
@@ -471,21 +471,21 @@ function rrze_answers_is_network_active(string $plugin_basename): bool
 /**
  * Force network deactivation and verify with cache refresh.
  */
-function rrze_answers_force_network_deactivate(string $plugin_basename): void
+function wp_ai_force_network_deactivate(string $plugin_basename): void
 {
-    if (!rrze_answers_is_network_active($plugin_basename)) {
+    if (!wp_ai_is_network_active($plugin_basename)) {
         return;
     }
 
     deactivate_plugins($plugin_basename, false, true);
 
-    rrze_answers_refresh_plugin_caches();
+    wp_ai_refresh_plugin_caches();
 }
 
 /**
  * Store report for display after activation redirect.
  */
-function rrze_answers_store_report(array $payload): void
+function wp_ai_store_report(array $payload): void
 {
     set_site_transient(MIGRATE_REPORT_KEY, $payload, 10 * MINUTE_IN_SECONDS);
 }
@@ -493,7 +493,7 @@ function rrze_answers_store_report(array $payload): void
 /**
  * One-time migration report notice in Network Admin.
  */
-function rrze_answers_migrate_multisite_notice(): void
+function wp_ai_migrate_multisite_notice(): void
 {
     if (!is_multisite() || !is_network_admin()) {
         return;
@@ -507,7 +507,7 @@ function rrze_answers_migrate_multisite_notice(): void
     delete_site_transient(MIGRATE_REPORT_KEY);
 
     $type = $payload['type'] ?? 'info'; // info|success|warning|error
-    $title = $payload['title'] ?? 'RRZE-Answers';
+    $title = $payload['title'] ?? 'BK-WP AI';
     $intro = $payload['intro'] ?? '';
     $items = $payload['items'] ?? [];
     $footer = $payload['footer'] ?? '';
@@ -526,7 +526,7 @@ function rrze_answers_migrate_multisite_notice(): void
     echo '</p>';
 
     if (!empty($items)) {
-        echo '<ul class="rrze-answers-notice-list">';
+        echo '<ul class="wp-ai-notice-list">';
         foreach ($items as $row) {
             echo '<li>' . wp_kses_post($row) . '</li>';
         }
@@ -540,35 +540,35 @@ function rrze_answers_migrate_multisite_notice(): void
     echo '</div>';
 }
 
-function rrze_answers_migrate_multisite_core(): array
+function wp_ai_migrate_multisite_core(): array
 {
     // In activation context we might not be on a screen, but the user must have capability.
     if (!current_user_can('manage_network_plugins')) {
         $report = [
             'type' => 'error',
-            'title' => 'RRZE-Answers',
-            'intro' => __('Migration aborted: insufficient permissions (manage_network_plugins).', 'rrze-answers'),
+            'title' => 'BK-WP AI',
+            'intro' => __('Migration aborted: insufficient permissions (manage_network_plugins).', 'wp-ai'),
             'items' => [],
             'footer' => '',
         ];
         return ['items' => [], 'report' => $report];
     }
 
-    rrze_answers_ensure_plugin_functions();
+    wp_ai_ensure_plugin_functions();
 
     // Safety: do not proceed if network-active.
-    if (rrze_answers_is_network_active(RRZE_ANSWERS_PLUGIN)) {
+    if (wp_ai_is_network_active(BK_WPAI_PLUGIN)) {
         $report = [
             'type' => 'error',
-            'title' => 'RRZE-Answers',
-            'intro' => __('Migration aborted: RRZE-Answers is network-activated. Please deactivate it network-wide and retry.', 'rrze-answers'),
+            'title' => 'BK-WP AI',
+            'intro' => __('Migration aborted: BK-WP AI is network-activated. Please deactivate it network-wide and retry.', 'wp-ai'),
             'items' => [],
             'footer' => '',
         ];
         return ['items' => [], 'report' => $report];
     }
 
-    $targets = rrze_answers_migrate_targets();
+    $targets = wp_ai_migrate_targets();
 
     $items = [];
 
@@ -600,13 +600,13 @@ function rrze_answers_migrate_multisite_core(): array
                 }
             }
 
-            // Activate RRZE-Answers on this site only.
+            // Activate BK-WP AI on this site only.
             $activated_now = false;
             $activation_error = '';
 
-            if (!is_plugin_active(RRZE_ANSWERS_PLUGIN)) {
+            if (!is_plugin_active(BK_WPAI_PLUGIN)) {
                 // silent=true prevents redirects/exits that would interrupt migration.
-                $res = activate_plugin(RRZE_ANSWERS_PLUGIN, '', false, true);
+                $res = activate_plugin(BK_WPAI_PLUGIN, '', false, true);
 
                 if (is_wp_error($res)) {
                     $activation_error = $res->get_error_message();
@@ -620,19 +620,19 @@ function rrze_answers_migrate_multisite_core(): array
 
             $parts = [];
             $parts[] = !empty($deactivated)
-                ? sprintf('%s %s.', esc_html__('Deactivated:', 'rrze-answers'), esc_html(implode(', ', $deactivated)))
-                : esc_html__('Deactivated: none.', 'rrze-answers');
+                ? sprintf('%s %s.', esc_html__('Deactivated:', 'wp-ai'), esc_html(implode(', ', $deactivated)))
+                : esc_html__('Deactivated: none.', 'wp-ai');
 
             if ($activation_error !== '') {
                 $parts[] = sprintf(
-                    '<strong class="rrze-answers-error">%s</strong> %s',
-                    esc_html__('RRZE-Answers activation failed:', 'rrze-answers'),
+                    '<strong class="wp-ai-error">%s</strong> %s',
+                    esc_html__('BK-WP AI activation failed:', 'wp-ai'),
                     esc_html($activation_error)
                 );
             } else {
                 $parts[] = $activated_now
-                    ? esc_html__('RRZE-Answers activated.', 'rrze-answers')
-                    : esc_html__('RRZE-Answers already active (no change).', 'rrze-answers');
+                    ? esc_html__('BK-WP AI activated.', 'wp-ai')
+                    : esc_html__('BK-WP AI already active (no change).', 'wp-ai');
             }
 
             $items[] = '<strong>' . esc_html($label) . '</strong>: ' . implode(' ', $parts);
@@ -644,15 +644,15 @@ function rrze_answers_migrate_multisite_core(): array
     $report = !empty($items)
         ? [
             'type' => 'success',
-            'title' => 'RRZE-Answers',
-            'intro' => __('Migration result (old plugins deactivated, RRZE-Answers activated where needed):', 'rrze-answers'),
+            'title' => 'BK-WP AI',
+            'intro' => __('Migration result (old plugins deactivated, BK-WP AI activated where needed):', 'wp-ai'),
             'items' => $items,
             'footer' => '',
         ]
         : [
             'type' => 'info',
-            'title' => 'RRZE-Answers',
-            'intro' => __('No sites required changes.', 'rrze-answers'),
+            'title' => 'BK-WP AI',
+            'intro' => __('No sites required changes.', 'wp-ai'),
             'items' => [],
             'footer' => '',
         ];

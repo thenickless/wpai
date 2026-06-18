@@ -25,30 +25,30 @@
 <body>
 
 <h1>Anleitung: Admin-Tour in einem WordPress-Plugin</h1>
-<p class="subtitle">Nach dem Vorbild des Plugins <strong>RRZE Answers</strong> – für die Umsetzung in anderen Plugins.</p>
+<p class="subtitle">Nach dem Vorbild des Plugins <strong>WP AI</strong> – für die Umsetzung in anderen Plugins.</p>
 
 <h2>Überblick</h2>
-<p>RRZE Answers bietet <strong>zwei Tour-Typen</strong>:</p>
+<p>WP AI bietet <strong>zwei Tour-Typen</strong>:</p>
 <table>
   <tr><th>Tour</th><th>Zweck</th><th>WordPress-Komponente</th></tr>
   <tr><td><strong>Guided Tour</strong></td><td>Einführung mit mehreren Info-Seiten (Modal)</td><td><code>@wordpress/components</code> → <code>Guide</code></td></tr>
   <tr><td><strong>Setup Tour</strong></td><td>Kontextuelle Schritt-für-Schritt-Anleitung auf der Einstellungsseite</td><td>Eigenes React-Overlay + <code>data-*</code>-Anker</td></tr>
 </table>
 
-<h2>1. Dateistruktur (rrze-answers)</h2>
+<h2>1. Dateistruktur (wp-ai)</h2>
 <pre>src/js/
-  rrze-answers-guided-tour.js   ← Einstiegspunkt, rendert React-App
+  wp-ai-guided-tour.js   ← Einstiegspunkt, rendert React-App
   setup-tour.js                 ← Kontextuelle Setup-Tour
   setup-tour-step.js            ← Wiederverwendbares Schritt-Panel
 
 includes/Common/Settings/
   Settings.php                  ← Script enqueue, AJAX, User-Meta
   templates/settings-page.php   ← Buttons + React-Root
-  templates/tab-menu.php        ← data-rrze-tour auf Tabs
-  templates/options/*.php       ← data-rrze-tour auf Formularfeldern
+  templates/tab-menu.php        ← data-bk-tour auf Tabs
+  templates/options/*.php       ← data-bk-tour auf Formularfeldern
 
-src/sass/rrze-answers-admin.scss
-build/rrze-answers-guided-tour.js</pre>
+src/sass/wp-ai-admin.scss
+build/wp-ai-guided-tour.js</pre>
 
 <h2>2. PHP: Script laden und Konfiguration übergeben</h2>
 <p>In <code>Settings.php</code> werden Hooks registriert, das Script nur auf der Plugin-Seite geladen und per <code>wp_localize_script</code> Daten an JavaScript übergeben.</p>
@@ -62,35 +62,35 @@ build/rrze-answers-guided-tour.js</pre>
   <li>Zwei AJAX-Handler zum Speichern in <strong>User Meta</strong> (<code>*_dismissed</code>)</li>
 </ol>
 <pre>add_action('admin_enqueue_scripts', [$this, 'enqueueGuidedTour']);
-add_action('wp_ajax_rrze_answers_dismiss_guided_tour', [$this, 'dismissGuidedTour']);
-add_action('wp_ajax_rrze_answers_dismiss_setup_tour', [$this, 'dismissSetupTour']);
+add_action('wp_ajax_wp_ai_dismiss_guided_tour', [$this, 'dismissGuidedTour']);
+add_action('wp_ajax_wp_ai_dismiss_setup_tour', [$this, 'dismissSetupTour']);
 
-wp_localize_script('rrze-answers-guided-tour', 'rrzeAnswersGuide', [
-    'autoStart'      => !get_user_meta(..., 'rrze_answers_guided_tour_dismissed', true),
-    'autoStartSetup' => isset($_GET['rrze_setup_tour']),
+wp_localize_script('wp-ai-guided-tour', 'BKWPAIGuide', [
+    'autoStart'      => !get_user_meta(..., 'wp_ai_guided_tour_dismissed', true),
+    'autoStartSetup' => isset($_GET['bk_setup_tour']),
     'setupTourStepId'=> $setupTourStepId,
     'settingsUrl'    => $this->getUrl(),
     'activeTab'      => $this->getActiveTab()->slug,
     'ajaxUrl'        => admin_url('admin-ajax.php'),
-    'nonce'          => wp_create_nonce('rrze_answers_guided_tour'),
+    'nonce'          => wp_create_nonce('wp_ai_guided_tour'),
 ]);</pre>
 
 <h2>3. HTML: Root-Container und Start-Buttons</h2>
-<pre>&lt;button type="button" id="rrze-answers-start-guided-tour" class="page-title-action"&gt;
+<pre>&lt;button type="button" id="wp-ai-start-guided-tour" class="page-title-action"&gt;
     Guided tour
 &lt;/button&gt;
-&lt;button type="button" id="rrze-answers-start-setup-tour" class="page-title-action"&gt;
+&lt;button type="button" id="wp-ai-start-setup-tour" class="page-title-action"&gt;
     Setup tour
 &lt;/button&gt;
-&lt;div id="rrze-answers-guided-tour-root"&gt;&lt;/div&gt;</pre>
-<p>React mountet in <code>#rrze-answers-guided-tour-root</code>. Die Button-IDs müssen mit dem JavaScript übereinstimmen.</p>
+&lt;div id="wp-ai-guided-tour-root"&gt;&lt;/div&gt;</pre>
+<p>React mountet in <code>#wp-ai-guided-tour-root</code>. Die Button-IDs müssen mit dem JavaScript übereinstimmen.</p>
 
-<h2>4. Anker im Markup: data-rrze-tour</h2>
+<h2>4. Anker im Markup: data-bk-tour</h2>
 <p>Die Setup-Tour findet UI-Elemente per CSS-Selektor. Setze ein einheitliches Attribut:</p>
 <ul>
-  <li><strong>Tabs:</strong> <code>data-rrze-tour="tab-domains"</code></li>
-  <li><strong>Formularfelder:</strong> <code>data-rrze-tour="new-domain"</code> (bedingt im Template)</li>
-  <li><strong>Speichern-Button:</strong> <code>data-rrze-tour="save-settings"</code></li>
+  <li><strong>Tabs:</strong> <code>data-bk-tour="tab-domains"</code></li>
+  <li><strong>Formularfelder:</strong> <code>data-bk-tour="new-domain"</code> (bedingt im Template)</li>
+  <li><strong>Speichern-Button:</strong> <code>data-bk-tour="save-settings"</code></li>
 </ul>
 <p><strong>Namenskonvention:</strong> Für ein anderes Plugin z. B. <code>data-meinplugin-tour="eindeutige-id"</code>.</p>
 
@@ -101,8 +101,8 @@ wp_localize_script('rrze-answers-guided-tour', 'rrzeAnswersGuide', [
 <pre>import { Guide } from '@wordpress/components';
 
 &lt;Guide
-    className="rrze-answers-guided-tour"
-    finishButtonText={__('Get started', 'rrze-answers')}
+    className="wp-ai-guided-tour"
+    finishButtonText={__('Get started', 'wp-ai')}
     onFinish={finishGuide}
     pages={guidePages}
 /&gt;</pre>
@@ -120,9 +120,9 @@ wp_localize_script('rrze-answers-guided-tour', 'rrzeAnswersGuide', [
 <pre>{
     id: 'new-domain',
     tab: 'domains',
-    target: '[data-rrze-tour="new-domain"]',
-    title: __('Add a domain', 'rrze-answers'),
-    text: __('Enter the URL...', 'rrze-answers'),
+    target: '[data-bk-tour="new-domain"]',
+    title: __('Add a domain', 'wp-ai'),
+    text: __('Enter the URL...', 'wp-ai'),
     optional: true,
 }</pre>
 <table>
@@ -136,11 +136,11 @@ wp_localize_script('rrze-answers-guided-tour', 'rrzeAnswersGuide', [
 
 <h3>6.2 Tab-Wechsel über URL</h3>
 <p>Wechselt ein Schritt den Tab, lädt die Seite neu mit:</p>
-<pre>?tab=import&amp;rrze_setup_tour=1&amp;rrze_setup_tour_step=import-categories</pre>
-<p>PHP liest <code>rrze_setup_tour_step</code> und übergibt <code>setupTourStepId</code> an JavaScript.</p>
+<pre>?tab=import&amp;bk_setup_tour=1&amp;bk_setup_tour_step=import-categories</pre>
+<p>PHP liest <code>bk_setup_tour_step</code> und übergibt <code>setupTourStepId</code> an JavaScript.</p>
 
 <h3>6.3 Highlight und Scroll</h3>
-<p>Das Ziel-Element erhält die CSS-Klasse <code>rrze-answers-setup-tour__highlight</code> und wird per <code>scrollIntoView</code> in den sichtbaren Bereich gescrollt.</p>
+<p>Das Ziel-Element erhält die CSS-Klasse <code>wp-ai-setup-tour__highlight</code> und wird per <code>scrollIntoView</code> in den sichtbaren Bereich gescrollt.</p>
 
 <h3>6.4 Schritt-Panel</h3>
 <p><code>setup-tour-step.js</code> nutzt WordPress-<code>Button</code> mit Zurück, Überspringen und Weiter/Fertig.</p>
@@ -151,13 +151,13 @@ wp_localize_script('rrze-answers-guided-tour', 'rrzeAnswersGuide', [
   <li><code>__highlight</code> – blauer Outline um das Ziel-Element (z-index: 99995)</li>
   <li><code>__card</code> – fixiertes Panel unten mittig (z-index: 100000)</li>
 </ul>
-<p>Styles in <code>src/sass/rrze-answers-admin.scss</code>, Build mit <code>sass</code> nach <code>build/css/</code>.</p>
+<p>Styles in <code>src/sass/wp-ai-admin.scss</code>, Build mit <code>sass</code> nach <code>build/css/</code>.</p>
 
 <h2>8. Build-Pipeline</h2>
-<pre>"build:js": "wp-scripts build ... src/js/rrze-answers-guided-tour.js"
+<pre>"build:js": "wp-scripts build ... src/js/wp-ai-guided-tour.js"
 npm run build:js
 npm run build:css</pre>
-<p>Ergebnis: <code>build/rrze-answers-guided-tour.js</code> + <code>.asset.php</code></p>
+<p>Ergebnis: <code>build/wp-ai-guided-tour.js</code> + <code>.asset.php</code></p>
 
 <div class="page-break"></div>
 
@@ -195,10 +195,10 @@ npm run build:css</pre>
 </table>
 
 <h2>11. Zusammenfassung</h2>
-<p>RRZE Answers nutzt <strong>WordPress-eigene Bausteine</strong> (<code>Guide</code>, <code>Button</code>, <code>@wordpress/element</code>) statt einer externen Tour-Library. Die Guided Tour erklärt das Plugin allgemein; die Setup Tour verknüpft Schritte mit echten UI-Elementen über <code>data-rrze-tour</code>-Anker und Tab-Navigation per URL.</p>
+<p>WP AI nutzt <strong>WordPress-eigene Bausteine</strong> (<code>Guide</code>, <code>Button</code>, <code>@wordpress/element</code>) statt einer externen Tour-Library. Die Guided Tour erklärt das Plugin allgemein; die Setup Tour verknüpft Schritte mit echten UI-Elementen über <code>data-bk-tour</code>-Anker und Tab-Navigation per URL.</p>
 <p>Für ein anderes Plugin: Präfixe, Schritte und Anker anpassen, Build-Pipeline einrichten – die Architektur bleibt gleich.</p>
 
-<p class="footer">Erstellt aus der RRZE Answers Codebasis – github.com/RRZE-Webteam/rrze-answers</p>
+<p class="footer">Erstellt aus der WP AI Codebasis – github.com/BK-Webteam/wp-ai</p>
 
 </body>
 </html>

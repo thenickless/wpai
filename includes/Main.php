@@ -1,12 +1,12 @@
 <?php
 
-namespace RRZE\Answers;
+namespace BK\WPAI;
 
-use function RRZE\Answers\plugin;
+use function BK\WPAI\plugin;
 
-use RRZE\Answers\Defaults;
+use BK\WPAI\Defaults;
 
-use RRZE\Answers\Common\{
+use BK\WPAI\Common\{
     Tools,
     API\RESTAPI,
     API\SyncAPI,
@@ -37,7 +37,7 @@ defined('ABSPATH') || exit;
  * This class serves as the entry point for the plugin.
  * It can be extended to include additional functionality or components as needed.
  * 
- * @package RRZE\Answers\Common
+ * @package BK\WPAI\Common
  * @since 1.0.0
  */
 class Main
@@ -68,11 +68,11 @@ class Main
         $this->settings();
         $this->restapi = new RESTAPI();
 
-        // $this->adminInterface = new AdminInterfaces('rrze_faq');
-        // $this->adminInterface = new AdminInterfaces('rrze_glossary');
+        // $this->adminInterface = new AdminInterfaces('bk_faq');
+        // $this->adminInterface = new AdminInterfaces('bk_glossary');
         // $this->adminInterface = new AdminInterfacessynonym();
-        $this->adminUI = new AdminUI_QA('rrze_faq');
-        $this->adminUI = new AdminUI_QA('rrze_glossary');
+        $this->adminUI = new AdminUI_QA('bk_faq');
+        $this->adminUI = new AdminUI_QA('bk_glossary');
         $this->adminUI = new AdminUI_Synonym();
         $this->adminUI = new AdminUI_Placeholder();
 
@@ -81,10 +81,10 @@ class Main
         // $this->adminMenue = new AdminMenu(); // in admin menu there is a maximum of 2 levels. Deactivated this workaround because it wouldn't be best practice.
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('admin_enqueue_scripts', [$this, 'enqueueAdminAssets']);
-        // add_action('wp_ajax_rrze_answers_get_categories', [$this, 'rrze_answers_get_categories_cb']);
+        // add_action('wp_ajax_wp_ai_get_categories', [$this, 'wp_ai_get_categories_cb']);
 
-        add_action('pre_update_option_rrze-answers', [$this, 'switchTask'], 10, 1);
-        add_action('update_option_rrze-answers', [$this, 'maybeSync'], 10, 2);
+        add_action('pre_update_option_bk-wp_ai', [$this, 'switchTask'], 10, 1);
+        add_action('update_option_bk-wp_ai', [$this, 'maybeSync'], 10, 2);
 
         $this->shortcode();
         $this->blocks();
@@ -111,7 +111,7 @@ class Main
     public function switchTask($options)
     {
         // get stored options because they are generated and not defined in config.php
-        $storedOptions = get_option('rrze-answers');
+        $storedOptions = get_option('wp-ai');
 
         if (is_array($storedOptions) && is_array($options)) {
             $options = array_merge($storedOptions, $options);
@@ -131,7 +131,7 @@ class Main
                     $aRet = $syncAPI->checkDomain($identifier, $url, $domains);
 
                     if ($aRet['status']) {
-                        // url is correct, rrze-answers at given url is in use and identifier is new (generated if not unique)
+                        // url is correct, wp-ai at given url is in use and identifier is new (generated if not unique)
                         $domains[$identifier] = $url;
                     } else {
                         add_settings_error('new_url', 'domains_new_error', $aRet['msg'], 'error');
@@ -156,7 +156,7 @@ class Main
                 }
                 break;
             case 'import':
-                // nothing to do here, see after update options (hook: update_option_rrze-answers)
+                // nothing to do here, see after update options (hook: update_option_bk-wp_ai)
                 break;
             case 'del':
                 Tools::deleteLogfile();
@@ -188,9 +188,9 @@ class Main
     }
 
 
-    // public function rrze_answers_get_categories_cb()
+    // public function wp_ai_get_categories_cb()
     // {
-    //     check_ajax_referer('rrze_answers_sync', '_ajax_nonce');
+    //     check_ajax_referer('wp_ai_sync', '_ajax_nonce');
 
     //     if (!current_user_can('manage_options')) {
     //         wp_send_json_error(['message' => 'Unauthorized'], 403);
@@ -202,7 +202,7 @@ class Main
     //     }
 
     //     // Fetch remote categories
-    //     $endpoint = esc_url_raw($site_url) . '/wp-json/wp/v2/rrze_faq_category';
+    //     $endpoint = esc_url_raw($site_url) . '/wp-json/wp/v2/bk_faq_category';
     //     $res = wp_remote_get($endpoint, ['timeout' => 10, 'headers' => ['Accept' => 'application/json']]);
 
     //     if (is_wp_error($res)) {
@@ -221,7 +221,7 @@ class Main
     //     }
 
     //     // Load plugin options safely
-    //     $options = get_option('rrze-answers');
+    //     $options = get_option('wp-ai');
     //     if (!is_array($options)) {
     //         $options = [];
     //     }
@@ -378,7 +378,7 @@ class Main
             'step' => true,
         ]);
 
-        // Allow minimal SVG markup for rrze-elements icons
+        // Allow minimal SVG markup for bk-elements icons
         $allowed_tags['svg'] = array_merge($allowed_tags['svg'] ?? [], [
             'class'       => true,
             'aria-hidden' => true,
@@ -469,7 +469,7 @@ class Main
 
                     if (
                         $placeholderPost instanceof \WP_Post
-                        && $placeholderPost->post_type === 'rrze_placeholder'
+                        && $placeholderPost->post_type === 'bk_placeholder'
                         && $placeholderPost->post_status === 'publish'
                     ) {
                         static $renderStack = [];
@@ -580,8 +580,8 @@ class Main
             ->setMenuParentSlug('options-general.php');
 
         foreach ($this->defaults->get('sections') as $section) {
-            $tab = $this->settings->addTab(__($section['title'], 'rrze-answers'), $section['id']);
-            $sec = $tab->addSection(__($section['title'], 'rrze-answers'), $section['id']);
+            $tab = $this->settings->addTab(__($section['title'], 'wp-ai'), $section['id']);
+            $sec = $tab->addSection(__($section['title'], 'wp-ai'), $section['id']);
 
             foreach ($this->defaults->get('fields')[$section['id']] as $field) {
                 $sec->addOption($field['type'], array_intersect_key(
@@ -600,38 +600,38 @@ class Main
     public function enqueueAssets()
     {
         wp_register_style(
-            'rrze-answers-css',
-            plugins_url('build/css/rrze-answers.css', plugin()->getBasename()),
+            'wp-ai-css',
+            plugins_url('build/css/wp-ai.css', plugin()->getBasename()),
             [],
-            filemtime(plugin()->getPath() . 'build/css/rrze-answers.css')
+            filemtime(plugin()->getPath() . 'build/css/wp-ai.css')
         );
 
         // wp_register_style(
-        //     'rrze-synonym-css',
-        //     plugins_url('build/css/rrze-synonym.css', plugin()->getBasename()),
+        //     'bk-synonym-css',
+        //     plugins_url('build/css/bk-synonym.css', plugin()->getBasename()),
         //     [],
-        //     filemtime(plugin()->getPath() . 'build/css/rrze-synonym.css')
+        //     filemtime(plugin()->getPath() . 'build/css/bk-synonym.css')
         // );
 
         wp_register_script(
-            'rrze-answers-accordion',
-            plugins_url('build/rrze-answers-accordion.js', plugin()->getBasename()),
+            'wp-ai-accordion',
+            plugins_url('build/wp-ai-accordion.js', plugin()->getBasename()),
             array('jquery'),
-            filemtime(plugin()->getPath() . 'build/rrze-answers-accordion.js'),
+            filemtime(plugin()->getPath() . 'build/wp-ai-accordion.js'),
             true
         );
 
         wp_register_script(
-            'rrze-answers-search',
-            plugins_url('build/rrze-answers-search.js', plugin()->getBasename()),
+            'wp-ai-search',
+            plugins_url('build/wp-ai-search.js', plugin()->getBasename()),
             [],
-            filemtime(plugin()->getPath() . 'build/rrze-answers-search.js'),
+            filemtime(plugin()->getPath() . 'build/wp-ai-search.js'),
             true
         );
 
         if (is_admin()) {
-            wp_enqueue_script('rrze-answers-accordion');
-            wp_enqueue_script('rrze-answers-search');
+            wp_enqueue_script('wp-ai-accordion');
+            wp_enqueue_script('wp-ai-search');
         }
 
     }
@@ -639,9 +639,9 @@ class Main
     public function enqueueAdminAssets()
     {
         $screen = get_current_screen();
-        $relevant_post_types = ['rrze_faq', 'rrze_glossary', 'rrze_synonym', 'rrze_placeholder'];
-        $relevant_taxonomies = ['rrze_faq_category', 'rrze_faq_tag', 'rrze_glossary_category', 'rrze_glossary_tag', 'rrze_synonym_group', 'rrze_synonym_tag'];
-        $relevant_pages = ['rrze-answers', 'rrze-answers_faq', 'rrze-answers_glossary', 'rrze-answers_synonym', 'rrze-answers_placeholder'];
+        $relevant_post_types = ['bk_faq', 'bk_glossary', 'bk_synonym', 'bk_placeholder'];
+        $relevant_taxonomies = ['bk_faq_category', 'bk_faq_tag', 'bk_glossary_category', 'bk_glossary_tag', 'bk_synonym_group', 'bk_synonym_tag'];
+        $relevant_pages = ['wp-ai', 'bk-wp_ai_faq', 'bk-wp_ai_glossary', 'bk-wp_ai_synonym', 'bk-wp_ai_placeholder'];
 
         $is_relevant = $screen && (
             in_array($screen->post_type ?? '', $relevant_post_types, true) ||
@@ -654,49 +654,49 @@ class Main
             return;
         }
         wp_register_style(
-            'rrze-answers-admin-css',
-            plugins_url('build/css/rrze-answers-admin.css', plugin()->getBasename()),
+            'wp-ai-admin-css',
+            plugins_url('build/css/wp-ai-admin.css', plugin()->getBasename()),
             [],
-            filemtime(plugin()->getPath() . 'build/css/rrze-answers-admin.css')
+            filemtime(plugin()->getPath() . 'build/css/wp-ai-admin.css')
         );
 
         wp_register_script(
-            'rrze-answers-search',
-            plugins_url('build/rrze-answers-search.js', plugin()->getBasename()),
+            'wp-ai-search',
+            plugins_url('build/wp-ai-search.js', plugin()->getBasename()),
             [],
-            filemtime(plugin()->getPath() . 'build/rrze-answers-search.js'),
+            filemtime(plugin()->getPath() . 'build/wp-ai-search.js'),
             true
         );
 
-        wp_enqueue_style('rrze-answers-admin-css');
-        wp_enqueue_script('rrze-answers-accordion');
-        wp_enqueue_script('rrze-answers-search');
+        wp_enqueue_style('wp-ai-admin-css');
+        wp_enqueue_script('wp-ai-accordion');
+        wp_enqueue_script('wp-ai-search');
     }
 
 
     // public function enqueueImportAssets(string $hook): void
     // {
     //     wp_register_script(
-    //         'rrze-answers-import-ui',
-    //         plugins_url('build/rrze-import-ui.js', plugin()->getBasename()),
+    //         'wp-ai-import-ui',
+    //         plugins_url('build/bk-import-ui.js', plugin()->getBasename()),
     //         ['jquery'],
     //         '1.0.0',
     //         true
     //     );
 
-    //     wp_localize_script('rrze-answers-import-ui', 'RRZEAnswersSync', [
+    //     wp_localize_script('wp-ai-import-ui', 'BKWP AISync', [
     //         'ajaxUrl' => admin_url('admin-ajax.php'),
-    //         'nonce' => wp_create_nonce('rrze_answers_sync'),
-    //         'optionName' => 'rrze-answers_remote_api_url',
+    //         'nonce' => wp_create_nonce('wp_ai_sync'),
+    //         'optionName' => 'bk-wp_ai_remote_api_url',
     //         'i18n' => [
-    //             'loading' => __('Loading categories…', 'rrze-answers'),
-    //             'none' => __('No categories found.', 'rrze-answers'),
-    //             'error' => __('Error while loading categories.', 'rrze-answers'),
-    //             'selectCategories' => __('Hold Ctrl/Cmd to select multiple categories.', 'rrze-answers'),
+    //             'loading' => __('Loading categories…', 'wp-ai'),
+    //             'none' => __('No categories found.', 'wp-ai'),
+    //             'error' => __('Error while loading categories.', 'wp-ai'),
+    //             'selectCategories' => __('Hold Ctrl/Cmd to select multiple categories.', 'wp-ai'),
     //         ],
     //     ]);
 
-    //     wp_enqueue_script('rrze-answers-import-ui');
+    //     wp_enqueue_script('wp-ai-import-ui');
     // }
 
 }

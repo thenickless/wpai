@@ -1,12 +1,12 @@
 <?php
 
-namespace RRZE\Answers\Common\Shortcode;
+namespace BK\WPAI\Common\Shortcode;
 
 defined('ABSPATH') || exit;
 
-use RRZE\Answers\Common\Tools;
+use BK\WPAI\Common\Tools;
 
-use function RRZE\Answers\plugin;
+use function BK\WPAI\plugin;
 
 
 
@@ -33,9 +33,9 @@ class ShortcodeSynonym
     {
         return [
             'block' => [
-                'blocktype' => 'rrze-synonym/synonym',
+                'blocktype' => 'bk-synonym/synonym',
                 'blockname' => 'synonym',
-                'title' => 'RRZE Synonym',
+                'title' => 'BK Synonym',
                 'category' => 'widgets',
                 'icon' => 'translation',
                 'tinymce_icon' => 'translate',
@@ -43,29 +43,29 @@ class ShortcodeSynonym
             'slug' => [
                 'default' => '',
                 'field_type' => 'text',
-                'label' => __('Slug', 'rrze-answers'),
+                'label' => __('Slug', 'wp-ai'),
                 'type' => 'text'
             ],
             'id' => [
                 'default' => 0,
                 'field_type' => 'text',
-                'label' => __('Synonym', 'rrze-answers'),
+                'label' => __('Synonym', 'wp-ai'),
                 'type' => 'number'
             ],
             'gutenberg_shortcode_type' => [
                 'values' => [
-                    'fau_abbr' => __('Abbreviation', 'rrze-answers'), // Abkürzung
-                    'synonym' => __('Longform', 'rrze-answers') // Ausgeschriebene Form
+                    'fau_abbr' => __('Abbreviation', 'wp-ai'), // Abkürzung
+                    'synonym' => __('Longform', 'wp-ai') // Ausgeschriebene Form
                 ],
                 'default' => 'synonym',
                 'field_type' => 'radio',
-                'label' => __('Type of output', 'rrze-answers'),
+                'label' => __('Type of output', 'wp-ai'),
                 'type' => 'string'
             ],
             // 'additional_class' => [
             // 	'default' => '',
             // 	'field_type' => 'text',
-            // 	'label' => __( 'Additonal CSS-class(es) for surrounding DIV', 'rrze-answers' ),
+            // 	'label' => __( 'Additonal CSS-class(es) for surrounding DIV', 'wp-ai' ),
             // 	'type' => 'text'
             // ],
         ];
@@ -77,7 +77,7 @@ class ShortcodeSynonym
     {
         $ret = get_posts([
             'name' => $slug,
-            'post_type' => 'rrze_synonym',
+            'post_type' => 'bk_synonym',
             'post_status' => 'publish',
             'posts_per_page' => 1
         ]);
@@ -117,7 +117,7 @@ class ShortcodeSynonym
             $myPosts = array(get_post($id));
         } else {
             // show all
-            $myPosts = $this->getPostsByCPT('rrze_synonym');
+            $myPosts = $this->getPostsByCPT('bk_synonym');
         }
 
         // if ($gutenberg_shortcode_type) {
@@ -189,7 +189,7 @@ class ShortcodeSynonym
     public function addMCEButtons($pluginArray)
     {
         if (current_user_can('edit_posts') && current_user_can('edit_pages')) {
-            $pluginArray['rrze_shortcode'] = plugin()->getUrl() . 'assets/js/tinymce-shortcodes.js';
+            $pluginArray['bk_shortcode'] = plugin()->getUrl() . 'assets/js/tinymce-shortcodes.js';
         }
         return $pluginArray;
     }

@@ -10,10 +10,10 @@
 get_header();
 ?>
 
-<main id="main" class="site-main rrze-answers archive">
+<main id="main" class="site-main wp-ai archive">
     <div id="content"><div class="content-container">
         <?php
-        echo '<h2>' . __('Glossary', 'rrze-answers') . '</h2>';
+        echo '<h2>' . __('Glossary', 'wp-ai') . '</h2>';
         ?>
         <ul>
         <?php
@@ -27,7 +27,7 @@ get_header();
                 );
             }
         } else {
-            echo '<li>' . esc_html__('no glossary found.', 'rrze-answers') . '</li>';
+            echo '<li>' . esc_html__('no glossary found.', 'wp-ai') . '</li>';
         }
         ?>
         </ul>

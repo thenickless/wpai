@@ -1,5 +1,5 @@
 /**
- * RRZE Answers admin tours: overview Guide + contextual setup tour.
+ * WP AI admin tours: overview Guide + contextual setup tour.
  */
 import { useEffect, useState } from '@wordpress/element';
 import { render } from '@wordpress/element';
@@ -9,22 +9,22 @@ import { SetupTour } from './setup-tour';
 
 function GuideIcon( { dashicon } ) {
 	return (
-		<div className="rrze-answers-guided-tour__icon" aria-hidden="true">
+		<div className="wp-ai-guided-tour__icon" aria-hidden="true">
 			<span className={ `dashicons ${ dashicon }` } />
 		</div>
 	);
 }
 
 function dismissTour() {
-	if ( typeof rrzeAnswersGuide === 'undefined' ) {
+	if ( typeof BKWPAIGuide === 'undefined' ) {
 		return Promise.resolve();
 	}
 
 	const body = new FormData();
-	body.append( 'action', 'rrze_answers_dismiss_guided_tour' );
-	body.append( 'nonce', rrzeAnswersGuide.nonce );
+	body.append( 'action', 'wp_ai_dismiss_guided_tour' );
+	body.append( 'nonce', BKWPAIGuide.nonce );
 
-	return fetch( rrzeAnswersGuide.ajaxUrl, {
+	return fetch( BKWPAIGuide.ajaxUrl, {
 		method: 'POST',
 		body,
 		credentials: 'same-origin',
@@ -43,10 +43,10 @@ function ToursApp( { autoStartGuide, autoStartSetup, setupTourStepId } ) {
 
 	useEffect( () => {
 		const guideButton = document.getElementById(
-			'rrze-answers-start-guided-tour'
+			'wp-ai-start-guided-tour'
 		);
 		const setupButton = document.getElementById(
-			'rrze-answers-start-setup-tour'
+			'wp-ai-start-setup-tour'
 		);
 
 		const openGuide = () => {
@@ -79,13 +79,13 @@ function ToursApp( { autoStartGuide, autoStartSetup, setupTourStepId } ) {
 			image: <GuideIcon dashicon="dashicons-welcome-learn-more" />,
 			content: (
 				<>
-					<h1 className="rrze-answers-guided-tour__heading">
-						{ __( 'Welcome to RRZE Answers', 'rrze-answers' ) }
+					<h1 className="wp-ai-guided-tour__heading">
+						{ __( 'Welcome to WP AI', 'wp-ai' ) }
 					</h1>
-					<p className="rrze-answers-guided-tour__text">
+					<p className="wp-ai-guided-tour__text">
 						{ __(
 							'This plugin helps you manage FAQ entries, glossary terms, synonyms, and placeholders — and embed them in pages with blocks or shortcodes.',
-							'rrze-answers'
+							'wp-ai'
 						) }
 					</p>
 				</>
@@ -95,13 +95,13 @@ function ToursApp( { autoStartGuide, autoStartSetup, setupTourStepId } ) {
 			image: <GuideIcon dashicon="dashicons-editor-help" />,
 			content: (
 				<>
-					<h1 className="rrze-answers-guided-tour__heading">
-						{ __( 'Create and manage content', 'rrze-answers' ) }
+					<h1 className="wp-ai-guided-tour__heading">
+						{ __( 'Create and manage content', 'wp-ai' ) }
 					</h1>
-					<p className="rrze-answers-guided-tour__text">
+					<p className="wp-ai-guided-tour__text">
 						{ __(
 							'Use the FAQ and Glossary menus in the WordPress admin to add questions, terms, categories, and tags.',
-							'rrze-answers'
+							'wp-ai'
 						) }
 					</p>
 				</>
@@ -111,13 +111,13 @@ function ToursApp( { autoStartGuide, autoStartSetup, setupTourStepId } ) {
 			image: <GuideIcon dashicon="dashicons-cloud" />,
 			content: (
 				<>
-					<h1 className="rrze-answers-guided-tour__heading">
-						{ __( 'Import from other sites', 'rrze-answers' ) }
+					<h1 className="wp-ai-guided-tour__heading">
+						{ __( 'Import from other sites', 'wp-ai' ) }
 					</h1>
-					<p className="rrze-answers-guided-tour__text">
+					<p className="wp-ai-guided-tour__text">
 						{ __(
 							'Use the interactive setup tour to register domains, select categories, and synchronize FAQ and glossary content.',
-							'rrze-answers'
+							'wp-ai'
 						) }
 					</p>
 				</>
@@ -127,13 +127,13 @@ function ToursApp( { autoStartGuide, autoStartSetup, setupTourStepId } ) {
 			image: <GuideIcon dashicon="dashicons-media-text" />,
 			content: (
 				<>
-					<h1 className="rrze-answers-guided-tour__heading">
-						{ __( 'Logfile and blocks', 'rrze-answers' ) }
+					<h1 className="wp-ai-guided-tour__heading">
+						{ __( 'Logfile and blocks', 'wp-ai' ) }
 					</h1>
-					<p className="rrze-answers-guided-tour__text">
+					<p className="wp-ai-guided-tour__text">
 						{ __(
 							'After each sync, details are written to the logfile. Insert FAQ and glossary blocks in the editor or use shortcodes.',
-							'rrze-answers'
+							'wp-ai'
 						) }
 					</p>
 				</>
@@ -145,12 +145,12 @@ function ToursApp( { autoStartGuide, autoStartSetup, setupTourStepId } ) {
 		<>
 			{ guideOpen && (
 				<Guide
-					className="rrze-answers-guided-tour"
+					className="wp-ai-guided-tour"
 					contentLabel={ __(
-						'RRZE Answers guided tour',
-						'rrze-answers'
+						'WP AI guided tour',
+						'wp-ai'
 					) }
-					finishButtonText={ __( 'Get started', 'rrze-answers' ) }
+					finishButtonText={ __( 'Get started', 'wp-ai' ) }
 					onFinish={ finishGuide }
 					pages={ guidePages }
 				/>
@@ -166,14 +166,14 @@ function ToursApp( { autoStartGuide, autoStartSetup, setupTourStepId } ) {
 	);
 }
 
-const root = document.getElementById( 'rrze-answers-guided-tour-root' );
+const root = document.getElementById( 'wp-ai-guided-tour-root' );
 
-if ( root && typeof rrzeAnswersGuide !== 'undefined' ) {
+if ( root && typeof BKWPAIGuide !== 'undefined' ) {
 	render(
 		<ToursApp
-			autoStartGuide={ rrzeAnswersGuide.autoStart }
-			autoStartSetup={ rrzeAnswersGuide.autoStartSetup }
-			setupTourStepId={ rrzeAnswersGuide.setupTourStepId }
+			autoStartGuide={ BKWPAIGuide.autoStart }
+			autoStartSetup={ BKWPAIGuide.autoStartSetup }
+			setupTourStepId={ BKWPAIGuide.setupTourStepId }
 		/>,
 		root
 	);

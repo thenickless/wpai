@@ -28,7 +28,7 @@ export default function Edit({attributes, setAttributes}) {
 
     // const registeroptions = [
     //     {
-    //         label: __('all', 'rrze-answers'),
+    //         label: __('all', 'wp-ai'),
     //         value: ''
     //     }
     // ];
@@ -48,7 +48,7 @@ export default function Edit({attributes, setAttributes}) {
 
     // const tagoptions = [
     //     {
-    //         label: __('all', 'rrze-answers'),
+    //         label: __('all', 'wp-ai'),
     //         value: ''
     //     }
     // ];
@@ -63,12 +63,12 @@ export default function Edit({attributes, setAttributes}) {
     // }
 
     const placeholders = useSelect((select) => {
-        return select('core').getEntityRecords('postType', 'rrze_placeholder', {per_page: -1, orderby: 'title', order: "asc"});
+        return select('core').getEntityRecords('postType', 'bk_placeholder', {per_page: -1, orderby: 'title', order: "asc"});
     }, []);
 
     const placeholderoptions = [
         {
-            label: __('all', 'rrze-answers'),
+            label: __('all', 'wp-ai'),
             value: 0
         }
     ];
@@ -76,7 +76,7 @@ export default function Edit({attributes, setAttributes}) {
     if (!!placeholders) {
         Object.values(placeholders).forEach(placeholder => {
             placeholderoptions.push({
-                label: placeholder.title.rendered ? placeholder.title.rendered : __('No title', 'rrze-answers'),
+                label: placeholder.title.rendered ? placeholder.title.rendered : __('No title', 'wp-ai'),
                 value: placeholder.id,
             });
         });
@@ -84,60 +84,60 @@ export default function Edit({attributes, setAttributes}) {
 
     const langoptions = [
         {
-            label: __('all', 'rrze-answers'),
+            label: __('all', 'wp-ai'),
             value: ''
         },
         {
-            label: __('German', 'rrze-answers'),
+            label: __('German', 'wp-ai'),
             value: 'de'
         },
         {
 
-            label: __('English', 'rrze-answers'),
+            label: __('English', 'wp-ai'),
             value: 'en'
         },
         {
 
-            label: __('French', 'rrze-answers'),
+            label: __('French', 'wp-ai'),
             value: 'fr'
         },
         {
 
-            label: __('Spanish', 'rrze-answers'),
+            label: __('Spanish', 'wp-ai'),
             value: 'es'
         },
         {
-            label: __('Russian', 'rrze-answers'),
+            label: __('Russian', 'wp-ai'),
             value: 'ru'
         },
         {
-            label: __('Chinese', 'rrze-answers'),
+            label: __('Chinese', 'wp-ai'),
             value: 'zh'
         }
     ];
 
     const sortoptions = [
         {
-            label: __('Title', 'rrze-answers'),
+            label: __('Title', 'wp-ai'),
             value: 'title'
         },
         {
-            label: __('ID', 'rrze-answers'),
+            label: __('ID', 'wp-ai'),
             value: 'id'
         },
         {
-            label: __('Sort field', 'rrze-answers'),
+            label: __('Sort field', 'wp-ai'),
             value: 'sortfield'
         }
     ];
 
     const orderoptions = [
         {
-            label: __('ASC', 'rrze-answers'),
+            label: __('ASC', 'wp-ai'),
             value: 'ASC'
         },
         {
-            label: __('DESC', 'rrze-answers'),
+            label: __('DESC', 'wp-ai'),
             value: 'DESC'
         }
     ];
@@ -156,9 +156,9 @@ export default function Edit({attributes, setAttributes}) {
                     <SelectControl
                         label={__(
                             "Placeholder",
-                            'rrze-answers'
+                            'wp-ai'
                         )}
-                        help={__('Show a selection of individual placeholders', 'rrze-answers')}
+                        help={__('Show a selection of individual placeholders', 'wp-ai')}
                         value={idstate}
                         options={placeholderoptions}
                         onChange={onChangeID}
@@ -167,9 +167,9 @@ export default function Edit({attributes, setAttributes}) {
                     <SelectControl
                         label={__(
                             "Language",
-                            'rrze-answers'
+                            'wp-ai'
                         )}
-                        help={__('Show only placeholders matching the selected language.', 'rrze-answers')}
+                        help={__('Show only placeholders matching the selected language.', 'wp-ai')}
                         value={lang}
                         options={langoptions}
                         onChange={(value) => setAttributes({lang: value})}
@@ -178,7 +178,7 @@ export default function Edit({attributes, setAttributes}) {
             </InspectorControls>
             <div {...blockProps}>
                 <ServerSideRender
-                    block="rrze-answers/placeholder"
+                    block="wp-ai/placeholder"
                     attributes={attributes}
                 />
             </div>

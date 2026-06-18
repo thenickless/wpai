@@ -1,6 +1,6 @@
 <?php
 
-namespace RRZE\Answers\Common\Blocks;
+namespace BK\WPAI\Common\Blocks;
 
 defined('ABSPATH') || exit;
 
@@ -9,7 +9,7 @@ defined('ABSPATH') || exit;
  * 
  * This class is responsible for registering custom blocks for the plugin.
  * 
- * @package RRZE\Answers\Common
+ * @package BK\WPAI\Common
  * @since 1.0.0
  */
 class Blocks
@@ -97,8 +97,8 @@ class Blocks
     {
         foreach ($this->blocks as $block) {
             wp_set_script_translations(
-                'rrze-answers-' . $block . '-editor-script',
-                'rrze-answers',
+                'wp-ai-' . $block . '-editor-script',
+                'wp-ai',
                 $this->pluginPath . 'languages'
             );
         }

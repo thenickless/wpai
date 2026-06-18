@@ -1,8 +1,8 @@
 <?php
 
-namespace RRZE\Answers\Common;
+namespace BK\WPAI\Common;
 
-use RRZE\Answers\Defaults;
+use BK\WPAI\Defaults;
 
 defined('ABSPATH') || exit;
 
@@ -94,14 +94,14 @@ class Tools
         $out .= '<details'
             . ($load_open ? ' open' : '')
             . ' id="' . esc_attr($anchor) . '"'
-            . ' class="rrze-answers-item is-' . esc_attr($color) . '">';
+            . ' class="wp-ai-item is-' . esc_attr($color) . '">';
 
         if ($useSchema) {
             if ($isFaq) {
                 // FAQ schema: Question + acceptedAnswer/Answer/text
                 $out .= '<summary itemprop="name">' . esc_html($question) . '</summary>';
                 $out .= '<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">';
-                $out .= '<div class="rrze-answers-content" itemprop="text">' . $answer . '</div>';
+                $out .= '<div class="wp-ai-content" itemprop="text">' . $answer . '</div>';
                 $out .= '</div>';
             } elseif ($isGlossary) {
                 // Glossary schema: DefinedTerm / name / description / text
@@ -111,13 +111,13 @@ class Tools
                     . '</summary>';
 
                 $out .= '<div itemscope itemprop="description" itemtype="https://schema.org/description">';
-                $out .= '<div class="rrze-answers-content" itemprop="text">' . $answer . '</div>';
+                $out .= '<div class="wp-ai-content" itemprop="text">' . $answer . '</div>';
                 $out .= '</div>';
             }
         } else {
             // No schema at all
             $out .= '<summary>' . esc_html($question) . '</summary>';
-            $out .= '<div class="answers-content">' . $answer . '</div>';
+            $out .= '<div class="wp_ai-content">' . $answer . '</div>';
         }
 
         $out .= '</details>';
@@ -211,9 +211,9 @@ class Tools
         $isFaq = ($type === 'faq');
         $isGlossary = ($type === 'glossary');
 
-        $classes = 'rrze-answers';
+        $classes = 'wp-ai';
         if ($masonry) {
-            $classes .= ' rrze-answers-masonry';
+            $classes .= ' wp-ai-masonry';
         }
         if (!empty($additional_class)) {
             $classes .= ' ' . trim($additional_class);
@@ -234,8 +234,8 @@ class Tools
 
         // Fallback heading text depending on type
         $fallbackTitle = $isGlossary
-            ? __('Glossary', 'rrze-answers')
-            : __('FAQ', 'rrze-answers');
+            ? __('Glossary', 'wp-ai')
+            : __('FAQ', 'wp-ai');
 
         $title = get_the_title($postID);
         if (empty($title)) {
@@ -246,14 +246,14 @@ class Tools
         if ($search) {
             $searchId = $headerID . '-search';
             $searchMarkup =
-                '<div class="rrze-answers-search">'
+                '<div class="wp-ai-search">'
                 . '<label class="screen-reader-text" for="' . esc_attr($searchId) . '">'
-                . esc_html__('Search FAQ', 'rrze-answers')
+                . esc_html__('Search FAQ', 'wp-ai')
                 . '</label>'
                 . '<input type="search"'
                 . ' id="' . esc_attr($searchId) . '"'
-                . ' class="rrze-answers-search__input"'
-                . ' synonym="' . esc_attr__('Search…', 'rrze-answers') . '"'
+                . ' class="wp-ai-search__input"'
+                . ' synonym="' . esc_attr__('Search…', 'wp-ai') . '"'
                 . ' data-minlen="3"'
                 . ' autocomplete="off"'
                 . ' />'
@@ -338,7 +338,7 @@ class Tools
             $aSizes[$ID] = ($aSizes[$ID] < $smallest ? $smallest : $aSizes[$ID]);
         }
         foreach ($aTerms as $name => $aDetails) {
-            $ret .= '<a href="#ID-' . $aDetails['ID'] . '" class="rrze-answers-tagcloud-item" style="--rrze-answers-tagcloud-size:' . $aSizes[$aDetails['ID']] . 'px">' . $name .
+            $ret .= '<a href="#ID-' . $aDetails['ID'] . '" class="wp-ai-tagcloud-item" style="--wp-ai-tagcloud-size:' . $aSizes[$aDetails['ID']] . 'px">' . $name .
                 '</a> | ';
         }
         return rtrim($ret, ' | ');
@@ -437,7 +437,7 @@ class Tools
 
     public function getLinkedPage(int &$postID): ?array
     {
-        $assigned_terms = get_the_terms($postID, 'rrze_faq_category');
+        $assigned_terms = get_the_terms($postID, 'bk_faq_category');
 
         if (!$assigned_terms || is_wp_error($assigned_terms)) {
             return null;
@@ -492,7 +492,7 @@ class Tools
             'post_status' => 'publish'
         ]);
 
-        $options = ['' => __('Default archive', 'rrze-answers')];
+        $options = ['' => __('Default archive', 'wp-ai')];
         foreach ($pages as $page) {
             $options[get_permalink($page->ID)] = $page->post_title;
         }
@@ -506,10 +506,10 @@ class Tools
             return [];
         }
 
-        $pluginFile = 'rrze-answers/rrze-answers.php';
+        $pluginFile = 'wp-ai/wp-ai.php';
         $sites = get_sites(['public' => 1, 'archived' => 0, 'deleted' => 0]);
         $current_blog_id = get_current_blog_id();
-        $result = ['' => __('-- Choose a website --', 'rrze-answers')];
+        $result = ['' => __('-- Choose a website --', 'wp-ai')];
 
         foreach ($sites as $site) {
             $blog_id = (int) $site->blog_id;
@@ -573,13 +573,13 @@ class Tools
         $langlist = $defaults->get('lang');
 
         $lang = get_post_meta($post_id, 'titleLang', TRUE);
-        return ($lang == substr(get_locale(), 0, 2) ? '' : ' (' . __('Pronunciation', 'rrze-answers') . ': ' . $langlist[$lang] . ')');
+        return ($lang == substr(get_locale(), 0, 2) ? '' : ' (' . __('Pronunciation', 'wp-ai') . ': ' . $langlist[$lang] . ')');
     }
 
 
     public static function getLogfilePath(): string
     {
-        return WP_CONTENT_DIR . '/rrze-answers.log';
+        return WP_CONTENT_DIR . '/wp-ai.log';
     }
 
     /**
@@ -709,7 +709,7 @@ class Tools
 
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'rrze_faq',
+            'post_type' => 'bk_faq',
             'fields' => 'ids',
             'post_status' => 'publish',
             'no_found_rows' => true,
@@ -721,7 +721,7 @@ class Tools
         if ($cat_id) {
             $args['tax_query'] = [
                 [
-                    'taxonomy' => 'rrze_faq_category',
+                    'taxonomy' => 'bk_faq_category',
                     'field' => 'term_id',
                     'terms' => $cat_id,
                 ],

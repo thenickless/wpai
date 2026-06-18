@@ -1,20 +1,20 @@
 <?php
 
-namespace RRZE\Answers\Common\CPT;
+namespace BK\WPAI\Common\CPT;
 
 defined('ABSPATH') || exit;
 
 
 class CPTGlossary extends CPT
 {
-    protected $post_type = 'rrze_glossary';
+    protected $post_type = 'bk_glossary';
 
     protected $templates = [
-        'single' => 'rrze_glossary-single.php',
-        'archive' => 'rrze_glossary-archive.php',
+        'single' => 'bk_glossary-single.php',
+        'archive' => 'bk_glossary-archive.php',
         'taxonomy' => [
-            'category' => 'rrze_glossary_category.php',
-            'tag' => 'rrze_glossary_tag.php',
+            'category' => 'bk_glossary_category.php',
+            'tag' => 'bk_glossary_tag.php',
         ],
     ];
 
@@ -33,31 +33,31 @@ class CPTGlossary extends CPT
     public function __construct()
     {
         $this->labels = [
-            'name' => _x('Glossary', 'Glossary entries', 'rrze-answers'),
-            'singular_name' => _x('Glossary', 'Single glossary ', 'rrze-answers'),
-            'menu_name' => __('Glossary', 'rrze-answers'),
-            'add_new' => __('Add glossary', 'rrze-answers'),
-            'add_new_item' => __('Add new glossary', 'rrze-answers'),
-            'edit_item' => __('Edit glossary', 'rrze-answers'),
-            'all_items' => __('All glossaries', 'rrze-answers'),
-            'search_items' => __('Search glossary', 'rrze-answers'),
+            'name' => _x('Glossary', 'Glossary entries', 'wp-ai'),
+            'singular_name' => _x('Glossary', 'Single glossary ', 'wp-ai'),
+            'menu_name' => __('Glossary', 'wp-ai'),
+            'add_new' => __('Add glossary', 'wp-ai'),
+            'add_new_item' => __('Add new glossary', 'wp-ai'),
+            'edit_item' => __('Edit glossary', 'wp-ai'),
+            'all_items' => __('All glossaries', 'wp-ai'),
+            'search_items' => __('Search glossary', 'wp-ai'),
         ];
 
         $this->taxonomies = [
             [
-                'name' => 'rrze_glossary_category',
-                'label' => __('Glossary Categories', 'rrze-answers'),
+                'name' => 'bk_glossary_category',
+                'label' => __('Glossary Categories', 'wp-ai'),
                 'slug_option_key' => 'website_custom_glossary_category_slug',
                 'default_slug' => 'glossary_category',
-                'rest_base' => 'rrze_glossary_category',
+                'rest_base' => 'bk_glossary_category',
                 'hierarchical' => true,
             ],
             [
-                'name' => 'rrze_glossary_tag',
-                'label' => __('Glossary Tags', 'rrze-answers'),
+                'name' => 'bk_glossary_tag',
+                'label' => __('Glossary Tags', 'wp-ai'),
                 'slug_option_key' => 'website_custom_glossary_tag_slug',
                 'default_slug' => 'glossary_tag',
-                'rest_base' => 'rrze_glossary_tag',
+                'rest_base' => 'bk_glossary_tag',
                 'hierarchical' => false,
             ],
         ];
@@ -73,7 +73,7 @@ class CPTGlossary extends CPT
      */
     public function maybe_disable_canonical_redirect(): void
     {
-        $options = get_option('rrze-answers');
+        $options = get_option('wp-ai');
 
         $slug = !empty($options['custom_glossary_slug'])
             ? sanitize_title($options['custom_glossary_slug'])
@@ -93,7 +93,7 @@ class CPTGlossary extends CPT
     {
         global $wp_query;
 
-        $options = get_option('rrze-answers');
+        $options = get_option('wp-ai');
 
         $slug = !empty($options['custom_glossary_slug'])
             ? sanitize_title($options['custom_glossary_slug'])

@@ -1,12 +1,12 @@
 <?php
 
-namespace RRZE\Answers\Common\Shortcode;
+namespace BK\WPAI\Common\Shortcode;
 
 defined('ABSPATH') || exit;
 
-use RRZE\Answers\Common\Tools;
+use BK\WPAI\Common\Tools;
 
-use function RRZE\Answers\plugin;
+use function BK\WPAI\plugin;
 
 
 
@@ -32,9 +32,9 @@ class ShortcodePlaceholder
     {
         return [
             'block' => [
-                'blocktype' => 'rrze-answers/placeholder',
+                'blocktype' => 'wp-ai/placeholder',
                 'blockname' => 'placeholder',
-                'title' => 'RRZE Placeholder',
+                'title' => 'BK Placeholder',
                 'category' => 'widgets',
                 'icon' => 'translation',
                 'tinymce_icon' => 'translate',
@@ -42,35 +42,35 @@ class ShortcodePlaceholder
             'slug' => [
                 'default' => '',
                 'field_type' => 'text',
-                'label' => __('Slug', 'rrze-answers'),
+                'label' => __('Slug', 'wp-ai'),
                 'type' => 'text'
             ],
             'id' => [
                 'default' => 0,
                 'field_type' => 'text',
-                'label' => __('Placeholder', 'rrze-answers'),
+                'label' => __('Placeholder', 'wp-ai'),
                 'type' => 'number'
             ],
             'lang' => [
                 'default' => '',
                 'field_type' => 'text',
-                'label' => __('Language', 'rrze-answers'),
+                'label' => __('Language', 'wp-ai'),
                 'type' => 'text'
             ],
             'gutenberg_shortcode_type' => [
                 'values' => [
-                    'fau_abbr' => __('Abbreviation', 'rrze-answers'), // Abkürzung
-                    'placeholder' => __('Longform', 'rrze-answers') // Ausgeschriebene Form
+                    'fau_abbr' => __('Abbreviation', 'wp-ai'), // Abkürzung
+                    'placeholder' => __('Longform', 'wp-ai') // Ausgeschriebene Form
                 ],
                 'default' => 'placeholder',
                 'field_type' => 'radio',
-                'label' => __('Type of output', 'rrze-answers'),
+                'label' => __('Type of output', 'wp-ai'),
                 'type' => 'string'
             ],
             // 'additional_class' => [
             // 	'default' => '',
             // 	'field_type' => 'text',
-            // 	'label' => __( 'Additonal CSS-class(es) for surrounding DIV', 'rrze-answers' ),
+            // 	'label' => __( 'Additonal CSS-class(es) for surrounding DIV', 'wp-ai' ),
             // 	'type' => 'text'
             // ],
         ];
@@ -82,7 +82,7 @@ class ShortcodePlaceholder
     {
         $ret = get_posts([
             'name' => $slug,
-            'post_type' => 'rrze_placeholder',
+            'post_type' => 'bk_placeholder',
             'post_status' => 'publish',
             'posts_per_page' => 1
         ]);
@@ -151,7 +151,7 @@ class ShortcodePlaceholder
             $myPosts = array(get_post($id));
         } else {
             // show all
-            $myPosts = $this->getPostsByCPT('rrze_placeholder');
+            $myPosts = $this->getPostsByCPT('bk_placeholder');
         }
 
         $myPosts = $this->filterPostsByLanguage($myPosts, $lang ?? '');
@@ -202,7 +202,7 @@ class ShortcodePlaceholder
     public function addMCEButtons($pluginArray)
     {
         if (current_user_can('edit_posts') && current_user_can('edit_pages')) {
-            $pluginArray['rrze_shortcode'] = plugin()->getUrl() . 'assets/js/tinymce-shortcodes.js';
+            $pluginArray['bk_shortcode'] = plugin()->getUrl() . 'assets/js/tinymce-shortcodes.js';
         }
         return $pluginArray;
     }

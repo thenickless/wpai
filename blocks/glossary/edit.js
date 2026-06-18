@@ -85,7 +85,7 @@ export default function Edit({ attributes, setAttributes }) {
 	const [idstate, setSelectedIDs] = useState(['']);
 
 	const categories = useSelect((select) => {
-		return select('core').getEntityRecords('taxonomy', 'rrze_glossary_category', {
+		return select('core').getEntityRecords('taxonomy', 'bk_glossary_category', {
 			per_page: -1,
 			orderby: 'name',
 			order: 'asc',
@@ -96,7 +96,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const categoryoptions = [
 		{
-			label: __('all', 'rrze-answers'),
+			label: __('all', 'wp-ai'),
 			value: '',
 		},
 	];
@@ -106,7 +106,7 @@ export default function Edit({ attributes, setAttributes }) {
 	}
 
 	const tags = useSelect((select) => {
-		return select('core').getEntityRecords('taxonomy', 'rrze_glossary_tag', {
+		return select('core').getEntityRecords('taxonomy', 'bk_glossary_tag', {
 			per_page: -1,
 			orderby: 'name',
 			order: 'asc',
@@ -117,7 +117,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const tagoptions = [
 		{
-			label: __('all', 'rrze-answers'),
+			label: __('all', 'wp-ai'),
 			value: '',
 		},
 	];
@@ -132,7 +132,7 @@ export default function Edit({ attributes, setAttributes }) {
 	}
 
 	const glossarys = useSelect((select) => {
-		return select('core').getEntityRecords('postType', 'rrze_glossary', {
+		return select('core').getEntityRecords('postType', 'bk_glossary', {
 			per_page: -1,
 			orderby: 'title',
 			order: 'asc',
@@ -143,7 +143,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const glossaryoptions = [
 		{
-			label: __('all', 'rrze-answers'),
+			label: __('all', 'wp-ai'),
 			value: 0,
 		},
 	];
@@ -153,7 +153,7 @@ export default function Edit({ attributes, setAttributes }) {
 			glossaryoptions.push({
 				label: glossary.title.rendered
 					? glossary.title.rendered
-					: __('No title', 'rrze-answers'),
+					: __('No title', 'wp-ai'),
 				value: glossary.id,
 			});
 		});
@@ -161,65 +161,65 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const langoptions = [
 		{
-			label: __('all', 'rrze-answers'),
+			label: __('all', 'wp-ai'),
 			value: '',
 		},
 		{
-			label: __('German', 'rrze-answers'),
+			label: __('German', 'wp-ai'),
 			value: 'de',
 		},
 		{
-			label: __('English', 'rrze-answers'),
+			label: __('English', 'wp-ai'),
 			value: 'en',
 		},
 		{
-			label: __('French', 'rrze-answers'),
+			label: __('French', 'wp-ai'),
 			value: 'fr',
 		},
 		{
-			label: __('Spanish', 'rrze-answers'),
+			label: __('Spanish', 'wp-ai'),
 			value: 'es',
 		},
 		{
-			label: __('Russian', 'rrze-answers'),
+			label: __('Russian', 'wp-ai'),
 			value: 'ru',
 		},
 		{
-			label: __('Chinese', 'rrze-answers'),
+			label: __('Chinese', 'wp-ai'),
 			value: 'zh',
 		},
 	];
 
 	const registeroptions = [
 		{
-			label: __('none', 'rrze-answers'),
+			label: __('none', 'wp-ai'),
 			value: '',
 		},
 		{
-			label: __('Categories', 'rrze-answers'),
+			label: __('Categories', 'wp-ai'),
 			value: 'category',
 		},
 		{
-			label: __('Tags', 'rrze-answers'),
+			label: __('Tags', 'wp-ai'),
 			value: 'tag',
 		},
 	];
 
 	const registerstyleoptions = [
 		{
-			label: __('A - Z', 'rrze-answers'),
+			label: __('A - Z', 'wp-ai'),
 			value: 'a-z',
 		},
 		{
-			label: __('Tagcloud', 'rrze-answers'),
+			label: __('Tagcloud', 'wp-ai'),
 			value: 'tagcloud',
 		},
 		{
-			label: __('Tabs', 'rrze-answers'),
+			label: __('Tabs', 'wp-ai'),
 			value: 'tabs',
 		},
 		{
-			label: __('-- hidden --', 'rrze-answers'),
+			label: __('-- hidden --', 'wp-ai'),
 			value: '',
 		},
 	];
@@ -253,7 +253,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const styleoptions = [
 		{
-			label: __('none', 'rrze-answers'),
+			label: __('none', 'wp-ai'),
 			value: '',
 		},
 		{
@@ -268,26 +268,26 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const sortoptions = [
 		{
-			label: __('Title', 'rrze-answers'),
+			label: __('Title', 'wp-ai'),
 			value: 'title',
 		},
 		{
-			label: __('ID', 'rrze-answers'),
+			label: __('ID', 'wp-ai'),
 			value: 'id',
 		},
 		{
-			label: __('Sort field', 'rrze-answers'),
+			label: __('Sort field', 'wp-ai'),
 			value: 'sortfield',
 		},
 	];
 
 	const orderoptions = [
 		{
-			label: __('ASC', 'rrze-answers'),
+			label: __('ASC', 'wp-ai'),
 			value: 'ASC',
 		},
 		{
-			label: __('DESC', 'rrze-answers'),
+			label: __('DESC', 'wp-ai'),
 			value: 'DESC',
 		},
 	];
@@ -320,14 +320,14 @@ export default function Edit({ attributes, setAttributes }) {
 
 			<InspectorControls>
 				<PanelBody
-					title={__('Filter options', 'rrze-answers')}
-					header={__('Filter the glossary-entries.', 'rrze-answers')}
+					title={__('Filter options', 'wp-ai')}
+					header={__('Filter the glossary-entries.', 'wp-ai')}
 				>
 					<SelectControl
-						label={__('Categories', 'rrze-answers')}
+						label={__('Categories', 'wp-ai')}
 						help={__(
 							'Only show glossary-entries with these selected categories.',
-							'rrze-answers'
+							'wp-ai'
 						)}
 						value={categorystate}
 						options={categoryoptions}
@@ -335,10 +335,10 @@ export default function Edit({ attributes, setAttributes }) {
 						multiple
 					/>
 					<SelectControl
-						label={__('Tags', 'rrze-answers')}
+						label={__('Tags', 'wp-ai')}
 						help={__(
 							'Only show glossary-entries with these selected tags.',
-							'rrze-answers'
+							'wp-ai'
 						)}
 						value={tagstate}
 						options={tagoptions}
@@ -346,10 +346,10 @@ export default function Edit({ attributes, setAttributes }) {
 						multiple
 					/>
 					<SelectControl
-						label={__('Single glossary-Entries', 'rrze-answers')}
+						label={__('Single glossary-Entries', 'wp-ai')}
 						help={__(
 							'Only show these glossary-entries.',
-							'rrze-answers'
+							'wp-ai'
 						)}
 						value={idstate}
 						options={glossaryoptions}
@@ -357,10 +357,10 @@ export default function Edit({ attributes, setAttributes }) {
 						multiple
 					/>
 					<SelectControl
-						label={__('Language', 'rrze-answers')}
+						label={__('Language', 'wp-ai')}
 						help={__(
 							'Only show glossary-entries in this language.',
-							'rrze-answers'
+							'wp-ai'
 						)}
 						value={lang}
 						options={langoptions}
@@ -369,10 +369,10 @@ export default function Edit({ attributes, setAttributes }) {
 						}
 					/>
 					<SelectControl
-						label={__('Group register Content by', 'rrze-answers')}
+						label={__('Group register Content by', 'wp-ai')}
 						help={__(
 							'Group glossary-entries by categories or tags.',
-							'rrze-answers'
+							'wp-ai'
 						)}
 						value={register}
 						options={registeroptions}
@@ -382,13 +382,13 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</PanelBody>
 				<PanelBody
-					title={__('Appearance', 'rrze-answers')}
-					name={__('Appearance', 'rrze-answers')}
+					title={__('Appearance', 'wp-ai')}
+					name={__('Appearance', 'wp-ai')}
 					icon="admin-appearance"
 					initialOpen={false}
 				>
 					<SelectControl
-						label={__('register style', 'rrze-answers')}
+						label={__('register style', 'wp-ai')}
 						options={registerstyleoptions}
 						onChange={(value) =>
 							setAttributes({ registerstyle: value })
@@ -397,7 +397,7 @@ export default function Edit({ attributes, setAttributes }) {
 						<>
 							<ToggleControl
 								checked={!!hide_accordion}
-								label={__('Hide accordion', 'rrze-answers')}
+								label={__('Hide accordion', 'wp-ai')}
 								onChange={() =>
 									setAttributes({
 										hide_accordion: !hide_accordion,
@@ -407,7 +407,7 @@ export default function Edit({ attributes, setAttributes }) {
 								<>
 									<ToggleControl
 										checked={!!masonry}
-										label={__('Grid', 'rrze-answers')}
+										label={__('Grid', 'wp-ai')}
 										onChange={() =>
 											setAttributes({
 												masonry: !masonry,
@@ -417,7 +417,7 @@ export default function Edit({ attributes, setAttributes }) {
 									<SelectControl
 										label={__(
 											'Accordion-Style',
-											'rrze-answers'
+											'wp-ai'
 										)}
 										value={style || 'light'}
 										options={styleoptions}
@@ -426,7 +426,7 @@ export default function Edit({ attributes, setAttributes }) {
 										}
 									/>
 									<SelectControl
-										label={__('Color', 'rrze-answers')}
+										label={__('Color', 'wp-ai')}
 										value={color || ''}
 										options={coloroptions}
 										onChange={(value) =>
@@ -436,7 +436,7 @@ export default function Edit({ attributes, setAttributes }) {
 								</>
 								<ToggleControl
 									checked={!!hide_title}
-									label={__('Hide title', 'rrze-answers')}
+									label={__('Hide title', 'wp-ai')}
 									onChange={() =>
 										setAttributes({
 											hide_title: !hide_title,
@@ -445,16 +445,16 @@ export default function Edit({ attributes, setAttributes }) {
 								/>
 						</>
 				</PanelBody>
-				<PanelBody title={__('Sorting options', 'rrze-answers')}>
+				<PanelBody title={__('Sorting options', 'wp-ai')}>
 					<SelectControl
-						label={__('Sort', 'rrze-answers')}
+						label={__('Sort', 'wp-ai')}
 						options={sortoptions}
 						onChange={(value) =>
 							setAttributes({ sort: value })
 						}
 					/>
 					<SelectControl
-						label={__('Order', 'rrze-answers')}
+						label={__('Order', 'wp-ai')}
 						options={orderoptions}
 						onChange={(value) =>
 							setAttributes({ order: value })
@@ -464,7 +464,7 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 			<div {...blockProps}>
 				<ServerSideRender
-					block="rrze-answers/glossary"
+					block="wp-ai/glossary"
 					attributes={attributes}
 				/>
 			</div>

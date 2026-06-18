@@ -1,11 +1,11 @@
 <?php
 
-namespace RRZE\Answers\Common\API;
+namespace BK\WPAI\Common\API;
 
 defined('ABSPATH') || exit;
 
 /**
- * REST API for the 'rrze_faq' and 'rrze_glossary' object type
+ * REST API for the 'bk_faq' and 'bk_glossary' object type
  */
 class RESTAPI
 {
@@ -50,19 +50,19 @@ class RESTAPI
                 }
             }
 
-            if (in_array($post_type, ['rrze_faq', 'rrze_synonym', 'rrze_glossary', 'rrze_placeholder'], true)) {
+            if (in_array($post_type, ['bk_faq', 'bk_synonym', 'bk_glossary', 'bk_placeholder'], true)) {
                 $obj = get_post_type_object($post_type);
                 if (is_user_logged_in() && $obj && current_user_can($obj->cap->edit_posts)) {
                     return $result;
                 }
 
-                $opts = (array) get_option('rrze-answers');
+                $opts = (array) get_option('wp-ai');
                 $active = $opts['api_active_' . $post_type] ?? '';
 
                 if ($active !== '1') {
                     return new \WP_Error(
                         'forbidden',
-                        sprintf(__('API is deactivated for %s. Contact website owner %s', 'rrze-answers'), $post_type, '[email]'),
+                        sprintf(__('API is deactivated for %s. Contact website owner %s', 'wp-ai'), $post_type, '[email]'),
                         ['status' => 403]
                     );
                 }
@@ -90,7 +90,7 @@ class RESTAPI
         );
 
         foreach ($fields as $field) {
-            register_rest_field('rrze_synonym', $field, array(
+            register_rest_field('bk_synonym', $field, array(
                 'get_callback' => [$this, 'getMyPostMeta'],
                 'schema' => null,
             ));
@@ -147,11 +147,11 @@ class RESTAPI
     }
 
     /**
-     * Registers meta fields of the 'rrze_faq' and 'rrze_glossary' object types
+     * Registers meta fields of the 'bk_faq' and 'bk_glossary' object types
      */
     public function registerPostMetaRestFields()
     {
-        $post_types = array('rrze_faq', 'rrze_glossary', 'rrze_placeholder');
+        $post_types = array('bk_faq', 'bk_glossary', 'bk_placeholder');
 
         foreach ($post_types as $post_type) {
             // Registers the 'source' meta field
@@ -183,17 +183,17 @@ class RESTAPI
     public function addRestQueryFilters()
     {
         // Add filter parameters to the post type queries
-        $post_types = array('rrze_faq', 'rrze_glossary');
+        $post_types = array('bk_faq', 'bk_glossary');
         foreach ($post_types as $post_type) {
             add_filter('rest_' . $post_type . '_query', [$this, 'addFilterParam'], 10, 2);
         }
 
         // Add filter parameters to the categories queries
         $tax_queries = array(
-            'rrze_faq_category',
-            'rrze_faq_tag',
-            'rrze_glossary_category',
-            'rrze_glossary_tag',
+            'bk_faq_category',
+            'bk_faq_tag',
+            'bk_glossary_category',
+            'bk_glossary_tag',
         );
 
         foreach ($tax_queries as $taxonomy) {
@@ -237,9 +237,9 @@ class RESTAPI
         $post_type = isset($object['type']) ? $object['type'] : '';
 
         // Fallback to FAQ tax if type is unknown
-        $taxonomy = 'rrze_faq_category';
-        if ($post_type === 'rrze_glossary') {
-            $taxonomy = 'rrze_glossary_category';
+        $taxonomy = 'bk_faq_category';
+        if ($post_type === 'bk_glossary') {
+            $taxonomy = 'bk_glossary_category';
         }
 
         $cats = wp_get_post_terms($object['id'], $taxonomy, array('fields' => 'names'));
@@ -255,7 +255,7 @@ class RESTAPI
     public function getChildrenCategories($term)
     {
         // Use the taxonomy of the term to make this work for FAQ and Glossary
-        $taxonomy = isset($term['taxonomy']) ? $term['taxonomy'] : 'rrze_faq_category';
+        $taxonomy = isset($term['taxonomy']) ? $term['taxonomy'] : 'bk_faq_category';
 
         $children = get_terms(
             array(
@@ -280,9 +280,9 @@ class RESTAPI
     {
         $post_type = isset($object['type']) ? $object['type'] : '';
 
-        $taxonomy = 'rrze_faq_tag';
-        if ($post_type === 'rrze_glossary') {
-            $taxonomy = 'rrze_glossary_tag';
+        $taxonomy = 'bk_faq_tag';
+        if ($post_type === 'bk_glossary') {
+            $taxonomy = 'bk_glossary_tag';
         }
 
         return wp_get_post_terms($object['id'], $taxonomy, array('fields' => 'names'));
@@ -314,17 +314,17 @@ class RESTAPI
      * Registers read-only term meta fields on FAQ/Glossary taxonomies.
      *
      * Post taxonomies are exposed by WordPress core (term IDs) because
-     * show_in_rest is enabled. Do not register rrze_*_category/tag on posts:
+     * show_in_rest is enabled. Do not register bk_*_category/tag on posts:
      * a custom field with the same name breaks block-editor saves.
      */
     public function registerTaxRestFields()
     {
         // Registers the 'source' and 'lang' meta fields for all FAQ/Glossary taxonomies
         $fields = array(
-            'rrze_faq_category',
-            'rrze_faq_tag',
-            'rrze_glossary_category',
-            'rrze_glossary_tag',
+            'bk_faq_category',
+            'bk_faq_tag',
+            'bk_glossary_category',
+            'bk_glossary_tag',
         );
 
         foreach ($fields as $field) {
@@ -348,8 +348,8 @@ class RESTAPI
     {
         // Make the same callback work for FAQ and Glossary categories
         $category_taxonomies = array(
-            'rrze_faq_category',
-            'rrze_glossary_category',
+            'bk_faq_category',
+            'bk_glossary_category',
         );
 
         foreach ($category_taxonomies as $taxonomy) {

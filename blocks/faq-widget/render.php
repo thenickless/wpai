@@ -1,5 +1,5 @@
 <?php
-use RRZE\Answers\Common\Tools;
+use BK\WPAI\Common\Tools;
 
 $id = (!empty($attributes['id']) ? $attributes['id'] : 0);
 

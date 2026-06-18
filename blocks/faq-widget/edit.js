@@ -13,8 +13,8 @@ import { useSelect } from '@wordpress/data';
 import ServerSideRender from '@wordpress/server-side-render';
 import { __ } from '@wordpress/i18n';
 
-const FAQ_POST_TYPE = 'rrze_faq';
-const FAQ_TAXONOMY = 'rrze_faq_category';
+const FAQ_POST_TYPE = 'bk_faq';
+const FAQ_TAXONOMY = 'bk_faq_category';
 
 export default function Edit( { attributes, setAttributes } ) {
     const { id, catID, hide_title } = attributes;
@@ -69,7 +69,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
     // Build select options for FAQs.
     const faqOptions = [
-        { label: __( '— Select FAQ —', 'rrze-answers' ), value: 0 },
+        { label: __( '— Select FAQ —', 'wp-ai' ), value: 0 },
         ...faqs.map( ( faq ) => ( {
             label: faq.title?.rendered || `#${ faq.id }`,
             value: faq.id,
@@ -78,7 +78,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
     // Build select options for categories.
     const categoryOptions = [
-        { label: __( '— Select category —', 'rrze-answers' ), value: 0 },
+        { label: __( '— Select category —', 'wp-ai' ), value: 0 },
         ...categories.map( ( term ) => ( {
             label: term.name,
             value: term.id,
@@ -110,7 +110,7 @@ export default function Edit( { attributes, setAttributes } ) {
         <>
             <InspectorControls>
                 <PanelBody
-                    title={ __( 'FAQ selection', 'rrze-answers' ) }
+                    title={ __( 'FAQ selection', 'wp-ai' ) }
                     initialOpen={ true }
                 >
                     { isLoadingFaqs && <Spinner /> }
@@ -118,14 +118,14 @@ export default function Edit( { attributes, setAttributes } ) {
                     { ! isLoadingFaqs && ! faqs.length && (
                         <Notice status="warning" isDismissible={ false }>
                             { __(
-                                'No FAQs found (post type "rrze_faq" must be public and show_in_rest).',
-                                'rrze-answers'
+                                'No FAQs found (post type "bk_faq" must be public and show_in_rest).',
+                                'wp-ai'
                             ) }
                         </Notice>
                     ) }
 
                     <SelectControl
-                        label={ __( 'Choose a FAQ', 'rrze-answers' ) }
+                        label={ __( 'Choose a FAQ', 'wp-ai' ) }
                         value={ id }
                         options={ faqOptions }
                         onChange={ onChangeFAQ }
@@ -134,7 +134,7 @@ export default function Edit( { attributes, setAttributes } ) {
                     <SelectControl
                         label={ __(
                             'Or',
-                            'rrze-answers'
+                            'wp-ai'
                         ) }
                         value={ catID }
                         options={ categoryOptions }
@@ -144,16 +144,16 @@ export default function Edit( { attributes, setAttributes } ) {
                 </PanelBody>
 
                 <PanelBody
-                    title={ __( 'Display options', 'rrze-answers' ) }
+                    title={ __( 'Display options', 'wp-ai' ) }
                     initialOpen={ false }
                 >
                     <CheckboxControl
-                        label={ __( 'Hide question title', 'rrze-answers' ) }
+                        label={ __( 'Hide question title', 'wp-ai' ) }
                         checked={ !! hide_title }
                         onChange={ onChangeHideTitle }
                         help={ __(
                             'If enabled, the FAQ title will be hidden.',
-                            'rrze-answers'
+                            'wp-ai'
                         ) }
                     />
                 </PanelBody>
@@ -162,7 +162,7 @@ export default function Edit( { attributes, setAttributes } ) {
             <div { ...blockProps }>
                 {/* Server-side preview of the FAQ output */}
                 <ServerSideRender
-                    block="rrze-answers/faq-widget"
+                    block="wp-ai/faq-widget"
                     attributes={ attributes }
                 />
             </div>

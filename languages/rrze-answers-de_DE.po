@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: RRZE FAQ\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rrze-answers\n"
+"Project-Id-Version: BK FAQ\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-ai\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "MIME-Version: 1.0\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
-"X-Poedit-WPHeader: rrze-answers.php\n"
+"X-Poedit-WPHeader: wp-ai.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
@@ -191,7 +191,7 @@ msgstr "und"
 #: includes/Common/AdminInterfaces/AdminMenu.php:43
 #: includes/Common/AdminInterfaces/AdminMenu.php:44
 #: includes/Common/AdminInterfaces/AdminMenu.php:58
-msgid "Answers"
+msgid "WP AI"
 msgstr "Antworten"
 
 #: includes/Common/API/RESTAPI.php:65
@@ -237,29 +237,29 @@ msgstr "Zeigt ein zufälliges FAQ einer Kategorie an."
 
 #: blocks/faq/block.json:1
 msgctxt "block title"
-msgid "RRZE FAQ"
-msgstr "RRZE FAQ"
+msgid "BK FAQ"
+msgstr "BK FAQ"
 
 #: blocks/faq-widget/block.json:1
 msgctxt "block title"
-msgid "RRZE FAQ Widget"
-msgstr "RRZE FAQ Widget"
+msgid "BK FAQ Widget"
+msgstr "BK FAQ Widget"
 
 #: blocks/glossary/block.json:1
 msgctxt "block title"
-msgid "RRZE Glossary"
-msgstr "RRZE Glossary"
+msgid "BK Glossary"
+msgstr "BK Glossary"
 
 #: blocks/placeholder/block.json:1
 msgctxt "block title"
-msgid "RRZE Placeholder"
+msgid "BK Placeholder"
 msgstr ""
 
 #: blocks/synonym/block.json:1
 #, fuzzy
 #| msgid "Synonym"
 msgctxt "block title"
-msgid "RRZE Synonym"
+msgid "BK Synonym"
 msgstr "Synonym"
 
 #: includes/Defaults.php:275 includes/Defaults.php:283
@@ -314,11 +314,11 @@ msgstr "Kriterium für die Sortierung der Shortcode-Ausgabe"
 msgid "daily"
 msgstr "täglich"
 
-#: rrze-answers.php:601
+#: wp-ai.php:601
 msgid "Deactivated:"
 msgstr ""
 
-#: rrze-answers.php:602
+#: wp-ai.php:602
 msgid "Deactivated: none."
 msgstr ""
 
@@ -508,7 +508,7 @@ msgid "German"
 msgstr "Deutsch"
 
 #: includes/Defaults.php:139 includes/Defaults.php:255
-#: templates/rrze_glossary-archive.php:16 includes/Common/Tools.php:235
+#: templates/bk_glossary-archive.php:16 includes/Common/Tools.php:235
 #: includes/Common/CPT/CPTGlossary.php:38
 #: includes/Common/Shortcode/ShortcodeGlossary.php:104
 #: includes/Common/AdminInterfaces/AdminUI_QA.php:216
@@ -573,11 +573,11 @@ msgid "Hide title"
 msgstr "Ausgabe ohne Frage"
 
 #. URI of the plugin
-msgid "https://github.com/RRZE-Webteam/rrze-answers"
+msgid "https://github.com/BK-Webteam/wp-ai"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "https://www.wp.rrze.fau.de/"
+msgid "https://github.com/thenickless"
 msgstr ""
 
 #: includes/Common/Shortcode/ShortcodeGlossary.php:217
@@ -671,40 +671,40 @@ msgid "Manage glossary terms"
 msgstr "Glossarbegriffe verwalten"
 
 #: includes/Common/AdminInterfaces/AdminMenu.php:62
-msgid "Manage questions & answers"
+msgid "Manage questions & wp_ai"
 msgstr "Fragen & Antworten verwalten"
 
 #: includes/Common/AdminInterfaces/AdminMenu.php:64
 msgid "Manage synonyms & groups"
 msgstr "Synonyme & Gruppen verwalten"
 
-#: rrze-answers.php:528
+#: wp-ai.php:528
 msgid "Migration aborted: insufficient permissions (manage_network_plugins)."
 msgstr ""
 
-#: rrze-answers.php:120
+#: wp-ai.php:120
 msgid ""
-"Migration aborted: RRZE-Answers could not be deactivated network-wide during "
+"Migration aborted: BK-WP AI could not be deactivated network-wide during "
 "activation."
 msgstr ""
 
-#: rrze-answers.php:542
+#: wp-ai.php:542
 msgid ""
-"Migration aborted: RRZE-Answers is network-activated. Please deactivate it "
+"Migration aborted: BK-WP AI is network-activated. Please deactivate it "
 "network-wide and retry."
 msgstr ""
 
-#: rrze-answers.php:101
+#: wp-ai.php:101
 msgid "Migration already marked as done. No changes were made."
 msgstr ""
 
-#: rrze-answers.php:141
-msgid "Migration failed: RRZE-Answers is network-activated after migration."
+#: wp-ai.php:141
+msgid "Migration failed: BK-WP AI is network-activated after migration."
 msgstr ""
 
-#: rrze-answers.php:626
+#: wp-ai.php:626
 msgid ""
-"Migration result (old plugins deactivated, RRZE-Answers activated where "
+"Migration result (old plugins deactivated, BK-WP AI activated where "
 "needed):"
 msgstr ""
 
@@ -722,29 +722,29 @@ msgstr "Domain hinzufügen"
 msgid "Next automatic synchronization:"
 msgstr "Nächste automatische Synchronisierung:"
 
-#: templates/rrze_faq-archive.php:29
+#: templates/bk_faq-archive.php:29
 msgid "No FAQ found."
 msgstr "Keine FAQ gefunden."
 
-#: templates/rrze_glossary-archive.php:30
+#: templates/bk_glossary-archive.php:30
 msgid "no glossary found."
 msgstr "Keine Glossar Einträge gefunden."
 
-#: templates/rrze_placeholder-archive.php:30
+#: templates/bk_placeholder-archive.php:30
 msgid "no placeholder found."
 msgstr "Kein Platzhalter gefunden."
 
-#: rrze-answers.php:122
+#: wp-ai.php:122
 msgid ""
-"No site changes were made. Please deactivate RRZE-Answers network-wide "
+"No site changes were made. Please deactivate BK-WP AI network-wide "
 "manually and retry."
 msgstr ""
 
-#: rrze-answers.php:633
+#: wp-ai.php:633
 msgid "No sites required changes."
 msgstr ""
 
-#: templates/rrze_synonym-single.php:29
+#: templates/bk_synonym-single.php:29
 msgid "No synonyms found."
 msgstr "Keine Synonyme gefunden."
 
@@ -781,7 +781,7 @@ msgstr "Permalink Einstellungen"
 msgid "Permissions"
 msgstr "Erlaubnisse"
 
-#: includes/Defaults.php:177 templates/rrze_placeholder-archive.php:16
+#: includes/Defaults.php:177 templates/bk_placeholder-archive.php:16
 #: includes/Common/CPT/CPTPlaceholder.php:35
 #: includes/Common/Shortcode/ShortcodePlaceholder.php:51
 #: includes/Common/AdminInterfaces/AdminUI_Placeholder.php:153
@@ -808,7 +808,7 @@ msgstr ""
 "Bitte beachten: \"Ausgewählte Domains löschen\" LÖSCHT alle FAQ udn Glossar "
 "Einträge auf dieser Website, die von den ausgewählten Domains bezogen wurden."
 
-#: rrze-answers.php:253
+#: wp-ai.php:253
 #, php-format
 msgid "Plugins: %1$s: %2$s"
 msgstr ""
@@ -845,28 +845,28 @@ msgstr "Benötigte Zeit:"
 
 #. Name of the plugin
 #: includes/Defaults.php:54
-msgid "RRZE Answers"
+msgid "WP AI"
 msgstr ""
 
 #: includes/Defaults.php:55
-msgid "RRZE Answers Settings"
-msgstr "RRZE Answers Einstellungen"
+msgid "WP AI Settings"
+msgstr "WP AI Einstellungen"
 
 #. Author of the plugin
-msgid "RRZE Webteam"
-msgstr "RRZE Webteam"
+msgid "Benjamin Klemencic"
+msgstr "Benjamin Klemencic"
 
-#: rrze-answers.php:612
-msgid "RRZE-Answers activated."
-msgstr "RRZE-Answers aktiviert."
+#: wp-ai.php:612
+msgid "BK-WP AI activated."
+msgstr "BK-WP AI aktiviert."
 
-#: rrze-answers.php:607
-msgid "RRZE-Answers activation failed:"
-msgstr "Aktivierung von RRZE-Answers schlug fehl:"
+#: wp-ai.php:607
+msgid "BK-WP AI activation failed:"
+msgstr "Aktivierung von BK-WP AI schlug fehl:"
 
-#: rrze-answers.php:613
-msgid "RRZE-Answers already active (no change)."
-msgstr "RRZE-Answers ist bereits aktiv. Keine Veränderungen."
+#: wp-ai.php:613
+msgid "BK-WP AI already active (no change)."
+msgstr "BK-WP AI ist bereits aktiv. Keine Veränderungen."
 
 #: includes/Defaults.php:233
 msgid "Russian"
@@ -1019,7 +1019,7 @@ msgstr "Synonym"
 msgid "Synonym Slug"
 msgstr "Synonym-Slug"
 
-#: templates/rrze_synonym-single.php:15 templates/rrze_synonym-archive.php:13
+#: templates/bk_synonym-single.php:15 templates/bk_synonym-archive.php:13
 msgid "synonyms"
 msgstr "Synonyme"
 
@@ -1056,20 +1056,20 @@ msgstr "Tagcloud"
 msgid "Tags"
 msgstr "Schlagwörter"
 
-#: rrze-answers.php:143
+#: wp-ai.php:143
 msgid ""
-"The migration was NOT marked as done. Please ensure RRZE-Answers is not "
+"The migration was NOT marked as done. Please ensure BK-WP AI is not "
 "network-activated and retry."
 msgstr ""
 
-#: rrze-answers.php:244
+#: wp-ai.php:244
 #, php-format
 msgid ""
 "The server is running PHP version %1$s. The plugin requires at least PHP "
 "version %2$s."
 msgstr ""
 
-#: rrze-answers.php:238
+#: wp-ai.php:238
 #, php-format
 msgid ""
 "The server is running WordPress version %1$s. The plugin requires at least "
@@ -1129,43 +1129,43 @@ msgstr "Geführte Tour"
 msgid "Setup tour"
 msgstr "Setup-Tour"
 
-#: src/js/rrze-answers-guided-tour.js
-msgid "Welcome to RRZE Answers"
-msgstr "Willkommen bei RRZE Answers"
+#: src/js/wp-ai-guided-tour.js
+msgid "Welcome to WP AI"
+msgstr "Willkommen bei WP AI"
 
-#: src/js/rrze-answers-guided-tour.js
+#: src/js/wp-ai-guided-tour.js
 msgid "This plugin helps you manage FAQ entries, glossary terms, synonyms, and placeholders — and embed them in pages with blocks or shortcodes."
 msgstr "Mit diesem Plugin verwalten Sie FAQ-Einträge, Glossarbegriffe, Synonyme und Platzhalter — und binden sie per Blöcken oder Shortcodes in Seiten ein."
 
-#: src/js/rrze-answers-guided-tour.js
+#: src/js/wp-ai-guided-tour.js
 msgid "Create and manage content"
 msgstr "Inhalte erstellen und verwalten"
 
-#: src/js/rrze-answers-guided-tour.js
+#: src/js/wp-ai-guided-tour.js
 msgid "Use the FAQ and Glossary menus in the WordPress admin to add questions, terms, categories, and tags."
 msgstr "Nutzen Sie die FAQ- und Glossar-Menüs im WordPress-Backend, um Fragen, Begriffe, Kategorien und Schlagwörter hinzuzufügen."
 
-#: src/js/rrze-answers-guided-tour.js
+#: src/js/wp-ai-guided-tour.js
 msgid "Import from other sites"
 msgstr "Von anderen Websites importieren"
 
-#: src/js/rrze-answers-guided-tour.js
+#: src/js/wp-ai-guided-tour.js
 msgid "Use the interactive setup tour to register domains, select categories, and synchronize FAQ and glossary content."
 msgstr "Mit der interaktiven Setup-Tour registrieren Sie Domains, wählen Kategorien und synchronisieren FAQ- und Glossar-Inhalte."
 
-#: src/js/rrze-answers-guided-tour.js
+#: src/js/wp-ai-guided-tour.js
 msgid "Logfile and blocks"
 msgstr "Logdatei und Blöcke"
 
-#: src/js/rrze-answers-guided-tour.js
+#: src/js/wp-ai-guided-tour.js
 msgid "After each sync, details are written to the logfile. Insert FAQ and glossary blocks in the editor or use shortcodes."
 msgstr "Nach jeder Synchronisation werden Details in die Logdatei geschrieben. Fügen Sie FAQ- und Glossar-Blöcke im Editor ein oder nutzen Sie Shortcodes."
 
-#: src/js/rrze-answers-guided-tour.js
-msgid "RRZE Answers guided tour"
-msgstr "RRZE Answers Geführte Tour"
+#: src/js/wp-ai-guided-tour.js
+msgid "WP AI guided tour"
+msgstr "WP AI Geführte Tour"
 
-#: src/js/rrze-answers-guided-tour.js
+#: src/js/wp-ai-guided-tour.js
 msgid "Get started"
 msgstr "Loslegen"
 

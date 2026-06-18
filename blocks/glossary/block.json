@@ -1,10 +1,10 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "rrze-answers/glossary",
+	"name": "wp-ai/glossary",
 	"version": "2.1.11",
-	"title": "RRZE Glossary",
-	"category": "rrze",
+	"title": "BK Glossary",
+	"category": "bk",
 	"description": "Display glossaries",
 	"icon": "book",
 	"example": {},
@@ -70,15 +70,15 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "rrze-answers",
+	"textdomain": "wp-ai",
 	"viewScript": [
-		"file:./rrze-answers-accordion.js",
-		"file:./rrze-answers-search.js"
+		"file:./wp-ai-accordion.js",
+		"file:./wp-ai-search.js"
 	],
 	"editorScript": [
 		"file:../../build/glossary.js",
-		"file:./rrze-answers-accordion.js",
-		"file:./rrze-answers-search.js"
+		"file:./wp-ai-accordion.js",
+		"file:./wp-ai-search.js"
 	],
 	"render": "file:./render.php"
 }

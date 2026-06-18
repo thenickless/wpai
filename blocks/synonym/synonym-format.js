@@ -23,9 +23,9 @@ import {
 import { useState, useRef, useEffect, useMemo } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 
-const FORMAT_NAME = 'rrze/synonym';
+const FORMAT_NAME = 'bk/synonym';
 const TAG_NAME = 'abbr';
-const CLASS_NAME = 'rrze-syn';
+const CLASS_NAME = 'bk-syn';
 
 const SynonymUI = ( props ) => {
 	const { value, onChange, isActive } = props;
@@ -72,7 +72,7 @@ const SynonymUI = ( props ) => {
 	const options = useMemo(() => {
 		return (items || []).map(post => ({
 			value: String(post.id),
-			label: post?.title?.rendered || __('(no title)','rrze-answers'),
+			label: post?.title?.rendered || __('(no title)','wp-ai'),
 			long:  post?.synonym ?? post?.meta?.synonym ?? '',
 			lang:  post?.titleLang ?? post?.meta?.titleLang ?? '',
 		}));
@@ -132,7 +132,7 @@ const SynonymUI = ( props ) => {
 			<span ref={ anchorRef }>
 				<RichTextToolbarButton
 					icon="translation"
-					title={ __('Synonym','rrze-answers') }
+					title={ __('Synonym','wp-ai') }
 					onClick={ () => setIsOpen( (o) => !o ) }
 					isActive={ isActive }
 				/>
@@ -144,35 +144,35 @@ const SynonymUI = ( props ) => {
 					variant="toolbar"
 					onClose={ () => setIsOpen( false ) }
 				>
-					<div className="rrze-synonym-popover">
+					<div className="bk-synonym-popover">
 						{ loading && (
 							<Flex align="center" gap={8}>
 								<Spinner />
-								<span>{ __('Loading synonyms…','rrze-answers') }</span>
+								<span>{ __('Loading synonyms…','wp-ai') }</span>
 							</Flex>
 						) }
 
 						{ (!loading && error) && (
 							<Notice status="error" isDismissible={ false }>
-								{ __('Failed to load synonyms. Check your REST setup.','rrze-answers') }
+								{ __('Failed to load synonyms. Check your REST setup.','wp-ai') }
 							</Notice>
 						) }
 
 						{ (!loading && !error) && (
 							<ComboboxControl
-								label={ __('Choose a synonym','rrze-answers') }
-								help={ __('Type to search by title','rrze-answers') }
+								label={ __('Choose a synonym','wp-ai') }
+								help={ __('Type to search by title','wp-ai') }
 								value={ selectedId }
 								onChange={ setSelectedId }
 								options={ options }
 							/>
 						) }
 
-						<Flex className="rrze-synonym-popover-actions" justify="flex-end" gap={ 8 }>
+						<Flex className="bk-synonym-popover-actions" justify="flex-end" gap={ 8 }>
 							{ !!current && (
 								<FlexItem>
 									<Button variant="secondary" onClick={ removeFormatHere }>
-										{ __('Remove','rrze-answers') }
+										{ __('Remove','wp-ai') }
 									</Button>
 								</FlexItem>
 							) }
@@ -182,7 +182,7 @@ const SynonymUI = ( props ) => {
 									onClick={ applyFromSelected }
 									disabled={ !selectedId }
 								>
-									{ !!current ? __('Update','rrze-answers') : __('Apply','rrze-answers') }
+									{ !!current ? __('Update','wp-ai') : __('Apply','wp-ai') }
 								</Button>
 							</FlexItem>
 						</Flex>
@@ -193,9 +193,9 @@ const SynonymUI = ( props ) => {
 	);
 };
 
-// Register the format: renders <abbr class="rrze-syn" ...>…</abbr>
+// Register the format: renders <abbr class="bk-syn" ...>…</abbr>
 registerFormatType( FORMAT_NAME, {
-	title: __('Synonym','rrze-answers'),
+	title: __('Synonym','wp-ai'),
 	tagName: TAG_NAME,
 	className: CLASS_NAME,
 	attributes: {
