@@ -1,10 +1,10 @@
 # WP AI
 # WP AI
 
-[![Version](https://img.shields.io/github/package-json/v/Benjamin Klemencic/wp-ai/main?label=Version)](https://github.com/BK-Webteam/wp-ai)
-[![Release Version](https://img.shields.io/github/v/release/Benjamin Klemencic/wp-ai?label=Release+Version)](https://github.com/BK-Webteam/wp-ai/releases/)
-[![GitHub License](https://img.shields.io/github/license/Benjamin Klemencic/wp-ai)](https://github.com/BK-Webteam/wp-ai)
-[![GitHub issues](https://img.shields.io/github/issues/Benjamin Klemencic/wp-ai)](https://github.com/BK-Webteam/wp-ai/issues)
+[![Version](https://img.shields.io/github/package-json/v/Benjamin Klemencic/wp-ai/main?label=Version)](https://github.com/BK/wp-ai)
+[![Release Version](https://img.shields.io/github/v/release/Benjamin Klemencic/wp-ai?label=Release+Version)](https://github.com/BK/wp-ai/releases/)
+[![GitHub License](https://img.shields.io/github/license/Benjamin Klemencic/wp-ai)](https://github.com/BK/wp-ai)
+[![GitHub issues](https://img.shields.io/github/issues/Benjamin Klemencic/wp-ai)](https://github.com/BK/wp-ai/issues)
 
 ---
 
@@ -208,4 +208,4 @@ Licensed under the [GNU General Public License v2.0](https://www.gnu.org/license
 
 Developed and maintained by the  
 **Benjamin Klemencic, Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)**  
-👉 [https://github.com/BK-Webteam/wp-ai](https://github.com/BK-Webteam/wp-ai)
+👉 [https://github.com/BK/wp-ai](https://github.com/BK/wp-ai)

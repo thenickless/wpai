@@ -2,7 +2,7 @@
 
 /*
 Plugin Name:        WP AI
-Plugin URI:         https://github.com/BK-Webteam/wp-ai
+Plugin URI:         https://github.com/BK/wp-ai
 Version:            0.0.1
 Description:        Explain your content with FAQ, glossary, synonyms and placeholder.
 Author:             Benjamin Klemencic
