@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace BK\WPAI\Common\AdminInterfaces;
+namespace WP AI\WPAI\Common\AdminInterfaces;
 
-use function BK\WPAI\plugin;
+use function WP AI\WPAI\plugin;
 
 defined('ABSPATH') || exit;
 
@@ -785,8 +785,8 @@ abstract class AdminUI
      */
     protected function getLanguageChoices(): array
     {
-        if (class_exists('\\BK\\WP AI\\Defaults')) {
-            $defaults = new \BK\WPAI\Defaults();
+        if (class_exists('\\WP AI\\WP AI\\Defaults')) {
+            $defaults = new \WP AI\WPAI\Defaults();
             if (method_exists($defaults, 'get')) {
                 $langs = $defaults->get('lang');
                 if (is_array($langs) && !empty($langs)) {
@@ -816,11 +816,11 @@ abstract class AdminUI
         }
 
         $domains = [];
-        if (class_exists('\\BK\\WP AI\\Common\\API\\SyncAPI\\SyncAPI')) {
-            $api = new \BK\WPAI\Common\API\SyncAPI\SyncAPI();
+        if (class_exists('\\WP AI\\WP AI\\Common\\API\\SyncAPI\\SyncAPI')) {
+            $api = new \WP AI\WPAI\Common\API\SyncAPI\SyncAPI();
             if (method_exists($api, 'getDomains')) $domains = (array)$api->getDomains();
-        } elseif (class_exists('\\BK\\WP AI\\Common\\API\\SyncAPI')) {
-            $api = new \BK\WPAI\Common\API\SyncAPI();
+        } elseif (class_exists('\\WP AI\\WP AI\\Common\\API\\SyncAPI')) {
+            $api = new \WP AI\WPAI\Common\API\SyncAPI();
             if (method_exists($api, 'getDomains')) $domains = (array)$api->getDomains();
         }
 

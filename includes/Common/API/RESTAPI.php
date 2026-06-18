@@ -1,6 +1,6 @@
 <?php
 
-namespace BK\WPAI\Common\API;
+namespace WP AI\WPAI\Common\API;
 
 defined('ABSPATH') || exit;
 

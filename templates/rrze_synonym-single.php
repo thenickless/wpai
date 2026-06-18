@@ -7,7 +7,7 @@
  * @since FAU 1.0
  */
 
-use BK\WPAI\Common\Tools;
+use WP AI\WPAI\Common\Tools;
 
 get_header();
 ?>

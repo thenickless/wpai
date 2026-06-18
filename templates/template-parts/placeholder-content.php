@@ -8,7 +8,7 @@
  * @since FAU 1.0
 */
 
-namespace BK\WPAI\Common;
+namespace WP AI\WPAI\Common;
 
 
 echo '<div id="post-' . esc_attr(get_the_ID()) . '" class="' . esc_attr(implode(' ', get_post_class())) .'">';

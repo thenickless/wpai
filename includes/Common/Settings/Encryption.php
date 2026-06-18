@@ -1,6 +1,6 @@
 <?php
 
-namespace BK\WPAI\Common\Settings;
+namespace WP AI\WPAI\Common\Settings;
 
 defined('ABSPATH') || exit;
 
@@ -10,7 +10,7 @@ defined('ABSPATH') || exit;
  * This class provides methods to encrypt and decrypt values using OpenSSL.
  * It uses a cipher method of 'aes-256-cbc' and requires the OpenSSL extension.
  *
- * @package BK\WPAI\Common\Settings
+ * @package WP AI\WPAI\Common\Settings
  */
 class Encryption
 {

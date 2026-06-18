@@ -1,6 +1,6 @@
 <?php
 
-namespace BK\WPAI\Common\Settings;
+namespace WP AI\WPAI\Common\Settings;
 
 defined('ABSPATH') || exit;
 
@@ -10,7 +10,7 @@ defined('ABSPATH') || exit;
  * This class provides a method to include templates with variables passed to them.
  * It is used to render the settings pages of the plugin.
  *
- * @package BK\WPAI\Common\Settings
+ * @package WP AI\WPAI\Common\Settings
  */
 class Template
 {

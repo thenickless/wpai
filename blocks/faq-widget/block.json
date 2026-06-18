@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "wp-ai/faq-widget",
-  "title": "BK FAQ Widget",
+  "title": "WP AI FAQ Widget",
   "category": "widgets",
   "icon": "editor-help",
   "description": "Displays a random FAQ from a category.",

@@ -1,13 +1,13 @@
 <?php
 
-namespace BK\WPAI\Common\Settings;
+namespace WP AI\WPAI\Common\Settings;
 
 
 defined('ABSPATH') || exit;
 
-use BK\WPAI\Common\Settings\Section;
+use WP AI\WPAI\Common\Settings\Section;
 
-use BK\WPAI\Common\Settings\Options\{
+use WP AI\WPAI\Common\Settings\Options\{
     Checkbox,
     CheckboxMultiple,
     Password,

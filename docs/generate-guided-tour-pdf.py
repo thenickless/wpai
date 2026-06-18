@@ -244,7 +244,7 @@ def build_pdf() -> None:
     pdf.set_font("DejaVu", "", 9)
     pdf.set_text_color(120, 120, 120)
     pdf.ln(6)
-    pdf.multi_cell(0, 5, "Erstellt aus der WP AI Codebasis – github.com/BK/wp-ai")
+    pdf.multi_cell(0, 5, "Erstellt aus der WP AI Codebasis – github.com/wp-ai/wp-ai")
 
     pdf.output(OUTPUT)
     print(f"PDF erstellt: {OUTPUT}")

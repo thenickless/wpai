@@ -1,8 +1,8 @@
 <?php
 
-namespace BK\WPAI\Common;
+namespace WP AI\WPAI\Common;
 
-use BK\WPAI\Defaults;
+use WP AI\WPAI\Defaults;
 
 defined('ABSPATH') || exit;
 

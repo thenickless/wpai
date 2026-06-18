@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace BK\WPAI\Common\AdminInterfaces;
+namespace WP AI\WPAI\Common\AdminInterfaces;
 
 defined('ABSPATH') || exit;
 
-use BK\WPAI\Common\Tools;
-use BK\WPAI\Defaults;
+use WP AI\WPAI\Common\Tools;
+use WP AI\WPAI\Defaults;
 
 
 /**

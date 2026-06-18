@@ -1,10 +1,10 @@
 <?php
 
-namespace BK\WPAI\Common\Settings;
+namespace WP AI\WPAI\Common\Settings;
 
-use function BK\WPAI\plugin;
+use function WP AI\WPAI\plugin;
 
-use BK\WPAI\Common\Settings\{
+use WP AI\WPAI\Common\Settings\{
     Builder,
     Error,
     Flash,
@@ -24,7 +24,7 @@ defined('ABSPATH') || exit;
  * It allows for the creation and management of settings, tabs, sections, and options.
  * It also handles saving settings, rendering the settings page, and managing errors and flash messages.
  *
- * @package BK\WPAI\Common\Settings
+ * @package WP AI\WPAI\Common\Settings
  */
 class Settings
 {

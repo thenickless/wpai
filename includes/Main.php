@@ -1,12 +1,12 @@
 <?php
 
-namespace BK\WPAI;
+namespace WP AI\WPAI;
 
-use function BK\WPAI\plugin;
+use function WP AI\WPAI\plugin;
 
-use BK\WPAI\Defaults;
+use WP AI\WPAI\Defaults;
 
-use BK\WPAI\Common\{
+use WP AI\WPAI\Common\{
     Tools,
     API\RESTAPI,
     API\SyncAPI,
@@ -37,7 +37,7 @@ defined('ABSPATH') || exit;
  * This class serves as the entry point for the plugin.
  * It can be extended to include additional functionality or components as needed.
  * 
- * @package BK\WPAI\Common
+ * @package WP AI\WPAI\Common
  * @since 1.0.0
  */
 class Main

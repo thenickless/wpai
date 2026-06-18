@@ -1,9 +1,9 @@
 <?php
 
-namespace BK\WPAI\Common\Settings\Options;
+namespace WP AI\WPAI\Common\Settings\Options;
 
-use BK\WPAI\Common\Settings\Options\Type;
-use BK\WPAI\Common\Settings\Encryption;
+use WP AI\WPAI\Common\Settings\Options\Type;
+use WP AI\WPAI\Common\Settings\Encryption;
 
 defined('ABSPATH') || exit;
 
@@ -14,7 +14,7 @@ defined('ABSPATH') || exit;
  * It extends the Type class and provides methods to get the value
  * and sanitize the input using encryption.
  *
- * @package BK\WPAI\Common\Settings\Options
+ * @package WP AI\WPAI\Common\Settings\Options
  */
 class Password extends Type
 {

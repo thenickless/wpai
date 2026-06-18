@@ -1,12 +1,12 @@
 <?php
 
-namespace BK\WPAI\Common\Widgets;
+namespace WP AI\WPAI\Common\Widgets;
 
 defined('ABSPATH') || exit;
 
 require_once ABSPATH . 'wp-includes/class-wp-widget.php';
 
-use BK\WPAI\Common\Config;
+use WP AI\WPAI\Common\Config;
 
 
 // Creating the widget

@@ -8,9 +8,9 @@
  * @since FAU 1.0
 */
 
-namespace BK\WPAI\Common;
+namespace WP AI\WPAI\Common;
 
-use BK\WPAI\Common\Tools;
+use WP AI\WPAI\Common\Tools;
 $tools = new Tools();
 
 

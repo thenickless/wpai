@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace BK\WPAI\Common\AdminInterfaces;
+namespace WP AI\WPAI\Common\AdminInterfaces;
 
 defined('ABSPATH') || exit;
 
-use BK\WPAI\Common\Tools;
+use WP AI\WPAI\Common\Tools;
 
 class AdminUI_Placeholder extends AdminUI
 {
@@ -193,9 +193,9 @@ class AdminUI_Placeholder extends AdminUI
      */
     protected function loadLanguageChoices(): array
     {
-        // Try BK\WPAI\Defaults::get('lang') if available
-        if (class_exists('\\BK\\WP AI\\Defaults')) {
-            $defaults = new \BK\WPAI\Defaults();
+        // Try WP AI\WPAI\Defaults::get('lang') if available
+        if (class_exists('\\WP AI\\WP AI\\Defaults')) {
+            $defaults = new \WP AI\WPAI\Defaults();
             if (method_exists($defaults, 'get')) {
                 $langs = $defaults->get('lang');
                 if (is_array($langs) && !empty($langs)) {

@@ -1,13 +1,13 @@
 <?php
 
-namespace BK\WPAI\Common\Shortcode;
+namespace WP AI\WPAI\Common\Shortcode;
 
 defined('ABSPATH') || exit;
 
-use function BK\WPAI\plugin;
+use function WP AI\WPAI\plugin;
 
 
-use BK\WPAI\Common\Tools;
+use WP AI\WPAI\Common\Tools;
 /**
  * Shortcode
  */
@@ -37,7 +37,7 @@ class ShortcodeGlossary
             'block' => [
                 'blocktype' => 'wp-ai/glossary',
                 'blockname' => 'glossary',
-                'title' => 'BK Glossary',
+                'title' => 'WP AI Glossary',
                 'category' => 'widgets',
                 'icon' => 'book',
                 'tinymce_icon' => 'info',
@@ -608,7 +608,7 @@ class ShortcodeGlossary
      */
     public function shortcodeOutput($atts, $content = null, $shortcode_tag = '')
     {
-        // Workaround - see: https://github.com/BK/wp-ai/issues/132#issuecomment-2839668060
+        // Workaround - see: https://github.com/wp-ai/wp-ai/issues/132#issuecomment-2839668060
         if (($skip = Tools::preventGutenbergDoubleBracketBug($shortcode_tag)) !== false) {
             return $skip;
         }
@@ -681,7 +681,7 @@ class ShortcodeGlossary
      * @param bool $gutenberg Whether Gutenberg is used
      * @param string $hstart HTML heading level
      * @param string $style Inline styles for the accordion
-     * @param bool $masonry Whether tiles should be displayed (fake masonry - see https://github.com/BK/wp-ai/issues/105#issuecomment-2873361435 )
+     * @param bool $masonry Whether tiles should be displayed (fake masonry - see https://github.com/wp-ai/wp-ai/issues/105#issuecomment-2873361435 )
      * @param string $expand_all_link Attribute for “expand all” link
      * @param bool $hide_accordion Whether the accordion should be suppressed
      * @param bool $hide_title Whether the title should be suppressed

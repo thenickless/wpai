@@ -4,7 +4,7 @@ Tags: faq, glossary, synonym, placeholder, shortcode, block, widget
 Requires at least: 6.1
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,10 +38,10 @@ Main features:
 
 === Blocks ===
 
-* BK FAQ Block
-* BK FAQ Widget Block
-* BK Glossary Block
-* BK Placeholder Block 
+* WP AI FAQ Block
+* WP AI FAQ Widget Block
+* WP AI Glossary Block
+* WP AI Placeholder Block 
 
 
 === Inserting in the text editor ===

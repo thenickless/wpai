@@ -1,5 +1,5 @@
 <?php
-use BK\WPAI\Common\Tools;
+use WP AI\WPAI\Common\Tools;
 
 $id = (!empty($attributes['id']) ? $attributes['id'] : 0);
 
