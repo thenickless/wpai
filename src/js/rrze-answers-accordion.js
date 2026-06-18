@@ -1,7 +1,7 @@
 
 
 
-// fix for theme BK-2019 which has an overlay with the menue
+// fix for theme WP AI-2019 which has an overlay with the menue
 function setHeaderVar() {
   const h = document.getElementById('site-navigation')?.getBoundingClientRect().height || 0;
   document.documentElement.style.setProperty('--header-height', `${Math.ceil(h)}px`);
@@ -13,7 +13,7 @@ window.addEventListener('resize', setHeaderVar);
 window.addEventListener('load', setHeaderVar);
 
 
-/* BK FAQ accordion: single-open + open-by-hash */
+/* WP AI FAQ accordion: single-open + open-by-hash */
 (function ($) {
   'use strict';
 

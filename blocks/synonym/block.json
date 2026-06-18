@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "wp-ai/synonym",
 	"version": "3.0.4",
-	"title": "BK Synonym",
+	"title": "WP AI Synonym",
 	"category": "bk",
 	"description": "Display synonyms",
 	"icon": "translation",

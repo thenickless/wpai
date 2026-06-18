@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: BK FAQ\n"
+"Project-Id-Version: WP AI FAQ\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-ai\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
@@ -237,29 +237,29 @@ msgstr "Zeigt ein zufälliges FAQ einer Kategorie an."
 
 #: blocks/faq/block.json:1
 msgctxt "block title"
-msgid "BK FAQ"
-msgstr "BK FAQ"
+msgid "WP AI FAQ"
+msgstr "WP AI FAQ"
 
 #: blocks/faq-widget/block.json:1
 msgctxt "block title"
-msgid "BK FAQ Widget"
-msgstr "BK FAQ Widget"
+msgid "WP AI FAQ Widget"
+msgstr "WP AI FAQ Widget"
 
 #: blocks/glossary/block.json:1
 msgctxt "block title"
-msgid "BK Glossary"
-msgstr "BK Glossary"
+msgid "WP AI Glossary"
+msgstr "WP AI Glossary"
 
 #: blocks/placeholder/block.json:1
 msgctxt "block title"
-msgid "BK Placeholder"
+msgid "WP AI Placeholder"
 msgstr ""
 
 #: blocks/synonym/block.json:1
 #, fuzzy
 #| msgid "Synonym"
 msgctxt "block title"
-msgid "BK Synonym"
+msgid "WP AI Synonym"
 msgstr "Synonym"
 
 #: includes/Defaults.php:275 includes/Defaults.php:283
@@ -573,7 +573,7 @@ msgid "Hide title"
 msgstr "Ausgabe ohne Frage"
 
 #. URI of the plugin
-msgid "https://github.com/BK/wp-ai"
+msgid "https://github.com/wp-ai/wp-ai"
 msgstr ""
 
 #. Author URI of the plugin
@@ -684,13 +684,13 @@ msgstr ""
 
 #: wp-ai.php:120
 msgid ""
-"Migration aborted: BK-WP AI could not be deactivated network-wide during "
+"Migration aborted: WP AI-WP AI could not be deactivated network-wide during "
 "activation."
 msgstr ""
 
 #: wp-ai.php:542
 msgid ""
-"Migration aborted: BK-WP AI is network-activated. Please deactivate it "
+"Migration aborted: WP AI-WP AI is network-activated. Please deactivate it "
 "network-wide and retry."
 msgstr ""
 
@@ -699,12 +699,12 @@ msgid "Migration already marked as done. No changes were made."
 msgstr ""
 
 #: wp-ai.php:141
-msgid "Migration failed: BK-WP AI is network-activated after migration."
+msgid "Migration failed: WP AI-WP AI is network-activated after migration."
 msgstr ""
 
 #: wp-ai.php:626
 msgid ""
-"Migration result (old plugins deactivated, BK-WP AI activated where "
+"Migration result (old plugins deactivated, WP AI-WP AI activated where "
 "needed):"
 msgstr ""
 
@@ -736,7 +736,7 @@ msgstr "Kein Platzhalter gefunden."
 
 #: wp-ai.php:122
 msgid ""
-"No site changes were made. Please deactivate BK-WP AI network-wide "
+"No site changes were made. Please deactivate WP AI-WP AI network-wide "
 "manually and retry."
 msgstr ""
 
@@ -857,16 +857,16 @@ msgid "Benjamin Klemencic"
 msgstr "Benjamin Klemencic"
 
 #: wp-ai.php:612
-msgid "BK-WP AI activated."
-msgstr "BK-WP AI aktiviert."
+msgid "WP AI-WP AI activated."
+msgstr "WP AI-WP AI aktiviert."
 
 #: wp-ai.php:607
-msgid "BK-WP AI activation failed:"
-msgstr "Aktivierung von BK-WP AI schlug fehl:"
+msgid "WP AI-WP AI activation failed:"
+msgstr "Aktivierung von WP AI-WP AI schlug fehl:"
 
 #: wp-ai.php:613
-msgid "BK-WP AI already active (no change)."
-msgstr "BK-WP AI ist bereits aktiv. Keine Veränderungen."
+msgid "WP AI-WP AI already active (no change)."
+msgstr "WP AI-WP AI ist bereits aktiv. Keine Veränderungen."
 
 #: includes/Defaults.php:233
 msgid "Russian"
@@ -1058,7 +1058,7 @@ msgstr "Schlagwörter"
 
 #: wp-ai.php:143
 msgid ""
-"The migration was NOT marked as done. Please ensure BK-WP AI is not "
+"The migration was NOT marked as done. Please ensure WP AI-WP AI is not "
 "network-activated and retry."
 msgstr ""
 

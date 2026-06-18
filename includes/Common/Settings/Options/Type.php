@@ -1,8 +1,8 @@
 <?php
 
-namespace BK\WPAI\Common\Settings\Options;
+namespace WP AI\WPAI\Common\Settings\Options;
 
-use BK\WPAI\Common\Settings\{
+use WP AI\WPAI\Common\Settings\{
     Section,
     Template
 };
@@ -15,7 +15,7 @@ defined('ABSPATH') || exit;
  * This class serves as a base for different types of options, providing common
  * functionality such as rendering, sanitization, and validation.
  *
- * @package BK\WPAI\Common\Settings\Options
+ * @package WP AI\WPAI\Common\Settings\Options
  */
 abstract class Type
 {

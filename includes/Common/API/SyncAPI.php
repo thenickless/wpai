@@ -1,8 +1,8 @@
 <?php
 
-namespace BK\WPAI\Common\API;
+namespace WP AI\WPAI\Common\API;
 
-use BK\WPAI\Common\CustomException;
+use WP AI\WPAI\Common\CustomException;
 
 defined('ABSPATH') || exit;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace BK\WPAI\Common\Settings;
+namespace WP AI\WPAI\Common\Settings;
 
-use BK\WPAI\Common\Settings\{
+use WP AI\WPAI\Common\Settings\{
     Option,
     Tab
 };
@@ -15,7 +15,7 @@ defined('ABSPATH') || exit;
  * This class represents a section in the settings page, allowing the addition
  * of options and defining properties such as title, slug, and description.
  *
- * @package BK\WPAI\Common\Settings
+ * @package WP AI\WPAI\Common\Settings
  */
 class Section
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace BK\WPAI\Common\Settings;
+namespace WP AI\WPAI\Common\Settings;
 
-use BK\WPAI\Common\Settings\Section;
+use WP AI\WPAI\Common\Settings\Section;
 
 defined('ABSPATH') || exit;
 
@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
  * Represents a settings tab in the plugin settings.
  * Each tab can contain multiple sections, and each section can have various options.
  *
- * @package BK\WPAI\Common\Settings
+ * @package WP AI\WPAI\Common\Settings
  */
 class Tab
 {
@@ -22,7 +22,7 @@ class Tab
      * This property holds the settings object that contains all the settings
      * for this tab, allowing access to the settings values and methods.
      *
-     * @var \BK\WPAI\Common\Settings\Settings
+     * @var \WP AI\WPAI\Common\Settings\Settings
      */
     public $settings;
 
@@ -61,7 +61,7 @@ class Tab
      *
      * Initializes the tab with the given settings, title, and optional slug.
      *
-     * @param \BK\WPAI\Common\Settings\Settings $settings The settings object for this tab.
+     * @param \WP AI\WPAI\Common\Settings\Settings $settings The settings object for this tab.
      * @param string $title The title of the tab.
      * @param string|null $slug The slug of the tab (optional).
      * @return void

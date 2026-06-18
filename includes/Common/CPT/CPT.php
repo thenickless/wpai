@@ -1,10 +1,10 @@
 <?php
 
-namespace BK\WPAI\Common\CPT;
+namespace WP AI\WPAI\Common\CPT;
 
 defined('ABSPATH') || exit;
 
-use function BK\WPAI\plugin;
+use function WP AI\WPAI\plugin;
 
 abstract class CPT
 {

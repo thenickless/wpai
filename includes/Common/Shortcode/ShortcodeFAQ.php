@@ -1,13 +1,13 @@
 <?php
 
-namespace BK\WPAI\Common\Shortcode;
+namespace WP AI\WPAI\Common\Shortcode;
 
 defined('ABSPATH') || exit;
 
-use BK\WPAI\Common\Tools;
-// use BK\WPAI\Defaults;
+use WP AI\WPAI\Common\Tools;
+// use WP AI\WPAI\Defaults;
 
-use function BK\WPAI\plugin;
+use function WP AI\WPAI\plugin;
 
 
 /**
@@ -47,7 +47,7 @@ class ShortcodeFAQ
             'block' => [
                 'blocktype' => 'wp-ai/faq',
                 'blockname' => 'bk_faq',
-                'title' => 'BK FAQ',
+                'title' => 'WP AI FAQ',
                 'bk_category' => 'widgets',
                 'icon' => 'editor-help',
                 'tinymce_icon' => 'help'
@@ -376,7 +376,7 @@ class ShortcodeFAQ
      * @param bool $gutenberg Whether Gutenberg is used
      * @param string $hstart HTML heading level
      * @param string $style Inline styles for the accordion
-     * @param bool $masonry Whether tiles should be displayed (fake masonry - see https://github.com/BK/wp-ai/issues/105#issuecomment-2873361435 )
+     * @param bool $masonry Whether tiles should be displayed (fake masonry - see https://github.com/wp-ai/wp-ai/issues/105#issuecomment-2873361435 )
      * @param string $expand_all_link Attribute for “expand all” link
      * @param bool $hide_accordion Whether the accordion should be suppressed
      * @param bool $hide_title Whether the title should be suppressed
@@ -687,7 +687,7 @@ class ShortcodeFAQ
      */
     public function shortcodeOutput($atts, $content = null, $shortcode_tag = '')
     {
-        // Workaround - see: https://github.com/BK/wp-ai/issues/132#issuecomment-2839668060
+        // Workaround - see: https://github.com/wp-ai/wp-ai/issues/132#issuecomment-2839668060
         if (($skip = Tools::preventGutenbergDoubleBracketBug($shortcode_tag)) !== false) {
             return $skip;
         }

@@ -1,10 +1,10 @@
 <?php
 
-namespace BK\WPAI\Common\Settings;
+namespace WP AI\WPAI\Common\Settings;
 
 defined('ABSPATH') || exit;
 
-use BK\WPAI\Common\API\SyncAPI;
+use WP AI\WPAI\Common\API\SyncAPI;
 
 ?>
 <tr>

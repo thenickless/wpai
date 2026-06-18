@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "wp-ai/glossary",
 	"version": "2.1.11",
-	"title": "BK Glossary",
+	"title": "WP AI Glossary",
 	"category": "bk",
 	"description": "Display glossaries",
 	"icon": "book",

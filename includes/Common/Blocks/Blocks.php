@@ -1,6 +1,6 @@
 <?php
 
-namespace BK\WPAI\Common\Blocks;
+namespace WP AI\WPAI\Common\Blocks;
 
 defined('ABSPATH') || exit;
 
@@ -9,7 +9,7 @@ defined('ABSPATH') || exit;
  * 
  * This class is responsible for registering custom blocks for the plugin.
  * 
- * @package BK\WPAI\Common
+ * @package WP AI\WPAI\Common
  * @since 1.0.0
  */
 class Blocks

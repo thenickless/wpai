@@ -1,12 +1,12 @@
 <?php
 
-namespace BK\WPAI\Common\Shortcode;
+namespace WP AI\WPAI\Common\Shortcode;
 
 defined('ABSPATH') || exit;
 
-use BK\WPAI\Common\Tools;
+use WP AI\WPAI\Common\Tools;
 
-use function BK\WPAI\plugin;
+use function WP AI\WPAI\plugin;
 
 
 
@@ -35,7 +35,7 @@ class ShortcodeSynonym
             'block' => [
                 'blocktype' => 'bk-synonym/synonym',
                 'blockname' => 'synonym',
-                'title' => 'BK Synonym',
+                'title' => 'WP AI Synonym',
                 'category' => 'widgets',
                 'icon' => 'translation',
                 'tinymce_icon' => 'translate',

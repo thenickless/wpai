@@ -1,16 +1,16 @@
 # WP AI
 # WP AI
 
-[![Version](https://img.shields.io/github/package-json/v/Benjamin Klemencic/wp-ai/main?label=Version)](https://github.com/BK/wp-ai)
-[![Release Version](https://img.shields.io/github/v/release/Benjamin Klemencic/wp-ai?label=Release+Version)](https://github.com/BK/wp-ai/releases/)
-[![GitHub License](https://img.shields.io/github/license/Benjamin Klemencic/wp-ai)](https://github.com/BK/wp-ai)
-[![GitHub issues](https://img.shields.io/github/issues/Benjamin Klemencic/wp-ai)](https://github.com/BK/wp-ai/issues)
+[![Version](https://img.shields.io/github/package-json/v/Benjamin Klemencic/wp-ai/main?label=Version)](https://github.com/wp-ai/wp-ai)
+[![Release Version](https://img.shields.io/github/v/release/Benjamin Klemencic/wp-ai?label=Release+Version)](https://github.com/wp-ai/wp-ai/releases/)
+[![GitHub License](https://img.shields.io/github/license/Benjamin Klemencic/wp-ai)](https://github.com/wp-ai/wp-ai)
+[![GitHub issues](https://img.shields.io/github/issues/Benjamin Klemencic/wp-ai)](https://github.com/wp-ai/wp-ai/issues)
 
 ---
 
 ## Overview
 
-**WP AI** combines the functionalities of the former plugins **BK FAQ**, **BK Glossary**, and **BK Synonym** into a single solution.
+**WP AI** combines the functionalities of the former plugins **WP AI FAQ**, **WP AI Glossary**, and **WP AI Synonym** into a single solution.
 
 It allows you to:
 - Create and display FAQs, glossary entries, synonyms, and placeholders  
@@ -34,20 +34,20 @@ It allows you to:
 
 ## Blocks
 
-**BK FAQ Block**
-**BK FAQ Block**
+**WP AI FAQ Block**
+**WP AI FAQ Block**
 The FAQ block lets you display selected FAQ entries and control how they appear on the page. In the settings, you can choose specific items, filter by categories or tags, and select a glossary or grouping style such as alphabetical lists, tabs, or tag clouds. You can hide interface elements like titles, accordions, or the glossary navigation, enable a masonry grid layout, and add optional CSS or faculty classes. Sorting options and the starting heading level can also be adjusted to match your page structure.
 
-**BK FAQ Widget**
-**BK FAQ Widget**
+**WP AI FAQ Widget**
+**WP AI FAQ Widget**
 This block lets you display either a selected FAQ entry or a random one from a chosen category. In the settings, you can pick a specific item or filter by categories. You may also choose to show the answer without displaying the question.
 
-**BK Glossary Block**
-**BK Glossary Block**
+**WP AI Glossary Block**
+**WP AI Glossary Block**
 The Glossary block displays glossary entries and offers similar flexibility. You can select entries, filter them by categories or tags, and control the register or grouping style, including A–Z lists, tab navigation, and tag cloud layouts. Display elements such as titles, accordion views, or the register can be hidden, while optional features like “expand all” or opening entries by default can be enabled. Additional styling classes, sorting behavior, and heading levels can be configured as needed.
 
-**BK Placeholder Block**
-**BK Placeholder Block**
+**WP AI Placeholder Block**
+**WP AI Placeholder Block**
 The Placeholder block renders one, multiple, or all placeholder entries and can be filtered by language. In the editor sidebar you can select placeholders directly and choose a language filter. Rendering is server-side and uses the placeholder shortcode internally, so block and shortcode output stay consistent.
 
 **Inserting placeholders in the text editor**
@@ -208,4 +208,4 @@ Licensed under the [GNU General Public License v2.0](https://www.gnu.org/license
 
 Developed and maintained by the  
 **Benjamin Klemencic, Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)**  
-👉 [https://github.com/BK/wp-ai](https://github.com/BK/wp-ai)
+👉 [https://github.com/wp-ai/wp-ai](https://github.com/wp-ai/wp-ai)

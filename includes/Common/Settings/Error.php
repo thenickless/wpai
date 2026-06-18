@@ -1,8 +1,8 @@
 <?php
 
-namespace BK\WPAI\Common\Settings;
+namespace WP AI\WPAI\Common\Settings;
 
-use BK\WPAI\Common\Settings\Settings;
+use WP AI\WPAI\Common\Settings\Settings;
 
 defined('ABSPATH') || exit;
 
@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
  * This class manages errors related to settings options.
  * It allows adding, retrieving, and checking for errors in the settings context.
  *
- * @package BK\WPAI\Common\Settings
+ * @package WP AI\WPAI\Common\Settings
  */
 class Error
 {

@@ -619,7 +619,7 @@ details.wp-ai-item summary {
   margin-top: 0 !important;
 }
 
-/* we need to calc the height of the overlay header in BK-2019 - every other theme uses 0px per default */
+/* we need to calc the height of the overlay header in WP AI-2019 - every other theme uses 0px per default */
 .wp-ai [id] {
   scroll-margin-top: var(--header-height, 0px);
 }

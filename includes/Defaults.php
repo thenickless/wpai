@@ -1,10 +1,10 @@
 <?php
 
-namespace BK\WPAI;
+namespace WP AI\WPAI;
 
-use BK\WPAI\Common\API\SyncAPI;
-use function BK\WPAI\plugin;
-use BK\WPAI\Common\Tools;
+use WP AI\WPAI\Common\API\SyncAPI;
+use function WP AI\WPAI\plugin;
+use WP AI\WPAI\Common\Tools;
 
 
 defined('ABSPATH') || exit;
@@ -16,7 +16,7 @@ define('ENDPOINT', 'wp-json/wp/v2/');
  *
  * Holds and provides access to plugin-wide default values.
  *
- * @package BK\WPAI\Common
+ * @package WP AI\WPAI\Common
  */
 class Defaults
 {

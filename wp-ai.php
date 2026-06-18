@@ -2,8 +2,8 @@
 
 /*
 Plugin Name:        WP AI
-Plugin URI:         https://github.com/BK/wp-ai
-Version:            0.0.1
+Plugin URI:         https://github.com/wp-ai/wp-ai
+Version:            0.0.2
 Description:        Explain your content with FAQ, glossary, synonyms and placeholder.
 Author:             Benjamin Klemencic
 Author URI:         https://github.com/thenickless
@@ -15,11 +15,11 @@ Requires at least:  6.8
 Requires PHP:       8.2
 */
 
-namespace BK\WPAI;
+namespace WP AI\WPAI;
 
-use BK\WPAI\Main;
-use BK\WPAI\Common\Tools;
-use BK\WPAI\Common\Plugin\Plugin;
+use WP AI\WPAI\Main;
+use WP AI\WPAI\Common\Tools;
+use WP AI\WPAI\Common\Plugin\Plugin;
 
 defined('ABSPATH') || exit;
 
@@ -76,7 +76,7 @@ function deactivation(): void
  * Requirements:
  * - Migration is triggered ONLY by clicking "Network Activate".
  * - No pending flag/state machine: run migration immediately in activation.
- * - BK-WP AI MUST NOT remain network-activated after migration.
+ * - WP AI-WP AI MUST NOT remain network-activated after migration.
  *
  * IMPORTANT:
  * - On multisite, WordPress passes $network_wide to activation hooks.
@@ -97,7 +97,7 @@ function wp_ai_on_activate_network($network_wide = false): void
     if (get_site_option(MIGRATE_DONE_KEY)) {
         wp_ai_store_report([
             'type' => 'info',
-            'title' => 'BK-WP AI',
+            'title' => 'WP AI-WP AI',
             'intro' => __('Migration already marked as done. No changes were made.', 'wp-ai'),
             'items' => [],
             'footer' => '',
@@ -107,7 +107,7 @@ function wp_ai_on_activate_network($network_wide = false): void
 
     /**
      * PRECONDITION:
-     * BK-WP AI must NOT be network-activated, otherwise it becomes active on all sites.
+     * WP AI-WP AI must NOT be network-activated, otherwise it becomes active on all sites.
      * The user just network-activated it, so immediately undo that.
      */
     wp_ai_force_network_deactivate(BK_WPAI_PLUGIN);
@@ -116,10 +116,10 @@ function wp_ai_on_activate_network($network_wide = false): void
     if (wp_ai_is_network_active(BK_WPAI_PLUGIN)) {
         wp_ai_store_report([
             'type' => 'error',
-            'title' => 'BK-WP AI',
-            'intro' => __('Migration aborted: BK-WP AI could not be deactivated network-wide during activation.', 'wp-ai'),
+            'title' => 'WP AI-WP AI',
+            'intro' => __('Migration aborted: WP AI-WP AI could not be deactivated network-wide during activation.', 'wp-ai'),
             'items' => [],
-            'footer' => __('No site changes were made. Please deactivate BK-WP AI network-wide manually and retry.', 'wp-ai'),
+            'footer' => __('No site changes were made. Please deactivate WP AI-WP AI network-wide manually and retry.', 'wp-ai'),
         ]);
         return;
     }
@@ -129,7 +129,7 @@ function wp_ai_on_activate_network($network_wide = false): void
 
     /**
      * FINAL POSTCONDITION:
-     * Ensure BK-WP AI is NOT network-activated after migration.
+     * Ensure WP AI-WP AI is NOT network-activated after migration.
      * If it is, abort and do NOT mark migration as done.
      */
     wp_ai_force_network_deactivate(BK_WPAI_PLUGIN);
@@ -137,10 +137,10 @@ function wp_ai_on_activate_network($network_wide = false): void
     if (wp_ai_is_network_active(BK_WPAI_PLUGIN)) {
         wp_ai_store_report([
             'type' => 'error',
-            'title' => 'BK-WP AI',
-            'intro' => __('Migration failed: BK-WP AI is network-activated after migration.', 'wp-ai'),
+            'title' => 'WP AI-WP AI',
+            'intro' => __('Migration failed: WP AI-WP AI is network-activated after migration.', 'wp-ai'),
             'items' => $result['items'] ?? [],
-            'footer' => __('The migration was NOT marked as done. Please ensure BK-WP AI is not network-activated and retry.', 'wp-ai'),
+            'footer' => __('The migration was NOT marked as done. Please ensure WP AI-WP AI is not network-activated and retry.', 'wp-ai'),
         ]);
         return; // IMPORTANT: do NOT set MIGRATE_DONE_KEY
     }
@@ -507,7 +507,7 @@ function wp_ai_migrate_multisite_notice(): void
     delete_site_transient(MIGRATE_REPORT_KEY);
 
     $type = $payload['type'] ?? 'info'; // info|success|warning|error
-    $title = $payload['title'] ?? 'BK-WP AI';
+    $title = $payload['title'] ?? 'WP AI-WP AI';
     $intro = $payload['intro'] ?? '';
     $items = $payload['items'] ?? [];
     $footer = $payload['footer'] ?? '';
@@ -546,7 +546,7 @@ function wp_ai_migrate_multisite_core(): array
     if (!current_user_can('manage_network_plugins')) {
         $report = [
             'type' => 'error',
-            'title' => 'BK-WP AI',
+            'title' => 'WP AI-WP AI',
             'intro' => __('Migration aborted: insufficient permissions (manage_network_plugins).', 'wp-ai'),
             'items' => [],
             'footer' => '',
@@ -560,8 +560,8 @@ function wp_ai_migrate_multisite_core(): array
     if (wp_ai_is_network_active(BK_WPAI_PLUGIN)) {
         $report = [
             'type' => 'error',
-            'title' => 'BK-WP AI',
-            'intro' => __('Migration aborted: BK-WP AI is network-activated. Please deactivate it network-wide and retry.', 'wp-ai'),
+            'title' => 'WP AI-WP AI',
+            'intro' => __('Migration aborted: WP AI-WP AI is network-activated. Please deactivate it network-wide and retry.', 'wp-ai'),
             'items' => [],
             'footer' => '',
         ];
@@ -600,7 +600,7 @@ function wp_ai_migrate_multisite_core(): array
                 }
             }
 
-            // Activate BK-WP AI on this site only.
+            // Activate WP AI-WP AI on this site only.
             $activated_now = false;
             $activation_error = '';
 
@@ -626,13 +626,13 @@ function wp_ai_migrate_multisite_core(): array
             if ($activation_error !== '') {
                 $parts[] = sprintf(
                     '<strong class="wp-ai-error">%s</strong> %s',
-                    esc_html__('BK-WP AI activation failed:', 'wp-ai'),
+                    esc_html__('WP AI-WP AI activation failed:', 'wp-ai'),
                     esc_html($activation_error)
                 );
             } else {
                 $parts[] = $activated_now
-                    ? esc_html__('BK-WP AI activated.', 'wp-ai')
-                    : esc_html__('BK-WP AI already active (no change).', 'wp-ai');
+                    ? esc_html__('WP AI-WP AI activated.', 'wp-ai')
+                    : esc_html__('WP AI-WP AI already active (no change).', 'wp-ai');
             }
 
             $items[] = '<strong>' . esc_html($label) . '</strong>: ' . implode(' ', $parts);
@@ -644,14 +644,14 @@ function wp_ai_migrate_multisite_core(): array
     $report = !empty($items)
         ? [
             'type' => 'success',
-            'title' => 'BK-WP AI',
-            'intro' => __('Migration result (old plugins deactivated, BK-WP AI activated where needed):', 'wp-ai'),
+            'title' => 'WP AI-WP AI',
+            'intro' => __('Migration result (old plugins deactivated, WP AI-WP AI activated where needed):', 'wp-ai'),
             'items' => $items,
             'footer' => '',
         ]
         : [
             'type' => 'info',
-            'title' => 'BK-WP AI',
+            'title' => 'WP AI-WP AI',
             'intro' => __('No sites required changes.', 'wp-ai'),
             'items' => [],
             'footer' => '',

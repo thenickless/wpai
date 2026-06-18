@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "wp-ai/placeholder",
 	"version": "3.0.4",
-	"title": "BK Placeholder",
+	"title": "WP AI Placeholder",
 	"category": "bk",
 	"description": "Display placeholders",
 	"icon": "editor-paste-text",

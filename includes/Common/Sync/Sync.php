@@ -1,10 +1,10 @@
 <?php
 
-namespace BK\WPAI\Common\Sync;
+namespace WP AI\WPAI\Common\Sync;
 
-use BK\WPAI\Common\API\SyncAPI;
+use WP AI\WPAI\Common\API\SyncAPI;
 
-use BK\WPAI\Common\Tools;
+use WP AI\WPAI\Common\Tools;
 
 defined('ABSPATH') || exit;
 
@@ -55,7 +55,7 @@ class Sync
         $dt->setTimezone($wp_tz);
 
         $message = __('Next automatic synchronization:', 'wp-ai') . ' ' . $dt->format('d.m.Y H:i:s');
-        add_settings_error('BK-WP AI', 'autosynccomplete', $message, 'updated');
+        add_settings_error('WP AI-WP AI', 'autosynccomplete', $message, 'updated');
     }
 
 
@@ -90,7 +90,7 @@ class Sync
                         $error_msg = __('Domain', 'wp-ai') . ' "' . $url . '": ' . $label . ' - ' . $aCnt->get_error_message();
                         Tools::logIt($error_msg . ' | ' . $mode);
                         if ($allowSettingsError) {
-                            add_settings_error('BK-WP AI', 'syncerror', $error_msg, 'error');
+                            add_settings_error('WP AI-WP AI', 'syncerror', $error_msg, 'error');
                         }
                         continue;
                     }
@@ -101,7 +101,7 @@ class Sync
                         Tools::logIt($error_msg . ' | ' . $mode);
 
                         if ($allowSettingsError) {
-                            add_settings_error('BK-WP AI', 'syncerror', $error_msg, 'error');
+                            add_settings_error('WP AI-WP AI', 'syncerror', $error_msg, 'error');
                         }
                     }
 
@@ -109,7 +109,7 @@ class Sync
                     Tools::logIt($sync_msg . ' | ' . $mode);
 
                     if ($allowSettingsError) {
-                        add_settings_error('BK-WP AI', 'synccompleted', $sync_msg, 'success');
+                        add_settings_error('WP AI-WP AI', 'synccompleted', $sync_msg, 'success');
                     }
                 }
             }
@@ -122,7 +122,7 @@ class Sync
         }
 
         if ($allowSettingsError) {
-            add_settings_error('BK-WP AI', 'synccompleted', $sync_msg, 'success');
+            add_settings_error('WP AI-WP AI', 'synccompleted', $sync_msg, 'success');
         }
 
         Tools::logIt($sync_msg . ' | ' . $mode);

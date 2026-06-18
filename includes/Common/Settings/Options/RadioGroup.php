@@ -1,8 +1,8 @@
 <?php
 
-namespace BK\WPAI\Common\Settings\Options;
+namespace WP AI\WPAI\Common\Settings\Options;
 
-use BK\WPAI\Common\Settings\Options\Type;
+use WP AI\WPAI\Common\Settings\Options\Type;
 
 defined('ABSPATH') || exit;
 
@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
  * This class represents a group of radio buttons in the settings section.
  * It extends the Type class and provides a template for rendering the radio group.
  *
- * @package BK\WPAI\Common\Settings\Options
+ * @package WP AI\WPAI\Common\Settings\Options
  */
 class RadioGroup extends Type
 {
