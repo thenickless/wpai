@@ -1,10 +1,10 @@
 # WP AI
 # WP AI
 
-[![Version](https://img.shields.io/github/package-json/v/Benjamin Klemencic/wp-ai/main?label=Version)](https://github.com/wp-ai/wp-ai)
-[![Release Version](https://img.shields.io/github/v/release/Benjamin Klemencic/wp-ai?label=Release+Version)](https://github.com/wp-ai/wp-ai/releases/)
-[![GitHub License](https://img.shields.io/github/license/Benjamin Klemencic/wp-ai)](https://github.com/wp-ai/wp-ai)
-[![GitHub issues](https://img.shields.io/github/issues/Benjamin Klemencic/wp-ai)](https://github.com/wp-ai/wp-ai/issues)
+[![Version](https://github.com/thenickless/wpai/main?label=Version)](https://github.com/thenickless/wpai)
+[![Release Version](https://github.com/thenickless/wpai?label=Release+Version)](https://github.com/thenickless/wpai/releases/)
+[![GitHub License](https://github.com/thenickless/wpai)](https://github.com/thenickless/wpai)
+[![GitHub issues](https://github.com/thenickless/wpai)](https://github.com/thenickless/wpai/issues)
 
 ---
 
